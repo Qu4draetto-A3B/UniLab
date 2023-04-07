@@ -1,6 +1,6 @@
-package Collezioni;
+package utils.ListaCustom;
 
-class Nodo<E>{
+public class Nodo<E>{
     //CAMPI
     private E dato;
     private Nodo<E> next;

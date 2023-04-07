@@ -1,3 +1,5 @@
+
+
 /*
 CercaAree
 <<Interface>>
@@ -30,7 +32,7 @@ public interface CercaAree
 
     public DatoGeografico visualizzaAreaGeografica (AreaGeografica area);
 
-    public List<AreaGeografica> cercaAreaGeografica (String denominazione, String stato);
+    public ListaAree cercaAreaGeografica (String denominazione, String stato);
 
-    public List<AreaGeografica> cercaAreeGeografiche (double latitudine, double longitudine);
+    public ListaAree cercaAreeGeografiche (double latitudine, double longitudine);
 }
