@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-07T07:46:30.849Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:111.0) Gecko/20100101 Firefox/111.0" etag="ARPH5ztwNa7Us4vuH3Fz" version="21.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-07T08:11:28.779Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:111.0) Gecko/20100101 Firefox/111.0" etag="79XX7t_Sb-qjQQCD3PQS" version="21.1.5" type="github">
   <diagram name="Server" id="AGUhUu6FTL9pFBDofL-d">
-    <mxGraphModel dx="2747" dy="1432" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2317" dy="1195" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -28,62 +28,50 @@
         <mxCell id="CR_k1ErsiSNvkhVKo7Lu-43" value="+ Getter, Setter" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-1" vertex="1">
           <mxGeometry y="164" width="390" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="JxGRCyyDZtDp2fDfsdCm-11" value="&lt;u&gt;ElaboratoreAreeGeografiche&lt;/u&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-1050" y="-130" width="510" height="86" as="geometry" />
-        </mxCell>
-        <mxCell id="JxGRCyyDZtDp2fDfsdCm-12" value="// no attr" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-11" vertex="1">
-          <mxGeometry y="26" width="510" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="JxGRCyyDZtDp2fDfsdCm-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="JxGRCyyDZtDp2fDfsdCm-11" vertex="1">
-          <mxGeometry y="52" width="510" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="CR_k1ErsiSNvkhVKo7Lu-66" value="// no methods" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-11" vertex="1">
-          <mxGeometry y="60" width="510" height="26" as="geometry" />
-        </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-25" value="&amp;lt;&amp;lt;Enum&amp;gt;&amp;gt;&lt;br&gt;&lt;div&gt;DatoGeografico&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-90" y="80" width="590" height="392" as="geometry" />
+          <mxGeometry x="-90" y="80" width="610" height="392" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-34" value="&lt;div&gt;- massaGhiacciai: byte&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="40" width="590" height="26" as="geometry" />
+          <mxGeometry y="40" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-33" value="- altitudineGhiacciai: byte" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="66" width="590" height="26" as="geometry" />
+          <mxGeometry y="66" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-32" value="- precipitazioni: byte" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="92" width="590" height="26" as="geometry" />
+          <mxGeometry y="92" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-30" value="- temperatura: byte" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="118" width="590" height="26" as="geometry" />
+          <mxGeometry y="118" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-31" value="- pressione: byte" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="144" width="590" height="26" as="geometry" />
+          <mxGeometry y="144" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-29" value="- umidita: byte" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="170" width="590" height="26" as="geometry" />
+          <mxGeometry y="170" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-26" value="- vento: byte" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="196" width="590" height="26" as="geometry" />
+          <mxGeometry y="196" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-37" value="- note: HashMap&amp;lt;DatoGeografico, String (max 256 char)&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="222" width="590" height="26" as="geometry" />
+          <mxGeometry y="222" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="CR_k1ErsiSNvkhVKo7Lu-2" value="&lt;div&gt;Le costanti (vento, umidita, ...) hanno un attributo implicito che contiene il valore (0..5).&lt;/div&gt;&lt;div&gt;Nella HashMap la chiave saranno le costanti dell&#39;enum, il valore associato sara la stringa della descrizione.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="248" width="590" height="40" as="geometry" />
+          <mxGeometry y="248" width="610" height="40" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-27" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="288" width="590" height="8" as="geometry" />
+          <mxGeometry y="288" width="610" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="CR_k1ErsiSNvkhVKo7Lu-45" value="+ DatoGeografico(byte, byte, byte, byte, byte, byte, byte, HashMap) // almeno un dato &amp;gt; 0, tutti i params non inseriti sono 0" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="296" width="590" height="44" as="geometry" />
+        <mxCell id="CR_k1ErsiSNvkhVKo7Lu-45" value="&lt;div&gt;+ DatoGeografico(byte, byte, byte, byte, byte, byte, byte, HashMap)&lt;/div&gt;&lt;div&gt;// almeno un dato &amp;gt; 0, se cio non e&#39; vero tira un&#39;eccezione, tutti i params non inseriti sono 0&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
+          <mxGeometry y="296" width="610" height="44" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-28" value="+ Getter, Setter" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="340" width="590" height="26" as="geometry" />
+          <mxGeometry y="340" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="JxGRCyyDZtDp2fDfsdCm-38" value="+ getNota(attr: DatoGeografico): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="JxGRCyyDZtDp2fDfsdCm-25" vertex="1">
-          <mxGeometry y="366" width="590" height="26" as="geometry" />
+          <mxGeometry y="366" width="610" height="26" as="geometry" />
         </mxCell>
         <mxCell id="CR_k1ErsiSNvkhVKo7Lu-3" value="Operatore" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="560" y="-402" width="440" height="310" as="geometry" />
+          <mxGeometry x="620" y="-430" width="440" height="330" as="geometry" />
         </mxCell>
         <mxCell id="CR_k1ErsiSNvkhVKo7Lu-4" value="- nome: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="CR_k1ErsiSNvkhVKo7Lu-3" vertex="1">
           <mxGeometry y="26" width="440" height="26" as="geometry" />
@@ -115,8 +103,8 @@
         <mxCell id="CR_k1ErsiSNvkhVKo7Lu-41" value="+ Getter, Setter" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="CR_k1ErsiSNvkhVKo7Lu-3" vertex="1">
           <mxGeometry y="242" width="440" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="CR_k1ErsiSNvkhVKo7Lu-75" value="+ inserisciParametriClimatici(AreaGeografica, DateTime, DatoGeografico): bool // centro fa parte dell&#39;operatore, quindi non ce&#39; bisogno del parametro" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="CR_k1ErsiSNvkhVKo7Lu-3" vertex="1">
-          <mxGeometry y="268" width="440" height="42" as="geometry" />
+        <mxCell id="CR_k1ErsiSNvkhVKo7Lu-75" value="&lt;div&gt;+ inserisciParametriClimatici(AreaGeografica, DateTime, DatoGeografico): bool&lt;/div&gt;&lt;div&gt;// centro fa parte dell&#39;operatore, quindi non ce&#39; bisogno del parametro, UNA SOLA rilevazione al giorno&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="CR_k1ErsiSNvkhVKo7Lu-3" vertex="1">
+          <mxGeometry y="268" width="440" height="62" as="geometry" />
         </mxCell>
         <mxCell id="CR_k1ErsiSNvkhVKo7Lu-16" value="&lt;u&gt;GestoreOperatore&lt;/u&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="450" y="-584" width="280" height="126" as="geometry" />
@@ -213,9 +201,9 @@
         <mxCell id="CR_k1ErsiSNvkhVKo7Lu-65" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;CercaAree&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;// no attr&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ visualizzaAreaGeografica(area: AreaGeografica):DatoGeografico // Aggregato&lt;/p&gt;&lt;div&gt;&amp;nbsp;+ cercaAreaGeografica(denom: String, stato: String): List&amp;lt;AreaGeografica&amp;gt; // Nullable&lt;/div&gt;&lt;div&gt;&amp;nbsp;+ cercaAreeGeografiche(lat: double, lon: double): List&amp;lt;AreaGeografica&amp;gt; // Nullable&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="-1450" y="20" width="470" height="134" as="geometry" />
         </mxCell>
-        <mxCell id="CR_k1ErsiSNvkhVKo7Lu-67" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" parent="1" source="JxGRCyyDZtDp2fDfsdCm-11" target="CR_k1ErsiSNvkhVKo7Lu-65" edge="1">
+        <mxCell id="CR_k1ErsiSNvkhVKo7Lu-67" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;" parent="1" source="jolyJJIcNzfbmG56OFkv-14" target="CR_k1ErsiSNvkhVKo7Lu-65" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="-820" y="110" as="sourcePoint" />
+            <mxPoint x="-898.7931034482758" y="-44" as="sourcePoint" />
             <mxPoint x="-660" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -245,7 +233,7 @@
             <mxPoint x="220" y="-250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="jolyJJIcNzfbmG56OFkv-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CR_k1ErsiSNvkhVKo7Lu-69" target="JxGRCyyDZtDp2fDfsdCm-1">
+        <mxCell id="jolyJJIcNzfbmG56OFkv-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="CR_k1ErsiSNvkhVKo7Lu-69" target="JxGRCyyDZtDp2fDfsdCm-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jolyJJIcNzfbmG56OFkv-2" value="&lt;div&gt;Misurazione&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -283,6 +271,27 @@
         </mxCell>
         <mxCell id="jolyJJIcNzfbmG56OFkv-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="jolyJJIcNzfbmG56OFkv-8" target="CR_k1ErsiSNvkhVKo7Lu-20">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jolyJJIcNzfbmG56OFkv-14" value="Filtratore" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-870" y="-130" width="260" height="164" as="geometry" />
+        </mxCell>
+        <mxCell id="jolyJJIcNzfbmG56OFkv-15" value="- List&amp;lt;Misurazioni&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="jolyJJIcNzfbmG56OFkv-14">
+          <mxGeometry y="26" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="jolyJJIcNzfbmG56OFkv-16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="jolyJJIcNzfbmG56OFkv-14">
+          <mxGeometry y="52" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="jolyJJIcNzfbmG56OFkv-18" value="+ Filtratore(List&amp;lt;Operatore&amp;gt;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="jolyJJIcNzfbmG56OFkv-14">
+          <mxGeometry y="60" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="jolyJJIcNzfbmG56OFkv-17" value="+ filtraOperatore(Operatore): Filtratore" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="jolyJJIcNzfbmG56OFkv-14">
+          <mxGeometry y="86" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="jolyJJIcNzfbmG56OFkv-19" value="+ filtraCentro(CentroMonitoraggio): Filtratore" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="jolyJJIcNzfbmG56OFkv-14">
+          <mxGeometry y="112" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="jolyJJIcNzfbmG56OFkv-20" value="+ filtraAree(AreaGeografica): Filtratore" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="jolyJJIcNzfbmG56OFkv-14">
+          <mxGeometry y="138" width="260" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
