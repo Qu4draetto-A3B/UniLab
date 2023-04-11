@@ -34,5 +34,5 @@ public interface CercaAree
 
     public ListaAree cercaAreaGeografica (String denominazione, String stato);
 
-    public ListaAree cercaAreeGeografiche (double latitudine, double longitudine);
+    public AreaGeografica cercaAreeGeografiche (double latitudine, double longitudine);
 }
