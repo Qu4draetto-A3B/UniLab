@@ -1,8 +1,9 @@
 import java.util.HashMap;
+import utils.TipoDatoGeografico;
 
 /**
  * DatoGeografico
- * 
+ *
  * Rappresenta un dato
  */
 public class DatoGeografico {
@@ -16,11 +17,32 @@ public class DatoGeografico {
 
 	private HashMap<TipoDatoGeografico, String> note;
 
-	public DatoGeografico(TipoDatoGeografico tipo, byte dato) {
+	public DatoGeografico(TipoDatoGeografico tipo, byte dato, String nota) {
+		if (dato < 1) {
+			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
+		}
+
 		setDato(tipo, dato);
+
+		note = new HashMap<>();
+		for (TipoDatoGeografico t : TipoDatoGeografico.values()) {
+			note.put(t, "");
+		}
+
+		note.put(tipo, nota);
 	}
 
 	public DatoGeografico(byte MassaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura, byte pressione, byte umidita, byte vento, HashMap<TipoDatoGeografico, String> note) {
+		/*
+		 * I byte vengono inizializzati a 0 implicitamente,
+		 * se tutti i dati sono 0 anche la loro somma sara' 0,
+		 * quindi posso dedurre che non sono stati inseriti dati
+		 */
+		int all = massaGhiacciai + altitudineGhiacciai + precipitazioni + temperatura + pressione + umidita + vento;
+		if (all < 1) {
+			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
+		}
+
 		this.massaGhiacciai = massaGhiacciai;
 		this.altitudineGhiacciai = altitudineGhiacciai;
 		this.precipitazioni = precipitazioni;
@@ -106,14 +128,4 @@ public class DatoGeografico {
 	public void setNota(TipoDatoGeografico key, String nota) {
 		note.put(key, nota);
 	}
-}
-
-enum TipoDatoGeografico {
-	MassaGhiacciai,
-	AltitudineGhiacciai,
-	Precipitazioni,
-	Temperatura,
-	Pressione,
-	Umidita,
-	Vento;
 }
