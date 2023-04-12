@@ -12,14 +12,14 @@ public class ListaCustom{
         lista.addFirst(ag3);
 
         //lista = lista.cercaAreaGeografica(null, "romania");
-        lista.addFirst(lista.cercaAreeGeografiche(21, -68));
+        lista.addFirst(lista.cercaAreeGeografiche(21, -190).get());
 
 
         for(AreaGeografica tmp : lista){
             System.out.println(tmp.getDenominazione());
         }
 
-        
+
     }
 
 }
