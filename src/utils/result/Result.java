@@ -23,6 +23,10 @@ public class Result<T> {
 		this.fullMessage = String.format("%s [%d] %s", content != null ? content.getClass() : "NULL", error, message);
 	}
 
+	public boolean isValid() {
+		return error == 0;
+	}
+
 	public int getError() {
 		return error;
 	}
