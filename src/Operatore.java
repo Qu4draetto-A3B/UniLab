@@ -21,7 +21,7 @@ public class Operatore implements Convertable {
 		nome = "Civile";
 		cognome = "Civile";
 		email = "civile@example.com";
-		centro = new CentroMonitoraggio();
+		centro = null;//new CentroMonitoraggio();
 	}
 
 	public boolean inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
