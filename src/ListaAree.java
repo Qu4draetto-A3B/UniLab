@@ -25,6 +25,18 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 
 	}
 
+	public void add (AreaGeografica e, int k)
+	{
+		if ((0 > k) || (k >= this.size())) throw new IndexOutOfBoundsException("ERRORE: valore dell'indice non valido");
+		Nodo <AreaGeografica> current = head;
+		for(int i = 0; i< k-1; i++)
+		{
+			current = current.getNext();
+		}
+		Nodo<AreaGeografica> x = new Nodo<AreaGeografica>(e, current.getNext());
+		current.setNext(x);
+	}
+
 	public AreaGeografica getFirst() {
 		if (head == null)
 			throw new NoSuchElementException("La listra e' vuota");
@@ -162,6 +174,13 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 		}
 		return new Result<>(ag);
 
+	}
+
+	public String toString(){
+		String str = "";
+		for(AreaGeografica tmp : this)
+			str += tmp.toString()+"\n";
+		return str;
 	}
 
 }
