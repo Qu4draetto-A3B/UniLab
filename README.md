@@ -1,1 +1,5 @@
 # LABORATORIO A
+
+
+# LIBRERIE UTILIZZATE
+1. apachecommons.csv
