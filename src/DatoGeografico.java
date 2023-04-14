@@ -32,7 +32,7 @@ public class DatoGeografico {
 		note.put(tipo, nota);
 	}
 
-	public DatoGeografico(byte MassaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura, byte pressione, byte umidita, byte vento, HashMap<TipoDatoGeografico, String> note) {
+	public DatoGeografico(byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura, byte pressione, byte umidita, byte vento, HashMap<TipoDatoGeografico, String> note) {
 		/*
 		 * I byte vengono inizializzati a 0 implicitamente,
 		 * se tutti i dati sono 0 anche la loro somma sara' 0,
