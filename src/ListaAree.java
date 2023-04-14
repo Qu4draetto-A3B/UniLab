@@ -1,7 +1,6 @@
 import java.util.NoSuchElementException;
 
 import utils.ListaCustom.*;
-import java.lang.Math.*;
 import utils.result.Result;
 
 import java.util.Iterator;
