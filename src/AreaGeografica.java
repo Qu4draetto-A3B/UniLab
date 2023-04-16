@@ -22,4 +22,8 @@ public class AreaGeografica {
     public String toString(){
 		return this.denominazione + " "+this.stato + " Coordinate :" + this.latitudine +" "+ this.longitudine;
 	}
+    public boolean isEquals(AreaGeografica ag){
+        if(this.latitudine == ag.latitudine&& this.longitudine == ag.longitudine) return true;
+        else return false;
+    }
 }

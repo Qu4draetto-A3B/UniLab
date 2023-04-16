@@ -28,6 +28,8 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 	public void add (AreaGeografica e, int k)
 	{
 		if ((0 > k) || (k >= this.size())) throw new IndexOutOfBoundsException("ERRORE: valore dell'indice non valido");
+		for(AreaGeografica tmp : this)
+			if(e.isEquals(tmp)) return;
 		Nodo <AreaGeografica> current = head;
 		for(int i = 0; i< k-1; i++)
 		{
@@ -61,6 +63,8 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 
 	public void addFirst(AreaGeografica e) {
 		Nodo<AreaGeografica> x = new Nodo<AreaGeografica>(e, head);
+		for(AreaGeografica tmp : this)
+			if(e.isEquals(tmp)) return;
 		head = x;
 		if (tail == null)
 			tail = x;
