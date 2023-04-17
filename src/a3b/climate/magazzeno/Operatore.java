@@ -1,6 +1,7 @@
+package a3b.climate.magazzeno;
 import java.time.LocalDateTime;
 
-import utils.Convertable;
+import a3b.climate.utils.Convertable;
 
 public class Operatore implements Convertable {
 	private String nome, cognome, email, cf, uid;

@@ -1,3 +1,4 @@
+package a3b.climate.gestori;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Reader;
@@ -8,8 +9,9 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
-import utils.result.Panic;
-import utils.result.Result;
+import a3b.climate.magazzeno.Misurazione;
+import a3b.climate.magazzeno.Operatore;
+import a3b.climate.utils.result.*;
 
 public class GestoreOperatore {
 	private static CSVFormat format = CSVFormat.DEFAULT.builder()

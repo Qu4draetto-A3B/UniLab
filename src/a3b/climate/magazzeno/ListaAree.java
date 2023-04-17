@@ -1,7 +1,8 @@
+package a3b.climate.magazzeno;
 import java.util.NoSuchElementException;
 
-import utils.ListaCustom.*;
-import utils.result.Result;
+import a3b.climate.utils.ListaCustom.*;
+import a3b.climate.utils.result.Result;
 
 import java.util.Iterator;
 
@@ -148,7 +149,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 		}
 
 		for (AreaGeografica areaGeografica : this) {
-			if (latitudine == areaGeografica.getLatitudine() && (longitudine == areaGeografica.getLongitudine()))
+			if ((latitudine == areaGeografica.getLatitudine()) && (longitudine == areaGeografica.getLongitudine()))
 				return new Result<>(areaGeografica);
 		}
 
