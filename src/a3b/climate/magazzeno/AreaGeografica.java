@@ -1,3 +1,4 @@
+package a3b.climate.magazzeno;
 public class AreaGeografica {
     private double latitudine;
     private double longitudine;

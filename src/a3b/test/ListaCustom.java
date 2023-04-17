@@ -1,3 +1,9 @@
+package a3b.test;
+
+import a3b.climate.magazzeno.AreaGeografica;
+import a3b.climate.magazzeno.CentroMonitoraggio;
+import a3b.climate.magazzeno.ListaAree;
+
 public class ListaCustom {
 	public static void main(String[] args) {
 		/*
@@ -19,7 +25,7 @@ public class ListaCustom {
 		 * }
 		 */
 
-		CentroMonitoraggio ss = new CentroMonitoraggio("Camillone", null);
+		CentroMonitoraggio ss = new CentroMonitoraggio("Camillone", null, null);
 		ListaAree lista = ss.getListaAree();
 		int i = 0;
 		for (AreaGeografica tmp : lista)

@@ -1,4 +1,4 @@
-package utils.result;
+package a3b.climate.utils.result;
 
 import java.util.function.Supplier;
 
