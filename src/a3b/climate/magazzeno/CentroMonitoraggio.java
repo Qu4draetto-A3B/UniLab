@@ -1,5 +1,8 @@
 package a3b.climate.magazzeno;
-public class CentroMonitoraggio {
+
+import a3b.climate.utils.Convertable;
+
+public class CentroMonitoraggio implements Convertable {
 	// CAMPI
 	private String nome;
 	private Indirizzo indirizzo;
@@ -19,7 +22,23 @@ public class CentroMonitoraggio {
 	}
 
 	// METODO
+	public String getNome() {
+		return nome;
+	}
+
 	public ListaAree getListaAree() {
 		return this.aree;
+	}
+
+	@Override
+	public String toCsv() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'toCsv'");
+	}
+
+	@Override
+	public String toJson() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
 	}
 }

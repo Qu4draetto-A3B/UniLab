@@ -1,4 +1,5 @@
 package a3b.climate.gestori;
+
 import java.io.*;
 
 import org.apache.commons.csv.CSVFormat;
@@ -10,20 +11,23 @@ import a3b.climate.magazzeno.ListaAree;
 import a3b.climate.utils.result.*;
 
 public class GestoreArea {
-	String[] HEADERS = { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat", "Lon" };
-	CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
+	private static final String[] HEADERS = { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat",
+			"Lon" };
+
+	private static CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
 			.setHeader(HEADERS)
 			.setSkipHeaderRecord(true)
 			.build();
-	Reader in;
-	Iterable<CSVRecord> records;
+
+	private static Reader in;
+	private static Iterable<CSVRecord> records;
 
 	private DatoGeografico visualizzaAreaGeografica(AreaGeografica area) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'visualizzaAreaGeografica'");
 	}
 
-	public ListaAree cercaAreaGeografica(String denom, String stato) {
+	public static ListaAree cercaAreaGeografica(String denom, String stato) {
 		try {
 			in = new FileReader("./data/CoordinateMonitoraggio.csv");
 			records = csvFormat.parse(in);
@@ -56,7 +60,7 @@ public class GestoreArea {
 		return lag;
 	}
 
-	public Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine) {
+	public static Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine) {
 		try {
 			in = new FileReader("./data/CoordinateMonitoraggio.csv");
 			records = csvFormat.parse(in);

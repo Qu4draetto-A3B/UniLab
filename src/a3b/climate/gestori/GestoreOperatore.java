@@ -14,16 +14,19 @@ import a3b.climate.magazzeno.Operatore;
 import a3b.climate.utils.result.*;
 
 public class GestoreOperatore {
+	private final static String[] HEADERS = { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" };
 	private static CSVFormat format = CSVFormat.DEFAULT.builder()
-			.setHeader(new String[] { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" })
+			.setHeader(HEADERS)
 			.setSkipHeaderRecord(true)
 			.build();
 
 	private static Reader in;
 	private static Writer out;
 
+	private static Iterable<CSVRecord> it;
+	private static CSVPrinter p;
+
 	public static boolean registrazione(Operatore op, String pwd) {
-		CSVPrinter p;
 		try {
 			out = new FileWriter("../data/OperatoriRegistrati.CSV");
 			p = new CSVPrinter(out, format);
@@ -39,8 +42,6 @@ public class GestoreOperatore {
 	}
 
 	public Result<Operatore> login(String uid, String pwdhash) {
-		Iterable<CSVRecord> it;
-
 		try {
 			in = new FileReader("../data/OperatoriRegistrati.CSV");
 			it = format.parse(in);
