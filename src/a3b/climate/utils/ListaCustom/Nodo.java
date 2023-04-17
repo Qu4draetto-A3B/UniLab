@@ -1,4 +1,4 @@
-package utils.ListaCustom;
+package a3b.climate.utils.ListaCustom;
 
 public class Nodo<E>{
     //CAMPI
@@ -10,7 +10,7 @@ public class Nodo<E>{
         this.next = next;
         this.dato = dato;
     }
-    
+
     //METODI
     public void setNext(Nodo<E> next){this.next = next;}
     public void setDato(E dato){this.dato = dato;}

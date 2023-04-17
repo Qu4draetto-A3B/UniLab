@@ -1,4 +1,4 @@
-package utils.ListaCustom;
+package a3b.climate.utils.ListaCustom;
 import java.util.Iterator;
 
 public class CollezioniIterator<E> implements Iterator<E>{
@@ -7,12 +7,12 @@ public class CollezioniIterator<E> implements Iterator<E>{
     public CollezioniIterator(Nodo<E> head){ current = head;}
 
     public boolean hasNext(){ return current != null;}
-    
+
     public E next(){
         E e = current.getDato();
         current = current.getNext();
 
         return e;
-    } 
+    }
 
 }

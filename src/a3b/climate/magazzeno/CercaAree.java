@@ -1,4 +1,5 @@
-import utils.result.Result;
+package a3b.climate.magazzeno;
+import a3b.climate.utils.result.Result;
 
 /*
 CercaAree

@@ -1,5 +1,7 @@
+package a3b.climate.magazzeno;
 import java.util.HashMap;
-import utils.TipoDatoGeografico;
+
+import a3b.climate.utils.TipoDatoGeografico;
 
 /**
  * DatoGeografico
