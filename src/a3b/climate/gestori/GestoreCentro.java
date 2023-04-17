@@ -14,7 +14,7 @@ import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
 public class GestoreCentro {
-	private static String file = "./data/CentriMonitoraggio.CSV";
+	private final static String file = "./data/CentriMonitoraggio.CSV";
 	private final static String[] HEADERS = {"Name", "Address", "Areas"};
 	private static CSVFormat format = CSVFormat.DEFAULT.builder()
 			.setHeader(HEADERS)

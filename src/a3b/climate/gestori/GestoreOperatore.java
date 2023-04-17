@@ -14,6 +14,7 @@ import a3b.climate.magazzeno.Operatore;
 import a3b.climate.utils.result.*;
 
 public class GestoreOperatore {
+	private static final String file = "./data/OperatoriRegistrati.CSV";
 	private final static String[] HEADERS = { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" };
 	private static CSVFormat format = CSVFormat.DEFAULT.builder()
 			.setHeader(HEADERS)
@@ -28,7 +29,7 @@ public class GestoreOperatore {
 
 	public static boolean registrazione(Operatore op, String pwd) {
 		try {
-			out = new FileWriter("../data/OperatoriRegistrati.CSV");
+			out = new FileWriter(file);
 			p = new CSVPrinter(out, format);
 			p.printRecord(op.toCsv(), pwd);
 			p.flush();
