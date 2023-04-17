@@ -1,4 +1,5 @@
 package a3b.climate.gestori;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Reader;
@@ -11,10 +12,13 @@ import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.Misurazione;
 import a3b.climate.magazzeno.Operatore;
+import a3b.climate.utils.StatoGestore;
 import a3b.climate.utils.result.*;
 
 public class GestoreOperatore {
+	private static StatoGestore stato = StatoGestore.FERMATO;
 	private static final String file = "./data/OperatoriRegistrati.CSV";
+
 	private final static String[] HEADERS = { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" };
 	private static CSVFormat format = CSVFormat.DEFAULT.builder()
 			.setHeader(HEADERS)
@@ -24,16 +28,49 @@ public class GestoreOperatore {
 	private static Reader in;
 	private static Writer out;
 
-	private static Iterable<CSVRecord> it;
+	private static List<CSVRecord> records;
 	private static CSVPrinter p;
+
+	public static StatoGestore getStato() {
+		return stato;
+	}
+
+	public static boolean start() {
+		try {
+			in = new FileReader(file);
+			out = new FileWriter(file);
+			records = format.parse(in).getRecords();
+			p = new CSVPrinter(out, format);
+		} catch (Exception e) {
+			e.printStackTrace();
+			stato = StatoGestore.ERRORE;
+			return false;
+		}
+
+		stato = StatoGestore.AVVIATO;
+		return true;
+	}
+
+	public static boolean stop() {
+		try {
+			p.close();
+			out.close();
+			in.close();
+			records.clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+			stato = StatoGestore.ERRORE;
+			return false;
+		}
+
+		stato = StatoGestore.FERMATO;
+		return true;
+	}
 
 	public static boolean registrazione(Operatore op, String pwd) {
 		try {
-			out = new FileWriter(file);
-			p = new CSVPrinter(out, format);
 			p.printRecord(op.toCsv(), pwd);
 			p.flush();
-			p.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -43,15 +80,7 @@ public class GestoreOperatore {
 	}
 
 	public Result<Operatore> login(String uid, String pwdhash) {
-		try {
-			in = new FileReader("../data/OperatoriRegistrati.CSV");
-			it = format.parse(in);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Panic("Missing registered users database file, cannot start");
-		}
-
-		for (CSVRecord record : it) {
+		for (CSVRecord record : records) {
 			System.out.println(record.toString());
 			String dbUid = record.get("UserID");
 			String dbPwd = record.get("Password");
