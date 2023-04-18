@@ -58,14 +58,6 @@ public class Result<T> {
 		return content != null ? content : fn.get();
 	}
 
-	public void throwLoud() throws LoudResultException {
-		throw new LoudResultException(fullMessage);
-	}
-
-	public void throwSilent() throws SilentResultException {
-		throw new SilentResultException(fullMessage);
-	}
-
 	public void panic() {
 		throw new Panic(fullMessage);
 	}
