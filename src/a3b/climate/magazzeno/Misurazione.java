@@ -2,7 +2,9 @@ package a3b.climate.magazzeno;
 
 import java.time.LocalDateTime;
 
-public class Misurazione {
+import a3b.climate.utils.Convertable;
+
+public class Misurazione implements Convertable {
 	private DatoGeografico dato;
 	private LocalDateTime time;
 	private Operatore operatore;
@@ -27,7 +29,7 @@ public class Misurazione {
 		return this.operatore;
 	}
 
-	public CentroMonitoraggio getCentroMonitoraggio() {
+	public CentroMonitoraggio getCentro() {
 		return this.centro;
 	}
 
@@ -35,4 +37,15 @@ public class Misurazione {
 		return this.area;
 	}
 
+	@Override
+	public String toCsv() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'toCsv'");
+	}
+
+	@Override
+	public String toJson() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+	}
 }
