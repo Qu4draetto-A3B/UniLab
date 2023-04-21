@@ -1,12 +1,13 @@
 package a3b.climate.magazzeno;
 import java.util.NoSuchElementException;
 
+import a3b.climate.utils.Convertable;
 import a3b.climate.utils.ListaCustom.*;
 import a3b.climate.utils.result.Result;
 
 import java.util.Iterator;
 
-public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
+public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertable {
 
 	Nodo<AreaGeografica> head;
 	Nodo<AreaGeografica> tail;
@@ -29,8 +30,6 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 	public void add (AreaGeografica e, int k)
 	{
 		if ((0 > k) || (k >= this.size())) throw new IndexOutOfBoundsException("ERRORE: valore dell'indice non valido");
-		for(AreaGeografica tmp : this)
-			if(e.isEquals(tmp)) return;
 		Nodo <AreaGeografica> current = head;
 		for(int i = 0; i< k-1; i++)
 		{
@@ -64,8 +63,6 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 
 	public void addFirst(AreaGeografica e) {
 		Nodo<AreaGeografica> x = new Nodo<AreaGeografica>(e, head);
-		for(AreaGeografica tmp : this)
-			if(e.isEquals(tmp)) return;
 		head = x;
 		if (tail == null)
 			tail = x;
@@ -186,6 +183,25 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 		for(AreaGeografica tmp : this)
 			str += tmp.toString()+"\n";
 		return str;
+	}
+
+	@Override
+	public String toCsv() {
+		String str = "";
+		for(AreaGeografica ag: this)
+		{
+			str+= ag.getLatitudine() + "|"+ ag.getLongitudine() +";";
+		}
+
+		str = str.substring(0, str.length()-1);
+		return str;
+
+	}
+
+	@Override
+	public String toJson() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
 	}
 
 }

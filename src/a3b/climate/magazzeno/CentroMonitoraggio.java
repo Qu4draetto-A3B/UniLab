@@ -30,10 +30,15 @@ public class CentroMonitoraggio implements Convertable {
 		return this.aree;
 	}
 
+	public Indirizzo getIndirizzo()
+	{
+		return indirizzo;
+	}
+
 	@Override
 	public String toCsv() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'toCsv'");
+			return nome + "," +indirizzo.toCsv()+","+aree.toCsv();
+
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import a3b.climate.magazzeno.ListaAree;
 import a3b.climate.utils.result.*;
 
 public class GestoreArea {
+	private static final String file = "./data/CoordinateMonitoraggio.CSV";
 	private static final String[] HEADERS = { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat",
 			"Lon" };
 
@@ -29,7 +30,7 @@ public class GestoreArea {
 
 	public static ListaAree cercaAreaGeografica(String denom, String stato) {
 		try {
-			in = new FileReader("./data/CoordinateMonitoraggio.csv");
+			in = new FileReader(file);
 			records = csvFormat.parse(in);
 		} catch (Exception e) {
 			e.printStackTrace();
