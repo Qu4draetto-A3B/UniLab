@@ -1,5 +1,8 @@
 package a3b.climate.magazzeno;
-public class Indirizzo {
+
+import a3b.climate.utils.Convertable;
+
+public class Indirizzo implements Convertable{
 
 	private String nomeVia;
 	private int civico;
@@ -16,6 +19,8 @@ public class Indirizzo {
 	}
 
 	public Indirizzo(String nomeVia, int civico, int cap, String comune, String provincia) {
+		if(cap >= 100000)
+			throw new IllegalArgumentException("CAP invalido");
 		this.nomeVia = nomeVia;
 		this.civico = civico;
 		this.cap = cap;
@@ -43,7 +48,8 @@ public class Indirizzo {
 		return cap;
 	}
 
-	public void setCap(int cap) {
+	public void setCap(int cap)
+	{
 		this.cap = cap;
 	}
 
@@ -63,4 +69,16 @@ public class Indirizzo {
 		this.provincia = provincia;
 	}
 
+
+
+	public String toCsv()
+	{
+		return nomeVia+ "|"+ civico+ "|"+cap+ "|" +comune+ "|" +provincia;
+	}
+
+	@Override
+	public String toJson() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+	}
 }
