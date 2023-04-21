@@ -31,7 +31,7 @@ public class DatoGeografico {
 			note.put(t, "");
 		}
 
-		note.put(tipo, nota);
+		if (!setNota(tipo, nota)) throw new IllegalArgumentException("Nota troppo lunga");
 	}
 
 	public DatoGeografico(byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
@@ -44,6 +44,12 @@ public class DatoGeografico {
 		int all = massaGhiacciai + altitudineGhiacciai + precipitazioni + temperatura + pressione + umidita + vento;
 		if (all < 1) {
 			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
+		}
+
+		for (String nota : note.values()) {
+			if (nota.length() > 255) {
+				throw new IllegalArgumentException("Nota troppo lunga");
+			}
 		}
 
 		this.massaGhiacciai = massaGhiacciai;
@@ -128,7 +134,11 @@ public class DatoGeografico {
 		return note.get(key);
 	}
 
-	public void setNota(TipoDatoGeografico key, String nota) {
+	public boolean setNota(TipoDatoGeografico key, String nota) {
+		if (nota.length() > 255) {
+			return false;
+		}
 		note.put(key, nota);
+		return true;
 	}
 }
