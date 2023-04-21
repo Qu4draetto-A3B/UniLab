@@ -80,13 +80,13 @@ public class Operatore implements Convertable {
 
 	@Override
 	public String toCsv() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'toCsv'");
+		String csv = String.format("%s,%s,%s,%s,%s,%s", cf, uid, nome, cognome, email, centro.getNome());
+		return csv;
 	}
 
 	@Override
 	public String toJson() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+		//
+		return "";
 	}
 }
