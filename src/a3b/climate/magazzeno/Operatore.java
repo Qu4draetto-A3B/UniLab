@@ -89,4 +89,18 @@ public class Operatore implements Convertable {
 		//
 		return "";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Operatore)) {
+			return super.equals(obj);
+		}
+
+		Operatore op = (Operatore) obj;
+
+		if(cf.equals(op.getCf()))
+			return true;
+
+		return false;
+	}
 }

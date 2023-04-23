@@ -2,7 +2,7 @@ package a3b.climate.magazzeno;
 
 import a3b.climate.utils.Convertable;
 
-public class Indirizzo implements Convertable{
+public class Indirizzo implements Convertable {
 
 	private String nomeVia;
 	private int civico;

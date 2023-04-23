@@ -30,14 +30,13 @@ public class CentroMonitoraggio implements Convertable {
 		return this.aree;
 	}
 
-	public Indirizzo getIndirizzo()
-	{
+	public Indirizzo getIndirizzo() {
 		return indirizzo;
 	}
 
 	@Override
 	public String toCsv() {
-			return nome + "," +indirizzo.toCsv()+","+aree.toCsv();
+		return nome + "," + indirizzo.toCsv() + "," + aree.toCsv();
 
 	}
 
@@ -45,5 +44,20 @@ public class CentroMonitoraggio implements Convertable {
 	public String toJson() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (!(obj instanceof CentroMonitoraggio)) {
+			return super.equals(obj);
+		}
+
+		CentroMonitoraggio cm = (CentroMonitoraggio) obj;
+
+		if (nome.equals(cm.getNome()))
+			return true;
+
+		return false;
 	}
 }

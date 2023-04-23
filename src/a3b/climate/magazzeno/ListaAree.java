@@ -1,6 +1,7 @@
 package a3b.climate.magazzeno;
 import java.util.NoSuchElementException;
 
+import a3b.climate.utils.CercaAree;
 import a3b.climate.utils.Convertable;
 import a3b.climate.utils.ListaCustom.*;
 import a3b.climate.utils.result.Result;

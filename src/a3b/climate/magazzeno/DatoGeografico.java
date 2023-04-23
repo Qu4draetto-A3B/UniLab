@@ -1,6 +1,8 @@
 package a3b.climate.magazzeno;
+
 import java.util.HashMap;
 
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.TipoDatoGeografico;
 
 /**
@@ -8,7 +10,7 @@ import a3b.climate.utils.TipoDatoGeografico;
  *
  * Rappresenta un dato
  */
-public class DatoGeografico {
+public class DatoGeografico implements DataTable {
 	private byte massaGhiacciai;
 	private byte altitudineGhiacciai;
 	private byte precipitazioni;
@@ -31,7 +33,8 @@ public class DatoGeografico {
 			note.put(t, "");
 		}
 
-		if (!setNota(tipo, nota)) throw new IllegalArgumentException("Nota troppo lunga");
+		if (!setNota(tipo, nota))
+			throw new IllegalArgumentException("Nota troppo lunga");
 	}
 
 	public DatoGeografico(byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
@@ -62,7 +65,7 @@ public class DatoGeografico {
 		this.note = note;
 	}
 
-	public void setDato(TipoDatoGeografico tipo, byte dato) {
+	private void setDato(TipoDatoGeografico tipo, byte dato) {
 		switch (tipo) {
 			case MassaGhiacciai:
 				massaGhiacciai = dato;
@@ -134,11 +137,54 @@ public class DatoGeografico {
 		return note.get(key);
 	}
 
-	public boolean setNota(TipoDatoGeografico key, String nota) {
+	private boolean setNota(TipoDatoGeografico key, String nota) {
 		if (nota.length() > 255) {
 			return false;
 		}
 		note.put(key, nota);
 		return true;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof DatoGeografico)) {
+			return super.equals(obj);
+		}
+
+		DatoGeografico dato = (DatoGeografico) obj;
+
+		boolean res = true;
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			res &= getDato(tipo) == dato.getDato(tipo);
+			res &= getNota(tipo).equals(dato.getNota(tipo));
+		}
+
+		return res;
+	}
+
+	@Override
+	public boolean equals(DataTable data) {
+		return equals(data);
+	}
+
+	public boolean noteEquals(DatoGeografico dato) {
+		boolean res = true;
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			res &= getNota(tipo).equals(dato.getNota(tipo));
+		}
+
+		return res;
+	}
+
+	public boolean datoEquals(DatoGeografico dato) {
+		boolean res = true;
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			res &= getDato(tipo) == dato.getDato(tipo);
+		}
+
+		return res;
 	}
 }
