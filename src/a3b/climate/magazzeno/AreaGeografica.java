@@ -46,7 +46,7 @@ public class AreaGeografica {
     }
 
     public String toString() {
-        return String.format("%s (%s) LAT:%d LON:%d", this.denominazione, this.stato, this.latitudine, this.longitudine);
+        return String.format("%s (%s) LAT:%f LON:%f", this.denominazione, this.stato, this.latitudine, this.longitudine);
     }
 
     @Override

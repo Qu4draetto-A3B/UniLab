@@ -35,6 +35,22 @@ public class CentroMonitoraggio implements Convertable {
 	}
 
 	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(String.format(
+				"%s: (\n\tNome: %s\n\tIndirizzo: %s, %d, %d, %s (%s)",
+				super.toString(), nome,
+				indirizzo.getNomeVia(), indirizzo.getCivico(),
+				indirizzo.getCap(), indirizzo.getComune(), indirizzo.getProvincia()));
+
+		for (AreaGeografica area : aree) {
+			sb.append(String.format("\n\t\t%s", area));
+		}
+		sb.append("\n)");
+
+		return sb.toString();
+	}
+
+	@Override
 	public String toCsv() {
 		return nome + "," + indirizzo.toCsv() + "," + aree.toCsv();
 

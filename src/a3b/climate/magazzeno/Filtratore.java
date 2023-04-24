@@ -1,5 +1,7 @@
 package a3b.climate.magazzeno;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,15 +11,19 @@ import a3b.climate.utils.MediaAree;
 import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
 
-public class Filtratore implements CercaAree, MediaAree {
+public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	private List<Misurazione> lm;
 
 	public Filtratore(List<Misurazione> lm) {
 		this.lm = lm;
 	}
 
-	public Filtratore filtra(DataTable dts) {
-		return null;
+	public List<Misurazione> getList() {
+		return lm;
+	}
+
+	private Filtratore filtra(DataTable... dts) {
+		return new Filtratore(new LinkedList<>());
 	}
 
 	public Filtratore filtraOperatore(Operatore... ops) {
@@ -92,11 +98,50 @@ public class Filtratore implements CercaAree, MediaAree {
 		return new Filtratore(nlm);
 	}
 
-
-
 	@Override
 	public DatoGeografico visualizzaAreaGeografica(AreaGeografica area) {
+		Filtratore fil = filtraAree(area);
+		/*
+		 * Il valore della HashMap rappresenta quante volte un valore appare
+		 * gli indici dell'array vanno da 0 a 5, come i valori possibili nel dato.
+		 * Quindi la HashMap associa un tipo di dato al suo array delle ricorrenze,
+		 * l'indice i rappresenta il valore del dato, il valore arr[i] rappresenta la sua ricorrenza.
+		 */
+		HashMap<TipoDatoGeografico, int[]> moda = new HashMap<>();
 
+		// gli array vanno inizializzati individualmente
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			moda.put(tipo, new int[6]);
+		}
+
+		// controllo per ogni misurazione il suo dato
+		for (Misurazione mis : fil) {
+			for (TipoDatoGeografico tipo : moda.keySet()) {
+				int[] arr = moda.get(tipo); // prendi l'array delle ricorrenze del tipo di dato corrente
+				arr[mis.getDato().getDato(tipo)]++; // aumenta di uno la conta delle volte che un valore appare
+				moda.put(tipo, arr); // aggiorna il valore
+			}
+		}
+
+		// Ricostruisco il dato finale
+		HashMap<TipoDatoGeografico, Byte> dato = new HashMap<>();
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			// questi valori devono persistere tra i cicli del for seguente
+			int hi = 0;
+			int[] arr = moda.get(tipo);
+			byte modaDato = 0;
+			for (int i = 0; i < arr.length; i++) {
+				// se la ricorrenza e' piu' alta aggiorna i valori
+				if (arr[i] > hi) {
+					hi = arr[i];
+					modaDato = (byte) i;
+				}
+			}
+
+			dato.put(tipo, modaDato);
+		}
+
+		return new DatoGeografico(dato, null);
 	}
 
 	@Override
@@ -109,5 +154,10 @@ public class Filtratore implements CercaAree, MediaAree {
 	public Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'cercaAreeGeografiche'");
+	}
+
+	@Override
+	public Iterator<Misurazione> iterator() {
+		return lm.iterator();
 	}
 }

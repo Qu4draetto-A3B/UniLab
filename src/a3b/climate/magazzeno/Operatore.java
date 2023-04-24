@@ -79,6 +79,15 @@ public class Operatore implements Convertable {
 	}
 
 	@Override
+	public String toString() {
+		String str = String.format(
+			"%s: (\n\tCF: %s\n\tUserID: %s\n\tNome: %s\n\tCognome: %s\n\tEmail: %s\n\tCentro: %s\n)",
+			super.toString(), cf, uid, nome, cognome, email, centro.getNome());
+
+		return str;
+	}
+
+	@Override
 	public String toCsv() {
 		String csv = String.format("%s,%s,%s,%s,%s,%s", cf, uid, nome, cognome, email, centro.getNome());
 		return csv;

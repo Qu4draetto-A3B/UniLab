@@ -1,6 +1,7 @@
 package a3b.climate.magazzeno;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import a3b.climate.utils.DataTable;
 import a3b.climate.utils.TipoDatoGeografico;
@@ -22,10 +23,6 @@ public class DatoGeografico implements DataTable {
 	private HashMap<TipoDatoGeografico, String> note;
 
 	public DatoGeografico(TipoDatoGeografico tipo, byte dato, String nota) {
-		if (dato < 1) {
-			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
-		}
-
 		setDato(tipo, dato);
 
 		note = new HashMap<>();
@@ -45,7 +42,7 @@ public class DatoGeografico implements DataTable {
 		 * quindi posso dedurre che non sono stati inseriti dati
 		 */
 		int all = massaGhiacciai + altitudineGhiacciai + precipitazioni + temperatura + pressione + umidita + vento;
-		if (all < 1) {
+		if (all < 1 || all > 30) {
 			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
 		}
 
@@ -65,7 +62,35 @@ public class DatoGeografico implements DataTable {
 		this.note = note;
 	}
 
+	public DatoGeografico(Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
+		this.note = new HashMap<>();
+
+		if (dati == null) {
+			dati = new HashMap<>();
+		}
+		if (note == null) {
+			note = new HashMap<>();
+		}
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			try {
+				setDato(tipo, dati.get(tipo));
+			} catch (NullPointerException e) {
+				setDato(tipo, (byte) 0);
+			}
+			try {
+				setNota(tipo, note.get(tipo));
+			} catch (NullPointerException e) {
+				setNota(tipo, "");
+			}
+		}
+	}
+
 	private void setDato(TipoDatoGeografico tipo, byte dato) {
+		if (dato < 0 || dato > 5) {
+			throw new IllegalArgumentException("dato non e' 0 >= X >= 5");
+		}
+
 		switch (tipo) {
 			case MassaGhiacciai:
 				massaGhiacciai = dato;
@@ -161,6 +186,17 @@ public class DatoGeografico implements DataTable {
 		}
 
 		return res;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%s: (\n", super.toString()));
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			sb.append(String.format("\t%s: %s; '%s'\n", tipo.name(), getDato(tipo), getNota(tipo)));
+		}
+		sb.append(")");
+		return sb.toString();
 	}
 
 	@Override
