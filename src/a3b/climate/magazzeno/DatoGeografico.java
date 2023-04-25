@@ -193,7 +193,7 @@ public class DatoGeografico implements DataTable {
 		StringBuilder sb = new StringBuilder();
 		sb.append(String.format("%s: (\n", super.toString()));
 		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
-			sb.append(String.format("\t%s: %s; '%s'\n", tipo.name(), getDato(tipo), getNota(tipo)));
+			sb.append(String.format("\t%s: %s '%s'\n", tipo.name(), getDato(tipo), getNota(tipo)));
 		}
 		sb.append(")");
 		return sb.toString();

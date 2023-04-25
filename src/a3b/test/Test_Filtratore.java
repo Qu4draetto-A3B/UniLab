@@ -34,6 +34,7 @@ public class Test_Filtratore {
 
 		Filtratore fil = new Filtratore(list);
 
+		System.out.println(fil);
 		System.out.println(fil.visualizzaAreaGeografica(ag));
 	}
 }

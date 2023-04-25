@@ -43,7 +43,7 @@ public class Misurazione implements Convertable {
 	@Override
 	public String toString() {
 		String str = String.format(
-			"=== %s ===\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n=====",
+			"%s <<<\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n>>> %s",
 			super.toString(), time.format(DateTimeFormatter.ISO_DATE_TIME),
 			area, operatore, centro, dato, super.toString());
 		return str;
