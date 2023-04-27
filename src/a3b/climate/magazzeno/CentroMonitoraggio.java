@@ -1,8 +1,9 @@
 package a3b.climate.magazzeno;
 
 import a3b.climate.utils.Convertable;
+import a3b.climate.utils.DataTable;
 
-public class CentroMonitoraggio implements Convertable {
+public class CentroMonitoraggio implements Convertable, DataTable {
 	// CAMPI
 	private String nome;
 	private Indirizzo indirizzo;
@@ -30,15 +31,50 @@ public class CentroMonitoraggio implements Convertable {
 		return this.aree;
 	}
 
+	public Indirizzo getIndirizzo() {
+		return indirizzo;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(String.format(
+				"%s: (\n\tNome: %s\n\tIndirizzo: %s, %d, %d, %s (%s)",
+				super.toString(), nome,
+				indirizzo.getNomeVia(), indirizzo.getCivico(),
+				indirizzo.getCap(), indirizzo.getComune(), indirizzo.getProvincia()));
+
+		for (AreaGeografica area : aree) {
+			sb.append(String.format("\n\t\t%s", area));
+		}
+		sb.append("\n)");
+
+		return sb.toString();
+	}
+
 	@Override
 	public String toCsv() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'toCsv'");
+		return nome + "," + indirizzo.toCsv() + "," + aree.toCsv();
+
 	}
 
 	@Override
 	public String toJson() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (!(obj instanceof CentroMonitoraggio)) {
+			return super.equals(obj);
+		}
+
+		CentroMonitoraggio cm = (CentroMonitoraggio) obj;
+
+		if (nome.equals(cm.getNome()))
+			return true;
+
+		return false;
 	}
 }

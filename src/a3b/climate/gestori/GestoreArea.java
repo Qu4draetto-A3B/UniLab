@@ -6,7 +6,6 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.AreaGeografica;
-import a3b.climate.magazzeno.DatoGeografico;
 import a3b.climate.magazzeno.ListaAree;
 import a3b.climate.utils.result.*;
 
@@ -22,11 +21,6 @@ public class GestoreArea {
 
 	private static Reader in;
 	private static Iterable<CSVRecord> records;
-
-	private DatoGeografico visualizzaAreaGeografica(AreaGeografica area) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'visualizzaAreaGeografica'");
-	}
 
 	public static ListaAree cercaAreaGeografica(String denom, String stato) {
 		try {

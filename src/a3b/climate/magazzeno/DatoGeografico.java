@@ -1,14 +1,15 @@
 package a3b.climate.magazzeno;
-import java.util.HashMap;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.TipoDatoGeografico;
 
 /**
- * DatoGeografico
- *
- * Rappresenta un dato
+ * Rappresenta un dato geografico
  */
-public class DatoGeografico {
+public class DatoGeografico implements DataTable {
 	private byte massaGhiacciai;
 	private byte altitudineGhiacciai;
 	private byte precipitazioni;
@@ -20,10 +21,6 @@ public class DatoGeografico {
 	private HashMap<TipoDatoGeografico, String> note;
 
 	public DatoGeografico(TipoDatoGeografico tipo, byte dato, String nota) {
-		if (dato < 1) {
-			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
-		}
-
 		setDato(tipo, dato);
 
 		note = new HashMap<>();
@@ -31,7 +28,8 @@ public class DatoGeografico {
 			note.put(t, "");
 		}
 
-		note.put(tipo, nota);
+		if (!setNota(tipo, nota))
+			throw new IllegalArgumentException("Nota troppo lunga");
 	}
 
 	public DatoGeografico(byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
@@ -42,8 +40,14 @@ public class DatoGeografico {
 		 * quindi posso dedurre che non sono stati inseriti dati
 		 */
 		int all = massaGhiacciai + altitudineGhiacciai + precipitazioni + temperatura + pressione + umidita + vento;
-		if (all < 1) {
+		if (all < 1 || all > 30) {
 			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
+		}
+
+		for (String nota : note.values()) {
+			if (nota.length() > 255) {
+				throw new IllegalArgumentException("Nota troppo lunga");
+			}
 		}
 
 		this.massaGhiacciai = massaGhiacciai;
@@ -56,7 +60,35 @@ public class DatoGeografico {
 		this.note = note;
 	}
 
-	public void setDato(TipoDatoGeografico tipo, byte dato) {
+	public DatoGeografico(Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
+		this.note = new HashMap<>();
+
+		if (dati == null) {
+			dati = new HashMap<>();
+		}
+		if (note == null) {
+			note = new HashMap<>();
+		}
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			try {
+				setDato(tipo, dati.get(tipo));
+			} catch (NullPointerException e) {
+				setDato(tipo, (byte) 0);
+			}
+			try {
+				setNota(tipo, note.get(tipo));
+			} catch (NullPointerException e) {
+				setNota(tipo, "");
+			}
+		}
+	}
+
+	private void setDato(TipoDatoGeografico tipo, byte dato) {
+		if (dato < 0 || dato > 5) {
+			throw new IllegalArgumentException("dato non e' 0 >= X >= 5");
+		}
+
 		switch (tipo) {
 			case MassaGhiacciai:
 				massaGhiacciai = dato;
@@ -128,7 +160,60 @@ public class DatoGeografico {
 		return note.get(key);
 	}
 
-	public void setNota(TipoDatoGeografico key, String nota) {
+	private boolean setNota(TipoDatoGeografico key, String nota) {
+		if (nota.length() > 255) {
+			return false;
+		}
 		note.put(key, nota);
+		return true;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof DatoGeografico)) {
+			return super.equals(obj);
+		}
+
+		DatoGeografico dato = (DatoGeografico) obj;
+
+		boolean res = true;
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			res &= getDato(tipo) == dato.getDato(tipo);
+			res &= getNota(tipo).equals(dato.getNota(tipo));
+		}
+
+		return res;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%s: (\n", super.toString()));
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			sb.append(String.format("\t%s: %s '%s'\n", tipo.name(), getDato(tipo), getNota(tipo)));
+		}
+		sb.append(")");
+		return sb.toString();
+	}
+
+	public boolean noteEquals(DatoGeografico dato) {
+		boolean res = true;
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			res &= getNota(tipo).equals(dato.getNota(tipo));
+		}
+
+		return res;
+	}
+
+	public boolean datoEquals(DatoGeografico dato) {
+		boolean res = true;
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			res &= getDato(tipo) == dato.getDato(tipo);
+		}
+
+		return res;
 	}
 }
