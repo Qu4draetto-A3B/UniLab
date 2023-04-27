@@ -2,8 +2,9 @@ package a3b.climate.magazzeno;
 import java.time.LocalDateTime;
 
 import a3b.climate.utils.Convertable;
+import a3b.climate.utils.DataTable;
 
-public class Operatore implements Convertable {
+public class Operatore implements Convertable, DataTable {
 	private String nome, cognome, email, cf, uid;
 	private CentroMonitoraggio centro;
 

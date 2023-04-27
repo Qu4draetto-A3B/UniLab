@@ -17,8 +17,6 @@ import a3b.climate.utils.StatoGestore;
 import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
-import a3b.climate.utils.result.*;
-
 public class GestoreCentro {
 	private static StatoGestore stato = StatoGestore.FERMATO;
 	private final static String file = "./data/CentriMonitoraggio.CSV";
@@ -35,6 +33,7 @@ public class GestoreCentro {
 	private static CSVPrinter p;
 
 	public static boolean registraCentro(CentroMonitoraggio cm) {
+		// TODO
 		return true;
 	}
 
@@ -79,6 +78,10 @@ public class GestoreCentro {
 		CentroMonitoraggio cm = new CentroMonitoraggio(nomo, ind, lag);
 
 		return new Result<>(cm);
+	}
+
+	public static StatoGestore getStato() {
+		return stato;
 	}
 
 	public static boolean start() {

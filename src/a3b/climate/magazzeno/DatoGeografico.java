@@ -7,9 +7,7 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.TipoDatoGeografico;
 
 /**
- * DatoGeografico
- *
- * Rappresenta un dato
+ * Rappresenta un dato geografico
  */
 public class DatoGeografico implements DataTable {
 	private byte massaGhiacciai;
@@ -197,11 +195,6 @@ public class DatoGeografico implements DataTable {
 		}
 		sb.append(")");
 		return sb.toString();
-	}
-
-	@Override
-	public boolean equals(DataTable data) {
-		return equals(data);
 	}
 
 	public boolean noteEquals(DatoGeografico dato) {

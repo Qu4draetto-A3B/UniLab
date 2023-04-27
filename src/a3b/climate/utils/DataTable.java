@@ -1,8 +1,8 @@
 package a3b.climate.utils;
 
 /**
- * DataTable
+ * Una classe che implementa DataTable rappresenta un record nel Database
  */
 public interface DataTable {
-    public boolean equals(DataTable data);
+    public boolean equals(Object obj);
 }

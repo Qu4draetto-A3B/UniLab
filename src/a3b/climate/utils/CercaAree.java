@@ -1,6 +1,5 @@
 package a3b.climate.utils;
 import a3b.climate.magazzeno.AreaGeografica;
-import a3b.climate.magazzeno.DatoGeografico;
 import a3b.climate.magazzeno.ListaAree;
 import a3b.climate.utils.result.Result;
 

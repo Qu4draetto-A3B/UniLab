@@ -1,6 +1,8 @@
 package a3b.climate.magazzeno;
 
-public class AreaGeografica {
+import a3b.climate.utils.DataTable;
+
+public class AreaGeografica implements DataTable {
     private double latitudine;
     private double longitudine;
     private String stato;

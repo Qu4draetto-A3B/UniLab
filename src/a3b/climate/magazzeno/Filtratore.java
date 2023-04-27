@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.TooManyListenersException;
+import java.util.function.Predicate;
 
 import a3b.climate.utils.CercaAree;
 import a3b.climate.utils.DataTable;
@@ -23,8 +23,37 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		return lm;
 	}
 
-	private Filtratore filtra(DataTable... dts) {
-		return new Filtratore(new LinkedList<>());
+	/**
+	 * Metodo molto versatile che esegue il filtro corretto smistando autonomamente le classi
+	 * @param dts Piu' oggetti che implementano DataTable
+	 * @return Un nuovo filtratore con solo i dati rilevanti
+	 */
+	public Filtratore filtra(DataTable... dts) {
+		List<Misurazione> nlm = new LinkedList<>();
+		Predicate<DataTable> p = null;
+
+		for (Misurazione mis : lm) {
+			for (DataTable dt : dts) {
+				if (dt instanceof Operatore) {
+					p = (pv) -> mis.getOperatore().equals(pv);
+				} else if (dt instanceof CentroMonitoraggio) {
+					p = (pv) -> mis.getCentro().equals(pv);
+				} else if (dt instanceof AreaGeografica) {
+					p = (pv) -> mis.getArea().equals(pv);
+				} else if (dt instanceof DatoGeografico) {
+					p = (pv) -> mis.getDato().equals(pv);
+				} else {
+					p = (pv) -> false;
+				}
+
+				if (p.test(dt)) {
+					nlm.add(mis);
+					break;
+				}
+			}
+		}
+
+		return new Filtratore(nlm);
 	}
 
 	public Filtratore filtraOperatore(Operatore... ops) {
@@ -117,7 +146,8 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		 * Il valore della HashMap rappresenta quante volte un valore appare
 		 * gli indici dell'array vanno da 0 a 5, come i valori possibili nel dato.
 		 * Quindi la HashMap associa un tipo di dato al suo array delle ricorrenze,
-		 * l'indice i rappresenta il valore del dato, il valore arr[i] rappresenta la sua ricorrenza.
+		 * l'indice i rappresenta il valore del dato, il valore arr[i] rappresenta la
+		 * sua ricorrenza.
 		 */
 		HashMap<TipoDatoGeografico, int[]> moda = new HashMap<>();
 
