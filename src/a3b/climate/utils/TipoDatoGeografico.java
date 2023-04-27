@@ -1,4 +1,4 @@
-package utils;
+package a3b.climate.utils;
 
 public enum TipoDatoGeografico {
 	MassaGhiacciai,

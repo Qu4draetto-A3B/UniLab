@@ -1,5 +1,6 @@
 # LABORATORIO A
 
 
-# LIBRERIE UTILIZZATE
-1. apachecommons.csv
+## LIBRERIE UTILIZZATE
+- [Lombok](https://projectlombok.org/)
+- [Apache Commons CSV](https://commons.apache.org/proper/commons-csv/)

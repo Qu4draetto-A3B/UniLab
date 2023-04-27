@@ -1,8 +1,10 @@
+package a3b.climate.magazzeno;
 import java.time.LocalDateTime;
 
-import utils.Convertable;
+import a3b.climate.utils.Convertable;
+import a3b.climate.utils.DataTable;
 
-public class Operatore implements Convertable {
+public class Operatore implements Convertable, DataTable {
 	private String nome, cognome, email, cf, uid;
 	private CentroMonitoraggio centro;
 
@@ -78,14 +80,37 @@ public class Operatore implements Convertable {
 	}
 
 	@Override
+	public String toString() {
+		String str = String.format(
+			"%s: (\n\tCF: %s\n\tUserID: %s\n\tNome: %s\n\tCognome: %s\n\tEmail: %s\n\tCentro: %s\n)",
+			super.toString(), cf, uid, nome, cognome, email, centro.getNome());
+
+		return str;
+	}
+
+	@Override
 	public String toCsv() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'toCsv'");
+		String csv = String.format("%s,%s,%s,%s,%s,%s", cf, uid, nome, cognome, email, centro.getNome());
+		return csv;
 	}
 
 	@Override
 	public String toJson() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+		//
+		return "";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Operatore)) {
+			return super.equals(obj);
+		}
+
+		Operatore op = (Operatore) obj;
+
+		if(cf.equals(op.getCf()))
+			return true;
+
+		return false;
 	}
 }

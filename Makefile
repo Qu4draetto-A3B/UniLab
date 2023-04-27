@@ -1,6 +1,6 @@
 # Main Class, project name, change as preferred
-MAIN_CLASS := program.Main
-PRJ_NAME := mate
+MAIN_CLASS := a3b.climate.Main
+PRJ_NAME := UniLab
 
 # Names for generated files
 TARGET_EXEC := $(PRJ_NAME).jar
