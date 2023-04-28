@@ -1,8 +1,9 @@
 package a3b.climate.magazzeno;
 
 import a3b.climate.utils.Convertable;
+import a3b.climate.utils.DataTable;
 
-public class CentroMonitoraggio implements Convertable {
+public class CentroMonitoraggio implements Convertable, DataTable {
 	// CAMPI
 	private String nome;
 	private Indirizzo indirizzo;
