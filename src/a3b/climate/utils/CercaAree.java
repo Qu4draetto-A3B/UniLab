@@ -1,4 +1,7 @@
-import utils.result.Result;
+package a3b.climate.utils;
+import a3b.climate.magazzeno.AreaGeografica;
+import a3b.climate.magazzeno.ListaAree;
+import a3b.climate.utils.result.Result;
 
 /*
 CercaAree
@@ -30,7 +33,6 @@ CercaAree
 public interface CercaAree
 {
 
-    public DatoGeografico visualizzaAreaGeografica (AreaGeografica area);
 
     public ListaAree cercaAreaGeografica (String denominazione, String stato);
 

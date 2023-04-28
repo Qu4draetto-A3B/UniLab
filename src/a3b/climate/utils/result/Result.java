@@ -1,4 +1,4 @@
-package utils.result;
+package a3b.climate.utils.result;
 
 import java.util.function.Supplier;
 
@@ -56,14 +56,6 @@ public class Result<T> {
 
 	public T getOrElse(Supplier<T> fn) {
 		return content != null ? content : fn.get();
-	}
-
-	public void throwLoud() throws LoudResultException {
-		throw new LoudResultException(fullMessage);
-	}
-
-	public void throwSilent() throws SilentResultException {
-		throw new SilentResultException(fullMessage);
 	}
 
 	public void panic() {

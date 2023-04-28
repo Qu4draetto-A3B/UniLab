@@ -1,11 +1,14 @@
+package a3b.climate.magazzeno;
 import java.util.NoSuchElementException;
 
-import utils.ListaCustom.*;
-import utils.result.Result;
+import a3b.climate.utils.CercaAree;
+import a3b.climate.utils.Convertable;
+import a3b.climate.utils.ListaCustom.*;
+import a3b.climate.utils.result.Result;
 
 import java.util.Iterator;
 
-public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
+public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertable {
 
 	Nodo<AreaGeografica> head;
 	Nodo<AreaGeografica> tail;
@@ -144,7 +147,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 		}
 
 		for (AreaGeografica areaGeografica : this) {
-			if (latitudine == areaGeografica.getLatitudine() && (longitudine == areaGeografica.getLongitudine()))
+			if ((latitudine == areaGeografica.getLatitudine()) && (longitudine == areaGeografica.getLongitudine()))
 				return new Result<>(areaGeografica);
 		}
 
@@ -181,6 +184,25 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree {
 		for(AreaGeografica tmp : this)
 			str += tmp.toString()+"\n";
 		return str;
+	}
+
+	@Override
+	public String toCsv() {
+		String str = "";
+		for(AreaGeografica ag: this)
+		{
+			str+= ag.getLatitudine() + "|"+ ag.getLongitudine() +";";
+		}
+
+		str = str.substring(0, str.length()-1);
+		return str;
+
+	}
+
+	@Override
+	public String toJson() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'toJson'");
 	}
 
 }

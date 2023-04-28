@@ -1,0 +1,41 @@
+package a3b.test;
+
+import a3b.climate.gestori.GestoreCentro;
+import a3b.climate.magazzeno.AreaGeografica;
+import a3b.climate.magazzeno.CentroMonitoraggio;
+import a3b.climate.magazzeno.Indirizzo;
+import a3b.climate.magazzeno.ListaAree;
+
+public class ListaCustom {
+	public static void main(String[] args) {
+
+		 ListaAree lista = new ListaAree();
+		 AreaGeografica ag1 = new AreaGeografica(-20 , -12, "Italia","Na" );
+		  AreaGeografica ag2 = new AreaGeografica(21 , -70, "Italia","Milano" );
+		  AreaGeografica ag3 = new AreaGeografica(42, 130, "italia", "Bergamo");
+
+		  lista.addFirst(ag1);
+		  lista.addFirst(ag2);
+		  lista.addFirst(ag3);
+
+		  //lista = lista.cercaAreaGeografica(null, "romania");
+		  //lista.addFirst(lista.cercaAreeGeografiche(21, -190).get());
+
+
+		  for(AreaGeografica tmp : lista){
+		  System.out.println(tmp.getDenominazione());
+		  }
+		  CentroMonitoraggio ss = new CentroMonitoraggio("Camillone", null, null);
+		 /// ListaAree lista = ss.getListaAree();
+		  int i = 0;
+		  for (AreaGeografica tmp : lista)
+		  System.out.println("" + ++i + " " + tmp.toString());
+
+
+		 Indirizzo str = new Indirizzo("fascista", 12, 12345, "Milano" , "Mussolini");
+		 CentroMonitoraggio cm = new CentroMonitoraggio("Milano", str, lista);
+
+		 GestoreCentro.addCentro(cm);
+
+	}
+}
