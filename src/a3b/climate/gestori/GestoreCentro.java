@@ -1,51 +1,20 @@
 package a3b.climate.gestori;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.util.List;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.CentroMonitoraggio;
 import a3b.climate.magazzeno.Indirizzo;
 import a3b.climate.magazzeno.ListaAree;
-import a3b.climate.utils.StatoGestore;
-import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
-public class GestoreCentro {
-	private static StatoGestore stato = StatoGestore.FERMATO;
-	private final static String file = "./data/CentriMonitoraggio.CSV";
-	private final static String[] HEADERS = { "Name", "Address", "Areas" };
-	private static CSVFormat format = CSVFormat.DEFAULT.builder()
-			.setHeader(HEADERS)
-			.setSkipHeaderRecord(true)
-			.build();
-
-	private static Reader in;
-	private static Writer out;
-	private static List<CSVRecord> records;
-
-	private static CSVPrinter p;
-
-	public static boolean registraCentro(CentroMonitoraggio cm) {
-		// TODO
-		return true;
+public class GestoreCentro extends Gestore {
+	public GestoreCentro() {
+		super(
+				"./data/CentriMonitoraggio.CSV",
+				new String[] { "Name", "Address", "Areas" });
 	}
 
-	public static Result<CentroMonitoraggio> getCentro(String nome) {
-		try {
-			in = new FileReader(file);
-			records = format.parse(in).getRecords();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Panic("File centri non trovato o non leggibile, non posso continuare");
-		}
-
+	public Result<CentroMonitoraggio> getCentro(String nome) {
 		CSVRecord target = null;
 
 		for (CSVRecord record : records) {
@@ -72,7 +41,7 @@ public class GestoreCentro {
 			double lat = Double.parseDouble(ll[0]);
 			double lon = Double.parseDouble(ll[1]);
 
-			lag.addFirst(GestoreArea.cercaAreeGeografiche(lat, lon).get());
+			lag.addFirst(DataBase.area.cercaAreeGeografiche(lat, lon).get());
 		}
 
 		CentroMonitoraggio cm = new CentroMonitoraggio(nomo, ind, lag);
@@ -80,45 +49,11 @@ public class GestoreCentro {
 		return new Result<>(cm);
 	}
 
-	public static StatoGestore getStato() {
-		return stato;
-	}
-
-	public static boolean start() {
-		try {
-			in = new FileReader(file);
-			out = new FileWriter(file,true);
-			records = format.parse(in).getRecords();
-			p = new CSVPrinter(out, format);
-		} catch (Exception e) {
-			e.printStackTrace();
-			stato = StatoGestore.ERRORE;
+	public boolean addCentro(CentroMonitoraggio cm) {
+		if (getCentro(cm.getNome()).isValid()) {
 			return false;
 		}
 
-		stato = StatoGestore.AVVIATO;
-		return true;
-	}
-
-	public static boolean stop() {
-		try {
-			p.close();
-			out.close();
-			in.close();
-			records.clear();
-		} catch (Exception e) {
-			e.printStackTrace();
-			stato = StatoGestore.ERRORE;
-			return false;
-		}
-
-		stato = StatoGestore.FERMATO;
-		return true;
-	}
-
-
-	public static boolean addCentro(CentroMonitoraggio cm) {
-		start();
 		try {
 			p.printRecord(cm.getNome(), cm.getIndirizzo().toCsv(), cm.getListaAree().toCsv());
 			p.flush();
@@ -126,7 +61,6 @@ public class GestoreCentro {
 			e.printStackTrace();
 			return false;
 		}
-		stop();
 		return true;
 	}
 }

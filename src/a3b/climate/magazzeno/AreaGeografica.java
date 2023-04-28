@@ -3,44 +3,34 @@ package a3b.climate.magazzeno;
 import a3b.climate.utils.DataTable;
 
 public class AreaGeografica implements DataTable {
+	private long geoID;
     private double latitudine;
     private double longitudine;
     private String stato;
     private String denominazione;
 
-    public AreaGeografica(double latitudine, double longitudine, String stato, String denominazione) {
+    public AreaGeografica(long geoID, double latitudine, double longitudine, String stato, String denominazione) {
+		this.geoID = geoID;
         this.latitudine = latitudine;
         this.longitudine = longitudine;
         this.stato = stato;
         this.denominazione = denominazione;
     }
 
-    public void setLatitudine(double latitudine) {
-        this.latitudine = latitudine;
-    }
+	public long getGeoID() {
+		return geoID;
+	}
 
     public double getLatitudine() {
         return latitudine;
-    }
-
-    public void setLongitudine(double longitudine) {
-        this.longitudine = longitudine;
     }
 
     public double getLongitudine() {
         return longitudine;
     }
 
-    public void setStato(String stato) {
-        this.stato = stato;
-    }
-
     public String getStato() {
         return stato;
-    }
-
-    public void setDenominazione(String denominazione) {
-        this.denominazione = denominazione;
     }
 
     public String getDenominazione() {
@@ -59,7 +49,7 @@ public class AreaGeografica implements DataTable {
 
         AreaGeografica ag = (AreaGeografica) obj;
 
-        if (this.latitudine == ag.latitudine && this.longitudine == ag.longitudine)
+        if (this.geoID == ag.getGeoID())
             return true;
         else
             return false;

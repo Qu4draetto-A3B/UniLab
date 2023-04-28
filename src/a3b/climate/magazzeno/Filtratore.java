@@ -183,7 +183,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 			dato.put(tipo, modaDato);
 		}
 
-		return new DatoGeografico(dato, null);
+		return new DatoGeografico(0, dato, null);
 	}
 
 	@Override

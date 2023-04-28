@@ -6,18 +6,23 @@ import java.time.format.DateTimeFormatter;
 import a3b.climate.utils.Convertable;
 
 public class Misurazione implements Convertable {
+	private long rid;
 	private DatoGeografico dato;
 	private LocalDateTime time;
 	private Operatore operatore;
 	private CentroMonitoraggio centro;
 	private AreaGeografica area;
 
-	public Misurazione(DatoGeografico dato, Operatore operatore, AreaGeografica area) {
+	public Misurazione(long rid, DatoGeografico dato, Operatore operatore, AreaGeografica area) {
 		this.dato = dato;
 		this.operatore = operatore;
 		this.area = area;
 		time = LocalDateTime.now();
 		centro = operatore.getCentro();
+	}
+
+	public long getRid() {
+		return rid;
 	}
 
 	public DatoGeografico getDato() {
@@ -26,6 +31,10 @@ public class Misurazione implements Convertable {
 
 	public LocalDateTime getTime() {
 		return this.time;
+	}
+
+	public String getTimeString() {
+		return time.format(DateTimeFormatter.ISO_DATE_TIME);
 	}
 
 	public Operatore getOperatore() {

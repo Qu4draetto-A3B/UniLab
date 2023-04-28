@@ -10,6 +10,7 @@ import a3b.climate.utils.TipoDatoGeografico;
  * Rappresenta un dato geografico
  */
 public class DatoGeografico implements DataTable {
+	private long rid;
 	private byte massaGhiacciai;
 	private byte altitudineGhiacciai;
 	private byte precipitazioni;
@@ -20,7 +21,8 @@ public class DatoGeografico implements DataTable {
 
 	private HashMap<TipoDatoGeografico, String> note;
 
-	public DatoGeografico(TipoDatoGeografico tipo, byte dato, String nota) {
+	public DatoGeografico(long rid, TipoDatoGeografico tipo, byte dato, String nota) {
+		this.rid = rid;
 		setDato(tipo, dato);
 
 		note = new HashMap<>();
@@ -32,7 +34,7 @@ public class DatoGeografico implements DataTable {
 			throw new IllegalArgumentException("Nota troppo lunga");
 	}
 
-	public DatoGeografico(byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
+	public DatoGeografico(long rid, byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
 			byte pressione, byte umidita, byte vento, HashMap<TipoDatoGeografico, String> note) {
 		/*
 		 * I byte vengono inizializzati a 0 implicitamente,
@@ -43,6 +45,7 @@ public class DatoGeografico implements DataTable {
 		if (all < 1 || all > 30) {
 			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
 		}
+		this.rid = rid;
 
 		for (String nota : note.values()) {
 			if (nota.length() > 255) {
@@ -60,7 +63,8 @@ public class DatoGeografico implements DataTable {
 		this.note = note;
 	}
 
-	public DatoGeografico(Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
+	public DatoGeografico(long rid, Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
+		this.rid = rid;
 		this.note = new HashMap<>();
 
 		if (dati == null) {
@@ -82,6 +86,10 @@ public class DatoGeografico implements DataTable {
 				setNota(tipo, "");
 			}
 		}
+	}
+
+	public long getRid() {
+		return rid;
 	}
 
 	private void setDato(TipoDatoGeografico tipo, byte dato) {
