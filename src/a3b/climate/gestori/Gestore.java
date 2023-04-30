@@ -38,7 +38,7 @@ public abstract class Gestore {
 		start();
 	}
 
-	protected void start() {
+	private void start() {
 		format = CSVFormat.DEFAULT.builder()
 				.setHeader(HEADERS)
 				.setSkipHeaderRecord(true)
@@ -62,8 +62,8 @@ public abstract class Gestore {
 	@Override
 	public void finalize() {
 		try {
-			records.clear();
 			p.close(true);
+			records.clear();
 
 			out.close();
 			in.close();
@@ -74,6 +74,11 @@ public abstract class Gestore {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	protected void reload() {
+		finalize();
+		start();
 	}
 
 	protected Result<String> getProperty(String key) {

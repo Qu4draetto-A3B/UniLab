@@ -184,14 +184,7 @@ public class DatoGeografico implements DataTable {
 
 		DatoGeografico dato = (DatoGeografico) obj;
 
-		boolean res = true;
-
-		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
-			res &= getDato(tipo) == dato.getDato(tipo);
-			res &= getNota(tipo).equals(dato.getNota(tipo));
-		}
-
-		return res;
+		return dato.getRid() == rid;
 	}
 
 	@Override

@@ -59,7 +59,7 @@ public class GestoreOperatore extends Gestore {
 		return new Result<>(1, "Operatore non trovato");
 	}
 
-	private Result<Operatore> getOperatore(String cf) {
+	/* friendly */ Result<Operatore> getOperatore(String cf) {
 		for (CSVRecord record : records) {
 			String dbCf = record.get("CodFis");
 

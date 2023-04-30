@@ -1,6 +1,7 @@
 package a3b.climate.gestori;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class GestoreMisurazioni extends Gestore {
 			p.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
-			return new Result<>(3, "Errore nella scrittura del record");
+			return new Result<>(1, "Errore nella scrittura del record");
 		}
 
 		return new Result<>(new Object());
@@ -43,7 +44,15 @@ public class GestoreMisurazioni extends Gestore {
 	public Result<Filtratore> getMisurazioni() {
 		List<Misurazione> lm = new LinkedList<>();
 		for (CSVRecord record : records) {
-			// Misurazione mis = new Misurazione();
+			Misurazione mis = new Misurazione(
+					Long.parseLong(record.get("RID")),
+					LocalDateTime.parse(record.get("DateTime"), Misurazione.DATE_TIME_FORMAT),
+					DataBase.operatore.getOperatore(record.get("Operatore")).get(),
+					DataBase.centro.getCentro(record.get("Centro")).get(),
+					DataBase.area.getArea(Long.parseLong(record.get("Area"))).get(),
+					DataBase.dato.getDato(0).get());
+
+			lm.add(mis);
 		}
 		return new Result<>(new Filtratore(lm));
 	}

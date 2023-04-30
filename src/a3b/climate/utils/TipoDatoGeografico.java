@@ -1,11 +1,11 @@
 package a3b.climate.utils;
 
 public enum TipoDatoGeografico {
-	MassaGhiacciai,
 	AltitudineGhiacciai,
+	MassaGhiacciai,
 	Precipitazioni,
-	Temperatura,
 	Pressione,
+	Temperatura,
 	Umidita,
 	Vento;
 }

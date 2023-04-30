@@ -14,6 +14,24 @@ public class GestoreArea extends Gestore implements CercaAree {
 				new String[] { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat", "Lon" });
 	}
 
+	public Result<AreaGeografica> getArea(long geoId) {
+		for (CSVRecord record : records) {
+			long dbGeoId = Long.parseLong(record.get("GeonameID"));
+			if (dbGeoId == geoId) {
+				AreaGeografica ag = new AreaGeografica(
+					dbGeoId,
+					Double.parseDouble(record.get("Lat")),
+					Double.parseDouble(record.get("Lon")),
+					record.get("CountryName"),
+					record.get("ASCIIName"));
+
+				return new Result<AreaGeografica>(ag);
+			}
+		}
+
+		return new Result<>(1, "Area non trovata");
+	}
+
 	@Override
 	public ListaAree cercaAreaGeografica(String denom, String stato) {
 		ListaAree lag = new ListaAree();

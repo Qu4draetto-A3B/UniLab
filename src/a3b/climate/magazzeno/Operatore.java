@@ -1,8 +1,10 @@
 package a3b.climate.magazzeno;
 import java.time.LocalDateTime;
 
+import a3b.climate.gestori.DataBase;
 import a3b.climate.utils.Convertable;
 import a3b.climate.utils.DataTable;
+import a3b.climate.utils.result.Result;
 
 public class Operatore implements Convertable, DataTable {
 	private String nome, cognome, email, cf, uid;
@@ -26,9 +28,9 @@ public class Operatore implements Convertable, DataTable {
 		centro = new CentroMonitoraggio();
 	}
 
-	public boolean inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
-		// TODO
-		return false;
+	public Result<Object> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
+		Misurazione mis = new Misurazione(0, tempo, this, centro, area, dato);
+		return DataBase.misurazioni.addMisurazione(mis);
 	}
 
 	public String getCf() {
@@ -53,30 +55,6 @@ public class Operatore implements Convertable, DataTable {
 
 	public String getUid() {
 		return uid;
-	}
-
-	public void setCentro(CentroMonitoraggio centro) {
-		this.centro = centro;
-	}
-
-	public void setCf(String cf) {
-		this.cf = cf;
-	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
 	}
 
 	@Override

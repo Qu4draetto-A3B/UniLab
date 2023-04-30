@@ -12,8 +12,18 @@ public class Misurazione implements Convertable {
 	private Operatore operatore;
 	private CentroMonitoraggio centro;
 	private AreaGeografica area;
+	public static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ISO_INSTANT;
 
 	public Misurazione(long rid, DatoGeografico dato, Operatore operatore, AreaGeografica area) {
+		this.dato = dato;
+		this.operatore = operatore;
+		this.area = area;
+		time = LocalDateTime.now();
+		centro = operatore.getCentro();
+	}
+
+	public Misurazione(long rid, LocalDateTime dateTime, Operatore operatore, CentroMonitoraggio centro,
+			AreaGeografica area, DatoGeografico dato) {
 		this.dato = dato;
 		this.operatore = operatore;
 		this.area = area;
@@ -34,7 +44,7 @@ public class Misurazione implements Convertable {
 	}
 
 	public String getTimeString() {
-		return time.format(DateTimeFormatter.ISO_DATE_TIME);
+		return time.format(DATE_TIME_FORMAT);
 	}
 
 	public Operatore getOperatore() {
@@ -52,9 +62,9 @@ public class Misurazione implements Convertable {
 	@Override
 	public String toString() {
 		String str = String.format(
-			"%s <<<\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n>>> %s",
-			super.toString(), time.format(DateTimeFormatter.ISO_DATE_TIME),
-			area, operatore, centro, dato, super.toString());
+				"%s <<<\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n>>> %s",
+				super.toString(), getTimeString(),
+				area, operatore, centro, dato, super.toString());
 		return str;
 	}
 

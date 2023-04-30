@@ -5,4 +5,5 @@ public class DataBase {
 	public static GestoreOperatore operatore = new GestoreOperatore();
 	public static GestoreCentro centro = new GestoreCentro();
 	public static GestoreArea area = new GestoreArea();
+	public static GestoreDato dato = new GestoreDato();
 }
