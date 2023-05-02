@@ -1,36 +1,39 @@
 package a3b.climate.gestori;
 
-import java.io.*;
-
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.AreaGeografica;
 import a3b.climate.magazzeno.ListaAree;
+import a3b.climate.utils.CercaAree;
 import a3b.climate.utils.result.*;
 
-public class GestoreArea {
-	private static final String file = "./data/CoordinateMonitoraggio.CSV";
-	private static final String[] HEADERS = { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat",
-			"Lon" };
+public class GestoreArea extends Gestore implements CercaAree {
+	public GestoreArea() {
+		super(
+				"./data/CoordinateMonitoraggio.CSV",
+				new String[] { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat", "Lon" });
+	}
 
-	private static CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
-			.setHeader(HEADERS)
-			.setSkipHeaderRecord(true)
-			.build();
+	public Result<AreaGeografica> getArea(long geoId) {
+		for (CSVRecord record : records) {
+			long dbGeoId = Long.parseLong(record.get("GeonameID"));
+			if (dbGeoId == geoId) {
+				AreaGeografica ag = new AreaGeografica(
+					dbGeoId,
+					Double.parseDouble(record.get("Lat")),
+					Double.parseDouble(record.get("Lon")),
+					record.get("CountryName"),
+					record.get("ASCIIName"));
 
-	private static Reader in;
-	private static Iterable<CSVRecord> records;
-
-	public static ListaAree cercaAreaGeografica(String denom, String stato) {
-		try {
-			in = new FileReader(file);
-			records = csvFormat.parse(in);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Panic("File aree non trovato o non leggibile, non posso continuare");
+				return new Result<AreaGeografica>(ag);
+			}
 		}
 
+		return new Result<>(1, "Area non trovata");
+	}
+
+	@Override
+	public ListaAree cercaAreaGeografica(String denom, String stato) {
 		ListaAree lag = new ListaAree();
 		AreaGeografica ag;
 
@@ -43,8 +46,12 @@ public class GestoreArea {
 		}
 
 		for (CSVRecord record : records) {
-			ag = new AreaGeografica(Double.parseDouble(record.get("Lat")), Double.parseDouble(record.get("Lon")),
-					record.get("CountryName"), record.get("Name"));
+			ag = new AreaGeografica(
+					Long.parseLong(record.get("GeonameID")),
+					Double.parseDouble(record.get("Lat")),
+					Double.parseDouble(record.get("Lon")),
+					record.get("CountryName"),
+					record.get("Name"));
 
 			if (ag.getDenominazione().toLowerCase().contains(denom.toLowerCase())
 					&& ag.getStato().toLowerCase().contains(stato.toLowerCase())) {
@@ -55,15 +62,8 @@ public class GestoreArea {
 		return lag;
 	}
 
-	public static Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine) {
-		try {
-			in = new FileReader("./data/CoordinateMonitoraggio.csv");
-			records = csvFormat.parse(in);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Panic("File aree non trovato o non leggibile, non posso continuare");
-		}
-
+	@Override
+	public Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine) {
 		if ((latitudine < -90) || (latitudine > 90)) {
 			return new Result<>(1, "hai inserito valori errati riprova");
 		}
@@ -73,9 +73,12 @@ public class GestoreArea {
 
 		// Cerca coordinate esatte
 		for (CSVRecord record : records) {
-			AreaGeografica areaGeografica = new AreaGeografica(Double.parseDouble(record.get("Lat")),
+			AreaGeografica areaGeografica = new AreaGeografica(
+					Long.parseLong(record.get("GeonameID")),
+					Double.parseDouble(record.get("Lat")),
 					Double.parseDouble(record.get("Lon")),
-					record.get("CountryName"), record.get("Name"));
+					record.get("CountryName"),
+					record.get("Name"));
 
 			if ((latitudine == areaGeografica.getLatitudine()) && (longitudine == areaGeografica.getLongitudine()))
 				return new Result<>(areaGeografica);
@@ -83,9 +86,12 @@ public class GestoreArea {
 
 		// Cerca coordinate piu' vicine
 		CSVRecord r = records.iterator().next();
-		AreaGeografica ag = new AreaGeografica(Double.parseDouble(r.get("Lat")),
+		AreaGeografica ag = new AreaGeografica(
+				Long.parseLong(r.get("GeonameID")),
+				Double.parseDouble(r.get("Lat")),
 				Double.parseDouble(r.get("Lon")),
-				r.get("CountryName"), r.get("Name"));
+				r.get("CountryName"),
+				r.get("Name"));
 
 		double differenzalat = latitudine - ag.getLatitudine();
 		differenzalat *= differenzalat;
@@ -95,9 +101,12 @@ public class GestoreArea {
 
 		double min = Math.sqrt(differenzalat + differenzalong);
 		for (CSVRecord record : records) {
-			AreaGeografica areaGeografica = new AreaGeografica(Double.parseDouble(record.get("Lat")),
+			AreaGeografica areaGeografica = new AreaGeografica(
+					Long.parseLong(r.get("GeonameID")),
+					Double.parseDouble(record.get("Lat")),
 					Double.parseDouble(record.get("Lon")),
-					record.get("CountryName"), record.get("Name"));
+					record.get("CountryName"),
+					record.get("Name"));
 
 			differenzalat = latitudine - areaGeografica.getLatitudine();
 			differenzalat *= differenzalat;

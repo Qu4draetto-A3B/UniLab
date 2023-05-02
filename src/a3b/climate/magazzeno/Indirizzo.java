@@ -54,15 +54,6 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * Metodo che imposta il il nome della via relativa all'indirizzo che chiama il metodo
-	 * @param nomeVia Nome della via relativa all'indirizzo
-	 */
-
-	public void setNomevia(String nomeVia) {
-		this.nomeVia = nomeVia;
-	}
-
-	/**
 	 * @return Restituisce il numero civico relativo all'indirizzo che chiama il metodo
 	 */
 
@@ -89,46 +80,14 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * Metodo che imposta il codice di avviamento postale relativo all'indirizzo che chiama il metodo
-	 * @param cap Codice di avviamento postale relativo all'indirizzo
-	 */
-
-	public void setCap(int cap) {
-		this.cap = cap;
-	}
-
-	/**
 	 * @return Restituisce il comune relativo all'indirizzo che chiama il metodo
 	 */
-
 	public String getComune() {
 		return comune;
 	}
 
-	/**
-	 * Metodo che imposta il comune relativo all'indirizzo che chiama il metodo
-	 * @param comune Comune relativo all'indirizzo
-	 */
-
-	public void setComune(String comune) {
-		this.comune = comune;
-	}
-
-	/**
-	 * @return Restituisce la provincia relativa all'indirizzo che chiama il metodo
-	 */
-
 	public String getProvincia() {
 		return provincia;
-	}
-
-	/**
-	 * Metodo che imposta la provincia relativa all'indirizzo che chiama il metodo
-	 * @param provincia Provincia relativa all'indirizzo
-	 */
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
 	}
 
 	@Override

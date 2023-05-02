@@ -1,8 +1,10 @@
 package a3b.climate.magazzeno;
 import java.time.LocalDateTime;
 
+import a3b.climate.gestori.DataBase;
 import a3b.climate.utils.Convertable;
 import a3b.climate.utils.DataTable;
+import a3b.climate.utils.result.Result;
 
 /**
  * Rappresenta un operatore
@@ -34,7 +36,6 @@ public class Operatore implements Convertable, DataTable {
 	/**
 	 * Costruttore vuoto di un'istanza di Operatore
 	 */
-
 	public Operatore() {
 		cf = "CIVILE";
 		uid = "civile";
@@ -50,10 +51,9 @@ public class Operatore implements Convertable, DataTable {
 	 * @param dato Aggregato di informazioni (valori dei parametri climatici) relative al dato geografico
 	 * @param tempo Data in cui avviene l'inserimento dei dati nel database
 	 */
-
-	public boolean inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
-		// TODO
-		return false;
+	public Result<Object> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
+		Misurazione mis = new Misurazione(0, tempo, this, centro, area, dato);
+		return DataBase.misurazioni.addMisurazione(mis);
 	}
 
 	/**
@@ -102,60 +102,6 @@ public class Operatore implements Convertable, DataTable {
 
 	public String getUid() {
 		return uid;
-	}
-
-	/**
-	 * Metodo che imposta il centro di monitoraggio al quale l' operatore che esegue il metodo e' associato
-	 * @param centro Centro di monitoraggio al quale l' operatore e' associato
-	 */
-
-	public void setCentro(CentroMonitoraggio centro) {
-		this.centro = centro;
-	}
-
-	/**
-	 * Metodo che imposta il codice fiscale dell'operatore che esegue il metodo
-	 * @param cf Codice fiscale dell'operatore
-	 */
-
-	public void setCf(String cf) {
-		this.cf = cf;
-	}
-
-	/**
-	 * Metodo che imposta il cognome dell'operatore che esegue il metodo
-	 * @param cognome Cognome dell'operatore
-	 */
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-
-	/**
-	 * Metodo che imposta la e-mail dell'operatore che esegue il metodo
-	 * @param email E-mail dell'operatore
-	 */
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * Metodo che imposta il nome dell'operatore che esegue il metodo
-	 * @param nome Nome dell'operatore
-	 */
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	/**
-	 * Metodo che imposta lo user ID relativo all'operatore che esegue il metodo
-	 * @param uid User ID relativo all'operatore
-	 */
-
-	public void setUid(String uid) {
-		this.uid = uid;
 	}
 
 	@Override

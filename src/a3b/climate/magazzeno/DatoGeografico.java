@@ -11,6 +11,7 @@ import a3b.climate.utils.TipoDatoGeografico;
  */
 
 public class DatoGeografico implements DataTable {
+	private long rid;
 	private byte massaGhiacciai;
 	private byte altitudineGhiacciai;
 	private byte precipitazioni;
@@ -23,12 +24,14 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Costruttore di un'istanza di DatoGeografico
+	 * @param rid Id del dato
 	 * @param tipo Tipo del dato geografico
      * @param dato Valore da 1 a 5 che rappresenta il livello di criticità del dato geografico
 	 * @param nota Note relative al dato geografico
 	 */
 
-	public DatoGeografico(TipoDatoGeografico tipo, byte dato, String nota) {
+	public DatoGeografico(long rid, TipoDatoGeografico tipo, byte dato, String nota) {
+		this.rid = rid;
 		setDato(tipo, dato);
 
 		note = new HashMap<>();
@@ -42,6 +45,7 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Costruttore di un'istanza di DatoGeografico
+	 * @param rid Id del dato
 	 * @param massaGhiacciai Valore relativo alla criticità della massa dei ghiacciai
      * @param altituidineGhiacciai Valore relativo alla criticità dell'altitudine dei ghiacciai
 	 * @param precipitazioni Valore relativo alla criticità delle precipitazioni
@@ -52,7 +56,7 @@ public class DatoGeografico implements DataTable {
 	 * @param note Note relative al dato geografico
 	 */
 
-	public DatoGeografico(byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
+	public DatoGeografico(long rid, byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
 			byte pressione, byte umidita, byte vento, HashMap<TipoDatoGeografico, String> note) {
 		/*
 		 * I byte vengono inizializzati a 0 implicitamente,
@@ -63,6 +67,7 @@ public class DatoGeografico implements DataTable {
 		if (all < 1 || all > 30) {
 			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
 		}
+		this.rid = rid;
 
 		for (String nota : note.values()) {
 			if (nota.length() > 255) {
@@ -82,11 +87,13 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Costruttore di un'istanza di DatoGeografico
+	 * @param rid Id del dato
 	 * @param dati HashMap contenente i valori dei dati
 	 * @param note HashMap contenente i valori delle note
 	 */
 
-	public DatoGeografico(Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
+	public DatoGeografico(long rid, Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
+		this.rid = rid;
 		this.note = new HashMap<>();
 
 		if (dati == null) {
@@ -108,6 +115,10 @@ public class DatoGeografico implements DataTable {
 				setNota(tipo, "");
 			}
 		}
+	}
+
+	public long getRid() {
+		return rid;
 	}
 
 	/**
@@ -224,14 +235,7 @@ public class DatoGeografico implements DataTable {
 
 		DatoGeografico dato = (DatoGeografico) obj;
 
-		boolean res = true;
-
-		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
-			res &= getDato(tipo) == dato.getDato(tipo);
-			res &= getNota(tipo).equals(dato.getNota(tipo));
-		}
-
-		return res;
+		return dato.getRid() == rid;
 	}
 
 	@Override
