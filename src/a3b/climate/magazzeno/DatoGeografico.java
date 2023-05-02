@@ -9,6 +9,7 @@ import a3b.climate.utils.TipoDatoGeografico;
 /**
  * Rappresenta un dato geografico
  */
+
 public class DatoGeografico implements DataTable {
 	private byte massaGhiacciai;
 	private byte altitudineGhiacciai;
@@ -19,6 +20,13 @@ public class DatoGeografico implements DataTable {
 	private byte vento;
 
 	private HashMap<TipoDatoGeografico, String> note;
+
+	/**
+	 * Costruttore di un'istanza di DatoGeografico
+	 * @param tipo Tipo del dato geografico
+     * @param dato Valore da 1 a 5 che rappresenta il livello di criticità del dato geografico
+	 * @param nota Note relative al dato geografico
+	 */
 
 	public DatoGeografico(TipoDatoGeografico tipo, byte dato, String nota) {
 		setDato(tipo, dato);
@@ -31,6 +39,18 @@ public class DatoGeografico implements DataTable {
 		if (!setNota(tipo, nota))
 			throw new IllegalArgumentException("Nota troppo lunga");
 	}
+
+	/**
+	 * Costruttore di un'istanza di DatoGeografico
+	 * @param massaGhiacciai Valore relativo alla criticità della massa dei ghiacciai
+     * @param altituidineGhiacciai Valore relativo alla criticità dell'altitudine dei ghiacciai
+	 * @param precipitazioni Valore relativo alla criticità delle precipitazioni
+	 * @param temperatura Valore relativo alla criticità della temperatura
+	 * @param pressione Valore relativo alla criticità della pressione
+	 * @param umidita Valore relativo alla criticità dell'umidita'
+	 * @param vento Valore relativo alla criticità dei venti
+	 * @param note Note relative al dato geografico
+	 */
 
 	public DatoGeografico(byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
 			byte pressione, byte umidita, byte vento, HashMap<TipoDatoGeografico, String> note) {
@@ -60,6 +80,12 @@ public class DatoGeografico implements DataTable {
 		this.note = note;
 	}
 
+	/**
+	 * Costruttore di un'istanza di DatoGeografico
+	 * @param dati HashMap contenente i valori dei dati
+	 * @param note HashMap contenente i valori delle note
+	 */
+
 	public DatoGeografico(Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
 		this.note = new HashMap<>();
 
@@ -83,6 +109,12 @@ public class DatoGeografico implements DataTable {
 			}
 		}
 	}
+
+	/**
+	 * Metodo che imposta il valore del dato geografico che chiama il metodo
+	 * @param tipo Tipo del dato geografico
+	 * @param dato Valore del dato geografico
+	 */
 
 	private void setDato(TipoDatoGeografico tipo, byte dato) {
 		if (dato < 0 || dato > 5) {
@@ -120,6 +152,11 @@ public class DatoGeografico implements DataTable {
 		}
 	}
 
+	/**
+	 * @param tipo Tipo del dato geografico
+	 * @return Restituisce il valore del dato geografico che chiama il metodo
+	 */
+
 	public byte getDato(TipoDatoGeografico tipo) {
 		byte dato = 0;
 
@@ -156,9 +193,20 @@ public class DatoGeografico implements DataTable {
 		return dato;
 	}
 
+	/**
+	 * @param key Dato geografico di cui mi interessa la nota
+	 * @return Restituisce la nota relativa al dato geografico fornito come argomento	
+	*/
+	
 	public String getNota(TipoDatoGeografico key) {
 		return note.get(key);
 	}
+
+	/**
+	 * Metodo che imposta le note relative al dato geografico che chiama il metodo
+	 * @param key //TODO
+	 * @param nota Note relative al dato geografico
+	 */
 
 	private boolean setNota(TipoDatoGeografico key, String nota) {
 		if (nota.length() > 255) {
@@ -206,6 +254,11 @@ public class DatoGeografico implements DataTable {
 
 		return res;
 	}
+
+	/**
+	 * @return Restituisce un booleano che indica l'uguaglianza dei valori dei dati
+	 */
+
 
 	public boolean datoEquals(DatoGeografico dato) {
 		boolean res = true;

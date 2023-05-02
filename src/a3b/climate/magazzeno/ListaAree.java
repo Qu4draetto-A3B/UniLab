@@ -13,9 +13,18 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	Nodo<AreaGeografica> head;
 	Nodo<AreaGeografica> tail;
 
+	/**
+     * @return Restituisce un booleano che indica se la lista di aree geografiche che esegue il metodo e' vuota
+	 */
+
 	public boolean isEmpty() {
 		return head == null;
 	}
+
+	/**
+     * @return Restituisce l'area geografica che si trova in posizione k nella ListaAree che esegue il metodo
+	 * @param k Intero che indica l'indice di un elemento all'interno di ListaAree
+	 */
 
 	public AreaGeografica get(int k) {
 		if (0 > k || k >= this.size())
@@ -27,6 +36,13 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 		return current.getDato();
 
 	}
+
+	/**
+     * Metodo che aggiunge un'area geografica alla ListaAree nell'indice k
+	 * @param e Area geografica da aggiungere alla ListaAree che esegue il metodo
+	 * @param k Intero che indica l'indice in cui inserire l'area geografica
+	 */
+
 
 	public void add (AreaGeografica e, int k)
 	{
@@ -40,17 +56,29 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 		current.setNext(x);
 	}
 
+	/**
+	 * @return Restituisce il primo elemento nella ListaAree che esegue il metodo
+	 */
+
 	public AreaGeografica getFirst() {
 		if (head == null)
 			throw new NoSuchElementException("La listra e' vuota");
 		return head.getDato();
 	}
 
+	/**
+	 * @return Restituisce l'ultimo elemento nella ListaAree che esegue il metodo
+	 */
+
 	public AreaGeografica getLast() {
 		if (head == null)
 			throw new NoSuchElementException("La lista e' vuota");
 		return tail.getDato();
 	}
+
+	/**
+	 * @return Restituisce un intero che indica la dimensione della ListaAree che esegue il metodo
+	 */
 
 	public int size() {
 		int i = 0;
@@ -62,6 +90,12 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 		return i;
 	}
 
+	/**
+     * Metodo che aggiunge un'area geografica alla ListaAree in prima posizione
+	 * @param e Area geografica da aggiungere alla ListaAree che esegue il metodo
+	 */
+
+
 	public void addFirst(AreaGeografica e) {
 		Nodo<AreaGeografica> x = new Nodo<AreaGeografica>(e, head);
 		head = x;
@@ -70,9 +104,20 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 
 	}
 
+
+	/**
+	 * //TODO
+	 */
+
 	public Iterator<AreaGeografica> iterator() {
 		return new CollezioniIterator<AreaGeografica>(head);
 	}
+
+	/**
+	 * Metodo che data un'area geografica mostra tutte le informazioni relative ad essa
+	 * @return Restituisce un aggregato di informazioni relative all'area geografica fornita come parametro
+	 * @param area Area geografica di cui interessano le informazioni
+	 */
 
 	public DatoGeografico visualizzaAreaGeografica(AreaGeografica area) {
 		/*
@@ -92,14 +137,9 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 		return null;
 	}
 
+	@Override
+
 	public ListaAree cercaAreaGeografica(String denominazione, String stato) {
-		/*
-		 * + cercaAreaGeografica(denom: String, stato: String): List<AreaGeografica> //
-		 * Nullable
-		 * 1. ricerca per denominazione (prende in input una stringa di caratteri e
-		 * restituisce le aree nel cui nome compare la stringa di caratteri)
-		 * e per Stato di appartenenza
-		 */
 
 		ListaAree la = new ListaAree();
 		ListaAree lt = this;
@@ -126,18 +166,11 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 
 		return lt;
 	}
+	
+
+	@Override
 
 	public Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine) {
-		/*
-		 * + cercaAreeGeografiche(lat: double, lon: double): List<AreaGeografica> //
-		 * Nullable
-		 * 1. ricerca per coordinate geografiche (prende in input una latitudine e
-		 * longitudine
-		 * e restituisce il nome dell'area corrispondente alle coordinate
-		 * geografiche/delle aree corrispondenti con coordinate più vicine.
-		 * Per latitudine e longitudine cercare area limitrofa se operatore sbaglia a
-		 * inserirlo
-		 */
 
 		if ((latitudine < -90) || (latitudine > 90)) {
 			return new Result<>(1, "hai inserito valori errati riprova");
@@ -178,7 +211,8 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 		return new Result<>(ag);
 
 	}
-
+	
+	@Override
 	public String toString(){
 		String str = "";
 		for(AreaGeografica tmp : this)

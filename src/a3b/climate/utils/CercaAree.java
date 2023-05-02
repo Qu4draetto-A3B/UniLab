@@ -16,25 +16,26 @@ CercaAree
        Se presenti, si potranno visualizzare tali dati in forma aggregata (ad esempio, numero di rilevazioni per ciascun parametro e statistica opportuna del punteggio),
        oltre agli eventuali commenti lasciati dagli operatori
 
-
-
-+ cercaAreaGeografica(denom: String, stato: String): List<AreaGeografica> // Nullable
-    1. ricerca per denominazione (prende in input una stringa di caratteri e restituisce le aree nel cui nome compare la stringa di caratteri)
-       e per Stato di appartenenza
-
-
-
-+ cercaAreeGeografiche(lat: double, lon: double): List<AreaGeografica> // Nullable
-    1. ricerca per coordinate geografiche (prende in input una latitudine e longitudine
-       e restituisce il nome dell'area corrispondente alle coordinate geografiche/delle aree corrispondenti con coordinate più vicine.
-       Per latitudine e longitudine cercare area limitrofa se operatore sbaglia a inserirlo
 */
 
 public interface CercaAree
 {
-
-
+    
+    /**
+	 * Metodo che ricerca un'area geografica a partire dalla sua denominazione e dal suo stato di appartenenza
+	 * @return Restituisce le aree nel cui nome compare la stringa di caratteri
+	 * @param denominazione Nome relativo a un'area geografica
+	 * @param stato Stato di appartenenza di un'area geografica
+	 */
     public ListaAree cercaAreaGeografica (String denominazione, String stato);
 
+    /**
+	 * Metodo che ricerca delle aree geografiche a partire da coordinate geografiche
+	 * @return Restituisce il nome dell'area corrispondente alle cordinate geografiche corrispondenti o delle aree geografiche corrispondenti con coordinate più vicine
+	 * @param latitudine Latitudine di una coordinata geografica
+	 * @param longitudine Longitudine di una coordinata geografica
+	 */
+    
     public Result<AreaGeografica> cercaAreeGeografiche (double latitudine, double longitudine);
 }
+    

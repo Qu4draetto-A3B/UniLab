@@ -2,6 +2,10 @@ package a3b.climate.magazzeno;
 
 import a3b.climate.utils.Convertable;
 
+/**
+ * Rappresenta un indirizzo
+ */
+
 public class Indirizzo implements Convertable {
 
 	private String nomeVia;
@@ -10,6 +14,10 @@ public class Indirizzo implements Convertable {
 	private String comune;
 	private String provincia;
 
+	/**
+	 * Costruttore vuoto di un'istanza di Indirizzo
+	 */
+
 	public Indirizzo() {
 		nomeVia = "Via Durin I";
 		civico = 42;
@@ -17,6 +25,15 @@ public class Indirizzo implements Convertable {
 		comune = "Westfalia";
 		provincia = "Norrenia";
 	}
+
+	/**
+	 * Costruttore di un'istanza di Indirizzo
+	 * @param nomeVia Nome della via relativa all'indirizzo
+     * @param civico Numero civico relativo all'indirizzo
+	 * @param cap Codice di avviamento postale relativo all'indirizzo
+	 * @param comune Comune relativo all'indirizzo
+	 * @param provincia Provincia relativa all'indirizzo
+	 */
 
 	public Indirizzo(String nomeVia, int civico, int cap, String comune, String provincia) {
 		if (cap >= 100000)
@@ -28,41 +45,87 @@ public class Indirizzo implements Convertable {
 		this.provincia = provincia;
 	}
 
+	/**
+	 * @return Restituisce il nome della via relativo all'indirizzo che chiama il metodo
+	 */
+
 	public String getNomeVia() {
 		return nomeVia;
 	}
+
+	/**
+	 * Metodo che imposta il il nome della via relativa all'indirizzo che chiama il metodo
+	 * @param nomeVia Nome della via relativa all'indirizzo
+	 */
 
 	public void setNomevia(String nomeVia) {
 		this.nomeVia = nomeVia;
 	}
 
+	/**
+	 * @return Restituisce il numero civico relativo all'indirizzo che chiama il metodo
+	 */
+
 	public int getCivico() {
 		return civico;
 	}
+
+	/**
+	 * Metodo che imposta il numero civico relativo all'indirizzo che chiama il metodo
+	 * @param civico Numero civico relativo all'indirizzo
+	 */
+
 
 	public void setCivico(int civico) {
 		this.civico = civico;
 	}
 
+	/**
+	 * @return Restituisce il codice di avviamento postale relativo all'indirizzo che chiama il metodo
+	 */
+
 	public int getCap() {
 		return cap;
 	}
+
+	/**
+	 * Metodo che imposta il codice di avviamento postale relativo all'indirizzo che chiama il metodo
+	 * @param cap Codice di avviamento postale relativo all'indirizzo
+	 */
 
 	public void setCap(int cap) {
 		this.cap = cap;
 	}
 
+	/**
+	 * @return Restituisce il comune relativo all'indirizzo che chiama il metodo
+	 */
+
 	public String getComune() {
 		return comune;
 	}
+
+	/**
+	 * Metodo che imposta il comune relativo all'indirizzo che chiama il metodo
+	 * @param comune Comune relativo all'indirizzo
+	 */
 
 	public void setComune(String comune) {
 		this.comune = comune;
 	}
 
+	/**
+	 * @return Restituisce la provincia relativa all'indirizzo che chiama il metodo
+	 */
+
 	public String getProvincia() {
 		return provincia;
 	}
+
+	/**
+	 * Metodo che imposta la provincia relativa all'indirizzo che chiama il metodo
+	 * @param provincia Provincia relativa all'indirizzo
+	 */
 
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
@@ -75,6 +138,7 @@ public class Indirizzo implements Convertable {
 				super.toString(), nomeVia, civico, cap, comune, provincia);
 	}
 
+	@Override
 	public String toCsv() {
 		return nomeVia + "|" + civico + "|" + cap + "|" + comune + "|" + provincia;
 	}

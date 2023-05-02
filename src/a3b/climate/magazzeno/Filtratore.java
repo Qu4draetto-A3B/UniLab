@@ -12,6 +12,11 @@ import a3b.climate.utils.MediaAree;
 import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
 
+/**
+ * Rappresenta un filtratore
+ */
+
+
 public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	private List<Misurazione> lm;
 
