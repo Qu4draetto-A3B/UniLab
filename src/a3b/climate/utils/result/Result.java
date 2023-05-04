@@ -2,7 +2,7 @@ package a3b.climate.utils.result;
 
 import java.util.function.Supplier;
 
-public class Result<T> {
+public class Result<T> implements Blunder<T, Integer> {
 	private final int error;
 	private final String message;
 	private final T content;
@@ -27,7 +27,8 @@ public class Result<T> {
 		return error == 0;
 	}
 
-	public int getError() {
+	@Override
+	public Integer getError() {
 		return error;
 	}
 
@@ -39,6 +40,7 @@ public class Result<T> {
 		return fullMessage;
 	}
 
+	@Override
 	public T get() {
 		if (content == null) {
 			panic();
@@ -46,18 +48,22 @@ public class Result<T> {
 		return content;
 	}
 
-	public T getUnchecked() {
-		return content;
-	}
-
+	@Override
 	public T getOr(T other) {
 		return content != null ? content : other;
 	}
 
+	@Override
 	public T getOrElse(Supplier<T> fn) {
 		return content != null ? content : fn.get();
 	}
 
+	@Override
+	public T except() {
+		return content;
+	}
+
+	@Override
 	public void panic() {
 		throw new Panic(fullMessage);
 	}

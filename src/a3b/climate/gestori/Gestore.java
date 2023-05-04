@@ -16,7 +16,7 @@ import org.apache.commons.csv.CSVRecord;
 import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
-public abstract class Gestore {
+public abstract class Gestore implements AutoCloseable {
 	protected final String FILE;
 	protected final String METAFILE;
 	protected final String[] HEADERS;
@@ -60,7 +60,7 @@ public abstract class Gestore {
 	}
 
 	@Override
-	public void finalize() {
+	public void close() {
 		try {
 			p.close(true);
 			records.clear();
@@ -77,7 +77,7 @@ public abstract class Gestore {
 	}
 
 	protected void reload() {
-		finalize();
+		close();
 		start();
 	}
 
@@ -90,19 +90,18 @@ public abstract class Gestore {
 			String v;
 
 			switch (arr.length) {
-				case 0:
+				case 0 -> {
 					k = "";
 					v = "";
-					break;
-				case 1:
+				}
+				case 1 -> {
 					k = arr[0].strip();
 					v = "";
-					break;
-
-				default:
+				}
+				default -> {
 					k = arr[0].strip();
 					v = arr[1].strip();
-					break;
+				}
 			}
 
 			if (k.equals(key.strip())) {
@@ -127,6 +126,6 @@ public abstract class Gestore {
 			return new Result<>(1, "Impossibile scrivere sul file metadati");
 		}
 
-		return new Result<Object>(val);
+		return new Result<>(val);
 	}
 }
