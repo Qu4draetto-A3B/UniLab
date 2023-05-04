@@ -1,5 +1,6 @@
 package a3b.climate.gestori;
 
+import java.security.MessageDigest;
 import java.util.regex.Pattern;
 
 import org.apache.commons.csv.CSVRecord;
@@ -18,7 +19,7 @@ public class GestoreOperatore extends Gestore {
 				new String[] { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" });
 	}
 
-	public Result<Object> registrazione(Operatore op, String pwd) {
+	public Result<Operatore> registrazione(Operatore op, String pwd) {
 		String cf = op.getCf().toUpperCase();
 
 		if (getOperatore(cf).isValid()) {
@@ -41,17 +42,27 @@ public class GestoreOperatore extends Gestore {
 			return new Result<>(3, "Errore nella scrittura del record");
 		}
 
-		return new Result<>(new Object());
+		return new Result<>(getOperatore(cf).get());
 	}
 
-	public Result<Operatore> login(String uid, String pwdhash) {
+	public Result<Operatore> login(String uid, String pwd) {
+		String pwdHash = "";
+		try {
+			pwdHash = MessageDigest.getInstance("SHA-256").digest(pwd.getBytes()).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Result<>(2, "Algoritmo non esistente");
+		}
+
+		System.out.println(pwdHash);
+
 		for (CSVRecord record : records) {
 			System.out.println(record.toString());
 			String dbUid = record.get("UserID");
 			String dbPwd = record.get("Password");
 			String dbCf = record.get("CodFis");
 
-			if (uid == dbUid && pwdhash == dbPwd) {
+			if (uid == dbUid && pwdHash == dbPwd) {
 				return new Result<>(getOperatore(dbCf).get());
 			}
 		}
