@@ -19,8 +19,8 @@ public class GestoreArea extends Gestore implements CercaAree {
 		for (CSVRecord record : records) {
 			long dbGeoId = Long.parseLong(record.get("GeonameID"));
 			if (dbGeoId == geoId) {
-				
-				return Result<AreaGeografica>((AreaGeografica)buildObject(record));
+
+				return new Result<AreaGeografica>((AreaGeografica)buildObject(record));
 			}
 		}
 
@@ -69,12 +69,12 @@ public class GestoreArea extends Gestore implements CercaAree {
 		// Cerca coordinate esatte
 		for (CSVRecord record : records) {
 			if ((latitudine == Double.parseDouble(record.get("Lat"))) && (longitudine == Double.parseDouble(record.get("Lon"))))
-				return Result<AreaGeografica>((AreaGeografica)buildObject(record));
+				return new Result<AreaGeografica>((AreaGeografica)buildObject(record));
 		}
 
 		// Cerca coordinate piu' vicine
 		CSVRecord r = records.iterator().next();
-		CSVRecord traget = r;
+		CSVRecord target = r;
 		AreaGeografica ag = (AreaGeografica)buildObject(r);
 
 		double differenzalat = latitudine - ag.getLatitudine();
@@ -84,9 +84,9 @@ public class GestoreArea extends Gestore implements CercaAree {
 		differenzalong *= differenzalong;
 
 		double min = Math.sqrt(differenzalat + differenzalong);
-		
+
 		for (CSVRecord record : records) {
-			
+
 			differenzalat = latitudine - Double.parseDouble(record.get("Lat"));
 			differenzalat *= differenzalat;
 
@@ -97,7 +97,7 @@ public class GestoreArea extends Gestore implements CercaAree {
 
 			if (min > dist) {
 				min = dist;
-				target = records;
+				target = record;
 			}
 
 		}
@@ -106,7 +106,7 @@ public class GestoreArea extends Gestore implements CercaAree {
 	}
 
 	@Override
-	Protected DataTable buildObject(CSVRecord record){
+	protected DataTable buildObject(CSVRecord record){
 		AreaGeografica ag = new AreaGeografica(
 					Long.parseLong(record.get("GeonameID")),
 					Double.parseDouble(record.get("Lat")),
@@ -116,11 +116,4 @@ public class GestoreArea extends Gestore implements CercaAree {
 
 				return ag;
 	}
-
-	@Override
-	protected DataTable buildObject(CSVRecord record) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'buildObject'");
-	}
-
 }
