@@ -1,12 +1,15 @@
 package a3b.climate.cli;
 
-public class MostraMisurazioni extends View {
+import a3b.climate.utils.terminal.Terminal;
+import a3b.climate.utils.terminal.View;
+
+public class MostraMisurazioni implements View {
     public MostraMisurazioni() {
         super();
     }
 
     @Override
-    public void start() {
-        term.clear();
+    public void start(Terminal term) {
+		//
     }
 }

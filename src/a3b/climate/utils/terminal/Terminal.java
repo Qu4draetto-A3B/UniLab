@@ -1,11 +1,11 @@
-package a3b.climate.utils;
+package a3b.climate.utils.terminal;
 
 import java.io.Console;
 import java.util.function.Predicate;
 
 public class Terminal {
     private Console con;
-    
+
     public Terminal() {
         con = System.console();
     }

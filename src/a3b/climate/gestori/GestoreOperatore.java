@@ -57,7 +57,6 @@ public class GestoreOperatore extends Gestore {
 		System.out.println(pwdHash);
 
 		for (CSVRecord record : records) {
-			System.out.println(record.toString());
 			String dbUid = record.get("UserID");
 			String dbPwd = record.get("Password");
 			String dbCf = record.get("CodFis");

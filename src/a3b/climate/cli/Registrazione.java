@@ -2,20 +2,21 @@ package a3b.climate.cli;
 
 import java.util.Optional;
 
+import a3b.climate.Main;
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.CentroMonitoraggio;
 import a3b.climate.magazzeno.Operatore;
 import a3b.climate.utils.result.Result;
+import a3b.climate.utils.terminal.Terminal;
+import a3b.climate.utils.terminal.View;
 
-public class Registrazione extends View {
+public class Registrazione implements View {
     public Registrazione() {
         super();
     }
 
     @Override
-    public void start() {
-        term.clear();
-
+    public void start(Terminal term) {
         String cf = term.readLine("Inserisci codice fiscale");
         String nome = term.readLine("Inserisci nome");
         String cognome = term.readLine("Inserisci cognome");
@@ -34,9 +35,9 @@ public class Registrazione extends View {
         Result<Operatore> rop = DataBase.operatore.registrazione(new Operatore(cf, uid, nome, cognome, email, rcm.get()), pwd);
 
         if (!rop.isValid()) {
-            term.printf("Errore n.%d: %s", rop.getError(), rop.getMessage());
+            term.printf("Errore %d: %s", rop.getError(), rop.getMessage());
         }
 
-        op = Optional.of(rop.get());
+        Main.oper = Optional.of(rop.get());
     }
 }
