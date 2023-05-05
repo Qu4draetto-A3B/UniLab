@@ -5,6 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import a3b.climate.magazzeno.AreaGeografica;
 import a3b.climate.magazzeno.ListaAree;
 import a3b.climate.utils.CercaAree;
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 public class GestoreArea extends Gestore implements CercaAree {
@@ -124,6 +125,12 @@ public class GestoreArea extends Gestore implements CercaAree {
 		}
 
 		return new Result<>(ag);
+	}
+
+	@Override
+	protected DataTable buildObject(CSVRecord record) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'buildObject'");
 	}
 
 }

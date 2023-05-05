@@ -4,11 +4,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import a3b.climate.utils.Convertable;
+import a3b.climate.utils.DataTable;
 
 /**
  * Rappresenta una misurazione
  */
-public class Misurazione implements Convertable {
+public class Misurazione implements Convertable, DataTable {
 	private long rid;
 	private DatoGeografico dato;
 	private LocalDateTime time;

@@ -82,7 +82,7 @@ public abstract class Gestore implements AutoCloseable {
 		start();
 	}
 
-	protected abstract Result<DataTable> buildObject(CSVRecord record);
+	protected abstract DataTable buildObject(CSVRecord record);
 
 	protected Result<String> getProperty(String key) {
 		String val = "";

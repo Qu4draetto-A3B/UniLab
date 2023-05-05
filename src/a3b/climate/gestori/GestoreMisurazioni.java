@@ -9,6 +9,7 @@ import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.Filtratore;
 import a3b.climate.magazzeno.Misurazione;
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 public class GestoreMisurazioni extends Gestore {
@@ -44,16 +45,21 @@ public class GestoreMisurazioni extends Gestore {
 	public Result<Filtratore> getMisurazioni() {
 		List<Misurazione> lm = new LinkedList<>();
 		for (CSVRecord record : records) {
-			Misurazione mis = new Misurazione(
-					Long.parseLong(record.get("RID")),
-					LocalDateTime.parse(record.get("DateTime"), Misurazione.DATE_TIME_FORMAT),
-					DataBase.operatore.getOperatore(record.get("Operatore")).get(),
-					DataBase.centro.getCentro(record.get("Centro")).get(),
-					DataBase.area.getArea(Long.parseLong(record.get("Area"))).get(),
-					DataBase.dato.getDato(0).get());
-
-			lm.add(mis);
+			lm.add((Misurazione) buildObject(record));
 		}
 		return new Result<>(new Filtratore(lm));
+	}
+
+	@Override
+	protected DataTable buildObject(CSVRecord record) {
+		Misurazione mis = new Misurazione(
+				Long.parseLong(record.get("RID")),
+				LocalDateTime.parse(record.get("DateTime"), Misurazione.DATE_TIME_FORMAT),
+				DataBase.operatore.getOperatoreByCf(record.get("Operatore")).get(),
+				DataBase.centro.getCentro(record.get("Centro")).get(),
+				DataBase.area.getArea(Long.parseLong(record.get("Area"))).get(),
+				DataBase.dato.getDato(0).get());
+
+		return mis;
 	}
 }

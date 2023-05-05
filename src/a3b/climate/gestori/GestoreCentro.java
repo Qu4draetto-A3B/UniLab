@@ -5,6 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import a3b.climate.magazzeno.CentroMonitoraggio;
 import a3b.climate.magazzeno.Indirizzo;
 import a3b.climate.magazzeno.ListaAree;
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Result;
 
 public class GestoreCentro extends Gestore {
@@ -70,5 +71,11 @@ public class GestoreCentro extends Gestore {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	protected DataTable buildObject(CSVRecord record) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'buildObject'");
 	}
 }
