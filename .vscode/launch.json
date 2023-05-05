@@ -9,6 +9,13 @@
 			"name": "Main",
 			"request": "launch",
 			"mainClass": "a3b.climate.Main",
+			"projectName": "UniLab_58a7c6fe"
+		},
+		{
+			"type": "java",
+			"name": "Main",
+			"request": "launch",
+			"mainClass": "a3b.climate.Main",
 			"projectName": "UniLab_3e5d08c2"
 		},
 		{
