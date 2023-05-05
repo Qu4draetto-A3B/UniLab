@@ -24,6 +24,10 @@ public class MainMenu implements View {
 
     @Override
     public void start(Terminal term) {
+		if (Main.oper.isPresent()) {
+			term.printfln("Benvenuto %s", Main.oper.get().getNome());
+		}
+
         term.printf("Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni\n");
 
         while (true) {

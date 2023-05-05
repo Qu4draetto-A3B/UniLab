@@ -1,7 +1,5 @@
 package a3b.climate.gestori;
 
-import java.util.stream.Stream;
-
 import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.CentroMonitoraggio;
@@ -33,12 +31,7 @@ public class GestoreCentro extends Gestore {
 		String nomo = target.get("Name");
 
 		String indStr = target.get("Address");
-		String[] indArray = indStr.split("|");
-
-		System.out.println(indStr);
-		for (String string : indArray) {
-			System.out.print(string + " ");
-		}
+		String[] indArray = indStr.split(":");
 
 		Indirizzo ind = new Indirizzo(
 				indArray[0],
@@ -52,7 +45,7 @@ public class GestoreCentro extends Gestore {
 		String[] coordArr = target.get("Areas").split(";");
 
 		for (String coord : coordArr) {
-			String[] ll = coord.split("|");
+			String[] ll = coord.split(":");
 			double lat = Double.parseDouble(ll[0]);
 			double lon = Double.parseDouble(ll[1]);
 

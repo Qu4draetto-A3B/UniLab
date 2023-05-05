@@ -1,5 +1,8 @@
 package a3b.climate.cli;
 
+import java.util.Optional;
+
+import a3b.climate.Main;
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.Operatore;
 import a3b.climate.utils.result.Result;
@@ -20,7 +23,11 @@ public class Login implements View {
         Result<Operatore> rop = DataBase.operatore.login(user, pwd);
 
         if (!rop.isValid()) {
-            //TODO
+            term.printfln("Errore %d: %s", rop.getError(), rop.getMessage());
+			term.readLine("Premi invio per tornare al menu");
+			return;
         }
+
+		Main.oper = Optional.of(rop.get());
     }
 }

@@ -13,6 +13,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
@@ -80,6 +81,8 @@ public abstract class Gestore implements AutoCloseable {
 		close();
 		start();
 	}
+
+	protected abstract Result<DataTable> buildObject(CSVRecord record);
 
 	protected Result<String> getProperty(String key) {
 		String val = "";

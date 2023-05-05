@@ -22,7 +22,7 @@ public class GestoreOperatore extends Gestore {
 	public Result<Operatore> registrazione(Operatore op, String pwd) {
 		String cf = op.getCf().toUpperCase();
 
-		if (getOperatore(cf).isValid()) {
+		if (getOperatoreByCf(cf).isValid()) {
 			return new Result<>(1, "Operatore gia registrato");
 		}
 
@@ -42,19 +42,11 @@ public class GestoreOperatore extends Gestore {
 			return new Result<>(3, "Errore nella scrittura del record");
 		}
 
-		return new Result<>(getOperatore(cf).get());
+		return new Result<>(getOperatoreByCf(cf).get());
 	}
 
 	public Result<Operatore> login(String uid, String pwd) {
-		String pwdHash = "";
-		try {
-			pwdHash = MessageDigest.getInstance("SHA-256").digest(pwd.getBytes()).toString();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new Result<>(2, "Algoritmo non esistente");
-		}
-
-		System.out.println(pwdHash);
+		String pwdHash = hashPwd(pwd);
 
 		for (CSVRecord record : records) {
 			String dbUid = record.get("UserID");
@@ -62,14 +54,14 @@ public class GestoreOperatore extends Gestore {
 			String dbCf = record.get("CodFis");
 
 			if (uid == dbUid && pwdHash == dbPwd) {
-				return new Result<>(getOperatore(dbCf).get());
+				return new Result<>(getOperatoreByCf(dbCf).get());
 			}
 		}
 
 		return new Result<>(1, "Operatore non trovato");
 	}
 
-	/* friendly */ Result<Operatore> getOperatore(String cf) {
+	/* friendly */ Result<Operatore> getOperatoreByCf(String cf) {
 		for (CSVRecord record : records) {
 			String dbCf = record.get("CodFis");
 
@@ -88,5 +80,24 @@ public class GestoreOperatore extends Gestore {
 		}
 
 		return new Result<>(1, "Operatore non trovato");
+	}
+
+	Result<Operatore> getOperatoreByUid(String uid) {
+		//
+	}
+
+
+
+	private String hashPwd(String pwd) {
+		/*
+		String pwdHash = "";
+		try {
+			pwdHash = MessageDigest.getInstance("SHA-256").digest(pwd.getBytes()).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Result<>(2, "Algoritmo non esistente");
+		}*/
+
+		return pwd;
 	}
 }

@@ -99,7 +99,7 @@ public class Indirizzo implements Convertable {
 
 	@Override
 	public String toCsv() {
-		return nomeVia + "|" + civico + "|" + cap + "|" + comune + "|" + provincia;
+		return nomeVia + ":" + civico + ":" + cap + ":" + comune + ":" + provincia;
 	}
 
 	@Override
