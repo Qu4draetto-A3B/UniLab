@@ -3,18 +3,31 @@ package a3b.climate.magazzeno;
 import a3b.climate.utils.Convertable;
 import a3b.climate.utils.DataTable;
 
+/**
+ * Rappresenta un centro di monitoraggio
+ */
+
 public class CentroMonitoraggio implements Convertable, DataTable {
-	// CAMPI
 	private String nome;
 	private Indirizzo indirizzo;
 	private ListaAree aree;
 
-	// COSTRUTTORE
+	/**
+	 * Costruttore di un'istanza di CentroMonitoraggio
+	 * @param nome Nome del centro di monitoraggio
+     * @param indirizzo Indirizzo del centro di monitoraggio
+	 * @param lag Lista di aree geografiche relative al centro di monitoraggio
+	 */
+
 	public CentroMonitoraggio(String nome, Indirizzo indirizzo, ListaAree lag) {
 		this.nome = nome;
 		this.indirizzo = indirizzo;
 		this.aree = lag;
 	}
+
+	/**
+	 * Costruttore vuoto di un'istanza di CentroMonitoraggio
+	 */
 
 	public CentroMonitoraggio() {
 		nome = "Torre Civile";
@@ -22,18 +35,30 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 		aree = new ListaAree();
 	}
 
-	// METODO
+	/**
+	 * @return Restituisce il nome del centro di monitoraggio che chiama il metodo
+	 */
+
 	public String getNome() {
 		return nome;
 	}
+
+	/**
+	 * @return Restituisce la lista delle aree relative al centro di monitoraggio che chiama il metodo
+	 */
 
 	public ListaAree getListaAree() {
 		return this.aree;
 	}
 
+	/**
+	 * @return Restituisce l'indirizzo del centro di monitoraggio che chiama il metodo
+	 */
+
 	public Indirizzo getIndirizzo() {
 		return indirizzo;
 	}
+
 
 	@Override
 	public String toString() {
@@ -50,6 +75,7 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 
 		return sb.toString();
 	}
+
 
 	@Override
 	public String toCsv() {

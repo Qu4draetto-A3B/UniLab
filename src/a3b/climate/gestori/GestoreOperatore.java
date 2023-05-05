@@ -1,78 +1,28 @@
 package a3b.climate.gestori;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.util.List;
+import java.security.MessageDigest;
 import java.util.regex.Pattern;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.CentroMonitoraggio;
-import a3b.climate.magazzeno.Misurazione;
 import a3b.climate.magazzeno.Operatore;
-import a3b.climate.utils.StatoGestore;
 import a3b.climate.utils.result.*;
 
-public class GestoreOperatore {
-	private static StatoGestore stato = StatoGestore.FERMATO;
-	private static final String file = "./data/OperatoriRegistrati.CSV";
-
-	private final static String[] HEADERS = { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" };
-	private static CSVFormat format = CSVFormat.DEFAULT.builder()
-			.setHeader(HEADERS)
-			.setSkipHeaderRecord(true)
-			.build();
-
-	private static Reader in;
-	private static Writer out;
-
-	private static List<CSVRecord> records;
-	private static CSVPrinter p;
-
-	public static StatoGestore getStato() {
-		return stato;
+/**
+ *
+ */
+public class GestoreOperatore extends Gestore {
+	public GestoreOperatore() {
+		super(
+				"./data/OperatoriRegistrati.CSV",
+				new String[] { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" });
 	}
 
-	public static boolean start() {
-		try {
-			in = new FileReader(file);
-			out = new FileWriter(file, true);
-			records = format.parse(in).getRecords();
-			p = new CSVPrinter(out, format);
-		} catch (Exception e) {
-			e.printStackTrace();
-			stato = StatoGestore.ERRORE;
-			return false;
-		}
-
-		stato = StatoGestore.AVVIATO;
-		return true;
-	}
-
-	public static boolean stop() {
-		try {
-			p.close(true);
-			out.close();
-			in.close();
-			records.clear();
-		} catch (Exception e) {
-			e.printStackTrace();
-			stato = StatoGestore.ERRORE;
-			return false;
-		}
-
-		stato = StatoGestore.FERMATO;
-		return true;
-	}
-
-	public static Result<Object> registrazione(Operatore op, String pwd) {
+	public Result<Operatore> registrazione(Operatore op, String pwd) {
 		String cf = op.getCf().toUpperCase();
 
-		if (getOperatore(cf).isValid()) {
+		if (getOperatoreByCf(cf).isValid()) {
 			return new Result<>(1, "Operatore gia registrato");
 		}
 
@@ -92,30 +42,31 @@ public class GestoreOperatore {
 			return new Result<>(3, "Errore nella scrittura del record");
 		}
 
-		return new Result<>(new Object());
+		return new Result<>(getOperatoreByCf(cf).get());
 	}
 
-	public static Result<Operatore> login(String uid, String pwdhash) {
+	public Result<Operatore> login(String uid, String pwd) {
+		String pwdHash = hashPwd(pwd);
+
 		for (CSVRecord record : records) {
-			System.out.println(record.toString());
 			String dbUid = record.get("UserID");
 			String dbPwd = record.get("Password");
 			String dbCf = record.get("CodFis");
 
-			if (uid == dbUid && pwdhash == dbPwd) {
-				return new Result<>(getOperatore(dbCf).get());
+			if (uid == dbUid && pwdHash == dbPwd) {
+				return new Result<>(getOperatoreByCf(dbCf).get());
 			}
 		}
 
 		return new Result<>(1, "Operatore non trovato");
 	}
 
-	private static Result<Operatore> getOperatore(String cf) {
+	/* friendly */ Result<Operatore> getOperatoreByCf(String cf) {
 		for (CSVRecord record : records) {
 			String dbCf = record.get("CodFis");
 
 			if (cf == dbCf) {
-				CentroMonitoraggio cm = GestoreCentro.getCentro(record.get("Centro")).get();
+				CentroMonitoraggio cm = DataBase.centro.getCentro(record.get("Centro")).get();
 
 				Operatore op = new Operatore(record.get("CodFis"),
 						record.get("UserID"),
@@ -129,16 +80,24 @@ public class GestoreOperatore {
 		}
 
 		return new Result<>(1, "Operatore non trovato");
-
 	}
 
-	public static boolean addMisurazione(Misurazione mis) {
-		// TODO
-		return false;
+	Result<Operatore> getOperatoreByUid(String uid) {
+		//
 	}
 
-	public static List<Misurazione> getMisurazioni() {
-		// TODO
-		return null;
+
+
+	private String hashPwd(String pwd) {
+		/*
+		String pwdHash = "";
+		try {
+			pwdHash = MessageDigest.getInstance("SHA-256").digest(pwd.getBytes()).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Result<>(2, "Algoritmo non esistente");
+		}*/
+
+		return pwd;
 	}
 }

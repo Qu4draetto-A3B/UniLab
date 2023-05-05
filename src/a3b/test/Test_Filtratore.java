@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import a3b.climate.gestori.GestoreArea;
+import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.AreaGeografica;
 import a3b.climate.magazzeno.DatoGeografico;
 import a3b.climate.magazzeno.Filtratore;
@@ -18,14 +18,14 @@ public class Test_Filtratore {
 		List<Misurazione> list = new ArrayList<Misurazione>();
 		Random rng = new Random();
 		Operatore op = new Operatore();
-		AreaGeografica ag = GestoreArea.cercaAreaGeografica("Uras", "Italy").getFirst();
+		AreaGeografica ag = DataBase.area.cercaAreaGeografica("Uras", "Italy").getFirst();
 		for (int i = 0; i < 11; i++) {
 			HashMap<TipoDatoGeografico, Byte> datiMap = new HashMap<>();
 			for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
 				datiMap.put(tipo, (byte) rng.nextInt(6));
 			}
-			DatoGeografico dato = new DatoGeografico(datiMap, null);
-			list.add(new Misurazione(dato, op, ag));
+			DatoGeografico dato = new DatoGeografico(0, datiMap, null);
+			list.add(new Misurazione(0, dato, op, ag));
 		}
 
 		System.out.printf("%s\n%s\n", op.toCsv(), ag);

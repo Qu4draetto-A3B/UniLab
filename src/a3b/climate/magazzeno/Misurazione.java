@@ -5,14 +5,26 @@ import java.time.format.DateTimeFormatter;
 
 import a3b.climate.utils.Convertable;
 
+/**
+ * Rappresenta una misurazione
+ */
 public class Misurazione implements Convertable {
+	private long rid;
 	private DatoGeografico dato;
 	private LocalDateTime time;
 	private Operatore operatore;
 	private CentroMonitoraggio centro;
 	private AreaGeografica area;
+	public static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ISO_INSTANT;
 
-	public Misurazione(DatoGeografico dato, Operatore operatore, AreaGeografica area) {
+	/**
+	 * Costruttore di un'istanza di Misurazione
+	 * @param rid Id della misurazione
+	 * @param dato Aggregato di informazioni relative al dato geografico
+     * @param operatore Operatore che effettua la misurazione
+	 * @param area Area geografica nella quale e' stata effettuata la misurazione
+	 */
+	public Misurazione(long rid, DatoGeografico dato, Operatore operatore, AreaGeografica area) {
 		this.dato = dato;
 		this.operatore = operatore;
 		this.area = area;
@@ -20,22 +32,54 @@ public class Misurazione implements Convertable {
 		centro = operatore.getCentro();
 	}
 
+	public Misurazione(long rid, LocalDateTime dateTime, Operatore operatore, CentroMonitoraggio centro,
+			AreaGeografica area, DatoGeografico dato) {
+		this.dato = dato;
+		this.operatore = operatore;
+		this.area = area;
+		time = LocalDateTime.now();
+		centro = operatore.getCentro();
+	}
+
+	public long getRid() {
+		return rid;
+	}
+
+	/**
+	 * @return Restituisce il l'aggregato di informazioni relative al dato della misurazione che chiama il metodo
+	 */
 	public DatoGeografico getDato() {
 		return this.dato;
 	}
 
+	/**
+	 * @return Restituisce la data in cui è stata effettuata la misurazione che chiama il metodo
+	 */
 	public LocalDateTime getTime() {
 		return this.time;
 	}
 
+	public String getTimeString() {
+		return time.format(DATE_TIME_FORMAT);
+	}
+
+	/**
+	 * @return Restituisce l'operatore che ha effettuato misurazione che chiama il metodo
+	 */
 	public Operatore getOperatore() {
 		return this.operatore;
 	}
 
+	/**
+	 * @return Restituisce il centro di monitoraggio per il qule e' stata effettuata la misurazione che chiama il metodo
+	 */
 	public CentroMonitoraggio getCentro() {
 		return this.centro;
 	}
 
+	/**
+	 * @return Restituisce l'area geografica nella quale e' stata effettuata la misurazione che chiama il metodo
+	 */
 	public AreaGeografica getArea() {
 		return this.area;
 	}
@@ -43,9 +87,9 @@ public class Misurazione implements Convertable {
 	@Override
 	public String toString() {
 		String str = String.format(
-			"%s <<<\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n>>> %s",
-			super.toString(), time.format(DateTimeFormatter.ISO_DATE_TIME),
-			area, operatore, centro, dato, super.toString());
+				"%s <<<\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n>>> %s",
+				super.toString(), getTimeString(),
+				area, operatore, centro, dato, super.toString());
 		return str;
 	}
 

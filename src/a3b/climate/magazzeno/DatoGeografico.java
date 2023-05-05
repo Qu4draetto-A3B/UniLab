@@ -9,7 +9,9 @@ import a3b.climate.utils.TipoDatoGeografico;
 /**
  * Rappresenta un dato geografico
  */
+
 public class DatoGeografico implements DataTable {
+	private long rid;
 	private byte massaGhiacciai;
 	private byte altitudineGhiacciai;
 	private byte precipitazioni;
@@ -20,7 +22,16 @@ public class DatoGeografico implements DataTable {
 
 	private HashMap<TipoDatoGeografico, String> note;
 
-	public DatoGeografico(TipoDatoGeografico tipo, byte dato, String nota) {
+	/**
+	 * Costruttore di un'istanza di DatoGeografico
+	 * @param rid Id del dato
+	 * @param tipo Tipo del dato geografico
+     * @param dato Valore da 1 a 5 che rappresenta il livello di criticità del dato geografico
+	 * @param nota Note relative al dato geografico
+	 */
+
+	public DatoGeografico(long rid, TipoDatoGeografico tipo, byte dato, String nota) {
+		this.rid = rid;
 		setDato(tipo, dato);
 
 		note = new HashMap<>();
@@ -32,7 +43,20 @@ public class DatoGeografico implements DataTable {
 			throw new IllegalArgumentException("Nota troppo lunga");
 	}
 
-	public DatoGeografico(byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
+	/**
+	 * Costruttore di un'istanza di DatoGeografico
+	 * @param rid Id del dato
+	 * @param massaGhiacciai Valore relativo alla criticità della massa dei ghiacciai
+     * @param altituidineGhiacciai Valore relativo alla criticità dell'altitudine dei ghiacciai
+	 * @param precipitazioni Valore relativo alla criticità delle precipitazioni
+	 * @param temperatura Valore relativo alla criticità della temperatura
+	 * @param pressione Valore relativo alla criticità della pressione
+	 * @param umidita Valore relativo alla criticità dell'umidita'
+	 * @param vento Valore relativo alla criticità dei venti
+	 * @param note Note relative al dato geografico
+	 */
+
+	public DatoGeografico(long rid, byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
 			byte pressione, byte umidita, byte vento, HashMap<TipoDatoGeografico, String> note) {
 		/*
 		 * I byte vengono inizializzati a 0 implicitamente,
@@ -43,6 +67,7 @@ public class DatoGeografico implements DataTable {
 		if (all < 1 || all > 30) {
 			throw new IllegalArgumentException("Almeno un dato deve essere > 0 in DatoGeografico");
 		}
+		this.rid = rid;
 
 		for (String nota : note.values()) {
 			if (nota.length() > 255) {
@@ -60,7 +85,15 @@ public class DatoGeografico implements DataTable {
 		this.note = note;
 	}
 
-	public DatoGeografico(Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
+	/**
+	 * Costruttore di un'istanza di DatoGeografico
+	 * @param rid Id del dato
+	 * @param dati HashMap contenente i valori dei dati
+	 * @param note HashMap contenente i valori delle note
+	 */
+
+	public DatoGeografico(long rid, Map<TipoDatoGeografico, Byte> dati, Map<TipoDatoGeografico, String> note) {
+		this.rid = rid;
 		this.note = new HashMap<>();
 
 		if (dati == null) {
@@ -83,6 +116,16 @@ public class DatoGeografico implements DataTable {
 			}
 		}
 	}
+
+	public long getRid() {
+		return rid;
+	}
+
+	/**
+	 * Metodo che imposta il valore del dato geografico che chiama il metodo
+	 * @param tipo Tipo del dato geografico
+	 * @param dato Valore del dato geografico
+	 */
 
 	private void setDato(TipoDatoGeografico tipo, byte dato) {
 		if (dato < 0 || dato > 5) {
@@ -120,6 +163,11 @@ public class DatoGeografico implements DataTable {
 		}
 	}
 
+	/**
+	 * @param tipo Tipo del dato geografico
+	 * @return Restituisce il valore del dato geografico che chiama il metodo
+	 */
+
 	public byte getDato(TipoDatoGeografico tipo) {
 		byte dato = 0;
 
@@ -156,9 +204,20 @@ public class DatoGeografico implements DataTable {
 		return dato;
 	}
 
+	/**
+	 * @param key Dato geografico di cui mi interessa la nota
+	 * @return Restituisce la nota relativa al dato geografico fornito come argomento	
+	*/
+	
 	public String getNota(TipoDatoGeografico key) {
 		return note.get(key);
 	}
+
+	/**
+	 * Metodo che imposta le note relative al dato geografico che chiama il metodo
+	 * @param key //TODO
+	 * @param nota Note relative al dato geografico
+	 */
 
 	private boolean setNota(TipoDatoGeografico key, String nota) {
 		if (nota.length() > 255) {
@@ -176,14 +235,7 @@ public class DatoGeografico implements DataTable {
 
 		DatoGeografico dato = (DatoGeografico) obj;
 
-		boolean res = true;
-
-		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
-			res &= getDato(tipo) == dato.getDato(tipo);
-			res &= getNota(tipo).equals(dato.getNota(tipo));
-		}
-
-		return res;
+		return dato.getRid() == rid;
 	}
 
 	@Override
@@ -206,6 +258,11 @@ public class DatoGeografico implements DataTable {
 
 		return res;
 	}
+
+	/**
+	 * @return Restituisce un booleano che indica l'uguaglianza dei valori dei dati
+	 */
+
 
 	public boolean datoEquals(DatoGeografico dato) {
 		boolean res = true;
