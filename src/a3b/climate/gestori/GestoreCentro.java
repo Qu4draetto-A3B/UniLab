@@ -29,33 +29,7 @@ public class GestoreCentro extends Gestore {
 			return new Result<>(1, "Centro non trovato");
 		}
 
-		String nomo = target.get("Name");
-
-		String indStr = target.get("Address");
-		String[] indArray = indStr.split(":");
-
-		Indirizzo ind = new Indirizzo(
-				indArray[0],
-				Integer.parseInt(indArray[1]),
-				Integer.parseInt(indArray[2]),
-				indArray[3],
-				indArray[4]);
-
-		ListaAree lag = new ListaAree();
-
-		String[] coordArr = target.get("Areas").split(";");
-
-		for (String coord : coordArr) {
-			String[] ll = coord.split(":");
-			double lat = Double.parseDouble(ll[0]);
-			double lon = Double.parseDouble(ll[1]);
-
-			lag.addFirst(DataBase.area.cercaAreeGeografiche(lat, lon).get());
-		}
-
-		CentroMonitoraggio cm = new CentroMonitoraggio(nomo, ind, lag);
-
-		return new Result<>(cm);
+		return new Result<CentroMonitoraggio>((CentroMonitoraggio) buildObject(target));
 	}
 
 	public boolean addCentro(CentroMonitoraggio cm) {
@@ -74,8 +48,33 @@ public class GestoreCentro extends Gestore {
 	}
 
 	@Override
-	protected DataTable buildObject(CSVRecord record) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'buildObject'");
+	protected DataTable buildObject(CSVRecord record){
+		String nomo = record.get("Name");
+
+		String indStr = record.get("Address");
+		String[] indArray = indStr.split(":");
+
+		Indirizzo ind = new Indirizzo(
+				indArray[0],
+				Integer.parseInt(indArray[1]),
+				Integer.parseInt(indArray[2]),
+				indArray[3],
+				indArray[4]);
+
+		ListaAree lag = new ListaAree();
+
+		String[] coordArr = record.get("Areas").split(";");
+
+		for (String coord : coordArr) {
+			String[] ll = coord.split(":");
+			double lat = Double.parseDouble(ll[0]);
+			double lon = Double.parseDouble(ll[1]);
+
+			lag.addFirst(DataBase.area.cercaAreeGeografiche(lat, lon).get());
+		}
+
+		CentroMonitoraggio cm = new CentroMonitoraggio(nomo, ind, lag);
+
+		return cm;
 	}
 }

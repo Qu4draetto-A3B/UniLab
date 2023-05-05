@@ -19,14 +19,8 @@ public class GestoreArea extends Gestore implements CercaAree {
 		for (CSVRecord record : records) {
 			long dbGeoId = Long.parseLong(record.get("GeonameID"));
 			if (dbGeoId == geoId) {
-				AreaGeografica ag = new AreaGeografica(
-					dbGeoId,
-					Double.parseDouble(record.get("Lat")),
-					Double.parseDouble(record.get("Lon")),
-					record.get("CountryName"),
-					record.get("ASCIIName"));
-
-				return new Result<AreaGeografica>(ag);
+				
+				return Result<AreaGeografica>((AreaGeografica)buildObject(record));
 			}
 		}
 
@@ -74,25 +68,14 @@ public class GestoreArea extends Gestore implements CercaAree {
 
 		// Cerca coordinate esatte
 		for (CSVRecord record : records) {
-			AreaGeografica areaGeografica = new AreaGeografica(
-					Long.parseLong(record.get("GeonameID")),
-					Double.parseDouble(record.get("Lat")),
-					Double.parseDouble(record.get("Lon")),
-					record.get("CountryName"),
-					record.get("Name"));
-
-			if ((latitudine == areaGeografica.getLatitudine()) && (longitudine == areaGeografica.getLongitudine()))
-				return new Result<>(areaGeografica);
+			if ((latitudine == Double.parseDouble(record.get("Lat"))) && (longitudine == Double.parseDouble(record.get("Lon"))))
+				return Result<AreaGeografica>((AreaGeografica)buildObject(record));
 		}
 
 		// Cerca coordinate piu' vicine
 		CSVRecord r = records.iterator().next();
-		AreaGeografica ag = new AreaGeografica(
-				Long.parseLong(r.get("GeonameID")),
-				Double.parseDouble(r.get("Lat")),
-				Double.parseDouble(r.get("Lon")),
-				r.get("CountryName"),
-				r.get("Name"));
+		CSVRecord traget = r;
+		AreaGeografica ag = (AreaGeografica)buildObject(r);
 
 		double differenzalat = latitudine - ag.getLatitudine();
 		differenzalat *= differenzalat;
@@ -101,30 +84,37 @@ public class GestoreArea extends Gestore implements CercaAree {
 		differenzalong *= differenzalong;
 
 		double min = Math.sqrt(differenzalat + differenzalong);
+		
 		for (CSVRecord record : records) {
-			AreaGeografica areaGeografica = new AreaGeografica(
-					Long.parseLong(r.get("GeonameID")),
-					Double.parseDouble(record.get("Lat")),
-					Double.parseDouble(record.get("Lon")),
-					record.get("CountryName"),
-					record.get("Name"));
-
-			differenzalat = latitudine - areaGeografica.getLatitudine();
+			
+			differenzalat = latitudine - Double.parseDouble(record.get("Lat"));
 			differenzalat *= differenzalat;
 
-			differenzalong = longitudine - areaGeografica.getLongitudine();
+			differenzalong = longitudine - Double.parseDouble(record.get("Lon"));
 			differenzalong *= differenzalong;
 
 			double dist = Math.sqrt(differenzalat + differenzalong);
 
 			if (min > dist) {
 				min = dist;
-				ag = areaGeografica;
+				target = records;
 			}
 
 		}
 
-		return new Result<>(ag);
+		return new Result<AreaGeografica>((AreaGeografica)buildObject(target));
+	}
+
+	@Override
+	Protected DataTable buildObject(CSVRecord record){
+		AreaGeografica ag = new AreaGeografica(
+					Long.parseLong(record.get("GeonameID")),
+					Double.parseDouble(record.get("Lat")),
+					Double.parseDouble(record.get("Lon")),
+					record.get("CountryName"),
+					record.get("ASCIIName"));
+
+				return ag;
 	}
 
 	@Override
