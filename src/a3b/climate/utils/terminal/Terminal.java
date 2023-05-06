@@ -30,6 +30,11 @@ public class Terminal {
         return con.readLine(str + "\n> ", args);
     }
 
+	public String readLineOrDefault(String def, String str, Object... args) {
+		String out = readLine(str, args).strip();
+		return out.isEmpty() ? def : out;
+	}
+
     public String readPassword(String str, Object... args) {
         return new String(con.readPassword(str + "\n> ", args));
     }
