@@ -39,7 +39,11 @@ public class MainMenu implements View {
 
 			char c = str.toLowerCase().charAt(0);
 
+			term.clear();
 			switch (c) {
+				case '.':
+					break;
+
 				case 'q':
 					term.printf("Uscendo...\n");
 					return;
@@ -57,9 +61,8 @@ public class MainMenu implements View {
 					break;
 
 				default:
-					term.clear();
 					term.printfln("[!!] Comando Errato");
-					continue;
+					break;
 			}
 		}
 	}
