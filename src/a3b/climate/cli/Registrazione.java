@@ -23,9 +23,10 @@ public class Registrazione implements View {
         String uid = term.readLine("Inserisci ID");
 
         String email = term.readLine("Inserisci email");
-        String pwd = term.readLine("Inserisci password");
-
         String nomeCentro = term.readLine("inserisci nome centro di monitoraggio");
+
+		String pwd = term.readPasswordWhile((s) -> s.length() < 8, "Inserisci password");
+
         Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(nomeCentro);
 
         if (!rcm.isValid()) {

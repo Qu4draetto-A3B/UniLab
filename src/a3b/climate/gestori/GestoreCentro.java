@@ -19,7 +19,7 @@ public class GestoreCentro extends Gestore {
 		CSVRecord target = null;
 
 		for (CSVRecord record : records) {
-			if (record.get("Name").toLowerCase().equals(nome.toLowerCase())) {
+			if (record.get("Name").equalsIgnoreCase(nome)) {
 				target = record;
 				break;
 			}
