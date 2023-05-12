@@ -69,11 +69,107 @@
 		
 		
 		\subsection{Gestori}
-		
+		All'interno del package Gestori si trovano una serie di classi finalizzate alle operazioni di lettura e scrittura su File contenenti dati utili al monitoraggio di parametri climatici sul territorio italiano.
+		Ad ogni record memorizzato su file viene associato un indice (ID) univoco.
+				
+			\subsubsection{DataBase}
+			La classe DataBase si occupa di creare (per ogni classe che estende Gestore) un oggetto in grado di richiamare le funzioni associate.
+				
+			\subsubsection{Gestore}
+			La classe astratta Gestore contiene metodi relativi la gestione dei file contenenti i dati d'interesse. In particolare:
+			\begin{itemize}
+				\item \textbf{start() e close ()}
+				Metodi che si occupano rispettivamente di aprire e chiudere un file.
+				\item \textbf{reload()}
+				Metodo che si occupa di ricaricare (chiudere e riaprire un file)
+				\item  \textbf{setProperty()}
+				Metodo che si occupa di impostare una proprietà nel file (*.CSV.DAT) associato ad una tabella (*.CSV)
+			\end{itemize}
+			
+			\newpage
+				
+			
+				
+			\subsubsection{GestoreArea}
+			la classe GestoreArea estende la classe Gestore e ne eredita tutti i metodi
+			implementa l'interfaccia CercaAree e contiene i seguenti metodi:
+			\begin{itemize}
+				\item \textbf{getArea()}
+				Metodo che ricerca una determinata area geografica in base al suo ID
+			\end{itemize}
+			
+			\subsubsection{GestoreCentro}
+			la classe GestoreCentro estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
+			\begin{itemize}
+				\item \textbf{getCentro()}
+				Metodo che ricerca un determinato centro di monitoraggio in base al nome
+				\item \textbf {addCentro ()}
+				Metodo che crea un nuovo record relativo a un determinato centro di monitoraggio e lo memorizza nel file CentriMonitoraggio.CSV
+			\end{itemize}
+			
+			\subsubsection{GestoreDato}
+			la classe GestoreDato estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
+			\begin{itemize}
+				\item \textbf{getDato()}
+				Metodo che ricerca un determinato dato geografico in base al suo ID
+				\item \textbf {addDato()}
+				Metodo che crea un nuovo record relativo a un determinato dato geografico e lo memorizza nel file ParametriClimatici.CSV
+			\end{itemize}
+			
+			\subsubsection{GestoreMisurazioni}
+			la classe GestoMisurazioni estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
+			\begin{itemize}
+				\item \textbf{addMisurazione()}
+				Metodo che crea un nuovo record relativo a una determinata misurazione
+				\item \textbf {getMisurazioni()}
+				Metodo che memorizza i record relativi alle misurazioni presenti nel file ParametriClimatici.CSV in una lista, la quale inizializza un nuovo oggetto di tipo Filtratore.
+			\end{itemize}
+			
+			
+			\newpage
+			\subsubsection{GestoreOperatore}
+			la classe GestoreOperatore estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
+			\begin{itemize}
+				\item \textbf{registrazione()}
+				Metodo che permette a un operatore di registrarsi impostando una password
+				\item \textbf{login()}
+				Metodo che permette a un utente di effettuare il login
+				\item \textbf{getOperatore()}
+				Metodo che crea un nuovo record relativo a un determinato operatore e lo memorizza nel file OperatoriRegistrati.CSV
+			\end{itemize}
+			
+			\newpage
+			
 		\subsection{Magazzeno}
+			\subsubsection{AreaGeografica}
+			\subsubsection{CentroMonitoraggio}
+			\subsubsection{DatoGeografico}
+			\subsubsection{Filtratore}
+			\subsubsection{Indirizzo}
+			\subsubsection{ListaAree}
+			\subsubsection{Misurazioni}
+			\subsubsection{Operatore}
 		
 		\subsection{Utils}
+			\subsubsection{listacustom.CollezioniIterator}
+			\subsection{listacustom.Nodo}
+			\subsection{result.Blunder}
+			\subsection{result.Outcome}
+			\subsection{result.Panic}
+			\subsection{result.Result}
+			
+			\subsection{terminal.Screen}
+			\subsection{terminal.Terminal}
+			\subsection{terminal.View}
+			
+			\subsection{CercaAree}
+			\subsection{Convertable}
+			\subsection{DataTable}
+			\subsection{MediaAree}
+			\subsection{DatoGeografico}
 		
+		
+		\subsection{Main}
 		\newpage
 
 	
