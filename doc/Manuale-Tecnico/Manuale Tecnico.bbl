@@ -1,0 +1,6 @@
+% \bib, bibdiv, biblist are defined by the amsrefs package.
+\begin{bibdiv}
+\begin{biblist}
+
+\end{biblist}
+\end{bibdiv}
