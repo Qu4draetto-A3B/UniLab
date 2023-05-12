@@ -4,6 +4,10 @@ import a3b.climate.Main;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Consumer;
+
 /**
  * App:
  * - Schermata iniziale
@@ -17,7 +21,6 @@ import a3b.climate.utils.terminal.View;
  * - Vedere il proprio profilo
  */
 public class MainMenu implements View {
-
 	public MainMenu() {
 		super();
 	}
@@ -25,21 +28,16 @@ public class MainMenu implements View {
 	@Override
 	public void start(Terminal term) {
 		while (true) {
-			if (Main.oper.isPresent()) {
-				term.printfln("Benvenuto %s", Main.oper.get().getNome());
-			}
+			Main.oper.ifPresent(operatore -> term.printfln("Benvenuto %s", operatore.getNome()));
 
-			term.printfln("Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni");
+			String menu = "Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni";
 
-			String str = term.readLine();
-
-			if (str.length() < 1) {
-				str = ".";
-			}
+			String str = term.readLineOrDefault(".", menu);
 
 			char c = str.toLowerCase().charAt(0);
 
 			term.clear();
+
 			switch (c) {
 				case '.':
 					break;

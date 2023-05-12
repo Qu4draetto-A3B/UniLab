@@ -55,7 +55,7 @@ public class GestoreOperatore extends Gestore {
 			String dbPwd = record.get("Password");
 
 			if (uid.equals(dbUid) && pwdHash.equals(dbPwd)) {
-				return new Result<>(getOperatoreByUid(dbUid).get());
+				return new Result<>((Operatore) buildObject(record));
 			}
 		}
 
@@ -90,13 +90,14 @@ public class GestoreOperatore extends Gestore {
 
 	private String hashPwd(String pwd) {
 
-		String pwdHash = "";
+		String pwdHash = pwd;
+		/*
 		try {
 			pwdHash = MessageDigest.getInstance("SHA-256").digest(pwd.getBytes()).toString();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Panic(e);
-		}
+		}*/
 
 		return pwdHash;
 	}
