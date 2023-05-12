@@ -1,4 +1,5 @@
 package a3b.climate.magazzeno;
+
 import java.util.NoSuchElementException;
 
 import a3b.climate.utils.CercaAree;
@@ -14,7 +15,8 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	Nodo<AreaGeografica> tail;
 
 	/**
-     * @return Restituisce un booleano che indica se la lista di aree geografiche che esegue il metodo e' vuota
+	 * @return Restituisce un booleano che indica se la lista di aree geografiche
+	 *         che esegue il metodo e' vuota
 	 */
 
 	public boolean isEmpty() {
@@ -22,7 +24,8 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-     * @return Restituisce l'area geografica che si trova in posizione k nella ListaAree che esegue il metodo
+	 * @return Restituisce l'area geografica che si trova in posizione k nella
+	 *         ListaAree che esegue il metodo
 	 * @param k Intero che indica l'indice di un elemento all'interno di ListaAree
 	 */
 
@@ -38,18 +41,17 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-     * Metodo che aggiunge un'area geografica alla ListaAree nell'indice k
+	 * Metodo che aggiunge un'area geografica alla ListaAree nell'indice k
+	 *
 	 * @param e Area geografica da aggiungere alla ListaAree che esegue il metodo
 	 * @param k Intero che indica l'indice in cui inserire l'area geografica
 	 */
 
-
-	public void add (AreaGeografica e, int k)
-	{
-		if ((0 > k) || (k >= this.size())) throw new IndexOutOfBoundsException("ERRORE: valore dell'indice non valido");
-		Nodo <AreaGeografica> current = head;
-		for(int i = 0; i< k-1; i++)
-		{
+	public void add(AreaGeografica e, int k) {
+		if ((0 > k) || (k >= this.size()))
+			throw new IndexOutOfBoundsException("ERRORE: valore dell'indice non valido");
+		Nodo<AreaGeografica> current = head;
+		for (int i = 0; i < k - 1; i++) {
 			current = current.getNext();
 		}
 		Nodo<AreaGeografica> x = new Nodo<AreaGeografica>(e, current.getNext());
@@ -77,7 +79,8 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * @return Restituisce un intero che indica la dimensione della ListaAree che esegue il metodo
+	 * @return Restituisce un intero che indica la dimensione della ListaAree che
+	 *         esegue il metodo
 	 */
 
 	public int size() {
@@ -91,10 +94,10 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-     * Metodo che aggiunge un'area geografica alla ListaAree in prima posizione
+	 * Metodo che aggiunge un'area geografica alla ListaAree in prima posizione
+	 *
 	 * @param e Area geografica da aggiungere alla ListaAree che esegue il metodo
 	 */
-
 
 	public void addFirst(AreaGeografica e) {
 		Nodo<AreaGeografica> x = new Nodo<AreaGeografica>(e, head);
@@ -103,7 +106,6 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 			tail = x;
 
 	}
-
 
 	/**
 	 * //TODO
@@ -114,8 +116,11 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * Metodo che data un'area geografica mostra tutte le informazioni relative ad essa
-	 * @return Restituisce un aggregato di informazioni relative all'area geografica fornita come parametro
+	 * Metodo che data un'area geografica mostra tutte le informazioni relative ad
+	 * essa
+	 *
+	 * @return Restituisce un aggregato di informazioni relative all'area geografica
+	 *         fornita come parametro
 	 * @param area Area geografica di cui interessano le informazioni
 	 */
 
@@ -166,7 +171,6 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 
 		return lt;
 	}
-	
 
 	@Override
 
@@ -211,24 +215,23 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 		return new Result<>(ag);
 
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		String str = "";
-		for(AreaGeografica tmp : this)
-			str += tmp.toString()+"\n";
+		for (AreaGeografica tmp : this)
+			str += tmp.toString() + "\n";
 		return str;
 	}
 
 	@Override
 	public String toCsv() {
 		String str = "";
-		for(AreaGeografica ag: this)
-		{
-			str+= ag.getLatitudine() + "|"+ ag.getLongitudine() +";";
+		for (AreaGeografica ag : this) {
+			str += ag.getLatitudine() + ":" + ag.getLongitudine() + ";";
 		}
 
-		str = str.substring(0, str.length()-1);
+		str = str.substring(0, str.length() - 1);
 		return str;
 
 	}

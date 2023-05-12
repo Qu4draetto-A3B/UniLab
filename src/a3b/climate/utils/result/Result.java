@@ -1,5 +1,6 @@
 package a3b.climate.utils.result;
 
+import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 public class Result<T> implements Blunder<T, Integer> {
@@ -25,6 +26,25 @@ public class Result<T> implements Blunder<T, Integer> {
 
 	public boolean isValid() {
 		return error == 0;
+	}
+
+	@Override
+	public boolean isError() {
+		return error != 0;
+	}
+
+	@Override
+	public void ifValid(BiConsumer<T, Integer> fn) throws NullPointerException {
+		if (isValid()) {
+			fn.accept(content, error);
+		}
+	}
+
+	@Override
+	public void ifError(BiConsumer<T, Integer> fn) throws NullPointerException {
+		if (isError()) {
+			fn.accept(content, error);
+		}
 	}
 
 	@Override

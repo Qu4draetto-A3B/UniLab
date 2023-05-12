@@ -7,6 +7,7 @@ import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.CentroMonitoraggio;
 import a3b.climate.magazzeno.Operatore;
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 /**
@@ -21,8 +22,9 @@ public class GestoreOperatore extends Gestore {
 
 	public Result<Operatore> registrazione(Operatore op, String pwd) {
 		String cf = op.getCf().toUpperCase();
+		pwd = hashPwd(pwd);
 
-		if (getOperatore(cf).isValid()) {
+		if (getOperatoreByCf(cf).isValid()) {
 			return new Result<>(1, "Operatore gia registrato");
 		}
 
@@ -42,51 +44,74 @@ public class GestoreOperatore extends Gestore {
 			return new Result<>(3, "Errore nella scrittura del record");
 		}
 
-		return new Result<>(getOperatore(cf).get());
+		return new Result<>(getOperatoreByCf(cf).get());
 	}
 
 	public Result<Operatore> login(String uid, String pwd) {
-		String pwdHash = "";
-		try {
-			pwdHash = MessageDigest.getInstance("SHA-256").digest(pwd.getBytes()).toString();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new Result<>(2, "Algoritmo non esistente");
-		}
-
-		System.out.println(pwdHash);
+		String pwdHash = hashPwd(pwd);
 
 		for (CSVRecord record : records) {
 			String dbUid = record.get("UserID");
 			String dbPwd = record.get("Password");
-			String dbCf = record.get("CodFis");
 
-			if (uid == dbUid && pwdHash == dbPwd) {
-				return new Result<>(getOperatore(dbCf).get());
+			if (uid.equals(dbUid) && pwdHash.equals(dbPwd)) {
+				return new Result<>((Operatore) buildObject(record));
 			}
 		}
 
 		return new Result<>(1, "Operatore non trovato");
 	}
 
-	/* friendly */ Result<Operatore> getOperatore(String cf) {
+	Result<Operatore> getOperatoreByCf(String cf) {
 		for (CSVRecord record : records) {
 			String dbCf = record.get("CodFis");
+			DataTable op = buildObject(record);
 
-			if (cf == dbCf) {
-				CentroMonitoraggio cm = DataBase.centro.getCentro(record.get("Centro")).get();
-
-				Operatore op = new Operatore(record.get("CodFis"),
-						record.get("UserID"),
-						record.get("Nome"),
-						record.get("Cognome"),
-						record.get("Email"),
-						cm);
-
-				return new Result<>(op);
+			if (cf.equals(dbCf)) {
+				return new Result<Operatore>((Operatore) op);
 			}
 		}
 
-		return new Result<>(1, "Operatore non trovato");
+		return new Result<>(1, "Operatore valido non trovato");
+	}
+
+	Result<Operatore> getOperatoreByUid(String uid) {
+		for (CSVRecord record : records) {
+			String dbUid = record.get("UserID");
+			DataTable op = buildObject(record);
+
+			if (uid.equals(dbUid)) {
+				return new Result<Operatore>((Operatore) op);
+			}
+		}
+
+		return new Result<>(1, "Operatore valido non trovato");
+	}
+
+	private String hashPwd(String pwd) {
+
+		String pwdHash = pwd;
+		/*
+		try {
+			pwdHash = MessageDigest.getInstance("SHA-256").digest(pwd.getBytes()).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Panic(e);
+		}*/
+
+		return pwdHash;
+	}
+
+	@Override
+	protected DataTable buildObject(CSVRecord record) {
+		CentroMonitoraggio cm = DataBase.centro.getCentro(record.get("Centro")).get();
+		Operatore op = new Operatore(record.get("CodFis"),
+				record.get("UserID"),
+				record.get("Nome"),
+				record.get("Cognome"),
+				record.get("Email"),
+				cm);
+
+		return op;
 	}
 }

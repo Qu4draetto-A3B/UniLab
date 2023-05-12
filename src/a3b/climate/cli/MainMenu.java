@@ -4,6 +4,10 @@ import a3b.climate.Main;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Consumer;
+
 /**
  * App:
  * - Schermata iniziale
@@ -17,46 +21,47 @@ import a3b.climate.utils.terminal.View;
  * - Vedere il proprio profilo
  */
 public class MainMenu implements View {
+	public MainMenu() {
+		super();
+	}
 
-    public MainMenu() {
-        super();
-    }
+	@Override
+	public void start(Terminal term) {
+		while (true) {
+			Main.oper.ifPresent(operatore -> term.printfln("Benvenuto %s", operatore.getNome()));
 
-    @Override
-    public void start(Terminal term) {
-        term.printf("Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni\n");
+			String menu = "Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni";
 
-        while (true) {
-            String str = term.readLine();
+			String str = term.readLineOrDefault(".", menu);
 
-            if (str.length() < 1) {
-                str = ".";
-            }
+			char c = str.toLowerCase().charAt(0);
 
-            char c = str.toLowerCase().charAt(0);
+			term.clear();
 
-            switch (c) {
-                case 'q':
-                    term.printf("Uscendo...\n");
-                    return;
+			switch (c) {
+				case '.':
+					break;
 
-                case 'r':
-                    Main.scn.show(new Registrazione());
-                    break;
+				case 'q':
+					term.printf("Uscendo...\n");
+					return;
 
-                case 'l':
-                    Main.scn.show(new Login());
-                    break;
+				case 'r':
+					Main.scn.show(new Registrazione());
+					break;
 
-                case 'c':
-                    Main.scn.show(new MostraMisurazioni());
-                    break;
+				case 'l':
+					Main.scn.show(new Login());
+					break;
 
-                default:
-                    term.clear();
-                    term.printf("Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni\n");
-                    continue;
-            }
-        }
-    }
+				case 'c':
+					Main.scn.show(new MostraMisurazioni());
+					break;
+
+				default:
+					term.printfln("[!!] Comando Errato");
+					break;
+			}
+		}
+	}
 }

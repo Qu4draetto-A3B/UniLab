@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.apache.commons.csv.CSVRecord;
 
 import a3b.climate.magazzeno.DatoGeografico;
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
 
@@ -37,17 +38,7 @@ public class GestoreDato extends Gestore {
 			return new Result<>(1, "Dato non trovato");
 		}
 
-		HashMap<TipoDatoGeografico, Byte> dati = new HashMap<>();
-		HashMap<TipoDatoGeografico, String> note = new HashMap<>();
-
-		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
-			dati.put(tipo, Byte.parseByte(rec.get(tipo.name())));
-			note.put(tipo, rec.get("Nota" + tipo.name()));
-		}
-
-		DatoGeografico dato = new DatoGeografico(rid, dati, note);
-
-		return new Result<>(dato);
+		return new Result<>((DatoGeografico) buildObject(rec));
 	}
 
 	public Result<Object> addDato(DatoGeografico dato) {
@@ -82,5 +73,22 @@ public class GestoreDato extends Gestore {
 
 		return new Result<>(new Object());
 
+	}
+
+	@Override
+	protected DataTable buildObject(CSVRecord record) {
+		long rid = Long.parseLong(record.get("RID"));
+
+		HashMap<TipoDatoGeografico, Byte> dati = new HashMap<>();
+		HashMap<TipoDatoGeografico, String> note = new HashMap<>();
+
+		for (TipoDatoGeografico tipo : TipoDatoGeografico.values()) {
+			dati.put(tipo, Byte.parseByte(record.get(tipo.name())));
+			note.put(tipo, record.get("Nota" + tipo.name()));
+		}
+
+		DatoGeografico dato = new DatoGeografico(rid, dati, note);
+
+		return dato;
 	}
 }
