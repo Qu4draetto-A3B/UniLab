@@ -21,7 +21,6 @@ public class Registrazione implements View {
         String nome = term.readLine("Inserisci nome");
         String cognome = term.readLine("Inserisci cognome");
         String uid = term.readLine("Inserisci ID");
-
         String email = term.readLine("Inserisci email");
         String nomeCentro = term.readLine("inserisci nome centro di monitoraggio");
 
