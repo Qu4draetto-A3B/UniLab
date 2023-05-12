@@ -1,0 +1,10 @@
+\contentsline {section}{\tocsection {}{1}{Installazioni}}{1}{section.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Requisiti di sistema}}{1}{subsection.1.1}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{Setup ambiente}}{1}{subsection.1.2}%
+\contentsline {subsection}{\tocsubsection {}{1.3}{Installazione programma}}{1}{subsection.1.3}%
+\contentsline {section}{\tocsection {}{2}{Esecuzione ed Uso}}{1}{section.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Setup e Lancio del programma}}{1}{subsection.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Uso delle Funzionalità}}{1}{subsection.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{Data set di test}}{1}{subsection.2.3}%
+\contentsline {section}{\tocsection {}{3}{Limiti della soluzione sviluppata}}{1}{section.3}%
+\contentsline {section}{\tocsection {}{4}{Sitografia/ Bibliografia}}{1}{section.4}%
