@@ -1,16 +1,16 @@
 \contentsline {section}{\numberline {1}Introduzione}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Funzionamento generale dell'applicazione}{3}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Avviare l'applicazione}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Requisiti minimi}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Avviare l'applicazione}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Troubleshooting}{3}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Schermata principale}{3}{section.3}%
-\contentsline {section}{\numberline {4}Menù principale}{3}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Voci disponibili}{3}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Funzionamento}{3}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Quit}{3}{subsubsection.4.2.1}%
-\contentsline {section}{\numberline {5}Mostra Misurazioni}{3}{section.5}%
-\contentsline {section}{\numberline {6}Registrazione}{3}{section.6}%
-\contentsline {section}{\numberline {7}Login}{3}{section.7}%
-\contentsline {section}{\numberline {8}Limiti della soluzione sviluppata}{3}{section.8}%
-\contentsline {section}{\numberline {9}Sitografia/ Bibliografia}{3}{section.9}%
+\contentsline {section}{\numberline {2}Avviare l'applicazione}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Requisiti minimi}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Avviare l'applicazione}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Troubleshooting}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Schermata principale}{5}{section.3}%
+\contentsline {section}{\numberline {4}Menù principale}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Voci disponibili}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Funzionamento}{6}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Esci}{6}{subsubsection.4.2.1}%
+\contentsline {section}{\numberline {5}Cerca le Misurazioni}{7}{section.5}%
+\contentsline {section}{\numberline {6}Login}{7}{section.6}%
+\contentsline {section}{\numberline {7}Registrazione}{7}{section.7}%
+\contentsline {section}{\numberline {8}Limiti della soluzione sviluppata}{7}{section.8}%
+\contentsline {section}{\numberline {9}Sitografia/ Bibliografia}{7}{section.9}%
