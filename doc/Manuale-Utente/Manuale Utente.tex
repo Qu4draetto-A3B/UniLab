@@ -1,9 +1,6 @@
-\documentclass[12pt,twoside]{amsart}
+\documentclass[a4paper, 12pt,twoside]{article}
 %questa e la document class, puoi modificare la dimensione dei caratteri, del foglio e altro
 
-\usepackage{amssymb}
-\usepackage{amscd}
-\usepackage[abbrev,alphabetic]{amsrefs}
 \usepackage{hyperref}
 %\usepackage{showkeys} mostra i label che scegli
 
@@ -22,38 +19,68 @@
 %%%%
 %%%%%%%
 
+\title {
+	CLIMATE MONITORING \\
+	{Manuale utente}}
 
-\title[1 template]
-{CLIMATE MONITORING} 
 %Titolo e nelle parentesi quadre abbreviazione
-\author{Iuri Antico, Michael Bernasconi, Gabriele Borgia, Beatrice Balzarini} 
+
+\author{
+	Iuri Antico \textit{matricola}:
+	\texttt{753144}
+	\and \\
+	Michael Bernasconi \textit{matricola}:
+	\texttt{752259}
+	\and \\
+	Gabriele Borgia \textit{matricola}:
+	\texttt{753262}
+	\and \\
+	Beatrice Balzarini \textit{matricola}:
+	\texttt{752257}
+}
+	
+\date{\today}
 
 \begin{document}
 	
-	
-	\maketitle
-	
-	
+	\makeatletter
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	\makeatother
+
 	\tableofcontents
+
+	\newpage
 	
-	\section{Installazioni}
+	\section{Introduzione}
+	Climate Monitoring è un'applicazione di monitoraggio di parametri climatici fornita da centri di monitoraggio sul territorio italiano, in grado di rendere disponibili, a operatori ambientali e comuni cittadini, i dati relativi alla propria zona di interesse. \\	
+	In particolare, un cittadino ha la possibilità di visualizzare i parametri climatici di proprio interesse, mentre un operatore può gestirli in base alle necessità del centro di monitoraggio di cui si occupa.
 	
-		\subsection{Requisiti di sistema}
+		\subsection{Funzionamento generale dell'applicazione}
+		L'applicazione usa i dati forniti dal file CoordinateMonitoraggio:
 		
-		\subsection{Setup ambiente}
-		
-		\subsection{Installazione programma}
 			
-	\section{Esecuzione ed Uso}
+	\section{Avviare l'applicazione}
 	
-		\subsection{Setup e Lancio del programma}
+		\subsection{Requisiti minimi}
 		
-		\subsection{Uso delle Funzionalità}
+		\subsection{Avviare l'applicazione}
 		
-		\subsection{Data set di test}
+		\subsection{Troubleshooting}
 		
+	\section{Schermata principale}
+	
+	\section{Menù principale}
+	\subsection{Voci disponibili}
+	\subsection{Funzionamento}
+			\subsubsection{Esci}
+	
+	\section{Cerca le Misurazioni}
+	\section{Login}
+	\section{Registrazione}
+
 	\section{Limiti della soluzione sviluppata}
-	
 	\section{Sitografia/ Bibliografia}
 	
 
