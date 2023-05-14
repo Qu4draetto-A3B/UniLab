@@ -109,13 +109,12 @@ public class GestoreOperatore extends Gestore {
 	@Override
 	protected DataTable buildObject(CSVRecord record) {
 		CentroMonitoraggio cm = DataBase.centro.getCentro(record.get("Centro")).get();
-		Operatore op = new Operatore(record.get("CodFis"),
+
+		return new Operatore(record.get("CodFis"),
 				record.get("UserID"),
 				record.get("Nome"),
 				record.get("Cognome"),
 				record.get("Email"),
 				cm);
-
-		return op;
 	}
 }

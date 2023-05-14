@@ -18,7 +18,7 @@ public class AreaGeografica implements DataTable {
 	 *
 	 * @param geoID         Id dell'area geografica
 	 * @param latitudine    Latitudine relativa all'area geografica
-	 * @param logitudine    Longitudine relativa all'area geografica
+	 * @param longitudine    Longitudine relativa all'area geografica
 	 * @param stato         Stato in cui si trova l'area geografica
 	 * @param denominazione Nome dell'area geografica
 	 */
@@ -31,17 +31,6 @@ public class AreaGeografica implements DataTable {
 		this.denominazione = denominazione;
 	}
 
-	/**
-	 * Metodo che imposta la latitudine relativa all'area geografica che chiama il
-	 * metodo
-	 *
-	 * @param latitudine Latitudine relativa all'area geografica
-	 */
-
-	public void setLatitudine(double latitudine) {
-		this.latitudine = latitudine;
-	}
-
 	public long getGeoID() {
 		return geoID;
 	}
@@ -50,7 +39,6 @@ public class AreaGeografica implements DataTable {
 	 * @return Restituisce la latitudine relativa all'area geografica che chiama il
 	 *         metodo
 	 */
-
 	public double getLatitudine() {
 		return latitudine;
 	}
@@ -59,7 +47,6 @@ public class AreaGeografica implements DataTable {
 	 * @return Restituisce la logitudine relativa all'area geografica che chiama il
 	 *         metodo
 	 */
-
 	public double getLongitudine() {
 		return longitudine;
 	}
@@ -68,7 +55,6 @@ public class AreaGeografica implements DataTable {
 	 * @return Restituisce lo stato in cui si trova l'area geografica che chiama il
 	 *         metodo
 	 */
-
 	public String getStato() {
 		return stato;
 	}

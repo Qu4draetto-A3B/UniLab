@@ -29,7 +29,7 @@ public class GestoreCentro extends Gestore {
 			return new Result<>(1, "Centro non trovato");
 		}
 
-		return new Result<CentroMonitoraggio>((CentroMonitoraggio) buildObject(target));
+		return new Result<>((CentroMonitoraggio) buildObject(target));
 	}
 
 	public boolean addCentro(CentroMonitoraggio cm) {

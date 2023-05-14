@@ -27,4 +27,5 @@ doc/javadoc
 
 # binaries
 bin/
+out/
 lib/

@@ -1,7 +1,5 @@
 package a3b.climate.cli;
 
-import java.util.Optional;
-
 import a3b.climate.Main;
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.CentroMonitoraggio;
@@ -10,34 +8,43 @@ import a3b.climate.utils.result.Result;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
+import java.util.Optional;
+
 public class Registrazione implements View {
-    public Registrazione() {
-        super();
-    }
+	public Registrazione() {
+		super();
+	}
 
-    @Override
-    public void start(Terminal term) {
-        String cf = term.readLine("Inserisci codice fiscale");
-        String nome = term.readLine("Inserisci nome");
-        String cognome = term.readLine("Inserisci cognome");
-        String uid = term.readLine("Inserisci ID");
-        String email = term.readLine("Inserisci email");
-        String nomeCentro = term.readLine("inserisci nome centro di monitoraggio");
+	@Override
+	public void start(Terminal term) {
+		boolean keep = true;
+		while (keep) {
+			String cf = term.readWhile(String::isBlank, "Inserisci codice fiscale").trim();
+			String nome = term.readWhile(String::isBlank, "Inserisci il tuo nome").trim();
+			String cognome = term.readWhile(String::isBlank, "Inserisci il tuo cognome").trim();
+			String uid = term.readWhile(String::isBlank, "Inserisci User ID").trim();
+			String email = term.readWhile(String::isBlank, "Inserisci email").trim();
+			String nomeCentro = term.readWhile(String::isBlank, "Inserisci il nome del tuo centro").trim();
+			String pwd = term.readPasswordWhile(s -> s.length() < 8, "Inserisci password");
 
-		String pwd = term.readPasswordWhile((s) -> s.length() < 8, "Inserisci password");
+			Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(nomeCentro);
 
-        Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(nomeCentro);
+			if (rcm.isError()) {
+				if (term.promptUser(true, "Centro non trovato, vuoi riprovare?")) {
+					continue;
+				}
+			}
 
-        if (!rcm.isValid()) {
-            term.printf("Non funge");
-        }
+			Result<Operatore> rop = DataBase.operatore.registrazione(new Operatore(cf, uid, nome, cognome, email, rcm.get()), pwd);
 
-        Result<Operatore> rop = DataBase.operatore.registrazione(new Operatore(cf, uid, nome, cognome, email, rcm.get()), pwd);
+			if (rop.isError()) {
+				term.printfln("Errore %d: %s", rop.getError(), rop.getMessage());
+				if (term.promptUser(true, "Vuoi riprovare?")) {
+					continue;
+				}
+			}
 
-        if (!rop.isValid()) {
-            term.printf("Errore %d: %s", rop.getError(), rop.getMessage());
-        }
-
-        Main.oper = Optional.of(rop.get());
-    }
+			Main.oper = Optional.of(rop.get());
+		}
+	}
 }

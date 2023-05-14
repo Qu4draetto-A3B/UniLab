@@ -4,6 +4,10 @@ import java.io.Console;
 import java.io.IOException;
 import java.util.function.Predicate;
 
+/**
+ * Wrapper around <code>System.console()</code> to add more functionalities
+ * @see java.io.Console
+ */
 public class Terminal {
 	private Console con;
 
@@ -23,43 +27,95 @@ public class Terminal {
 		}
 	}
 
+	/**
+	 * Clears the console with "\033[H\033[2J" ANSI escape code
+	 */
 	public void clear() {
 		con.printf("\033[H\033[2J");
 	}
 
+	/**
+	 * Prints a formatted string to the console
+	 * @param str The string to print
+	 * @param args Values for string interpolation
+	 */
 	public void printf(String str, Object... args) {
 		con.printf(str, args);
 	}
 
+	/**
+	 * Prints a formatted string to the console, with a final newline
+	 * @param str The string to print
+	 * @param args Values for string interpolation
+	 */
 	public void printfln(String str, Object... args) {
-		con.printf(str + "\n", args);
+		con.printf(str + System.lineSeparator(), args);
 	}
 
+	/**
+	 * Reads a line from the user's console.
+	 * @return The string from the user
+	 */
 	public String readLine() {
-		return con.readLine("> ");
+		String s = con.readLine("> ");
+		return s == null ? "" : s;
 	}
 
+	/**
+	 * Prints a string to the user and waits a response
+	 * @param str The string to print
+	 * @param args Values for string interpolation
+	 * @return The string from the user
+	 */
 	public String readLine(String str, Object... args) {
-		return con.readLine(str + "\n> ", args);
+		String s = con.readLine(str + System.lineSeparator() + "> ", args);
+		return s == null ? "" : s;
 	}
 
+	/**
+	 * Prints a string to the user and waits a response, if no response is given returns <code>def</code>
+	 * @param def The default return value
+	 * @param str The string to print
+	 * @param args Values for string interpolation
+	 * @return The string from the user
+	 */
 	public String readLineOrDefault(String def, String str, Object... args) {
-		String out = readLine(str, args).strip();
+		String out = readLine(str, args).trim();
 		return out.isEmpty() ? def : out;
 	}
 
+	/**
+	 * Prints a string to the user and waits a response, hiding typed text
+	 * @param str The string to print
+	 * @param args Values for string interpolation
+	 * @return The string from the user
+	 */
 	public String readPassword(String str, Object... args) {
 		return new String(con.readPassword(str + "\n> ", args));
 	}
 
+	/**
+	 * Prints a string to the user and waits a response, checking the user's input with the provided function
+	 * @param fn Boolean condition, if <code>true</code> keeps asking some input
+	 * @param str The string to print
+	 * @param args Values for string interpolation
+	 * @return The string from the user
+	 */
 	public String readWhile(Predicate<String> fn, String str, Object... args) {
 		String out = readLine(str, args);
 		while (fn.test(out)) {
-			out = con.readLine(str, args);
+			out = readLine(str, args);
 		}
 		return out;
 	}
 
+	/**
+	 * Prints a string to the user and waits a response, checking the user's input with the provided function, while hiding typed text
+	 * @param fn Boolean condition, if <code>true</code> keeps asking some input
+	 * @param str The string to print
+	 * @param args Values for string interpolation
+	 * @return The string from the user
+	 */
 	public String readPasswordWhile(Predicate<String> fn, String str, Object... args) {
 		String out = readPassword(str, args);
 		while (fn.test(out)) {
@@ -83,14 +139,14 @@ public class Terminal {
 			def = "Y";
 		}
 
-		String out = con.readLine(str + "\n" + yn + " > ", args).strip();
-		out = out.isEmpty() ? def : out;
+		String in = con.readLine(str + "\n" + yn + " > ", args).trim();
+		in = in.isBlank() ? def : in;
 
 		boolean res = false;
-		res |= out.equalsIgnoreCase("y");
-		res |= out.equalsIgnoreCase("yes");
-		res |= out.equalsIgnoreCase("s");
-		res |= out.equalsIgnoreCase("si");
+		res |= in.equalsIgnoreCase("y");
+		res |= in.equalsIgnoreCase("yes");
+		res |= in.equalsIgnoreCase("s");
+		res |= in.equalsIgnoreCase("si");
 
 		return res;
 	}
