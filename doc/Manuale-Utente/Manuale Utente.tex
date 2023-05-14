@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,twoside]{article}
+\documentclass[a4paper,12pt]{article}
 %questa e la document class, puoi modificare la dimensione dei caratteri, del foglio e altro
 
 \usepackage{hyperref}
@@ -51,11 +51,29 @@
 	\newpage
 	
 	\section{Introduzione}
-	Climate Monitoring è un'applicazione di monitoraggio di parametri climatici fornita da centri di monitoraggio sul territorio italiano, in grado di rendere disponibili, a operatori ambientali e comuni cittadini, i dati relativi alla propria zona di interesse. \\	
-	In particolare, un cittadino ha la possibilità di visualizzare i parametri climatici di proprio interesse, mentre un operatore può gestirli in base alle necessità del centro di monitoraggio di cui si occupa.
+	\textit{Climate Monitoring} è un'applicazione di monitoraggio di parametri climatici fornita da centri di monitoraggio sul territorio italiano, in grado di rendere disponibili, a operatori ambientali e comuni cittadini, i dati relativi alla propria zona di interesse.
 	
 		\subsection{Funzionamento generale dell'applicazione}
-		L'applicazione usa i dati forniti dal file CoordinateMonitoraggio:
+		I parametri climatici che possono essere rilevati sono:
+		\begin{itemize}
+		\item \textit{Vento}, la cui velocità è espressa in km/h;
+		\item \textit{Umidità}, misurata in percercentuale (\%);
+		\item \textit{Pressione}, misurata in hPa;
+		\item \textit{Temperatura}, misurata in C°;
+		\item \textit{Precipitazione}, misurata in mm di pioggia;
+		\item \textit{Altitudine dei ghiacciai}, misurata in m;
+		\item \textit{Massa dei ghiacciai}, misurata in kg.
+		\end{itemize}
+		L'intensità di ogni fenomeno climatico viene mirata su una scala che va da \textbf{1} (\textit{critico}) a \textbf{5} (\textit{ottimale}).
+		\\
+		Possono inoltre essere presenti delle note testuali (di max 256 caratteri) per descrivere con più precisione i dati geografici.
+		\\
+		L'applicazione permette:
+		\begin{itemize}
+		\item ai \textbf{comuni cittadini}, di visualizzare i parametri climatici di proprio interesse in forma aggregata relativi a ciascuna area
+		\item a \textbf{operatori autorizzati}, di gestire aree di interesse, inserendo i vari parametri climatici.
+		\end{itemize}
+		In particolare questi ultimi hanno la possibilità di registrarsi all'applicazione e successivamente creare centri di monitoraggio ed aggiungervi aree di interesse.
 	
 	\newpage
 			
