@@ -67,4 +67,31 @@ public class Terminal {
 		}
 		return out;
 	}
+
+	/**
+	 * Prompts the user with a yes or no question.
+	 * @param yes Whether the default for absent user action is yes or no, respectively <code>true</code> or <code>false</code>
+	 * @param str Question for the user
+	 * @param args Values for string interpolation
+	 * @return <code>true</code> if user sent "y" or "yes", <code>false</code> otherwise
+	 */
+	public boolean promptUser(boolean yes, String str, Object... args) {
+		String yn = "[y/N]";
+		String def = "N";
+		if (yes) {
+			yn = "[Y/n]";
+			def = "Y";
+		}
+
+		String out = con.readLine(str + "\n" + yn + " > ", args).strip();
+		out = out.isEmpty() ? def : out;
+
+		boolean res = false;
+		res |= out.equalsIgnoreCase("y");
+		res |= out.equalsIgnoreCase("yes");
+		res |= out.equalsIgnoreCase("s");
+		res |= out.equalsIgnoreCase("si");
+
+		return res;
+	}
 }
