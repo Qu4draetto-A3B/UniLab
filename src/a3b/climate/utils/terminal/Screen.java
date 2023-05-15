@@ -24,5 +24,6 @@ public class Screen {
 	public void show(View v) {
 		term.clear();
 		v.start(term);
+		term.clear();
 	}
 }

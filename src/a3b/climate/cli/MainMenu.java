@@ -20,6 +20,7 @@ import a3b.climate.utils.terminal.View;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
@@ -32,20 +33,30 @@ public class MainMenu implements View {
 
 	@Override
 	public void start(Terminal term) {
-		String menu = "Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni";
+		StringBuilder menu = new StringBuilder();
 		String in;
 		char c;
+		boolean error;
 
 		while (true) {
-			Main.oper.ifPresent(operatore -> term.printfln("Benvenuto %s", operatore.getNome()));
+			if (Main.oper.isPresent()) {
+				menu.append(String.format("Benvenuto %s\n", Main.oper.get().getNome()));
+				menu.append("Comandi: \nQ: Esci\nP: Profilo\nL: Logout\nC: Cerca le misurazioni\nI: Inserisci misurazione");
+			} else {
+				menu.append("Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni");
+			}
 
-			in = term.readLineOrDefault(".", menu);
+			in = term.readLineOrDefault(".", menu.toString());
 
 			c = in.toLowerCase().charAt(0);
 
+			menu.delete(0, menu.length());
 			term.clear();
 
-			basic(c);
+			if (Main.oper.isPresent()) error = user(c);
+			else error = basic(c);
+
+			if (error) menu.append("[!!] Comando Errato\n");
 		}
 	}
 
@@ -68,6 +79,37 @@ public class MainMenu implements View {
 
 			case 'c':
 				Main.scn.show(new MostraMisurazioni());
+				break;
+
+			default:
+				return true;
+		}
+		return false;
+	}
+
+	private boolean user(char c) {
+		switch (c) {
+			case '.':
+				break;
+
+			case 'q':
+				Main.stop();
+				break;
+
+			case 'p':
+				Main.scn.show(new Profile());
+				break;
+
+			case 'l':
+				Main.oper = Optional.empty();
+				break;
+
+			case 'c':
+				Main.scn.show(new MostraMisurazioni());
+				break;
+
+			case 'i':
+				//TODO
 				break;
 
 			default:
