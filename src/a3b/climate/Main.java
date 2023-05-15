@@ -22,10 +22,21 @@ import a3b.climate.magazzeno.Operatore;
 import a3b.climate.utils.terminal.Screen;
 
 /**
- * Main entry point
+ * Interdisciplinary Workshop A <br>
+ * Climate Monitoring <br>
+ * A.A. 2022-2023
+ *
+ * @author Iuri Antico, 753144
+ * @author Beatrice Balzarini, 752257
+ * @author Michael Bernasconi, 752259
+ * @author Gabriele Borgia, 753262
  */
 public class Main {
 	public static Screen scn = new Screen();
+
+	/**
+	 * Session cookie for the logged in operator
+	 */
 	public static Optional<Operatore> oper = Optional.empty();
 
 	public static void main(String[] args) throws Exception {
