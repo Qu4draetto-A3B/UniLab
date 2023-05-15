@@ -75,6 +75,11 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		return new Filtratore(nlm);
 	}
 
+	/**
+	 *
+	 * @param cms
+	 * @return
+	 */
 	public Filtratore filtraCentro(CentroMonitoraggio... cms) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
