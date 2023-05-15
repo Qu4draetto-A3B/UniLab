@@ -2,12 +2,42 @@
 \contentsline {subsection}{\numberline {1.1}Librerie esterne utilizzate}{3}{subsection.1.1}%
 \contentsline {subsubsection}{\numberline {1.1.1}Apache Commons CSV}{3}{subsubsection.1.1.1}%
 \contentsline {section}{\numberline {2}Struttura generale del sistema di classi}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Cli}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.1}cli}{3}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}Help}{3}{subsubsection.2.1.1}%
 \contentsline {subsubsection}{\numberline {2.1.2}Login}{3}{subsubsection.2.1.2}%
 \contentsline {subsubsection}{\numberline {2.1.3}MainMenu}{3}{subsubsection.2.1.3}%
 \contentsline {subsubsection}{\numberline {2.1.4}MostraMisurazioni}{3}{subsubsection.2.1.4}%
 \contentsline {subsubsection}{\numberline {2.1.5}Registrazione}{3}{subsubsection.2.1.5}%
-\contentsline {subsection}{\numberline {2.2}Gestori}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Magazzeno}{3}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Utils}{3}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.2}gestori}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}DataBase}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Gestore}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}GestoreArea}{4}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}GestoreCentro}{4}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}GestoreDato}{4}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}GestoreMisurazioni}{5}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}GestoreOperatore}{5}{subsubsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.3}Magazzeno}{5}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}AreaGeografica}{5}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}CentroMonitoraggio}{6}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}DatoGeografico}{6}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Filtratore}{7}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.5}Indirizzo}{7}{subsubsection.2.3.5}%
+\contentsline {subsubsection}{\numberline {2.3.6}ListaAree}{7}{subsubsection.2.3.6}%
+\contentsline {subsubsection}{\numberline {2.3.7}Misurazioni}{7}{subsubsection.2.3.7}%
+\contentsline {subsubsection}{\numberline {2.3.8}Operatore}{7}{subsubsection.2.3.8}%
+\contentsline {subsection}{\numberline {2.4}Utils}{7}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}listacustom.CollezioniIterator}{7}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.5}listacustom.Nodo}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}result.Blunder}{7}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}result.Outcome}{7}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}result.Panic}{7}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}result.Result}{7}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}terminal.Screen}{7}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}terminal.Terminal}{7}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}terminal.View}{7}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}CercaAree}{7}{subsection.2.13}%
+\contentsline {subsection}{\numberline {2.14}Convertable}{7}{subsection.2.14}%
+\contentsline {subsection}{\numberline {2.15}DataTable}{7}{subsection.2.15}%
+\contentsline {subsection}{\numberline {2.16}MediaAree}{7}{subsection.2.16}%
+\contentsline {subsection}{\numberline {2.17}DatoGeografico}{7}{subsection.2.17}%
+\contentsline {subsection}{\numberline {2.18}Main}{7}{subsection.2.18}%
