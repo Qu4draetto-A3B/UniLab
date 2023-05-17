@@ -17,7 +17,7 @@ package a3b.climate.utils.result;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
-public class Result<T> implements Blunder<T, Integer> {
+public class Result<T> {
 	private final int error;
 	private final String message;
 	private final T content;
@@ -42,26 +42,22 @@ public class Result<T> implements Blunder<T, Integer> {
 		return error == 0;
 	}
 
-	@Override
 	public boolean isError() {
 		return error != 0;
 	}
 
-	@Override
 	public void ifValid(BiConsumer<T, Integer> fn) throws NullPointerException {
 		if (isValid()) {
 			fn.accept(content, error);
 		}
 	}
 
-	@Override
 	public void ifError(BiConsumer<T, Integer> fn) throws NullPointerException {
 		if (isError()) {
 			fn.accept(content, error);
 		}
 	}
 
-	@Override
 	public Integer getError() {
 		return error;
 	}
@@ -74,7 +70,6 @@ public class Result<T> implements Blunder<T, Integer> {
 		return fullMessage;
 	}
 
-	@Override
 	public T get() {
 		if (content == null) {
 			panic();
@@ -82,22 +77,18 @@ public class Result<T> implements Blunder<T, Integer> {
 		return content;
 	}
 
-	@Override
 	public T getOr(T other) {
 		return content != null ? content : other;
 	}
 
-	@Override
 	public T getOrElse(Supplier<T> fn) {
 		return content != null ? content : fn.get();
 	}
 
-	@Override
 	public T except() {
 		return content;
 	}
 
-	@Override
 	public void panic() {
 		throw new Panic(fullMessage);
 	}
