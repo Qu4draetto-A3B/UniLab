@@ -14,6 +14,8 @@
  */
 package a3b.climate.utils.terminal;
 
+import a3b.climate.utils.result.Either;
+
 import java.io.Console;
 import java.io.IOException;
 import java.util.function.Predicate;
@@ -95,7 +97,7 @@ public class Terminal {
 	 */
 	public String readLineOrDefault(String def, String str, Object... args) {
 		String out = readLine(str, args).trim();
-		return out.isEmpty() ? def : out;
+		return out.isBlank() ? def : out;
 	}
 
 	/**
@@ -163,5 +165,24 @@ public class Terminal {
 		res |= in.equalsIgnoreCase("si");
 
 		return res;
+	}
+
+	/**
+	 * Metodo super generico, capace di assorbire le capacita' dei precedenti
+	 * @param fn
+	 * @param def
+	 * @param str
+	 * @param args
+	 * @return
+	 */
+	public Either<? extends Throwable, String> read(Predicate<String> fn, String def, String str, Object... args) {
+		String out;
+		 do {
+			out = readLine(str, args);
+			if (out == null) {
+				return Either.left(new NullPointerException());
+			}
+		} while (fn.test(out));
+		return Either.right(out.isBlank() ? def : out);
 	}
 }

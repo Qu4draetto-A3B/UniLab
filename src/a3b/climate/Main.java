@@ -20,6 +20,7 @@ import a3b.climate.cli.Help;
 import a3b.climate.cli.MainMenu;
 import a3b.climate.magazzeno.Operatore;
 import a3b.climate.utils.terminal.Screen;
+import a3b.climate.utils.terminal.View;
 
 /**
  * Interdisciplinary Workshop A <br>
@@ -33,6 +34,7 @@ import a3b.climate.utils.terminal.Screen;
  */
 public class Main {
 	public static Screen scn = new Screen();
+	private static View menu = new MainMenu();
 
 	/**
 	 * Session cookie for the logged in operator
@@ -48,7 +50,11 @@ public class Main {
 			scn.show(new Help());
 			return;
 		}
-		scn.show(new MainMenu());
+		menu();
+	}
+
+	public static void menu() {
+		scn.show(menu);
 	}
 
 	public static void stop() {

@@ -46,15 +46,20 @@ public class Registrazione implements View {
 			if (rcm.isError()) {
 				if (term.promptUser(true, "Centro non trovato, vuoi riprovare?")) {
 					continue;
+				} else {
+					return;
 				}
 			}
 
+			//term.readLine("%s", rcm.get());
 			Result<Operatore> rop = DataBase.operatore.registrazione(new Operatore(cf, uid, nome, cognome, email, rcm.get()), pwd);
 
 			if (rop.isError()) {
 				term.printfln("Errore %d: %s", rop.getError(), rop.getMessage());
 				if (term.promptUser(true, "Vuoi riprovare?")) {
 					continue;
+				} else {
+					return;
 				}
 			}
 

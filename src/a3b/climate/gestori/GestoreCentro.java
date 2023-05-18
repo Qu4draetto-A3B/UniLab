@@ -41,20 +41,13 @@ public class GestoreCentro extends Gestore {
 	 * @return Restituisce il centro di monitoraggio corrispondente al nome fornito come parametro
 	 */
 	public Result<CentroMonitoraggio> getCentro(String nome) {
-		CSVRecord target = null;
-
 		for (CSVRecord record : records) {
 			if (record.get("Name").equalsIgnoreCase(nome)) {
-				target = record;
-				break;
+				return new Result<>((CentroMonitoraggio) buildObject(record));
 			}
 		}
 
-		if (target == null) {
-			return new Result<>(1, "Centro non trovato");
-		}
-
-		return new Result<>((CentroMonitoraggio) buildObject(target));
+		return new Result<>(1, "Centro non trovato");
 	}
 
 	/**
