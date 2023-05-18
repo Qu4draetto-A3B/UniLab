@@ -17,6 +17,9 @@ package a3b.climate.cli;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
+/**
+ * Permette di mostrare all'utente le varie misurazioni
+ */
 public class MostraMisurazioni implements View {
     public MostraMisurazioni() {
         super();

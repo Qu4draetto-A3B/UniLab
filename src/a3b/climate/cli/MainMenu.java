@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
- * Main application menu
+ * Modella il menu principale
  */
 public class MainMenu implements View {
 	public MainMenu() {
@@ -60,6 +60,12 @@ public class MainMenu implements View {
 		}
 	}
 
+
+	/**
+	 * Metodo che permette all'utente di accedere alle varie funzioni da terminale
+	 * @param c carattere corrispondente alla funzione a cui vuole accedere l'utente
+	 * @return restituisce un booleano che indica se l'operazione è andata a buon fine
+	 */
 	private boolean basic(char c) {
 		switch (c) {
 			case '.':

@@ -48,7 +48,6 @@ public class Indirizzo implements Convertable {
 	 * @param comune Comune relativo all'indirizzo
 	 * @param provincia Provincia relativa all'indirizzo
 	 */
-
 	public Indirizzo(String nomeVia, int civico, int cap, String comune, String provincia) {
 		if (cap >= 100000)
 			throw new IllegalArgumentException("CAP invalido");
@@ -60,17 +59,15 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * @return Restituisce il nome della via relativo all'indirizzo che chiama il metodo
+	 * @return Nome della via relativo all'indirizzo che chiama il metodo
 	 */
-
 	public String getNomeVia() {
 		return nomeVia;
 	}
 
 	/**
-	 * @return Restituisce il numero civico relativo all'indirizzo che chiama il metodo
+	 * @return Numero civico relativo all'indirizzo che chiama il metodo
 	 */
-
 	public int getCivico() {
 		return civico;
 	}
@@ -79,27 +76,27 @@ public class Indirizzo implements Convertable {
 	 * Metodo che imposta il numero civico relativo all'indirizzo che chiama il metodo
 	 * @param civico Numero civico relativo all'indirizzo
 	 */
-
-
 	public void setCivico(int civico) {
 		this.civico = civico;
 	}
 
 	/**
-	 * @return Restituisce il codice di avviamento postale relativo all'indirizzo che chiama il metodo
+	 * @return Codice di avviamento postale relativo all'indirizzo che chiama il metodo
 	 */
-
 	public int getCap() {
 		return cap;
 	}
 
 	/**
-	 * @return Restituisce il comune relativo all'indirizzo che chiama il metodo
+	 * @return Comune relativo all'indirizzo che chiama il metodo
 	 */
 	public String getComune() {
 		return comune;
 	}
 
+	/**
+	 * @return Provincia relativa all'indirizzo che chiama il metodo
+	 */
 	public String getProvincia() {
 		return provincia;
 	}

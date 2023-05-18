@@ -45,7 +45,7 @@ public class GestoreDato extends Gestore {
 	/**
 	 * Metodo che ricerca un determinato dato geografico in base al suo ID
 	 * @param rid ID relativo al dato geografico
-	 * @return Restituisce il dato geografico corrispondente all'ID fornito come parametro
+	 * @return record relativo al dato geografico corrispondente all'ID fornito come parametro
 	 */
 	public Result<DatoGeografico> getDato(long rid) {
 		CSVRecord rec = null;
@@ -69,7 +69,7 @@ public class GestoreDato extends Gestore {
 	/**
 	 * Metodo che crea un nuovo record relativo a un determinato dato geografico e lo memorizza nel file ParametriClimatici.CSV
 	 * @param dato Dato geografico per cui si vuole creare un nuovo record
-	 * @return Restituisce un nuovo record relativo al dato geografico fornito come parametro
+	 * @return Nuovo record relativo al dato geografico fornito come parametro
 	 */
 	public Result<Object> addDato(DatoGeografico dato) {
 		long newRID = Long.parseLong(getProperty("LastRID").get());

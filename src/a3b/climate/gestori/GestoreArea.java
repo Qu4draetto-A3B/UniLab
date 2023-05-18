@@ -36,8 +36,8 @@ public class GestoreArea extends Gestore implements CercaAree {
 	}
 	/**
 	 * Metodo che ricerca una determinata area geografica in base al suo ID
-	 * @param geoId ID relativo all'area geografica d'ineteresse
-	 * @return Restituisce l'area geografica corrispondente all'ID fornito come parametro
+	 * @param geoId ID relativo all'area geografica d'interesse
+	 * @return Area geografica corrispondente all'ID fornito come parametro
 	 */
 	public Result<AreaGeografica> getArea(long geoId) {
 		for (CSVRecord record : records) {

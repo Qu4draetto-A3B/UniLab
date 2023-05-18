@@ -50,31 +50,28 @@ public class AreaGeografica implements DataTable {
 	}
 
 	/**
-	 * @return Restituisce la latitudine relativa all'area geografica che chiama il
-	 *         metodo
+	 * @return Latitudine relativa all'area geografica che chiama il metodo
 	 */
 	public double getLatitudine() {
 		return latitudine;
 	}
 
 	/**
-	 * @return Restituisce la logitudine relativa all'area geografica che chiama il
-	 *         metodo
+	 * @return Logitudine relativa all'area geografica che chiama il metodo
 	 */
 	public double getLongitudine() {
 		return longitudine;
 	}
 
 	/**
-	 * @return Restituisce lo stato in cui si trova l'area geografica che chiama il
-	 *         metodo
+	 * @return Stato in cui si trova l'area geografica che chiama il metodo
 	 */
 	public String getStato() {
 		return stato;
 	}
 
 	/**
-	 * @return Restituisce il nome dell'area geografica che chiama il metodo
+	 * @return Nome dell'area geografica che chiama il metodo
 	 */
 	public String getDenominazione() {
 		return denominazione;

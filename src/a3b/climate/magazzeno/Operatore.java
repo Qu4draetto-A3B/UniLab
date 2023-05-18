@@ -71,7 +71,7 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce il codice fiscale dell'operatore che esegue il metodo
+	 * @return Codice fiscale dell'operatore che esegue il metodo
 	 */
 
 	public String getCf() {
@@ -79,7 +79,7 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce il centro di monitoraggio al quale l'operatore che esegue il metodo e' associato
+	 * @return Centro di monitoraggio al quale l'operatore che esegue il metodo e' associato
 	 */
 
 	public CentroMonitoraggio getCentro() {
@@ -87,7 +87,7 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce il cognome dell'operatore che esegue il metodo
+	 * @return Cognome dell'operatore che esegue il metodo
 	 */
 
 	public String getCognome() {
@@ -95,7 +95,7 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce la e-mail dell'operatore che esegue il metodo
+	 * @return E-mail dell'operatore che esegue il metodo
 	 */
 
 	public String getEmail() {
@@ -103,7 +103,7 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce il nome dell'operatore che esegue il metodo
+	 * @return Nome dell'operatore che esegue il metodo
 	 */
 
 	public String getNome() {
@@ -111,7 +111,7 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce lo user ID relativo all'operatore che esegue il metodo
+	 * @return User ID relativo all'operatore che esegue il metodo
 	 */
 
 	public String getUid() {

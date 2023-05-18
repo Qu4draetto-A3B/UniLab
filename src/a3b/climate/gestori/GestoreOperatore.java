@@ -41,7 +41,7 @@ public class GestoreOperatore extends Gestore {
 	 * Metodo che permette registrare un operatore all'applicazione
 	 * @param op Operatore da registrare
 	 * @param pwd Password da impostare
-	 * @return Restituisce un record relativo all'operatore registrato
+	 * @return Record relativo all'operatore registrato
 	 */
 	public Result<Operatore> registrazione(Operatore op, String pwd) {
 		String cf = op.getCf().toUpperCase();
@@ -70,7 +70,7 @@ public class GestoreOperatore extends Gestore {
 	 * Metodo che permette a un utente di effettuare il login
 	 * @param uid UserID relativo all'utente da registrare
 	 * @param pwd Password relativa all'utente registrato
-	 * @return Restituisce un record relativo all'operatore che ha effettuato il login
+	 * @return Record relativo all'operatore che ha effettuato il login
 	 */
 	public Result<Operatore> login(String uid, String pwd) {
 		String pwdHash = hashPwd(pwd);
@@ -90,7 +90,7 @@ public class GestoreOperatore extends Gestore {
 	/**
 	 * Metodo che ricerca un operatore in base al suo codice fiscale
 	 * @param cf Codice fiscale relativo all'operatore d'interesse
-	 * @return Restituisce il record relativo all'operatore con il codice fiscale fornito come parametro
+	 * @return Record relativo all'operatore con il codice fiscale fornito come parametro
 	 */
 	Result<Operatore> getOperatoreByCf(String cf) {
 		for (CSVRecord record : records) {
@@ -107,7 +107,7 @@ public class GestoreOperatore extends Gestore {
 	/**
 	 * Metodo che ricerca un operatore in base al suo UserID
 	 * @param uid UserID relativo all'operatore d'interesse
-	 * @return Restituisce il record relativo all'operatore con lo UserID fornito come parametro
+	 * @return Record relativo all'operatore con lo UserID fornito come parametro
 	 */
 	Result<Operatore> getOperatoreByUid(String uid) {
 		for (CSVRecord record : records) {
@@ -125,7 +125,7 @@ public class GestoreOperatore extends Gestore {
 	/**
 	 * Metodo che controlla che un codice fiscale sia valido
 	 * @param cf Codice fiscale da controllare
-	 * @return Restituisce un booleano che rappresenta la validità del codice fiscale fornito come parametro
+	 * @return Booleano che rappresenta la validità del codice fiscale fornito come parametro
 	 */
 	private boolean cfIsValid(String cf) {
 		Pattern cfPattern = Pattern.compile(

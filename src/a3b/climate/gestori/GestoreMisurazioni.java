@@ -31,7 +31,7 @@ import a3b.climate.utils.result.*;
  */
 public class GestoreMisurazioni extends Gestore {
 	/**
-	 * Costruzione di un'istanza di GestoreMisurazioni
+	 * Costruttore di un'istanza di GestoreMisurazioni
 	 */
 	public GestoreMisurazioni() {
 		super(
@@ -40,9 +40,9 @@ public class GestoreMisurazioni extends Gestore {
 	}
 
 	/**
-	 *  Metodo che crea un nuovo record relativo a una determinata misurazione
+	 * Metodo che crea un nuovo record relativo a una determinata misurazione
 	 * @param mis Misurazione di cui si vuole creare un nuovo record
-	 * @return Restituisce un nuovo record relativo alla misurazione fornita come parametro
+	 * @return Record relativo alla misurazione fornita come parametro
 	 */
 	public Result<Object> addMisurazione(Misurazione mis) {
 		long newRID = Long.parseLong(getProperty("LastRID").get());
@@ -68,8 +68,9 @@ public class GestoreMisurazioni extends Gestore {
 	}
 
 	/**
-	 * Metodo che memorizza i record relativi alle misurazioni presenti nel file ParametriClimatici.CSV in una lista, la quale inizializza un nuovo oggetto di tipo FIltratore
-	 * @return Restituisce un record
+	 * Metodo che memorizza i record relativi alle misurazioni presenti nel file ParametriClimatici.CSV
+	 * in una lista, la quale inizializza un nuovo oggetto di tipo FIltratore
+	 * @return Record //TODO
 	 */
 	public Result<Filtratore> getMisurazioni() {
 		List<Misurazione> lm = new LinkedList<>();

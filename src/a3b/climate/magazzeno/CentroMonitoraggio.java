@@ -50,7 +50,7 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce il nome del centro di monitoraggio che chiama il metodo
+	 * @return Nome del centro di monitoraggio che chiama il metodo
 	 */
 
 	public String getNome() {
@@ -58,7 +58,7 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce la lista delle aree relative al centro di monitoraggio che chiama il metodo
+	 * @return Lista delle aree relative al centro di monitoraggio che chiama il metodo
 	 */
 
 	public ListaAree getListaAree() {
@@ -66,7 +66,7 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce l'indirizzo del centro di monitoraggio che chiama il metodo
+	 * @return Indirizzo del centro di monitoraggio che chiama il metodo
 	 */
 
 	public Indirizzo getIndirizzo() {

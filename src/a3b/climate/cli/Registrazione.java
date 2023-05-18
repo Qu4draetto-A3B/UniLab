@@ -24,6 +24,9 @@ import a3b.climate.utils.terminal.View;
 
 import java.util.Optional;
 
+/**
+ * Permette all'utente di registrarsi
+ */
 public class Registrazione implements View {
 	public Registrazione() {
 		super();

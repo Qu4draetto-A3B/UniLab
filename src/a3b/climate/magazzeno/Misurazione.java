@@ -61,14 +61,14 @@ public class Misurazione implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce il l'aggregato di informazioni relative al dato della misurazione che chiama il metodo
+	 * @return Aggregato di informazioni relative al dato della misurazione che chiama il metodo
 	 */
 	public DatoGeografico getDato() {
 		return this.dato;
 	}
 
 	/**
-	 * @return Restituisce la data in cui è stata effettuata la misurazione che chiama il metodo
+	 * @return Data in cui è stata effettuata la misurazione che chiama il metodo
 	 */
 	public LocalDateTime getTime() {
 		return this.time;
@@ -79,21 +79,21 @@ public class Misurazione implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce l'operatore che ha effettuato misurazione che chiama il metodo
+	 * @return Operatore che ha effettuato misurazione che chiama il metodo
 	 */
 	public Operatore getOperatore() {
 		return this.operatore;
 	}
 
 	/**
-	 * @return Restituisce il centro di monitoraggio per il qule e' stata effettuata la misurazione che chiama il metodo
+	 * @return Centro di monitoraggio per il qule e' stata effettuata la misurazione che chiama il metodo
 	 */
 	public CentroMonitoraggio getCentro() {
 		return this.centro;
 	}
 
 	/**
-	 * @return Restituisce l'area geografica nella quale e' stata effettuata la misurazione che chiama il metodo
+	 * @return Area geografica nella quale e' stata effettuata la misurazione che chiama il metodo
 	 */
 	public AreaGeografica getArea() {
 		return this.area;

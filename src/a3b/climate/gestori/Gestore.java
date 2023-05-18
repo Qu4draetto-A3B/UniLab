@@ -32,7 +32,7 @@ import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
 /**
- * Racchiude metodi relativi la gestione dei file contenenti i dati d'interesse.
+ * Racchiude metodi relativi la gestione dei file contenenti i dati d'interesse
  */
 public abstract class Gestore implements AutoCloseable {
 	protected final String FILE;
@@ -150,7 +150,7 @@ public abstract class Gestore implements AutoCloseable {
 
 
 	/**
-	 * Metodo che si occupa di impostare una proprietà nel file (*.CSV.DAT) associato a una tabella (*.CSV)
+	 * Metodo che si occupa di impostare una proprieta' nel file (*.CSV.DAT) associato a una tabella (*.CSV)
 	 * @param key
 	 * @param val
 	 * @return

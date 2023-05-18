@@ -23,6 +23,9 @@ import a3b.climate.utils.result.Result;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
+/**
+ *
+ */
 public class Login implements View {
 	public Login() {
 		super();
