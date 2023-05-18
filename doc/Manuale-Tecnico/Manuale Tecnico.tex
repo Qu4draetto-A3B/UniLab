@@ -82,59 +82,69 @@
 			\subsection{Gestore}
 			La classe astratta Gestore contiene metodi relativi la gestione dei file contenenti i dati d'interesse. In particolare:
 			\begin{itemize}
-				\item \textbf{close()}
+				\item \textbf{void close()}
 				Metodo che si occupa di aprire un file.
-				\item \textbf{reload()}
+				\item \textbf{void reload()}
 				Metodo che si occupa di ricaricare (chiudere e riaprire un file)
-				\item  \textbf{setProperty(String s, String k)}
-				Metodo che si occupa di impostare una proprietà nel file (*.CSV.DAT) associato ad una tabella (*.CSV)
+			
+				\item \textbf {DataTable buildObject (CSVRecord r)}
+				Metodo astratto che si occupa di prendere in input come parametro formale un record e crea l'oggetto associato all'implementatore.
+				
+				\item \textbf{Result\textless String\textgreater getProperty(String key)}
+				Metodo che si occupa di prendere una proprietà nel file (*.CSV.DAT) associato ad una tabella (*.CSV). Il parametro formale di questo metodo è una stringa che è la chiave per prendere la proprietà del file. Nel caso in cui l'operazione di ricerca è corretta il metodo restituisce un Result valido con la stringa della proprietà che hanno chiesto. Altrimenti nel caso in cui l'operazione non è corretta il metodo restituisce una stringa associata ad un codice di errore. 
+				
+				\item  \textbf{Result\textless Object\textgreater setProperty(String s, String k)}
+				Metodo che si occupa di impostare una proprietà nel file (*.CSV.DAT) associato ad una tabella (*.CSV). Il metodo ha due parametri formali: una stringa che è la proprietà da impostare e l'altra è la chiave del file. Nel caso in cui l'operazione non è corretta il metodo restituisce un Result di Object come errore.
 			\end{itemize}
 
 			\subsection{GestoreArea}
 			la classe GestoreArea estende la classe Gestore e ne eredita tutti i metodi
 			implementa l'interfaccia CercaAree e contiene i seguenti metodi:
 			\begin{itemize}
-				\item \textbf{getArea()}
-				Metodo che ricerca una determinata area geografica in base al suo ID
+				\item \textbf{Result\textless AreaGeografica\textgreater getArea(long geoID)}
+				Metodo che ricerca una determinata area geografica in base al suo ID. In questo metodo c'è un solo parametro formale che il numero di geoID. Nel caso in cui l'area esiste il metodo restituisce un Result di AreaGeografica sennò restituisce una stringa di errore.
 			\end{itemize}
 
 			\subsection{GestoreCentro}
 			la classe GestoreCentro estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
-				\item \textbf{getCentro()}
-				Metodo che ricerca un determinato centro di monitoraggio in base al nome
-				\item \textbf {addCentro ()}
-				Metodo che crea un nuovo record relativo a un determinato centro di monitoraggio e lo memorizza nel file CentriMonitoraggio.CSV
+				\item \textbf{Result\textless CentroMonitoraggio\textgreater getCentro(String nome)}
+				Metodo che ricerca un determinato centro di monitoraggio in base al nome e restituisce il centro di monitoraggio corrispondente al nome di tipo String fornito come parametro formale.
+				\item \textbf {boolean addCentro(CentroMonitoraggio cm)}
+				Metodo che crea un nuovo record relativo a un determinato centro di monitoraggio cioè il parametro formale del metodo e lo memorizza nel file CentriMonitoraggio (.*CSV). Il metodo restituisce una variabile booleana per capire se l'operazione è andata a buon fine.
 			\end{itemize}
 
 			\subsection{GestoreDato}
 			la classe GestoreDato estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
-				\item \textbf{getDato()}
-				Metodo che ricerca un determinato dato geografico in base al suo ID
-				\item \textbf {addDato()}
-				Metodo che crea un nuovo record relativo a un determinato dato geografico e lo memorizza nel file ParametriClimatici.CSV
+				\item \textbf{Result \textless DatoGeografico \textgreater getDato(long rid)}
+				Metodo che ricerca un determinato dato geografico in base al suo ID che è il parametro formale del metodo. Il metodo restituisce un Result di DatoGeografico se l'operazione è andata a buon fine. Invece Se l'operazione non è stata eseguita correttamente restituisce un Result di stringa per indicare l'errore.
+				\item \textbf {Result \textless Object\textgreater addDato(DatoGeografico dato)}
+				Metodo che crea un nuovo record relativo a un determinato dato geografico che è il parametro formale e lo memorizza nel file ParametriClimatici.CSV. Il metodo restituisce un Result di Object se l'operazione non è andata a buon fine.
 			\end{itemize}
 
 			\subsection{GestoreMisurazioni}
 			la classe GestoMisurazioni estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
-				\item \textbf{addMisurazione()}
-				Metodo che crea un nuovo record relativo a una determinata misurazione
-				\item \textbf {getMisurazioni()}
-				Metodo che memorizza i record relativi alle misurazioni presenti nel file ParametriClimatici.CSV in una lista, la quale inizializza un nuovo oggetto di tipo Filtratore.
+				\item \textbf{Result\textless Object\textgreater addMisurazione(Misurazione mis)}
+				Metodo che serve per aggiungere una Misurazione. Prende in input un parametro formale di tipo Misurazioni e restituisce un Result di Object in caso di errore.
+				
+				\item \textbf {Result \textless Filtratore\textgreater getMisurazioni()}
+				Metodo che prende le Misurazioni e memorizza i record relativi alle misurazioni presenti nel file ParametriClimatici (*.CSV).
 			\end{itemize}
 
 			\subsection{GestoreOperatore}
 			la classe GestoreOperatore estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
-				\item \textbf{registrazione()}
-				Metodo che permette a un operatore di registrarsi impostando una password
-				\item \textbf{login()}
-				Metodo che permette a un utente di effettuare il login
-				\item \textbf{getOperatore()}
-				Metodo che crea un nuovo record relativo a un determinato operatore e lo memorizza nel file OperatoriRegistrati.CSV
+				\item \textbf{Result\textless Operatore\textgreater registrazione(Operatore op, String pwd)}
+				Metodo che permette a un operatore di registrarsi. Il metodo riceve in input come parametri formali, un oggetto di tipo Operatore e una password di tipo String. Il Metodo restituisce un Result di Operatore se l'operazione che deve svolgere il metodo è corretta. Altrimenti resituisce una stringa con il codice di errore.
+				\item \textbf{Result \textless Operatore\textgreater login(String uid, String pwd)}
+				Metodo che permette ad un operatore di effettuare il login. I parametri formali presi in input sono userid e la password. In caso che userid e password corrispondano ad un operatore creato, il metodo restituisce l'accesso dell'Operatore. Altrimenti il metodo restituisce una stringa con un codice di errore. 
 			\end{itemize}
+
+
+
+
 
 		\section{Magazzeno}
 		All'interno del package Magazzeno si trovano una serie di classi che servono per memorizzare informazioni che vengono lette o che dovranno essere scritte su file.(*CSV).
