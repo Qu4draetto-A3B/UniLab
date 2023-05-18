@@ -1,26 +1,20 @@
-\documentclass[a4paper,12pt]{article}
-%questa e la document class, puoi modificare la dimensione dei caratteri, del foglio e altro
+\documentclass[a4paper, 12pt]{report}
 
+\usepackage[margin=3cm]{geometry}
 \usepackage{hyperref}
 %\usepackage{showkeys} mostra i label che scegli
-
-%package xypic
-\usepackage{xypic}
+\usepackage{graphicx}
+\usepackage{parskip}
 \usepackage{caption}
-
 \usepackage{url}
 
-%se ti serve un pacchetto aggiungili qui sopra
-
-\RequirePackage{booktabs, multirow}
-%%%%
-%%%%%%%
+% Additional options
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
 
 \title {
 	CLIMATE MONITORING \\
-	{Manuale utente}}
-
-%Titolo e nelle parentesi quadre abbreviazione
+	Manuale Utente}
 
 \author{
 	Iuri Antico \textit{matricola}:
@@ -35,11 +29,11 @@
 	Beatrice Balzarini \textit{matricola}:
 	\texttt{752257}
 }
-	
-\date{\today}
+
+\date{Giugno 2023}
 
 \begin{document}
-	
+
 	\makeatletter
 	\begin{titlepage}
 		\maketitle
@@ -47,12 +41,13 @@
 	\makeatother
 
 	\tableofcontents
+	\listoffigures
+	\listoftables
 
-	\newpage
-	
+	\chapter{Il Programma}
 	\section{Introduzione}
-	\textit{Climate Monitoring} è un'applicazione di monitoraggio di parametri climatici fornita da centri di monitoraggio sul territorio italiano, in grado di rendere disponibili, a operatori ambientali e comuni cittadini, i dati relativi alla propria zona di interesse.
-	
+		\textit{Climate Monitoring} è un'applicazione di monitoraggio di parametri climatici fornita da centri di monitoraggio sul territorio italiano, in grado di rendere disponibili, a operatori ambientali e comuni cittadini, i dati relativi alla propria zona di interesse.
+
 		\subsection{Funzionamento generale dell'applicazione}
 		I parametri climatici che possono essere rilevati sono:
 		\begin{itemize}
@@ -74,51 +69,34 @@
 		\item a \textbf{operatori autorizzati}, di gestire aree di interesse, inserendo i vari parametri climatici.
 		\end{itemize}
 		In particolare questi ultimi hanno la possibilità di registrarsi all'applicazione e successivamente creare centri di monitoraggio ed aggiungervi aree di interesse.
-	
+
 	\newpage
-			
+
 	\section{Avviare l'applicazione}
-	
+
 		\subsection{Requisiti minimi}
-		
+
 		\subsection{Avviare l'applicazione}
-		
+
 		\subsection{Troubleshooting}
-		
-	\newpage
-		
+
 	\section{Schermata principale}
-	
-	\newpage
-	
+
 	\section{Menù principale}
 	\subsection{Voci disponibili}
 	\subsection{Funzionamento}
 			\subsubsection{Esci}
-			
-	\newpage
-	
+
 	\section{Cerca le Misurazioni}
 	\section{Login}
 	\section{Registrazione}
 
-	\section{Limiti della soluzione sviluppata}
-	\section{Sitografia/ Bibliografia}
-	
+	\chapter{Limiti della soluzione sviluppata}
+	\chapter{Risoluzione problemi comuni}
+	\chapter{Sitografia / Bibliografia}
 
-		
-	
-	
+	\bibliographystyle{report}
 
-	
-
-	\bibliographystyle{amsalpha}
-
-	
-	
-	
-	
-	
 \end{document}
 
 

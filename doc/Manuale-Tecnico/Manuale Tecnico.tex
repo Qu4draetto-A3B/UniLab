@@ -1,29 +1,37 @@
-\documentclass[a4paper, 12pt,twoside]{article}
-%questa e la document class, puoi modificare la dimensione dei caratteri, del foglio e altro
+\documentclass[a4paper, 12pt]{report}
 
+\usepackage[margin=3cm]{geometry}
 \usepackage{hyperref}
-%\usepackage{showkeys} mostra i label che scegli
-
-%package xypic
-\usepackage{xypic}
-\usepackage[all,cmtip]{xy}
-\usepackage{tikz-cd}
+%\usepackage{showkeys} % mostra i label che scegli
+\usepackage{graphicx}
+\usepackage{parskip}
 \usepackage{caption}
-
 \usepackage{url}
 
-%se ti serve un pacchetto aggiungili qui sopra
+% Mathematics
+\usepackage{amsmath}
+\usepackage{amssymb}
 
-\RequirePackage{booktabs, multirow}
-\RequirePackage{pgf}
-%%%%
-%%%%%%%
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbC}{\mathbb{C}}
+
+\newcommand{\bigO}{\mathbf{O}}
+\newcommand{\litO}{\mathbf{o}}
+\newcommand{\bigM}{\mathbf{\Omega}}
+\newcommand{\bigT}{\mathbf{\Theta}}
+
+% Additional options
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
 
 \title {
 	CLIMATE MONITORING \\
-	{Manuale utente}}
+	Manuale Tecnico}
 
-%Titolo e nelle parentesi quadre abbreviazione
+% Titolo e nelle parentesi quadre abbreviazione
 
 \author{
 	Iuri Antico \textit{matricola}:
@@ -38,11 +46,11 @@
 	Beatrice Balzarini \textit{matricola}:
 	\texttt{752257}
 }
-	
+
 \date{\today}
 
 \begin{document}
-	
+
 	\makeatletter
 	\begin{titlepage}
 		\maketitle
@@ -50,31 +58,28 @@
 	\makeatother
 
 	\tableofcontents
+	\listoffigures
+	\listoftables
 
-%	\newpage
-	
-	\section{Introduzione}
-		\subsection{Librerie esterne utilizzate}
-			\subsubsection{Apache Commons CSV}
-			 E' una libreria di Apache che fornisce i metodi per la gestione dei file (*CSV). In particolare è stata usata nel progetto per la lettura e scrittura dei dati da memorizzare.
-			
-			
-	\section{Struttura generale del sistema di classi}
-		\subsection{cli}
-			\subsubsection{Help}
-			\subsubsection{Login}
-			\subsubsection{MainMenu}
-			\subsubsection{MostraMisurazioni}
-			\subsubsection{Registrazione}
+	\chapter{Introduzione}
+		\section{Librerie esterne utilizzate}
+			\subsection{Apache Commons CSV}
+			E' una libreria di Apache che fornisce i metodi per la gestione dei file (*.CSV). In particolare è stata usata nel progetto per la lettura e scrittura dei dati da memorizzare.
 
-		
-		
-		\subsection{gestori}
+	\chapter{Struttura generale del sistema di classi}
+		\section{cli}
+			\subsection{Help}
+			\subsection{Login}
+			\subsection{MainMenu}
+			\subsection{MostraMisurazioni}
+			\subsection{Registrazione}
+
+		\section{gestori}
 		All'interno del package Gestori si trovano una serie di classi finalizzate alle operazioni di lettura e scrittura su File contenenti dati utili al monitoraggio di parametri climatici sul territorio italiano.
-		Ad ogni record memorizzato su file viene associato un indice (ID) univoco.	
-			\subsubsection{DataBase}
+		Ad ogni record memorizzato su file viene associato un indice (ID) univoco.
+			\subsection{DataBase}
 			La classe DataBase si occupa di creare (per ogni classe che estende Gestore) un oggetto in grado di richiamare le funzioni associate.
-			\subsubsection{Gestore}
+			\subsection{Gestore}
 			La classe astratta Gestore contiene metodi relativi la gestione dei file contenenti i dati d'interesse. In particolare:
 			\begin{itemize}
 				\item \textbf{close()}
@@ -84,19 +89,16 @@
 				\item  \textbf{setProperty(String s, String k)}
 				Metodo che si occupa di impostare una proprietà nel file (*.CSV.DAT) associato ad una tabella (*.CSV)
 			\end{itemize}
-			
-			
-			\subsubsection{GestoreArea}
+
+			\subsection{GestoreArea}
 			la classe GestoreArea estende la classe Gestore e ne eredita tutti i metodi
 			implementa l'interfaccia CercaAree e contiene i seguenti metodi:
 			\begin{itemize}
 				\item \textbf{getArea()}
 				Metodo che ricerca una determinata area geografica in base al suo ID
 			\end{itemize}
-			
-			
-			
-			\subsubsection{GestoreCentro}
+
+			\subsection{GestoreCentro}
 			la classe GestoreCentro estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
 				\item \textbf{getCentro()}
@@ -104,9 +106,8 @@
 				\item \textbf {addCentro ()}
 				Metodo che crea un nuovo record relativo a un determinato centro di monitoraggio e lo memorizza nel file CentriMonitoraggio.CSV
 			\end{itemize}
-			
-			
-			\subsubsection{GestoreDato}
+
+			\subsection{GestoreDato}
 			la classe GestoreDato estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
 				\item \textbf{getDato()}
@@ -114,9 +115,8 @@
 				\item \textbf {addDato()}
 				Metodo che crea un nuovo record relativo a un determinato dato geografico e lo memorizza nel file ParametriClimatici.CSV
 			\end{itemize}
-			
-			
-			\subsubsection{GestoreMisurazioni}
+
+			\subsection{GestoreMisurazioni}
 			la classe GestoMisurazioni estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
 				\item \textbf{addMisurazione()}
@@ -124,9 +124,8 @@
 				\item \textbf {getMisurazioni()}
 				Metodo che memorizza i record relativi alle misurazioni presenti nel file ParametriClimatici.CSV in una lista, la quale inizializza un nuovo oggetto di tipo Filtratore.
 			\end{itemize}
-			
-			
-			\subsubsection{GestoreOperatore}
+
+			\subsection{GestoreOperatore}
 			la classe GestoreOperatore estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
 				\item \textbf{registrazione()}
@@ -136,83 +135,66 @@
 				\item \textbf{getOperatore()}
 				Metodo che crea un nuovo record relativo a un determinato operatore e lo memorizza nel file OperatoriRegistrati.CSV
 			\end{itemize}
-			
-		
-			
-		
-		\subsection{Magazzeno}
+
+		\section{Magazzeno}
 		All'interno del package Magazzeno si trovano una serie di classi che servono per memorizzare informazioni che vengono lette o che dovranno essere scritte su file.(*CSV).
-		
-			\subsubsection{AreaGeografica}
+
+			\subsection{AreaGeografica}
 			la classe AreaGeografica implementa l'interfaccia DataTable, che definisce tutti i metodi e contiene i seguenti:
-			I metodi getter sono: getGeoID(), getLatitudine(), getLongitudine(), getStato(), getDenominazione().  
+			I metodi getter sono: getGeoID(), getLatitudine(), getLongitudine(), getStato(), getDenominazione().
 			\begin{itemize}
-				\item \textbf{(toString()}
+				\item \textbf{toString()}
 				Metodo che permette di stampare l'oggetto AreaGeografica, con i campi denominazione, stato, latitudine e longitudine.
 				\item \textbf{equals()}
-				Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo AreaGeografia. 
+				Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo AreaGeografia.
 			\end{itemize}
-			
-			\subsubsection{CentroMonitoraggio}
+
+			\subsection{CentroMonitoraggio}
 			la classe CentroMonitoraggio implementa due interfacce: Convertable e Datatable che definisce tutti i metodi e contiene i seguenti:
 			i metodi getter sono: getNome(), getIndirizzo(), getAree().
 			\begin{itemize}
-				\item \textbf{(toString()}
+				\item \textbf{toString()}
 				Metodo che permette di stampare l'oggetto CentroMonitoraggio con i campi nome, indirizzo e le aree associate ad esso.
 				\item \textbf{equals()}
 				Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo CentroMonitoraggio.
 				\item \textbf{toCSV()}
-				Metodo che permette di creare una stringa nel formato (*CSV) adoperato all'interno del programma.
+				Metodo che permette di creare una stringa nel formato (*.CSV) adoperato all'interno del programma.
 			\end{itemize}
-			
-			\subsubsection{DatoGeografico}
+
+			\subsection{DatoGeografico}
 			La classe DatoGeografico implementa l'interfaccia DataTable che definisce tutti i metodi e contiene i seguenti:
-%			
-			\subsubsection{Filtratore}
-			\subsubsection{Indirizzo}
-			\subsubsection{ListaAree}
-			\subsubsection{Misurazioni}
-			\subsubsection{Operatore}
-		
-		
-		
-		\subsection{Utils}
-			\subsubsection{listacustom.CollezioniIterator}
-			\subsection{listacustom.Nodo}
-			\subsection{result.Blunder}
-			\subsection{result.Outcome}
-			\subsection{result.Panic}
-			\subsection{result.Result}
-			
-			\subsection{terminal.Screen}
-			\subsection{terminal.Terminal}
-			\subsection{terminal.View}
-			
+%
+			\subsection{Filtratore}
+			\subsection{Indirizzo}
+			\subsection{ListaAree}
+			\subsection{Misurazioni}
+			\subsection{Operatore}
+
+		\section{Utils}
+			\subsection{listacustom}
+				\subsubsection{CollezioniIterator}
+			\subsection{listacustom}
+				\subsubsection{Nodo}
+			\subsection{result}
+				\subsubsection{Panic}
+				\subsubsection{Result}
+				\subsubsection{Either}
+
+			\subsection{terminal}
+				\subsubsection{Screen}
+				\subsubsection{Terminal}
+				\subsubsection{View}
+
 			\subsection{CercaAree}
 			\subsection{Convertable}
 			\subsection{DataTable}
 			\subsection{MediaAree}
 			\subsection{DatoGeografico}
-		
-		
-		\subsection{Main}
 
-	
-	
+		\section{Main}
 
-		
-	
-	
+	\bibliographystyle{report}
 
-	
-
-	\bibliographystyle{article}
-
-	
-	
-	
-	
-	
 \end{document}
 
 

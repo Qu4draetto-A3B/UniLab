@@ -64,7 +64,6 @@ public abstract class Gestore implements AutoCloseable {
 	/**
 	 * Metodo che si occupa di aprire un file
 	 */
-	@Override
 	private void start() {
 		format = CSVFormat.DEFAULT.builder()
 				.setHeader(HEADERS)
