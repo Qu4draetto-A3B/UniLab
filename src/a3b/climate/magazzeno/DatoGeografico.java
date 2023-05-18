@@ -220,9 +220,9 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * @param key Dato geografico di cui mi interessa la nota
-	 * @return Restituisce la nota relativa al dato geografico fornito come argomento	
+	 * @return Restituisce la nota relativa al dato geografico fornito come parametro
 	*/
-	
+
 	public String getNota(TipoDatoGeografico key) {
 		return note.get(key);
 	}
@@ -263,6 +263,11 @@ public class DatoGeografico implements DataTable {
 		return sb.toString();
 	}
 
+	/**
+	 * Metodo che controlla
+	 * @param dato
+	 * @return
+	 */
 	public boolean noteEquals(DatoGeografico dato) {
 		boolean res = true;
 

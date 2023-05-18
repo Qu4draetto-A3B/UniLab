@@ -22,13 +22,24 @@ import a3b.climate.magazzeno.ListaAree;
 import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Result;
 
+/**
+ * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo CentroMonitoraggio
+ */
 public class GestoreCentro extends Gestore {
+	/**
+	 * Costruttore di un'istanza di GestoreCentro
+	 */
 	public GestoreCentro() {
 		super(
 				"./data/CentriMonitoraggio.CSV",
 				new String[] { "Name", "Address", "Areas" });
 	}
 
+	/**
+	 * Metodo che ricerca un centro di monitoraggio in base al nome
+	 * @param nome Nome del centro di monitoraggio di interesse
+	 * @return Restituisce il centro di monitoraggio corrispondente al nome fornito come parametro
+	 */
 	public Result<CentroMonitoraggio> getCentro(String nome) {
 		CSVRecord target = null;
 
@@ -46,6 +57,11 @@ public class GestoreCentro extends Gestore {
 		return new Result<>((CentroMonitoraggio) buildObject(target));
 	}
 
+	/**
+	 * Metodo che crea un nuovo record relatico a un determinato centro di monitoraggio e lo memorizza nel file CentriMonitoraggio.CSV
+	 * @param cm Centro di monitoraggio di cui di vuole creare un nuovo record
+	 * @return Restutuisce un nuovo record relativo al centro di monitoraggio fornito come parametro
+	 */
 	public boolean addCentro(CentroMonitoraggio cm) {
 		if (getCentro(cm.getNome()).isValid()) {
 			return false;

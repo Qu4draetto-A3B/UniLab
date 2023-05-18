@@ -31,6 +31,9 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
+/**
+ * Racchiude metodi relativi la gestione dei file contenenti i dati d'interesse.
+ */
 public abstract class Gestore implements AutoCloseable {
 	protected final String FILE;
 	protected final String METAFILE;
@@ -46,6 +49,11 @@ public abstract class Gestore implements AutoCloseable {
 	protected List<CSVRecord> records;
 	protected CSVPrinter p;
 
+	/**
+	 * Costruttore di un'istanza di Gestore
+	 * @param file File su cui effettuare operazioni di lettura/scrittura
+	 * @param headers Intestazione del file relativa all'oggetto
+	 */
 	protected Gestore(String file, String[] headers) {
 		FILE = file;
 		METAFILE = FILE + ".DAT";
@@ -53,6 +61,10 @@ public abstract class Gestore implements AutoCloseable {
 		start();
 	}
 
+	/**
+	 * Metodo che si occupa di aprire un file
+	 */
+	@Override
 	private void start() {
 		format = CSVFormat.DEFAULT.builder()
 				.setHeader(HEADERS)
@@ -74,6 +86,10 @@ public abstract class Gestore implements AutoCloseable {
 		}
 	}
 
+
+	/**
+	 * Metodo che si occupa di chiudere un file
+	 */
 	@Override
 	public void close() {
 		try {
@@ -91,6 +107,9 @@ public abstract class Gestore implements AutoCloseable {
 		}
 	}
 
+	/**
+	 * Metodo che si occupa di ricaricare (chiudere e riaprire) un file
+	 */
 	protected void reload() {
 		close();
 		start();
@@ -130,6 +149,13 @@ public abstract class Gestore implements AutoCloseable {
 		return new Result<>(val);
 	}
 
+
+	/**
+	 * Metodo che si occupa di impostare una proprietà nel file (*.CSV.DAT) associato a una tabella (*.CSV)
+	 * @param key
+	 * @param val
+	 * @return
+	 */
 	protected Result<Object> setProperty(String key, String val) {
 		String contents = metaIn.toString();
 		contents = contents.replaceFirst(

@@ -22,13 +22,23 @@ import a3b.climate.utils.CercaAree;
 import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
+/**
+ * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo AreaGeografica
+ */
 public class GestoreArea extends Gestore implements CercaAree {
+	/**
+	 * Costruttore di un'istanza di GestoreArea
+	 */
 	public GestoreArea() {
 		super(
 				"./data/CoordinateMonitoraggio.CSV",
 				new String[] { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat", "Lon" });
 	}
-
+	/**
+	 * Metodo che ricerca una determinata area geografica in base al suo ID
+	 * @param geoId ID relativo all'area geografica d'ineteresse
+	 * @return Restituisce l'area geografica corrispondente all'ID fornito come parametro
+	 */
 	public Result<AreaGeografica> getArea(long geoId) {
 		for (CSVRecord record : records) {
 			long dbGeoId = Long.parseLong(record.get("GeonameID"));
