@@ -127,6 +127,13 @@ public class Operatore implements Convertable, DataTable {
 		return str;
 	}
 
+	public String toStringPretty() {
+		return String.format(
+			"C.F.\t: %s\nUser ID\t: %s\nNome\t: %s %s\nEmail\t: %s\nCentro\t: %s",
+			cf, uid, nome, cognome, email, centro.getNome()
+		);
+	}
+
 	@Override
 	public String toCsv() {
 		String csv = String.format("%s,%s,%s,%s,%s,%s", cf, uid, nome, cognome, email, centro.getNome());

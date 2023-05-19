@@ -29,6 +29,7 @@ public class Terminal {
 
 	public Terminal() {
 		con = System.console();
+
 		String os = System.getProperty("os.name");
 		try {
 			if (os.contains("Windows")) {

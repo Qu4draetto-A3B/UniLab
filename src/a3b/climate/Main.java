@@ -14,13 +14,10 @@
  */
 package a3b.climate;
 
-import java.util.Optional;
-
-import a3b.climate.cli.Help;
-import a3b.climate.cli.MainMenu;
-import a3b.climate.magazzeno.Operatore;
 import a3b.climate.utils.terminal.Screen;
-import a3b.climate.utils.terminal.View;
+import org.apache.commons.cli.*;
+
+import javax.swing.text.html.parser.Parser;
 
 /**
  * Interdisciplinary Workshop A <br>
@@ -34,31 +31,37 @@ import a3b.climate.utils.terminal.View;
  */
 public class Main {
 	public static Screen scn = new Screen();
-	private static View menu = new MainMenu();
-
-	/**
-	 * Session cookie for the logged in operator
-	 */
-	public static Optional<Operatore> oper = Optional.empty();
+	public static CommandLine line;
 
 	public static void main(String[] args) throws Exception {
-		if (System.console() == null) {
-			System.out.println("Error: System.console() is null");
-			stop();
-		}
-		if (args.length > 0 && (args[0].equals("-h") || args[0].equals("--help"))) {
-			scn.show(new Help());
-			return;
-		}
-		menu();
-	}
+		Options opts = new Options();
+		opts.addOption(Option.builder("u")
+			.argName("utente")
+			.longOpt("utente")
+			.desc("Nome utente e password, separati da virgola")
+			.valueSeparator(',')
+			.numberOfArgs(2)
+			.optionalArg(false)
+			.build());
 
-	public static void menu() {
-		scn.show(menu);
-	}
+		opts.addOption(Option.builder("g")
+			.argName("gettone")
+			.longOpt("gettone")
+			.desc("File con nome utente e password nel formato 'utente,password'")
+			.hasArg()
+			.optionalArg(false)
+			.build());
 
-	public static void stop() {
-		System.out.println("Uscendo...");
-		System.exit(0);
+		if (args.length < 1) {
+			new HelpFormatter().printHelp(
+				"Climate Monitoring",
+				"Programma per il monitoraggio climatico",
+				opts,
+				"Leggi il Manuale Utente per informazioni aggiuntive",
+				true);
+		}
+
+		DefaultParser par = new DefaultParser();
+		line = par.parse(opts, args);
 	}
 }

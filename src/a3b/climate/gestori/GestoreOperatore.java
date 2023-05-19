@@ -47,7 +47,7 @@ public class GestoreOperatore extends Gestore {
 		String cf = op.getCf().toUpperCase();
 		pwd = hashPwd(pwd);
 
-		if (getOperatoreByCf(cf).isValid()) {
+		if (getOperatoreByUid(op.getUid()).isValid() || getOperatoreByCf(cf).isValid()) {
 			return new Result<>(1, "Operatore gia registrato");
 		}
 
@@ -156,13 +156,12 @@ public class GestoreOperatore extends Gestore {
 	@Override
 	protected DataTable buildObject(CSVRecord record) {
 		Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(record.get("Centro"));
-		CentroMonitoraggio cm = DataBase.centro.getCentro(record.get("Centro")).get();
 
 		return new Operatore(record.get("CodFis"),
 				record.get("UserID"),
 				record.get("Nome"),
 				record.get("Cognome"),
 				record.get("Email"),
-				cm);
+				rcm.get());
 	}
 }
