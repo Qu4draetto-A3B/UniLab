@@ -7,6 +7,9 @@
 \usepackage{parskip}
 \usepackage{caption}
 \usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage[Italian]{babel}
+
 
 % Mathematics
 \usepackage{amsmath}
@@ -182,9 +185,18 @@
 
 		\section{Utils}
 			\subsection{listacustom}
-				\subsubsection{CollezioniIterator}
-			\subsection{listacustom}
+			Package che contine le classi che servono da supporto alla classe ListaCustom.
+				\subsubsection{CollezioniIterator} classe che implementa l'interfaccia Iterator, permette a ListaAree di svolegere l'istruzione "for-each loop".
+				\begin{itemize}
+					\item\textbf{E next()} Metodo che restituisce l'elemento corrente e scorre a quello successivo.
+					\item\textbf{boolean hasNext()} Metodo che restituisce true se il nodo che esegue il metodo ha un successore, false altrimenti.
+				\end{itemize}
+				
+				
 				\subsubsection{Nodo}
+				classe che rappresenta i nodi della lista, i metodi presenti servono per la gestione degli elementi della lista.\\
+				I metodi setter : setDato, setNext;\\
+				I metodi getter : getDato, getNext;
 			\subsection{result}
 				\subsubsection{Panic}
 				\subsubsection{Result}
@@ -196,10 +208,34 @@
 				\subsubsection{View}
 
 			\subsection{CercaAree}
+			L'implementazione di questa interfaccia consente la ricerca di aree geografiche.
+			\begin{itemize}
+				\item \textbf{ListaAree cercaAreaGeografica (String denominazione, String stato)}
+				Metodo che ricerca per denominazione e per stato di appartenenza, restituisce una lista di aree geografiche.
+				\item\textbf{Result\textless AreaGeografica\textgreater cercaAreeGeografiche(double latitudine, double longitudine)}
+				Metodo che ricerca per coordinate geografiche (prende in input una latitudine e longitudine) e restituisce un result di tipo AreaGeografica.
+			\end{itemize}
+			
 			\subsection{Convertable}
+			L'implementazione di questa interfaccia consente a un oggetto di essere convertito nel formato (*.CSV).
+			\begin{itemize}
+				\item \textbf{String toCsv()}
+				Metodo che converte l'oggetto nel formato (*.CSV). Restituisce una stringa.
+			\end{itemize}
 			\subsection{DataTable}
+			L'implementazione di questa interfaccia permette a due record di essere confrontati. 
+			\begin{itemize}
+				\item\textbf{boolean equals(Object obj)}
+				Metodo che confronta l'oggetto che richiama la funzione con l'oggetto fornito come parametro, restituisce true se sono uguali false altrimenti.
+			\end{itemize}
 			\subsection{MediaAree}
+			La classe che implementa questa interfaccia permette di visualizzare le informazioni relative ad un'area geografica.
+			\begin{itemize}
+				\item\textbf {DatoGeografico visualizzaAreaGeografica (AreaGeografica area)} Metodo che restituisce un nuovo dato geografico che rappresenta un prospetto riassuntivo dei parametri climatici associati all'area geografica fornita come input.
+			\end{itemize}
 			\subsection{DatoGeografico}
+			Enumerativo che rappresenta il tipo di un dato geografico.
+	
 
 		\section{Main}
 

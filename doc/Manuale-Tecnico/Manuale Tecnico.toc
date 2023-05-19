@@ -1,3 +1,5 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
 \contentsline {chapter}{\numberline {1}Introduzione}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Librerie esterne utilizzate}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Apache Commons CSV}{5}{subsection.1.1.1}%
@@ -20,27 +22,26 @@
 \contentsline {subsection}{\numberline {2.3.1}AreaGeografica}{9}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}CentroMonitoraggio}{9}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}DatoGeografico}{9}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Filtratore}{10}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Indirizzo}{10}{subsection.2.3.5}%
-\contentsline {subsection}{\numberline {2.3.6}ListaAree}{10}{subsection.2.3.6}%
-\contentsline {subsection}{\numberline {2.3.7}Misurazioni}{10}{subsection.2.3.7}%
-\contentsline {subsection}{\numberline {2.3.8}Operatore}{10}{subsection.2.3.8}%
-\contentsline {section}{\numberline {2.4}Utils}{10}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}listacustom}{10}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.3.4}Filtratore}{9}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Indirizzo}{9}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}ListaAree}{9}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Misurazioni}{9}{subsection.2.3.7}%
+\contentsline {subsection}{\numberline {2.3.8}Operatore}{9}{subsection.2.3.8}%
+\contentsline {section}{\numberline {2.4}Utils}{9}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}listacustom}{9}{subsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.1.1}CollezioniIterator}{10}{subsubsection.2.4.1.1}%
-\contentsline {subsection}{\numberline {2.4.2}listacustom}{10}{subsection.2.4.2}%
-\contentsline {subsubsection}{\numberline {2.4.2.1}Nodo}{10}{subsubsection.2.4.2.1}%
-\contentsline {subsection}{\numberline {2.4.3}result}{10}{subsection.2.4.3}%
-\contentsline {subsubsection}{\numberline {2.4.3.1}Panic}{10}{subsubsection.2.4.3.1}%
-\contentsline {subsubsection}{\numberline {2.4.3.2}Result}{10}{subsubsection.2.4.3.2}%
-\contentsline {subsubsection}{\numberline {2.4.3.3}Either}{10}{subsubsection.2.4.3.3}%
-\contentsline {subsection}{\numberline {2.4.4}terminal}{10}{subsection.2.4.4}%
-\contentsline {subsubsection}{\numberline {2.4.4.1}Screen}{10}{subsubsection.2.4.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.4.2}Terminal}{10}{subsubsection.2.4.4.2}%
-\contentsline {subsubsection}{\numberline {2.4.4.3}View}{10}{subsubsection.2.4.4.3}%
-\contentsline {subsection}{\numberline {2.4.5}CercaAree}{10}{subsection.2.4.5}%
-\contentsline {subsection}{\numberline {2.4.6}Convertable}{10}{subsection.2.4.6}%
-\contentsline {subsection}{\numberline {2.4.7}DataTable}{10}{subsection.2.4.7}%
-\contentsline {subsection}{\numberline {2.4.8}MediaAree}{10}{subsection.2.4.8}%
-\contentsline {subsection}{\numberline {2.4.9}DatoGeografico}{10}{subsection.2.4.9}%
-\contentsline {section}{\numberline {2.5}Main}{10}{section.2.5}%
+\contentsline {subsubsection}{\numberline {2.4.1.2}Nodo}{10}{subsubsection.2.4.1.2}%
+\contentsline {subsection}{\numberline {2.4.2}result}{10}{subsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.2.1}Panic}{10}{subsubsection.2.4.2.1}%
+\contentsline {subsubsection}{\numberline {2.4.2.2}Result}{10}{subsubsection.2.4.2.2}%
+\contentsline {subsubsection}{\numberline {2.4.2.3}Either}{10}{subsubsection.2.4.2.3}%
+\contentsline {subsection}{\numberline {2.4.3}terminal}{10}{subsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.3.1}Screen}{10}{subsubsection.2.4.3.1}%
+\contentsline {subsubsection}{\numberline {2.4.3.2}Terminal}{10}{subsubsection.2.4.3.2}%
+\contentsline {subsubsection}{\numberline {2.4.3.3}View}{10}{subsubsection.2.4.3.3}%
+\contentsline {subsection}{\numberline {2.4.4}CercaAree}{10}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Convertable}{10}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}DataTable}{11}{subsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.4.7}MediaAree}{11}{subsection.2.4.7}%
+\contentsline {subsection}{\numberline {2.4.8}DatoGeografico}{11}{subsection.2.4.8}%
+\contentsline {section}{\numberline {2.5}Main}{11}{section.2.5}%
