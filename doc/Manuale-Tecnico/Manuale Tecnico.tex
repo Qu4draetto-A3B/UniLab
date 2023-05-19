@@ -7,6 +7,8 @@
 \usepackage{parskip}
 \usepackage{caption}
 \usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage[Italian]{babel}
 
 % Mathematics
 \usepackage{amsmath}
@@ -153,32 +155,133 @@
 			la classe AreaGeografica implementa l'interfaccia DataTable, che definisce tutti i metodi e contiene i seguenti:
 			I metodi getter sono: getGeoID(), getLatitudine(), getLongitudine(), getStato(), getDenominazione().
 			\begin{itemize}
-				\item \textbf{toString()}
+				\item \textbf{String toString()}
 				Metodo che permette di stampare l'oggetto AreaGeografica, con i campi denominazione, stato, latitudine e longitudine.
-				\item \textbf{equals()}
-				Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo AreaGeografia.
+				\item \textbf{boolean equals(Object obj)}
+				Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo AreaGeografia. Il metodo prende in input come parametro formale un Object. La funzione restituisce true se oggetto di tipo Object è un istanza di un' AreaGeografica. Altrimenti restituisce false. 
 			\end{itemize}
 
 			\subsection{CentroMonitoraggio}
 			la classe CentroMonitoraggio implementa due interfacce: Convertable e Datatable che definisce tutti i metodi e contiene i seguenti:
 			i metodi getter sono: getNome(), getIndirizzo(), getAree().
 			\begin{itemize}
-				\item \textbf{toString()}
+				\item \textbf{String toString()}
 				Metodo che permette di stampare l'oggetto CentroMonitoraggio con i campi nome, indirizzo e le aree associate ad esso.
-				\item \textbf{equals()}
-				Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo CentroMonitoraggio.
-				\item \textbf{toCSV()}
-				Metodo che permette di creare una stringa nel formato (*.CSV) adoperato all'interno del programma.
+				\item \textbf{boolean equals(Object obj)}
+				Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo CentroMonitoraggio. La funzione restituisce true se l'oggetto è un istanza di CentroMonitoraggio. Altrimento restituisce false.
+				\item \textbf{String toCSV()}
+				Metodo che permette di creare una stringa che rappresenta CentroMonitoraggio nel formato (*.CSV) adoperato all'interno del programma.
 			\end{itemize}
 
 			\subsection{DatoGeografico}
 			La classe DatoGeografico implementa l'interfaccia DataTable che definisce tutti i metodi e contiene i seguenti:
+			\begin{itemize}
+			\item \textbf{void setDato(TipoDatoGeografico tipo, byte dato)}
+			Metodo che imposta il DatoGeografico. La funzione prende come parametri formali: il dato da impostare all'interno del DatoGeografico e il valore del dato. 
+			\item \textbf{byte getDato(TipoDatoGeografico tipo)}
+			Metodo che prende come input un oggetto TipoDatoGeografico e restituisce il tipo di dato geografico associato.
+			\item \textbf{String getNota(TipoDatoGeografico key)}
+			Metodo che restituisce la nota del dato geografico. La nota che restituisce è dettata dal parametro formale del metodo di tipo TipoDatoGeografico.
+			\item \textbf{boolean setNota(TipoDatoGeografico key, String nota)}
+			Metodo che permette di impostare le note relative al DatoGeografico. Prende come parametri formali due input: uno è la chiave che stabilisce il come inserire la nota all'interno del dato geografico. L'altro paramento è la nota da inserire.
+			La funzione restituisce true se l'esecuzione del metodo va a buon fine. Altrimenti false.
+			\item \textbf{boolean equals(Object obj)}
+			Metodo che prende in input un oggetto generico e se è un'istanza di DatoGeografico il metodo restituisce true. Altrimenti restituisce false.
+			\item \textbf{String toString()}
+			Metodo che restituisce una stringa per rappresentare il DatoGeografico
+			\item \textbf{boolean noteEquals(DatoGeografico dato)}
+			Metodo che prende in input un dato di tipo DatoGeografico da cui estrae la nota e la confronta con quella presente. Il metodo restituisce true se le due note sono uguali. Altrimenti restituisce false.
+			\item \textbf{boolean datoEquals(DatoGeografico dato)}
+			Metodo che prende in input come parametro formale un dato di tipo DatoGeografico. La funzione restituisce true se l'uguaglianza dei valori dati è verificata. Altrimenti flase. 
+			\end{itemize}
+			
 %
 			\subsection{Filtratore}
+			La classe Filtratore implementa le interfacce :Iterable<Misurazione>, CercaAree, MediaAree, che definisce tutti i metodi e contiene i seguenti:
+			\begin{itemize}
+			\item \textbf{Filtratore filtra(DataTable... dts)}
+			Metodo che permette di filtrare lr DataTable. Il metodo ha come parametro formale un numero variabili di elementi di tipo Datatable. La funzione restituisce le DataTable filtrate.
+			\item \textbf{Filtratore filtraOperatore(Operatore... ops)}
+			Metodo che permette di filtrare gli operatori. Il metodo ha come parametro formale un numero variabili di elementi di tipo Operatore. La funzione restituisce gli operatori filtrati.
+			\item \textbf{Filtratore filtraCentro(CentroMonitoraggio... cms)}
+			Metodo che permette di filtrare i centri di monitoraggio. Il metodo ha come parametro formale un numero variabili di elementi di tipo CentroMonitoraggio. La funzione restituisce i centri di monitoraggi filtrati.
+			\item \textbf{Filtratore filtraAree(AreaGeografica... ags)}
+			Metodo che permette di filtrare le Areegeografiche. Il metodo ha come parametro formale un numero variabili di elementi di tipo AreaGeografica. La funzione restituisce le aree geografiche filtrate.
+			\item \textbf{Filtratore filtraNote(String... note)}
+			Metodo che permette di filtrare le note. Il metodo ha come parametro formale un numero variabili di elementi di tipo String. La funzione restituisce le note filtrate.
+			\item \textbf {Filtratore filtraDato(DatoGeografico... dati)}
+			Metodo che permette di filtrare i dati di DatoGeografico. Il metodo ha come parametro formale un numero variabile di elementi di tipo DatoGeografico. La funzione restituisce i dati filtrati.
+			\item \textbf {String toString()}
+			Metodo che stampa l'oggetto filtratore.
+			\item \textbf{DatoGeografico visualizzaAreaGeografica(AreaGeografica area)}
+			Metodo che prende in input come parametro formale un oggetto di tipo AreaGeografica. Il metodo conta quante volte appare un valore dell'Area Geografica. Il metodo restituisce un oggetto di tipo DatoGeografico con il suo valore associato.
+			\item \textbf{Iterator<Misurazione> iterator()}
+			Metodo che restituisce un Iterator di Misurazione.	contenuto...
+			\end{itemize}
 			\subsection{Indirizzo}
+			La classe Indirizzo definisce l'indirizzo dei centri di monitoraggio. Contiene i seguenti metodi:
+			i metodi getter sono: getNomeVia(), getCivico(), getCap(), getComune(), getProvincia().
+			\begin{itemize}
+			\item \textbf{String toString()}
+			Metodo che restituisce una stringa contenente l'indirizzo.
+			\item \textbf{String toCsv()}
+			Metodo che permette di creare una stringa per descrivere l'indirizzo nel formato (*.CSV) adoperato all'interno del programma.
+			\end{itemize}
+			 
 			\subsection{ListaAree}
+			La classe ListaAree implementa le interfacce :Iterable<AreaGeografica>, CercaAree, Convertable che definisce tutti i metodi e contiene i seguenti:
+			\begin{itemize}
+			\item \textbf{boolean isEmpty()}
+			Metodo restituisce true che indica se la listaAree è vuota. Altrimenti resituisce false.
+			\item \textbf{AreaGeografica get(int k)}
+			Metodo che prende in input un intero k che indica la posizione di un AreaGeografica all'interno della ListaAree. Il metodo restituisce l'AreaGeografica che è in posizione k.
+			\item \textbf{void add(AreaGeografica e, int k)}
+			Metodo che ha due parametri formali: AreaGeografica e un intero k.
+			il metodo aggiunge l'AreaGeografica in posizione k.
+			\item \textbf{AreaGeografica getFirst()}
+			Metodo che restituisce il primo elemento nella ListaAree ch esegue il metodo
+			\item \textbf{AreaGeografica getLast()}
+			Metodo che restituisce l'ultimo elemento nella ListaAree che esegue il metodo.
+			\item \textbf{int size()}
+			Metodo che restituisce un intero che indica la dimensione della ListaAree.
+			\item \textbf{void addFirst(AreaGeografica e)}
+			Metodo che aggiunge un'area geografica che è il parametro formale alla ListaAree in prima posizione.
+			\item \textbf{Iterator<AreaGeografica> iterator()}
+			Metodo che restituisce un Iterator di AreaGeografica.
+			\item \textbf{ListaAree cercaAreaGeografica(String denominazione, String stato)}
+			Metodo che cerca le AreeGeografiche tramite i parametri formali cioè denominazione e stato. Il metodo restituisce una ListaAree dove tutte le AreeGeografiche all'interno contengo le informazioni dei parametri formali.
+			\item \textbf{Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine)}
+			Metodo che permette di cercare le AreeGeografiche tramite i parametri formali dati in input, che sono due double che rappresentano latitudine e longitudine di un' AreaGeografica.
+			Il metodo restituisce un Result di AreaGeografica.
+			\item \textbf{String toString()}	
+			Metodo che restituisce una stringa che rappresenta l'AreaGeografica.
+			\item \textbf{String toCsv()}	
+			Metodo che permette di creare una stringa per descrivere l'AreaGeografica nel formato (*.CSV) adoperato all'interno del programma.
+			\end{itemize}
+			
 			\subsection{Misurazioni}
+			La classe Misurazioni implementa le interfacce: Convertable, DataTable che definisce tutti i metodi e contiene i seguenti:
+			Metodi getter: getRid(), getDato(), getTime(), getTimeString(), getOperatore(), getCentro(), getArea().
+			\begin{itemize}
+			\item \textbf{String toString()}
+			Metodo che stampa l'oggetto Misurazione.
+			\end{itemize}
+			
 			\subsection{Operatore}
+			La classe Operatore definisce i seguenti metodi:
+			Metodi getter: getCf(), getCentro(), getCognome(), getNome(), getEmail(), getUid().
+			\begin{itemize}
+			\item \textbf{Result<Object> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo)}	
+			Metodo che prende in input come parametri formali degli oggetti di tipo: AreaGeografica, DatoGeografico, LocalDateTime.
+			Il metodo consente di inserire i dati climatici di una determinata area nel database. Il metodo restituisce un Result di Object.
+			\item \textbf{String toString()}
+			Metodo che stampa l'oggetto Operatore.	
+			\item \textbf{String toCsv()}	
+			Metodo che permette di creare una stringa per descrivere l'Operatore nel formato (*.CSV) adoperato all'interno del programma.
+			\item \textbf{boolean equals(Object obj)}	
+			Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo Operatore. Il metodo prende in input come parametro formale un Object. La funzione restituisce true se oggetto di tipo Object è un istanza di Operatore. Altrimenti restituisce false. 
+			
+			\end{itemize}
 
 		\section{Utils}
 			\subsection{listacustom}
