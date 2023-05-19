@@ -13,31 +13,40 @@
  * See LICENSE file for additional information.
  */
 package a3b.climate.utils.ListaCustom;
+
 import java.util.Iterator;
+
 /**
  *
  */
-public class CollezioniIterator<E> implements Iterator<E>{
-    Nodo<E> current;
-	/**
-	 * Costruttore di un'istanza di CollezioniIterator
-	 * @param head Riferimento alla nodo in testa alla lista
-	 */
-    public CollezioniIterator(Nodo<E> head){ current = head;}
+public class CollezioniIterator<E> implements Iterator<E> {
+	Nodo<E> current;
 
 	/**
-	 * @return Booleano che indica se un nodo della lista che chiama il metodo ha un succesivo
+	 * Costruttore di un'istanza di CollezioniIterator
+	 *
+	 * @param head Riferimento alla nodo in testa alla lista
 	 */
-    public boolean hasNext(){ return current != null;}
+	public CollezioniIterator(Nodo<E> head) {
+		current = head;
+	}
+
+	/**
+	 * @return Booleano che indica se un nodo della lista che chiama il metodo ha un
+	 *         succesivo
+	 */
+	public boolean hasNext() {
+		return current != null;
+	}
 
 	/**
 	 * @return Riferimento al nodo successivo nella lista che chiama il metodo
 	 */
-    public E next(){
-        E e = current.getDato();
-        current = current.getNext();
+	public E next() {
+		E e = current.getDato();
+		current = current.getNext();
 
-        return e;
-    }
+		return e;
+	}
 
 }

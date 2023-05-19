@@ -17,7 +17,7 @@ package a3b.climate.magazzeno;
 import a3b.climate.utils.DataTable;
 
 /**
- * Rappresenta un'area geografica
+ * Classe che rappresenta un'area geografica
  */
 
 public class AreaGeografica implements DataTable {
@@ -32,7 +32,7 @@ public class AreaGeografica implements DataTable {
 	 *
 	 * @param geoID         Id dell'area geografica
 	 * @param latitudine    Latitudine relativa all'area geografica
-	 * @param longitudine    Longitudine relativa all'area geografica
+	 * @param longitudine   Longitudine relativa all'area geografica
 	 * @param stato         Stato in cui si trova l'area geografica
 	 * @param denominazione Nome dell'area geografica
 	 */

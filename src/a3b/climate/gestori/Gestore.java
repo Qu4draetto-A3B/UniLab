@@ -32,7 +32,8 @@ import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
 /**
- * Racchiude metodi relativi la gestione dei file contenenti i dati d'interesse
+ * Classe astratta che racchiude metodi relativi la gestione dei file contenenti
+ * i dati d'interesse
  */
 public abstract class Gestore implements AutoCloseable {
 	protected final String FILE;
@@ -51,7 +52,8 @@ public abstract class Gestore implements AutoCloseable {
 
 	/**
 	 * Costruttore di un'istanza di Gestore
-	 * @param file File su cui effettuare operazioni di lettura/scrittura
+	 *
+	 * @param file    File su cui effettuare operazioni di lettura/scrittura
 	 * @param headers Intestazione del file relativa all'oggetto
 	 */
 	protected Gestore(String file, String[] headers) {
@@ -84,7 +86,6 @@ public abstract class Gestore implements AutoCloseable {
 			throw new Panic("Non riesco a usare i file");
 		}
 	}
-
 
 	/**
 	 * Metodo che si occupa di chiudere un file
@@ -148,9 +149,10 @@ public abstract class Gestore implements AutoCloseable {
 		return new Result<>(val);
 	}
 
-
 	/**
-	 * Metodo che si occupa di impostare una proprieta' nel file (*.CSV.DAT) associato a una tabella (*.CSV)
+	 * Metodo che si occupa di impostare una proprieta' nel file (*.CSV.DAT)
+	 * associato a una tabella (*.CSV)
+	 *
 	 * @param key
 	 * @param val
 	 * @return

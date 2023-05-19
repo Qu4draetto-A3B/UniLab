@@ -27,7 +27,8 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 /**
- * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo Misurazione
+ * Classe che gestisce le operazioni di lettura e scrittura riguardanti oggetti
+ * di tipo Misurazione
  */
 public class GestoreMisurazioni extends Gestore {
 	/**
@@ -41,6 +42,7 @@ public class GestoreMisurazioni extends Gestore {
 
 	/**
 	 * Metodo che crea un nuovo record relativo a una determinata misurazione
+	 *
 	 * @param mis Misurazione di cui si vuole creare un nuovo record
 	 * @return Record relativo alla misurazione fornita come parametro
 	 */
@@ -68,9 +70,11 @@ public class GestoreMisurazioni extends Gestore {
 	}
 
 	/**
-	 * Metodo che memorizza i record relativi alle misurazioni presenti nel file ParametriClimatici.CSV
-	 * in una lista, la quale inizializza un nuovo oggetto di tipo FIltratore
-	 * @return Record //TODO
+	 * Metodo che memorizza i record relativi alle misurazioni presenti nel file
+	 * ParametriClimatici.CSV
+	 * in una lista, la quale inizializza un nuovo oggetto di tipo Filtratore
+	 *
+	 * @return Record
 	 */
 	public Result<Filtratore> getMisurazioni() {
 		List<Misurazione> lm = new LinkedList<>();

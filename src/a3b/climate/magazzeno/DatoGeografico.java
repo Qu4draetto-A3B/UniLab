@@ -38,9 +38,11 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Costruttore di un'istanza di DatoGeografico
-	 * @param rid Id del dato
+	 *
+	 * @param rid  ID del dato
 	 * @param tipo Tipo del dato geografico
-     * @param dato Valore da 1 a 5 che rappresenta il livello di criticita' del dato geografico
+	 * @param dato Valore da 1 a 5 che rappresenta il livello di criticita' del dato
+	 *             geografico
 	 * @param nota Note relative al dato geografico
 	 */
 
@@ -59,18 +61,23 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Costruttore di un'istanza di DatoGeografico
-	 * @param rid Id del dato
-	 * @param massaGhiacciai Valore relativo alla criticita' della massa dei ghiacciai
-     * @param altituidineGhiacciai Valore relativo alla criticita' dell'altitudine dei ghiacciai
-	 * @param precipitazioni Valore relativo alla criticita' delle precipitazioni
-	 * @param temperatura Valore relativo alla criticita' della temperatura
-	 * @param pressione Valore relativo alla criticita' della pressione
-	 * @param umidita Valore relativo alla criticita' dell'umidita'
-	 * @param vento Valore relativo alla criticita' dei venti
-	 * @param note Note relative al dato geografico
+	 *
+	 * @param rid                  ID del dato
+	 * @param massaGhiacciai       Valore relativo alla criticita' della massa dei
+	 *                             ghiacciai
+	 * @param altituidineGhiacciai Valore relativo alla criticita' dell'altitudine
+	 *                             dei ghiacciai
+	 * @param precipitazioni       Valore relativo alla criticita' delle
+	 *                             precipitazioni
+	 * @param temperatura          Valore relativo alla criticita' della temperatura
+	 * @param pressione            Valore relativo alla criticita' della pressione
+	 * @param umidita              Valore relativo alla criticita' dell'umidita'
+	 * @param vento                Valore relativo alla criticita' dei venti
+	 * @param note                 Note relative al dato geografico
 	 */
 
-	public DatoGeografico(long rid, byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni, byte temperatura,
+	public DatoGeografico(long rid, byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni,
+			byte temperatura,
 			byte pressione, byte umidita, byte vento, HashMap<TipoDatoGeografico, String> note) {
 		/*
 		 * I byte vengono inizializzati a 0 implicitamente,
@@ -101,7 +108,8 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Costruttore di un'istanza di DatoGeografico
-	 * @param rid Id del dato
+	 *
+	 * @param rid  ID del dato
 	 * @param dati HashMap contenente i valori dei dati
 	 * @param note HashMap contenente i valori delle note
 	 */
@@ -137,6 +145,7 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Metodo che imposta il valore del dato geografico che chiama il metodo
+	 *
 	 * @param tipo Tipo del dato geografico
 	 * @param dato Valore del dato geografico
 	 */
@@ -221,7 +230,7 @@ public class DatoGeografico implements DataTable {
 	/**
 	 * @param key Dato geografico di cui mi interessa la nota
 	 * @return Nota relativa al dato geografico fornito come parametro
-	*/
+	 */
 
 	public String getNota(TipoDatoGeografico key) {
 		return note.get(key);
@@ -229,7 +238,8 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Metodo che imposta le note relative al dato geografico che chiama il metodo
-	 * @param key //TODO
+	 *
+	 * @param key
 	 * @param nota Note relative al dato geografico
 	 */
 
@@ -265,6 +275,7 @@ public class DatoGeografico implements DataTable {
 
 	/**
 	 * Metodo che controlla
+	 *
 	 * @param dato
 	 * @return
 	 */
@@ -281,7 +292,6 @@ public class DatoGeografico implements DataTable {
 	/**
 	 * @return Booleano che indica l'uguaglianza dei valori dei dati
 	 */
-
 
 	public boolean datoEquals(DatoGeografico dato) {
 		boolean res = true;

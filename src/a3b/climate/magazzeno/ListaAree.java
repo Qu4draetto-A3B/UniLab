@@ -23,6 +23,9 @@ import a3b.climate.utils.result.Result;
 
 import java.util.Iterator;
 
+/**
+ * Classe che rappresenta una lista di aree geografiche
+ */
 public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertable {
 
 	Nodo<AreaGeografica> head;
@@ -122,7 +125,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * //TODO
+	 *
 	 */
 
 	public Iterator<AreaGeografica> iterator() {

@@ -13,6 +13,10 @@
  * See LICENSE file for additional information.
  */
 package a3b.climate.utils;
+
+/**
+ * Interfaccia che si occupa di convertire il formato degli oggetti
+ */
 public interface Convertable {
 
 	/**

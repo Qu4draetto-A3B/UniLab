@@ -25,7 +25,7 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 /**
- * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo Operatore
+ * Clase che geFstisce le operazioni di lettura e scrittura riguardanti oggetti di tipo Operatore
  */
 public class GestoreOperatore extends Gestore {
 	/**

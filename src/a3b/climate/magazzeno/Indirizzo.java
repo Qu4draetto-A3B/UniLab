@@ -17,7 +17,7 @@ package a3b.climate.magazzeno;
 import a3b.climate.utils.Convertable;
 
 /**
- * Rappresenta un indirizzo
+ * Classe che rappresenta un indirizzo
  */
 
 public class Indirizzo implements Convertable {
@@ -42,10 +42,11 @@ public class Indirizzo implements Convertable {
 
 	/**
 	 * Costruttore di un'istanza di Indirizzo
-	 * @param nomeVia Nome della via relativa all'indirizzo
-     * @param civico Numero civico relativo all'indirizzo
-	 * @param cap Codice di avviamento postale relativo all'indirizzo
-	 * @param comune Comune relativo all'indirizzo
+	 *
+	 * @param nomeVia   Nome della via relativa all'indirizzo
+	 * @param civico    Numero civico relativo all'indirizzo
+	 * @param cap       Codice di avviamento postale relativo all'indirizzo
+	 * @param comune    Comune relativo all'indirizzo
 	 * @param provincia Provincia relativa all'indirizzo
 	 */
 	public Indirizzo(String nomeVia, int civico, int cap, String comune, String provincia) {
@@ -73,7 +74,9 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * Metodo che imposta il numero civico relativo all'indirizzo che chiama il metodo
+	 * Metodo che imposta il numero civico relativo all'indirizzo che chiama il
+	 * metodo
+	 *
 	 * @param civico Numero civico relativo all'indirizzo
 	 */
 	public void setCivico(int civico) {
@@ -81,7 +84,8 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * @return Codice di avviamento postale relativo all'indirizzo che chiama il metodo
+	 * @return Codice di avviamento postale relativo all'indirizzo che chiama il
+	 *         metodo
 	 */
 	public int getCap() {
 		return cap;

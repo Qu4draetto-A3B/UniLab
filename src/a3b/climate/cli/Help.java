@@ -26,10 +26,9 @@ public class Help implements View {
 	/**
 	 * Messaggio d'aiuto da stampare a schermo
 	 */
-	private static final String HELP_MSG =
-		"Scrivere messaggio d'aiuto\n";
+	private static final String HELP_MSG = "Scrivere messaggio d'aiuto\n";
 
-		@Override
+	@Override
 	public void start(Terminal term) {
 		term.printfln(HELP_MSG);
 	}

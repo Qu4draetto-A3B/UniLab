@@ -24,9 +24,12 @@ import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
 /**
- *
+ * Classe che
  */
 public class Login implements View {
+	/**
+	 * Costruttore di un'istanza di Login
+	 */
 	public Login() {
 		super();
 	}

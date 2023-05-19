@@ -14,6 +14,15 @@
  */
 package a3b.climate.utils.terminal;
 
+/**
+ * Interfaccia che
+ */
 public interface View {
-    public abstract void start(Terminal term);
+
+	/**
+	 * Metodo che
+	 *
+	 * @param term
+	 */
+	public abstract void start(Terminal term);
 }

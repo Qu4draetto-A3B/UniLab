@@ -31,11 +31,12 @@ import a3b.climate.utils.terminal.Screen;
  * @author Michael Bernasconi, 752259
  * @author Gabriele Borgia, 753262
  */
+
 public class Main {
 	public static Screen scn = new Screen();
 
 	/**
-	 * Session cookie for the logged in operator
+	 * Gettone di sessione per l'operatore che ha effettuato il login
 	 */
 	public static Optional<Operatore> oper = Optional.empty();
 
@@ -51,6 +52,9 @@ public class Main {
 		scn.show(new MainMenu());
 	}
 
+	/**
+	 * Metodo che termina il programma
+	 */
 	public static void stop() {
 		System.out.println("Uscendo...");
 		System.exit(0);

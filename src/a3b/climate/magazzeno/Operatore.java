@@ -13,6 +13,7 @@
  * See LICENSE file for additional information.
  */
 package a3b.climate.magazzeno;
+
 import java.time.LocalDateTime;
 
 import a3b.climate.gestori.DataBase;
@@ -21,7 +22,7 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Result;
 
 /**
- * Rappresenta un operatore
+ * Classe che rappresenta un operatore
  */
 
 public class Operatore implements Convertable, DataTable {
@@ -30,14 +31,14 @@ public class Operatore implements Convertable, DataTable {
 
 	/**
 	 * Costruttore di un'istanza di Operatore
-	 * @param cf Codice fiscale dell'operatore
-     * @param uid User ID relativo all'operatore
-	 * @param nome Nome dell'operatore
+	 *
+	 * @param cf      Codice fiscale dell'operatore
+	 * @param uid     User ID relativo all'operatore
+	 * @param nome    Nome dell'operatore
 	 * @param cognome Cognome dell'operatore
-	 * @param email E-mail dell'operatore
-	 * @param centro Centro di monitoraggio a cui l'operatore e' associato
+	 * @param email   E-mail dell'operatore
+	 * @param centro  Centro di monitoraggio a cui l'operatore e' associato
 	 */
-
 	public Operatore(String cf, String uid, String nome, String cognome, String email, CentroMonitoraggio centro) {
 		this.cf = cf;
 		this.uid = uid;
@@ -60,9 +61,12 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-     * Metodo che consente di inserire i dati climatici di una determinata area nel database
-	 * @param area Area geografica relativa ai dati
-	 * @param dato Aggregato di informazioni (valori dei parametri climatici) relative al dato geografico
+	 * Metodo che consente di inserire i dati climatici di una determinata area nel
+	 * database
+	 *
+	 * @param area  Area geografica relativa ai dati
+	 * @param dato  Aggregato di informazioni (valori dei parametri climatici)
+	 *              relative al dato geografico
 	 * @param tempo Data in cui avviene l'inserimento dei dati nel database
 	 */
 	public Result<Object> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
@@ -73,15 +77,14 @@ public class Operatore implements Convertable, DataTable {
 	/**
 	 * @return Codice fiscale dell'operatore che esegue il metodo
 	 */
-
 	public String getCf() {
 		return cf;
 	}
 
 	/**
-	 * @return Centro di monitoraggio al quale l'operatore che esegue il metodo e' associato
+	 * @return Centro di monitoraggio al quale l'operatore che esegue il metodo e'
+	 *         associato
 	 */
-
 	public CentroMonitoraggio getCentro() {
 		return centro;
 	}
@@ -89,7 +92,6 @@ public class Operatore implements Convertable, DataTable {
 	/**
 	 * @return Cognome dell'operatore che esegue il metodo
 	 */
-
 	public String getCognome() {
 		return cognome;
 	}
@@ -97,7 +99,6 @@ public class Operatore implements Convertable, DataTable {
 	/**
 	 * @return E-mail dell'operatore che esegue il metodo
 	 */
-
 	public String getEmail() {
 		return email;
 	}
@@ -105,7 +106,6 @@ public class Operatore implements Convertable, DataTable {
 	/**
 	 * @return Nome dell'operatore che esegue il metodo
 	 */
-
 	public String getNome() {
 		return nome;
 	}
@@ -113,7 +113,6 @@ public class Operatore implements Convertable, DataTable {
 	/**
 	 * @return User ID relativo all'operatore che esegue il metodo
 	 */
-
 	public String getUid() {
 		return uid;
 	}
@@ -121,8 +120,8 @@ public class Operatore implements Convertable, DataTable {
 	@Override
 	public String toString() {
 		String str = String.format(
-			"%s: (\n\tCF: %s\n\tUserID: %s\n\tNome: %s\n\tCognome: %s\n\tEmail: %s\n\tCentro: %s\n)",
-			super.toString(), cf, uid, nome, cognome, email, centro.getNome());
+				"%s: (\n\tCF: %s\n\tUserID: %s\n\tNome: %s\n\tCognome: %s\n\tEmail: %s\n\tCentro: %s\n)",
+				super.toString(), cf, uid, nome, cognome, email, centro.getNome());
 
 		return str;
 	}
@@ -147,7 +146,7 @@ public class Operatore implements Convertable, DataTable {
 
 		Operatore op = (Operatore) obj;
 
-		if(cf.equals(op.getCf()))
+		if (cf.equals(op.getCf()))
 			return true;
 
 		return false;

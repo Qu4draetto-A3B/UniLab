@@ -25,7 +25,7 @@ import a3b.climate.utils.terminal.View;
 import java.util.Optional;
 
 /**
- * Permette all'utente di registrarsi
+ * Classe che permette la registrazione dell'utente
  */
 public class Registrazione implements View {
 	public Registrazione() {
@@ -52,7 +52,8 @@ public class Registrazione implements View {
 				}
 			}
 
-			Result<Operatore> rop = DataBase.operatore.registrazione(new Operatore(cf, uid, nome, cognome, email, rcm.get()), pwd);
+			Result<Operatore> rop = DataBase.operatore
+					.registrazione(new Operatore(cf, uid, nome, cognome, email, rcm.get()), pwd);
 
 			if (rop.isError()) {
 				term.printfln("Errore %d: %s", rop.getError(), rop.getMessage());

@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
- * Modella il menu principale
+ * Modella il menu' principale
  */
 public class MainMenu implements View {
 	public MainMenu() {
@@ -41,7 +41,8 @@ public class MainMenu implements View {
 		while (true) {
 			if (Main.oper.isPresent()) {
 				menu.append(String.format("Benvenuto %s\n", Main.oper.get().getNome()));
-				menu.append("Comandi: \nQ: Esci\nP: Profilo\nL: Logout\nC: Cerca le misurazioni\nI: Inserisci misurazione");
+				menu.append(
+						"Comandi: \nQ: Esci\nP: Profilo\nL: Logout\nC: Cerca le misurazioni\nI: Inserisci misurazione");
 			} else {
 				menu.append("Comandi: \nQ: Esci\nR: Registrazione\nL: Login\nC: Cerca le misurazioni");
 			}
@@ -53,18 +54,21 @@ public class MainMenu implements View {
 			menu.delete(0, menu.length());
 			term.clear();
 
-			if (Main.oper.isPresent()) error = user(c);
-			else error = basic(c);
+			if (Main.oper.isPresent())
+				error = user(c);
+			else
+				error = basic(c);
 
-			if (error) menu.append("[!!] Comando Errato\n");
+			if (error)
+				menu.append("[!!] Comando Errato\n");
 		}
 	}
 
-
 	/**
 	 * Metodo che permette all'utente di accedere alle varie funzioni da terminale
-	 * @param c carattere corrispondente alla funzione a cui vuole accedere l'utente
-	 * @return restituisce un booleano che indica se l'operazione è andata a buon fine
+	 *
+	 * @param c Carattere corrispondente alla funzione a cui vuole accedere l'utente
+	 * @return Booleano che indica se l'operazione è andata a buon fine
 	 */
 	private boolean basic(char c) {
 		switch (c) {
@@ -93,6 +97,12 @@ public class MainMenu implements View {
 		return false;
 	}
 
+	/**
+	 * Metodo che permette all'utente di accedere a una serie di funzioni
+	 *
+	 * @param c carattere corrispondente alla funzione cercata
+	 * @return Booleano che indica se l'operazione è andata a buon fine
+	 */
 	private boolean user(char c) {
 		switch (c) {
 			case '.':
@@ -115,7 +125,7 @@ public class MainMenu implements View {
 				break;
 
 			case 'i':
-				//TODO
+				// TODO
 				break;
 
 			default:
