@@ -31,7 +31,6 @@ import javax.swing.text.html.parser.Parser;
  * @author Gabriele Borgia, 753262
  */
 public class Main {
-	public static Screen scn = new Screen();
 	public static CommandLine line;
 
 	public static void main(String[] args) {
@@ -43,15 +42,6 @@ public class Main {
 			.required(true)
 			.valueSeparator(',')
 			.numberOfArgs(2)
-			.optionalArg(false)
-			.build());
-
-		opts.addOption(Option.builder("g")
-			.argName("gettone utente")
-			.longOpt("gettone")
-			.desc("File con nome utente e password nel formato 'utente,password'")
-			.required(true)
-			.hasArg()
 			.optionalArg(false)
 			.build());
 
