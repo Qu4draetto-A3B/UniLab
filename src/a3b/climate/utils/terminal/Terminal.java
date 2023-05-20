@@ -18,6 +18,8 @@ import a3b.climate.utils.result.Either;
 
 import java.io.Console;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Scanner;
 import java.util.function.Predicate;
 
 /**
@@ -25,10 +27,12 @@ import java.util.function.Predicate;
  * @see java.io.Console
  */
 public class Terminal {
-	private Console con;
+	private PrintStream out;
+	private Scanner in;
 
 	public Terminal() {
-		con = System.console();
+		out = System.out;
+		in = new Scanner(System.in);
 
 		String os = System.getProperty("os.name");
 		try {
@@ -39,7 +43,7 @@ public class Terminal {
 					.waitFor();
 			}
 		} catch (Exception e) {
-			con.printf("Errore nella modifica del registro 'VirtualTerminalLevel'\n");
+			out.printf("Errore nella modifica del registro 'VirtualTerminalLevel'\n");
 			e.printStackTrace();
 		}
 	}
@@ -48,7 +52,7 @@ public class Terminal {
 	 * Clears the console with "\033[H\033[2J" ANSI escape code
 	 */
 	public void clear() {
-		con.printf("\033[H\033[2J");
+		printf("\033[H\033[2J");
 	}
 
 	/**
@@ -57,7 +61,7 @@ public class Terminal {
 	 * @param args Values for string interpolation
 	 */
 	public void printf(String str, Object... args) {
-		con.printf(str, args);
+		out.printf(str, args);
 	}
 
 	/**
@@ -66,7 +70,7 @@ public class Terminal {
 	 * @param args Values for string interpolation
 	 */
 	public void printfln(String str, Object... args) {
-		con.printf(str + System.lineSeparator(), args);
+		printf(str + System.lineSeparator(), args);
 	}
 
 	/**
@@ -74,7 +78,8 @@ public class Terminal {
 	 * @return The string from the user
 	 */
 	public String readLine() {
-		String s = con.readLine("> ");
+		printf("> ");
+		String s = in.nextLine();
 		return s == null ? "" : s;
 	}
 
@@ -85,7 +90,8 @@ public class Terminal {
 	 * @return The string from the user
 	 */
 	public String readLine(String str, Object... args) {
-		String s = con.readLine(str + System.lineSeparator() + "> ", args);
+		printfln(str + System.lineSeparator() + "> ", args);
+		String s = readLine();
 		return s == null ? "" : s;
 	}
 
@@ -102,16 +108,6 @@ public class Terminal {
 	}
 
 	/**
-	 * Prints a string to the user and waits a response, hiding typed text
-	 * @param str The string to print
-	 * @param args Values for string interpolation
-	 * @return The string from the user
-	 */
-	public String readPassword(String str, Object... args) {
-		return new String(con.readPassword(str + "\n> ", args));
-	}
-
-	/**
 	 * Prints a string to the user and waits a response, checking the user's input with the provided function
 	 * @param fn Boolean condition, if <code>true</code> keeps asking some input
 	 * @param str The string to print
@@ -122,21 +118,6 @@ public class Terminal {
 		String out = readLine(str, args);
 		while (fn.test(out)) {
 			out = readLine(str, args);
-		}
-		return out;
-	}
-
-	/**
-	 * Prints a string to the user and waits a response, checking the user's input with the provided function, while hiding typed text
-	 * @param fn Boolean condition, if <code>true</code> keeps asking some input
-	 * @param str The string to print
-	 * @param args Values for string interpolation
-	 * @return The string from the user
-	 */
-	public String readPasswordWhile(Predicate<String> fn, String str, Object... args) {
-		String out = readPassword(str, args);
-		while (fn.test(out)) {
-			out = readPassword(str, args);
 		}
 		return out;
 	}
@@ -156,7 +137,7 @@ public class Terminal {
 			def = "Y";
 		}
 
-		String in = con.readLine(str + "\n" + yn + " > ", args).trim();
+		String in = readLine(str + " " + yn, args).trim();
 		in = in.isBlank() ? def : in;
 
 		boolean res = false;
@@ -170,10 +151,10 @@ public class Terminal {
 
 	/**
 	 * Metodo super generico, capace di assorbire le capacita' dei precedenti
-	 * @param fn
-	 * @param def
-	 * @param str
-	 * @param args
+	 * @param fn Condizione booleana, se e' <code>true</code> continua a chiedere un input
+	 * @param def Il valore di ritorno predefinito
+	 * @param str Domanda per l'utente
+	 * @param args Valori per l'iterpolazione di <code>str</code>
 	 * @return
 	 */
 	public Either<? extends Throwable, String> read(Predicate<String> fn, String def, String str, Object... args) {
