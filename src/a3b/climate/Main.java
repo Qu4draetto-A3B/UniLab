@@ -39,7 +39,6 @@ public class Main {
 			.argName("utente")
 			.longOpt("utente")
 			.desc("Nome utente e password, separati da virgola")
-			.required(true)
 			.valueSeparator(',')
 			.numberOfArgs(2)
 			.optionalArg(false)
@@ -49,6 +48,8 @@ public class Main {
 			.argName("avvia")
 			.longOpt("avvia-registrazione")
 			.desc("Avvia il processo di registrazione")
+			.hasArg()
+			.optionalArg(true)
 			.build());
 
 		opts.addOption(Option.builder("q")
