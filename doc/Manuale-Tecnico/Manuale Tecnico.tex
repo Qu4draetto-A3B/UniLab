@@ -308,21 +308,49 @@
 				Classe che si occupa della gestione dei risultati in alcuni metodi che potrebbero lanciare errori nell'applicazione.\\
 				I metodi getter: getError(), getMessage(), getFullMessage().
 				\begin{itemize}
-				\item \textbf{T get()}
-				\item \textbf{T getOr(T other)}
-				\item \textbf{T getOrElse(Supplier \textless T\textgreater fn)}
-				\item  \textgreater{T except()}
-				\item \textgreater {void panic()}
 				\item\textbf{boolean isValid()}
+				Metodo che restituisce true se il Result è valido. Altrimenti false.
 				\item\textbf{boolen isError()}
-				\item\textbf{void ifValid(BiConsumer\textless T, Integer \textgreater fn)}
-				\item\textbf{void ifError(BiConsumer\textless T, Integer\textgreater fn)}
-				\end{itemize}
+				Metodo che restituisce true se il Result lancia un errore. Altrimenti false.
 				
+				\item\textbf{void ifValid(BiConsumer\textless T, Integer \textgreater fn)}
+				Metodo che esegue la funzione data come parametro se il Result è valido.
+				
+				\item\textbf{void ifError(BiConsumer\textless T, Integer\textgreater fn)}
+				Metodo che esegue la funzione data come parametro se il Result genera errore. 
+				
+				\item \textbf{T get()}
+				Metodo che restituisce il contenuto di Result.
+				
+				\item \textbf{T getOr(T other)}
+				Metodo che restituisce il contenuto di Result se questo non è nullo. Altrimenti restituisce il paramentro formale other.
+				
+				\item \textbf{T getOrElse(Supplier \textless T\textgreater fn)}
+				Metodo che restituisce il contenuto di Result se questo non è nullo. Altrimenti esegue la funzione fn data come parametro e restituisce il risultato di quest'ultima.
+				
+				\item  \textbf{T except()}
+				Metodo che restituisce il contenuto di Result senza eseguire nessun controllo.
+				
+				\item \textbf{void panic()}
+				Metodo che lancia un errore non catturabile.
+				
+				\end{itemize}
+							
 			\subsection{terminal}
 				\subsubsection{Screen}
+				Classe che contiene il seguente metodo:
+				\begin{itemize}
+				\item \textbf{void show(View v)}
+				Metodo che serve a mostrare View. Pulisce il terminale prima e dopo l'esecuzione dell'applicazione.
+				\end{itemize}
+				
 				\subsubsection{Terminal}
 				\subsubsection{View}
+				Interfaccia che contiene il seguente metodo:
+				\begin{itemize}
+				\item \textbf{abstract void start(Terminal term)}
+				Metodo astratto che serve per avviare una schermata dell'applicazione attraverso il terminale.
+				\end{itemize}
 
 			\subsection{CercaAree}
 			L'implementazione di questa interfaccia consente la ricerca di aree geografiche.
