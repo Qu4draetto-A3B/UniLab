@@ -2,17 +2,19 @@ package a3b.climate.cli;
 
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
-import org.apache.commons.cli.CommandLine;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class Registrazione implements View {
+
 	public void start(Terminal term) {
 		File f = new File("./REGISTRAZIONE.INI");
 		if (!f.exists()) {
 			try {
 				f.createNewFile();
+				InputStream is = new BufferedInputStream(Thread.currentThread().getContextClassLoader().getResourceAsStream("a3b/climate/resources/REGISTRAZIONE.INI"));
+				BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+				bw.write(new String(is.readAllBytes()));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
