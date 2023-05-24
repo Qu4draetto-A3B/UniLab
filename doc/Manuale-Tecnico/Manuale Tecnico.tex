@@ -345,6 +345,34 @@
 				\end{itemize}
 				
 				\subsubsection{Terminal}
+				Classe Involucro che racchiude System.in() e System.out(), aggiungendo varie funzionalità.
+				\begin{itemize}
+				\item \textbf{void clear()}
+				Metodo che pulisce la console con il codice di uscita ANSI
+				\item \textbf{void printf(String str, Object... args)}
+				Metodo che formatta e stampa una stringa nel terminale.
+				I parametri formali servono a stampare all'utente una stringa (str) interpolata (args).
+				\item \textbf{void printfln(String str, Object... args)}
+				Metodo che formatta e stampa una stringa nel terminale, con un a capo finale. I parametri formali servono a stampare all'utente una stringa (str) interpolata (args).
+				\item \textbf{String readLine()}
+				Metodo che permette di leggere una linea dalla console utente. Il metodo restituisce la stringa inserita dall'utente.
+				\item \textbf{String readLine(String str, Object... args)}
+				Metodo che stampa una stringa e aspetta una risposta dell'utente.
+				I parametri formali servono a stampare all'utente una stringa (str) interpolata (args).
+				\item \textbf{String readLineOrDefault(String def, String str, Object... args)}
+				Metodo che stampa una stringa all'utente e aspetta una risposta, se non avviene la risposta il metodo restituisce (def).
+				I parametri formali servono a stampare all'utente una stringa (str) interpolata (args). Il parametro def è la stringa che ritorna se l'utente non scrive una risposta (stringa vuota).
+				\item \textbf{String readPassword(String str, Object... args)}
+				Metodo che stampa una stringa all'utente e aspetta una risposta, nascondendo il testo. Questa funzione serve a leggere la password dell'operatore.
+				I parametri formali servono a stampare all'utente una stringa (str) interpolata (args).
+				\item \textbf{String readWhile(Predicate<String> fn, String str, Object... args)}
+				Stampa una stringa e aspetta una risposta dall'utente, controllando la stringa inserita fn. I parametri formali servono a stampare all'utente una stringa (str) interpolata (args). Oltre a ciò è presente il parametro formale fn che è una funzione che restituisce un boolean.
+				
+				\item \textbf{boolean promptUser(boolean yes, String str, Object... args)}
+				Metodo che chiede all'utente una domanda con risposta si/no.
+				I parametri formali servono a stampare all'utente una stringa (str) interpolata (args). Oltre a ciò è presente un boolean (yes) che serve a definire la scelta di default.
+				\end{itemize}	
+				
 				\subsubsection{View}
 				Interfaccia che contiene il seguente metodo:
 				\begin{itemize}
