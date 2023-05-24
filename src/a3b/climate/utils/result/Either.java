@@ -17,7 +17,7 @@ package a3b.climate.utils.result;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-abstract class Either<L,R>
+public abstract class Either<L,R>
 {
     public static <L,R> Either<L,R> left(L value) {
         return new Either<L,R>() {
@@ -41,6 +41,14 @@ abstract class Either<L,R>
     private Either() {}
 
     public abstract <T> T map(Function<? super L, ? extends T> lFunc, Function<? super R, ? extends T> rFunc);
+
+	public<T> T lx() {
+		return (T) map(l -> l, r -> r);
+	}
+
+	public<T> T dx() {
+		return (T) map(l -> l, r -> r);
+	}
 
     public <T> Either<T,R> mapLeft(Function<? super L, ? extends T> lFunc) {
         return this.<Either<T,R>>map(t -> left(lFunc.apply(t)), t -> (Either<T,R>)this);

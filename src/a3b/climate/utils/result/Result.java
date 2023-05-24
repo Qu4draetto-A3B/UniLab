@@ -46,13 +46,13 @@ public class Result<T> {
 		return error != 0;
 	}
 
-	public void ifValid(BiConsumer<T, Integer> fn) throws NullPointerException {
+	public void ifValid(BiConsumer<T, Integer> fn) {
 		if (isValid()) {
 			fn.accept(content, error);
 		}
 	}
 
-	public void ifError(BiConsumer<T, Integer> fn) throws NullPointerException {
+	public void ifError(BiConsumer<T, Integer> fn) {
 		if (isError()) {
 			fn.accept(content, error);
 		}

@@ -14,12 +14,11 @@
  */
 package a3b.climate;
 
-import java.util.Optional;
-
-import a3b.climate.cli.Help;
-import a3b.climate.cli.MainMenu;
-import a3b.climate.magazzeno.Operatore;
+import a3b.climate.cli.App;
 import a3b.climate.utils.terminal.Screen;
+import org.apache.commons.cli.*;
+
+import javax.swing.text.html.parser.Parser;
 
 /**
  * Interdisciplinary Workshop A <br>
@@ -32,27 +31,105 @@ import a3b.climate.utils.terminal.Screen;
  * @author Gabriele Borgia, 753262
  */
 public class Main {
-	public static Screen scn = new Screen();
+	public static CommandLine line;
 
-	/**
-	 * Session cookie for the logged in operator
-	 */
-	public static Optional<Operatore> oper = Optional.empty();
+	public static void main(String[] args) {
+		Options opts = new Options();
+		opts.addOption(Option.builder("u")
+			.argName("utente")
+			.longOpt("utente")
+			.desc("Nome utente e password, separati da virgola")
+			.valueSeparator(',')
+			.numberOfArgs(2)
+			.optionalArg(false)
+			.build());
 
-	public static void main(String[] args) throws Exception {
-		if (System.console() == null) {
-			System.out.println("Error: System.console() is null");
-			stop();
-		}
-		if (args.length > 0 && (args[0].equals("-h") || args[0].equals("--help"))) {
-			scn.show(new Help());
+		opts.addOption(Option.builder()
+			.argName("avvia")
+			.longOpt("avvia-registrazione")
+			.desc("Avvia il processo di registrazione")
+			.hasArg()
+			.optionalArg(true)
+			.build());
+
+		opts.addOption(Option.builder("q")
+			.argName("avvia")
+			.longOpt("query")
+			.desc("Avvia un'operazione di ricerca dati")
+			.hasArg()
+			.optionalArg(true)
+			.build());
+
+		opts.addOption(Option.builder()
+			.argName("parole")
+			.longOpt("lista-aree")
+			.desc("Avvia un'operazione di ricerca sulle aree geografiche")
+			.hasArgs()
+			.valueSeparator(',')
+			.optionalArg(true)
+			.build());
+
+		opts.addOption(Option.builder()
+			.argName("parole")
+			.longOpt("lista-centri")
+			.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
+			.hasArgs()
+			.valueSeparator(',')
+			.optionalArg(true)
+			.build());
+
+		opts.addOption(Option.builder()
+			.argName("parole")
+			.longOpt("lista-misurazioni")
+			.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
+			.hasArgs()
+			.valueSeparator(',')
+			.optionalArg(true)
+			.build());
+
+		opts.addOption(Option.builder()
+			.argName("parole")
+			.longOpt("lista-operatori")
+			.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
+			.hasArgs()
+			.valueSeparator(',')
+			.optionalArg(true)
+			.build());
+
+		opts.addOption(Option.builder()
+			.argName("avvia")
+			.longOpt("crea-centro")
+			.desc("Avvia la creazione di un centro")
+			.hasArg()
+			.optionalArg(true)
+			.build());
+
+		opts.addOption(Option.builder()
+			.argName("avvia")
+			.longOpt("crea-misurazione")
+			.desc("Avvia la creazione di una misurazione")
+			.hasArg()
+			.optionalArg(true)
+			.build());
+
+		if (args.length < 1) {
+			new HelpFormatter().printHelp(
+				"Climate Monitoring",
+				"Programma per il monitoraggio climatico",
+				opts,
+				"Leggi il Manuale Utente per informazioni aggiuntive",
+				false);
 			return;
 		}
-		scn.show(new MainMenu());
-	}
 
-	public static void stop() {
-		System.out.println("Uscendo...");
-		System.exit(0);
+		DefaultParser par = new DefaultParser();
+		try {
+			line = par.parse(opts, args);
+		} catch (ParseException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
+
+		App.start(line);
 	}
 }
