@@ -23,7 +23,7 @@ import java.util.Scanner;
 import java.util.function.Predicate;
 
 /**
- * Wrapper around <code>System.console()</code> to add more functionalities
+ * Involucro che racchiude <code>System.in</code> e <code>System.out</code>, aggiungendo varie funzionalita'
  * @see java.io.Console
  */
 public class Terminal {
@@ -49,33 +49,33 @@ public class Terminal {
 	}
 
 	/**
-	 * Clears the console with "\033[H\033[2J" ANSI escape code
+	 * Pulisce il terminale con il codice ANSI "\033[H\033[2J"
 	 */
 	public void clear() {
 		printf("\033[H\033[2J");
 	}
 
 	/**
-	 * Prints a formatted string to the console
-	 * @param str The string to print
-	 * @param args Values for string interpolation
+	 * Formatta e stampa una stringa nel terminale
+	 * @param str La stringa da stampare
+	 * @param args Valori per l'interpolazione della stringa
 	 */
 	public void printf(String str, Object... args) {
 		out.printf(str, args);
 	}
 
 	/**
-	 * Prints a formatted string to the console, with a final newline
-	 * @param str The string to print
-	 * @param args Values for string interpolation
+	 * Formatta e stampa una stringa nel terminale, con un a capo finale
+	 * @param str La stringa da stampare
+	 * @param args Valori per l'interpolazione della stringa
 	 */
 	public void printfln(String str, Object... args) {
 		printf(str + System.lineSeparator(), args);
 	}
 
 	/**
-	 * Reads a line from the user's console.
-	 * @return The string from the user
+	 * Legge una linea di testo dal terminale
+	 * @return Una stringa dall'utente
 	 */
 	public String readLine() {
 		printf("> ");
@@ -84,10 +84,10 @@ public class Terminal {
 	}
 
 	/**
-	 * Prints a string to the user and waits a response
-	 * @param str The string to print
-	 * @param args Values for string interpolation
-	 * @return The string from the user
+	 * Stampa una stringa e aspetta una risposta dall'utente
+	 * @param str La stringa da stampare
+	 * @param args Valori per l'interpolazione della stringa
+	 * @return Una stringa dall'utente
 	 */
 	public String readLine(String str, Object... args) {
 		printfln(str + System.lineSeparator() + "> ", args);
@@ -96,11 +96,11 @@ public class Terminal {
 	}
 
 	/**
-	 * Prints a string to the user and waits a response, if no response is given returns <code>def</code>
-	 * @param def The default return value
-	 * @param str The string to print
-	 * @param args Values for string interpolation
-	 * @return The string from the user
+	 * Stampa una stringa e aspetta una risposta dall'utente, ritornando <code>def</code> nel caso l'utente inserisca una stringa vuota
+	 * @param def Il valore di ritorno se l'utente non inserisce nulla o una stringa vuota
+	 * @param str La stringa da stampare
+	 * @param args Valori per l'interpolazione della stringa
+	 * @return Una stringa dall'utente, oppure <code>def</code> se la stringa e' vuota
 	 */
 	public String readLineOrDefault(String def, String str, Object... args) {
 		String out = readLine(str, args).trim();
@@ -108,11 +108,11 @@ public class Terminal {
 	}
 
 	/**
-	 * Prints a string to the user and waits a response, checking the user's input with the provided function
-	 * @param fn Boolean condition, if <code>true</code> keeps asking some input
-	 * @param str The string to print
-	 * @param args Values for string interpolation
-	 * @return The string from the user
+	 * Stampa una stringa e aspetta una risposta dall'utente, controllando la stringa inserita usando <code>fn</code>
+	 * @param fn Condizione booleana, se <code>true</code> continua a chiedere una stringa all'utente
+	 * @param str La stringa da stampare
+	 * @param args Valori per l'interpolazione della stringa
+	 * @return Una stringa dall'utente
 	 */
 	public String readWhile(Predicate<String> fn, String str, Object... args) {
 		String out = readLine(str, args);
@@ -123,11 +123,11 @@ public class Terminal {
 	}
 
 	/**
-	 * Prompts the user with a yes or no question.
-	 * @param yes Whether the default for absent user action is yes or no, respectively <code>true</code> or <code>false</code>
-	 * @param str Question for the user
-	 * @param args Values for string interpolation
-	 * @return <code>true</code> if user sent "y" or "yes", <code>false</code> otherwise
+	 * Chiede all'utente una domanda con risposta Si/No
+	 * @param yes Se <code>true</code> la risposta di default e' Si, se <code>false</code> e' No
+	 * @param str La stringa da stampare
+	 * @param args Valori per l'interpolazione della stringa
+	 * @return <code>true</code> se Si, <code>false</code> se No
 	 */
 	public boolean promptUser(boolean yes, String str, Object... args) {
 		String yn = "[y/N]";
@@ -155,7 +155,7 @@ public class Terminal {
 	 * @param def Il valore di ritorno predefinito
 	 * @param str Domanda per l'utente
 	 * @param args Valori per l'iterpolazione di <code>str</code>
-	 * @return
+	 * @return Un'errore se l'utente preme CTRL+D, altrimenti la stringa dall'utente
 	 */
 	public Either<? extends Throwable, String> read(Predicate<String> fn, String def, String str, Object... args) {
 		String out;
