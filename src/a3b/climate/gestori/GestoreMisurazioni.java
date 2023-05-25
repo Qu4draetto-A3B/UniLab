@@ -44,7 +44,9 @@ public class GestoreMisurazioni extends Gestore {
 	 * Metodo che crea un nuovo record relativo a una determinata misurazione
 	 *
 	 * @param mis Misurazione di cui si vuole creare un nuovo record
-	 * @return Record relativo alla misurazione fornita come parametro
+	 * @return Record relativo alla misurazione fornita come parametro. Se
+	 *         l'operazione non e' stata eseguita correttamente
+	 *         restituisce un record relativo all'errore.
 	 */
 	public Result<Object> addMisurazione(Misurazione mis) {
 		long newRID = Long.parseLong(getProperty("LastRID").get());
@@ -74,7 +76,7 @@ public class GestoreMisurazioni extends Gestore {
 	 * ParametriClimatici.CSV
 	 * in una lista, la quale inizializza un nuovo oggetto di tipo Filtratore
 	 *
-	 * @return Record
+	 * @return Record relativo al filtratore inizializzato
 	 */
 	public Result<Filtratore> getMisurazioni() {
 		List<Misurazione> lm = new LinkedList<>();

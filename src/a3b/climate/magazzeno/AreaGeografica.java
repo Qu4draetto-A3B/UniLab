@@ -45,6 +45,9 @@ public class AreaGeografica implements DataTable {
 		this.denominazione = denominazione;
 	}
 
+	/**
+	 * @return GeoID relativo all'area geografica che chiama il metodo
+	 */
 	public long getGeoID() {
 		return geoID;
 	}

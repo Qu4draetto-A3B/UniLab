@@ -139,6 +139,9 @@ public class DatoGeografico implements DataTable {
 		}
 	}
 
+	/**
+	 * @return ID relativo al dato geografico che chiama il metodo
+	 */
 	public long getRid() {
 		return rid;
 	}
@@ -239,7 +242,7 @@ public class DatoGeografico implements DataTable {
 	/**
 	 * Metodo che imposta le note relative al dato geografico che chiama il metodo
 	 *
-	 * @param key
+	 * @param key Chiave che stabilisce come inserire la nota all'interno del dato geografico
 	 * @param nota Note relative al dato geografico
 	 */
 
@@ -274,9 +277,11 @@ public class DatoGeografico implements DataTable {
 	}
 
 	/**
-	 * Metodo che controlla
+	 * Metodo che confronta le note del dato geografico fornito come argomento e le confronta con quelle
+del dato geografico che chiama il . Il metodo restituisce true se le due note sono uguali. Altrimenti
+restituisce false.
 	 *
-	 * @param dato
+	 * @param dato Dato di tipo DatoGeografico da cui estrarre la nota
 	 * @return
 	 */
 	public boolean noteEquals(DatoGeografico dato) {
