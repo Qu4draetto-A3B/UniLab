@@ -115,8 +115,24 @@ public abstract class Gestore implements AutoCloseable {
 		start();
 	}
 
+	/**
+	 * Metodo astratto che si occupa di creare un nuovo oggetto associato
+	 * all'implementatore
+	 *
+	 * @param record
+	 * @return
+	 */
 	protected abstract DataTable buildObject(CSVRecord record);
 
+	/**
+	 * Metodo che si occupa di prendere una proprieta' nel file (*.CSV.DAT)
+	 * associato ad una tabella (*.CSV).
+	 *
+	 * @param key Chiave per accedere alla proprieta' del file
+	 * @return Record con la stringa della proprietà richiesta. Se l'operazione di
+	 *         ricerca non dovesse andare a buon fine, restituisce una stringa
+	 *         associata a un codice di errore.
+	 */
 	protected Result<String> getProperty(String key) {
 		String val = "";
 		for (String line : metaIn.lines().toList()) {
@@ -153,9 +169,9 @@ public abstract class Gestore implements AutoCloseable {
 	 * Metodo che si occupa di impostare una proprieta' nel file (*.CSV.DAT)
 	 * associato a una tabella (*.CSV)
 	 *
-	 * @param key
-	 * @param val
-	 * @return
+	 * @param key Chiave del file
+	 * @param val Proprieta' da impostare
+	 * @return Record relativo all'operazione effettuata. Se l'operazione non andasse a buon fine, restituisce un record relativo a un errore.
 	 */
 	protected Result<Object> setProperty(String key, String val) {
 		String contents = metaIn.toString();
