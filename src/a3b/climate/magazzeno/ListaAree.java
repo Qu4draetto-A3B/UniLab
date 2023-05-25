@@ -141,23 +141,8 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	 * @param area Area geografica di cui interessano le informazioni
 	 */
 
-	public DatoGeografico visualizzaAreaGeografica(AreaGeografica area) {
-		/*
-		 * + visualizzaAreaGeografica(area: AreaGeografica):DatoGeografico // Aggregato
-		 * 1. una volta trovata l'area di interesse, deve essere possibile visualizzare
-		 * tutte le informazioni relative ad essa
-		 *
-		 * 2. tra le informazioni deve esserci un prospetto riassuntivo dei parametri
-		 * climatici associati a quell'area
-		 * o l’indicazione che l'area non contiene dati inseriti dagli operatori.
-		 * Se presenti, si potranno visualizzare tali dati in forma aggregata (ad
-		 * esempio, numero di rilevazioni per ciascun parametro e statistica opportuna
-		 * del punteggio),
-		 * oltre agli eventuali commenti lasciati dagli operatori
-		 */
 
-		return null;
-	}
+
 
 	@Override
 	public ListaAree cercaAreaGeografica(String denominazione, String stato) {
