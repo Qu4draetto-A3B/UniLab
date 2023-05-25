@@ -15,10 +15,7 @@
 package a3b.climate;
 
 import a3b.climate.cli.App;
-import a3b.climate.utils.terminal.Screen;
 import org.apache.commons.cli.*;
-
-import javax.swing.text.html.parser.Parser;
 
 /**
  * Interdisciplinary Workshop A <br>

@@ -43,7 +43,6 @@ public class GestoreArea extends Gestore implements CercaAree {
 		for (CSVRecord record : records) {
 			long dbGeoId = Long.parseLong(record.get("GeonameID"));
 			if (dbGeoId == geoId) {
-
 				return new Result<AreaGeografica>((AreaGeografica)buildObject(record));
 			}
 		}
