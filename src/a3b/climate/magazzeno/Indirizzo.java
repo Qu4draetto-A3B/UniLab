@@ -76,16 +76,6 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * Metodo che imposta il numero civico relativo all'indirizzo che chiama il metodo
-	 * @param civico Numero civico relativo all'indirizzo
-	 */
-
-
-	public void setCivico(int civico) {
-		this.civico = civico;
-	}
-
-	/**
 	 * @return Restituisce il codice di avviamento postale relativo all'indirizzo che chiama il metodo
 	 */
 
