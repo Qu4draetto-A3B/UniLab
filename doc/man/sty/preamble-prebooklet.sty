@@ -1,0 +1,26 @@
+\ProvidesPackage{preamble-prebooklet}
+
+% Localization
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+% Document
+\usepackage[a5paper]{geometry}
+\usepackage[pdfusetitle]{hyperref}
+\usepackage{url}
+\usepackage{scrhack}
+\usepackage{scrtime}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% Additional options
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\addtokomafont{disposition}{\rmfamily} % default classes font for headers
+
+\KOMAoption{parskip}{on}
+\KOMAoption{toc}{listof,bib,index}
