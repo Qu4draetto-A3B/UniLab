@@ -51,7 +51,7 @@ public class GestoreOperatore extends Gestore {
 		String cf = op.getCf().toUpperCase();
 		pwd = hashPwd(pwd);
 
-		if (getOperatoreByCf(cf).isValid()) {
+		if (getOperatoreByUid(op.getUid()).isValid() || getOperatoreByCf(cf).isValid()) {
 			return new Result<>(1, "Operatore gia registrato");
 		}
 
@@ -106,10 +106,10 @@ public class GestoreOperatore extends Gestore {
 	Result<Operatore> getOperatoreByCf(String cf) {
 		for (CSVRecord record : records) {
 			String dbCf = record.get("CodFis");
-			DataTable op = buildObject(record);
+			Operatore op = (Operatore) buildObject(record);
 
 			if (cf.equals(dbCf)) {
-				return new Result<Operatore>((Operatore) op);
+				return new Result<>(op);
 			}
 		}
 
@@ -143,7 +143,7 @@ public class GestoreOperatore extends Gestore {
 	 * @return Booleano che rappresenta la validità del codice fiscale fornito come
 	 *         parametro
 	 */
-	private boolean cfIsValid(String cf) {
+	public boolean cfIsValid(String cf) {
 		Pattern cfPattern = Pattern.compile(
 				"(?:[A-Z][AEIOU][AEIOUX]|[AEIOU]X{2}|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}(?:[\\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]|[15MR][\\dLMNP-V]|[26NS][0-8LMNP-U])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM]|[AC-EHLMPR-T][26NS][9V])|(?:[02468LNQSU][048LQU]|[13579MPRTV][26NS])B[26NS][9V])(?:[A-MZ][1-9MNP-V][\\dLMNP-V]{2}|[A-M][0L](?:[1-9MNP-V][\\dLMNP-V]|[0L][1-9MNP-V]))[A-Z]$");
 
@@ -174,13 +174,13 @@ public class GestoreOperatore extends Gestore {
 
 	@Override
 	protected DataTable buildObject(CSVRecord record) {
-		CentroMonitoraggio cm = DataBase.centro.getCentro(record.get("Centro")).get();
+		Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(record.get("Centro"));
 
 		return new Operatore(record.get("CodFis"),
 				record.get("UserID"),
 				record.get("Nome"),
 				record.get("Cognome"),
 				record.get("Email"),
-				cm);
+				rcm.get());
 	}
 }

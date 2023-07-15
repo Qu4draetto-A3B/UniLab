@@ -14,122 +14,105 @@
  */
 package a3b.climate.utils.terminal;
 
+import a3b.climate.utils.result.Either;
+
 import java.io.Console;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Scanner;
 import java.util.function.Predicate;
 
 /**
- * Classe involucro di <code>System.console()</code> per aggiungere più
- * funzionalita'
- *
+ * Involucro che racchiude <code>System.in</code> e <code>System.out</code>, aggiungendo varie funzionalita'
  * @see java.io.Console
  */
 public class Terminal {
-	private Console con;
+	private PrintStream out;
+	private Scanner in;
 
-	/**
-	 * Costruttore di un'istanza di Terminal
-	 */
 	public Terminal() {
-		con = System.console();
+		out = System.out;
+		in = new Scanner(System.in);
+
 		String os = System.getProperty("os.name");
 		try {
 			if (os.contains("Windows")) {
 				new ProcessBuilder("REG ADD HKCU\\CONSOLE /f /v VirtualTerminalLevel /t REG_DWORD /d 1")
-						.inheritIO()
-						.start()
-						.waitFor();
+					.inheritIO()
+					.start()
+					.waitFor();
 			}
 		} catch (Exception e) {
-			con.printf("Errore nella modifica del registro 'VirtualTerminalLevel'\n");
+			out.printf("Errore nella modifica del registro 'VirtualTerminalLevel'\n");
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * Libera la console con il codice di escape ANSI "\033[H\033[2J"
+	 * Pulisce il terminale con il codice ANSI "\033[H\033[2J"
 	 */
 	public void clear() {
-		con.printf("\033[H\033[2J");
+		printf("\033[H\033[2J");
 	}
 
 	/**
-	 * Prints a formatted string to the console
-	 *
-	 * @param str  The string to print
-	 * @param args Values for string interpolation
+	 * Formatta e stampa una stringa nel terminale
+	 * @param str La stringa da stampare
+	 * @param args Valori per l'interpolazione della stringa
 	 */
 	public void printf(String str, Object... args) {
-		con.printf(str, args);
+		out.printf(str, args);
 	}
 
 	/**
-	 * Prints a formatted string to the console, with a final newline
-	 *
-	 * @param str  The string to print
-	 * @param args Values for string interpolation
+	 * Formatta e stampa una stringa nel terminale, con un a capo finale
+	 * @param str La stringa da stampare
+	 * @param args Valori per l'interpolazione della stringa
 	 */
 	public void printfln(String str, Object... args) {
-		con.printf(str + System.lineSeparator(), args);
+		printf(str + System.lineSeparator(), args);
 	}
 
 	/**
-	 * Reads a line from the user's console.
-	 *
-	 * @return The string from the user
+	 * Legge una linea di testo dal terminale
+	 * @return Una stringa dall'utente
 	 */
 	public String readLine() {
-		String s = con.readLine("> ");
+		printf("> ");
+		String s = in.nextLine();
 		return s == null ? "" : s;
 	}
 
 	/**
-	 * Stampa a schermo una stringa e aspetta una risposta dall'utente
-	 *
-	 * @param str  Stringa da stampare
+	 * Stampa una stringa e aspetta una risposta dall'utente
+	 * @param str La stringa da stampare
 	 * @param args Valori per l'interpolazione della stringa
-	 * @return Stringa fornita dall'utente
+	 * @return Una stringa dall'utente
 	 */
 	public String readLine(String str, Object... args) {
-		String s = con.readLine(str + System.lineSeparator() + "> ", args);
+		printfln(str + System.lineSeparator() + "> ", args);
+		String s = readLine();
 		return s == null ? "" : s;
 	}
 
 	/**
-	 * Stampa una stringa all'utente e aspetta una risposta, se non viene data
-	 * restituisce <code>def</code>
-	 *
-	 * @param def  Valore restituito di default
-	 * @param str  Stringa da stampare
+	 * Stampa una stringa e aspetta una risposta dall'utente, ritornando <code>def</code> nel caso l'utente inserisca una stringa vuota
+	 * @param def Il valore di ritorno se l'utente non inserisce nulla o una stringa vuota
+	 * @param str La stringa da stampare
 	 * @param args Valori per l'interpolazione della stringa
-	 * @return Stringa fornita dall'utente
+	 * @return Una stringa dall'utente, oppure <code>def</code> se la stringa e' vuota
 	 */
 	public String readLineOrDefault(String def, String str, Object... args) {
 		String out = readLine(str, args).trim();
-		return out.isEmpty() ? def : out;
+		return out.isBlank() ? def : out;
 	}
 
 	/**
-	 * Stampa a schermo una stringa e aspetta una risposta dall'utente, nascondendo
-	 * il testo digitato
-	 *
-	 * @param str  Stringa da stampare
+	 * Stampa una stringa e aspetta una risposta dall'utente, controllando la stringa inserita usando <code>fn</code>
+	 * @param fn Condizione booleana, se <code>true</code> continua a chiedere una stringa all'utente
+	 * @param str La stringa da stampare
 	 * @param args Valori per l'interpolazione della stringa
-	 * @return Stringa fornita dall'utente
-	 */
-	public String readPassword(String str, Object... args) {
-		return new String(con.readPassword(str + "\n> ", args));
-	}
-
-	/**
-	 * Stampa una stringa all'utente e aspetta una risposta, controllando l'imput
-	 * dell utente con la funzione fornita
-	 *
-	 * @param fn   Condizione booleana, se <code>true</code> continua a richedere
-	 *             l'inserimento di input
-	 * @param str  Stringa da stampare
-	 * @param args Valori per l'interpolazione della stringa
-	 * @return Stringa fornita dall'utente
+	 * @return Una stringa dall'utente
 	 */
 	public String readWhile(Predicate<String> fn, String str, Object... args) {
 		String out = readLine(str, args);
@@ -140,32 +123,11 @@ public class Terminal {
 	}
 
 	/**
-	 * Stampa una stringa all'utente e aspetta una risposta, controllando l'imput
-	 * dell utente con la funzione fornita e nascondendo il testo digitato
-	 *
-	 * @param fn   Condizione booleana, se <code>true</code> continua a richedere
-	 *             l'inserimento di input
-	 * @param str  Stringa da stampare
+	 * Chiede all'utente una domanda con risposta Si/No
+	 * @param yes Se <code>true</code> la risposta di default e' Si, se <code>false</code> e' No
+	 * @param str La stringa da stampare
 	 * @param args Valori per l'interpolazione della stringa
-	 * @return Stringa fornita dall'utente
-	 */
-	public String readPasswordWhile(Predicate<String> fn, String str, Object... args) {
-		String out = readPassword(str, args);
-		while (fn.test(out)) {
-			out = readPassword(str, args);
-		}
-		return out;
-	}
-
-	/**
-	 * Richiede all'utente una domanda con risposta si'/no
-	 *
-	 * @param yes  Se il default per un'azione assente di un utente è si' o no,
-	 *             sara' rispettivamente <code>true</code> o <code>false</code>
-	 * @param str  Domanda per l'utente
-	 * @param args Valori per l'interpolazione della stringa
-	 * @return <code>true</code> se l'utente ha digitato "y" o "yes",
-	 *         <code>false</code> altrimenti
+	 * @return <code>true</code> se Si, <code>false</code> se No
 	 */
 	public boolean promptUser(boolean yes, String str, Object... args) {
 		String yn = "[y/N]";
@@ -175,7 +137,7 @@ public class Terminal {
 			def = "Y";
 		}
 
-		String in = con.readLine(str + "\n" + yn + " > ", args).trim();
+		String in = readLine(str + " " + yn, args).trim();
 		in = in.isBlank() ? def : in;
 
 		boolean res = false;
@@ -185,5 +147,24 @@ public class Terminal {
 		res |= in.equalsIgnoreCase("si");
 
 		return res;
+	}
+
+	/**
+	 * Metodo super generico, capace di assorbire le capacita' dei precedenti
+	 * @param fn Condizione booleana, se e' <code>true</code> continua a chiedere un input
+	 * @param def Il valore di ritorno predefinito
+	 * @param str Domanda per l'utente
+	 * @param args Valori per l'iterpolazione di <code>str</code>
+	 * @return Un'errore se l'utente preme CTRL+D, altrimenti la stringa dall'utente
+	 */
+	public Either<? extends Throwable, String> read(Predicate<String> fn, String def, String str, Object... args) {
+		String out;
+		 do {
+			out = readLine(str, args);
+			if (out == null) {
+				return Either.left(new NullPointerException());
+			}
+		} while (fn.test(out));
+		return Either.right(out.isBlank() ? def : out);
 	}
 }

@@ -23,8 +23,7 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 /**
- * Classe che gestisce le operazioni di lettura e scrittura riguardanti oggetti
- * di tipo AreaGeografica
+ * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo AreaGeografica
  */
 public class GestoreArea extends Gestore implements CercaAree {
 	/**
@@ -35,20 +34,16 @@ public class GestoreArea extends Gestore implements CercaAree {
 				"./data/CoordinateMonitoraggio.CSV",
 				new String[] { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat", "Lon" });
 	}
-
 	/**
 	 * Metodo che ricerca una determinata area geografica in base al suo ID
-	 *
-	 * @param geoId ID relativo all'area geografica d'interesse
-	 * @return Record relativo all'area geografica corrispondente all'ID fornito
-	 *         come parametro
+	 * @param geoId ID relativo all'area geografica d'ineteresse
+	 * @return Restituisce l'area geografica corrispondente all'ID fornito come parametro
 	 */
 	public Result<AreaGeografica> getArea(long geoId) {
 		for (CSVRecord record : records) {
 			long dbGeoId = Long.parseLong(record.get("GeonameID"));
 			if (dbGeoId == geoId) {
-
-				return new Result<AreaGeografica>((AreaGeografica) buildObject(record));
+				return new Result<AreaGeografica>((AreaGeografica)buildObject(record));
 			}
 		}
 
@@ -96,15 +91,14 @@ public class GestoreArea extends Gestore implements CercaAree {
 
 		// Cerca coordinate esatte
 		for (CSVRecord record : records) {
-			if ((latitudine == Double.parseDouble(record.get("Lat")))
-					&& (longitudine == Double.parseDouble(record.get("Lon"))))
-				return new Result<AreaGeografica>((AreaGeografica) buildObject(record));
+			if ((latitudine == Double.parseDouble(record.get("Lat"))) && (longitudine == Double.parseDouble(record.get("Lon"))))
+				return new Result<AreaGeografica>((AreaGeografica)buildObject(record));
 		}
 
 		// Cerca coordinate piu' vicine
 		CSVRecord r = records.iterator().next();
 		CSVRecord target = r;
-		AreaGeografica ag = (AreaGeografica) buildObject(r);
+		AreaGeografica ag = (AreaGeografica)buildObject(r);
 
 		double differenzalat = latitudine - ag.getLatitudine();
 		differenzalat *= differenzalat;
@@ -131,18 +125,18 @@ public class GestoreArea extends Gestore implements CercaAree {
 
 		}
 
-		return new Result<AreaGeografica>((AreaGeografica) buildObject(target));
+		return new Result<AreaGeografica>((AreaGeografica)buildObject(target));
 	}
 
 	@Override
-	protected DataTable buildObject(CSVRecord record) {
+	protected DataTable buildObject(CSVRecord record){
 		AreaGeografica ag = new AreaGeografica(
-				Long.parseLong(record.get("GeonameID")),
-				Double.parseDouble(record.get("Lat")),
-				Double.parseDouble(record.get("Lon")),
-				record.get("CountryName"),
-				record.get("ASCIIName"));
+					Long.parseLong(record.get("GeonameID")),
+					Double.parseDouble(record.get("Lat")),
+					Double.parseDouble(record.get("Lon")),
+					record.get("CountryName"),
+					record.get("ASCIIName"));
 
-		return ag;
+				return ag;
 	}
 }

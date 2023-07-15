@@ -14,15 +14,8 @@
  */
 package a3b.climate.utils.terminal;
 
-/**
- * Interfaccia che
- */
-public interface View {
+import org.apache.commons.cli.CommandLine;
 
-	/**
-	 * Metodo che
-	 *
-	 * @param term
-	 */
-	public abstract void start(Terminal term);
+public interface View {
+    void start(Terminal term);
 }
