@@ -51,7 +51,7 @@ public class Main {
 			.build());
 
 		opts.addOption(Option.builder("q")
-			.argName("avvia")
+			.argName("path")
 			.longOpt("query")
 			.desc("Avvia un'operazione di ricerca dati")
 			.hasArg()

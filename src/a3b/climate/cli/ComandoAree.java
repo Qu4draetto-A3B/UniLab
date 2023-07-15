@@ -3,6 +3,7 @@ package a3b.climate.cli;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 import a3b.climate.utils.terminal.Terminal;
@@ -14,9 +15,13 @@ public class ComandoAree implements View
     public void start(Terminal term)
     {
         Deque<double[]> coords = new ArrayDeque<double[]>();
-        List<String> args = Arrays.asList(App.line.getOptionValue("lista-aree", "").split(","));
+        List<String> args = Arrays.asList(App.line.getOptionValues("lista-aree"));
 
         for (String string : args) {
+			if (!string.contains(":")) {
+				continue;
+			}
+
             String[] coord = string.split(":");
             if (coord.length == 2) {
                 coords.push(new double[] {Double.parseDouble(coord[0]), Double.parseDouble(coord[1])});
@@ -24,17 +29,13 @@ public class ComandoAree implements View
             args.remove(string);
         }
 
+		Deque<Long> geoids = new LinkedList<Long>();
+
         for (String s : args) {
             long l;
-            double d;
             try {
                 l = Long.parseLong(s);
-            } catch (Exception e) {
-                break;
-            }
-
-            try {
-                d = Double.parseDouble(s);
+				geoids.push(l);
             } catch (Exception e) {
                 break;
             }

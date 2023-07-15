@@ -19,7 +19,7 @@ public class App {
 		} else if (line.hasOption("lista-aree")) {
 			scn.show(new ComandoAree());
 		} else if (line.hasOption("lista-centri")) {
-			scn.show(new ComandoCentri());
+			scn.show(new MostraCentri());
 		} else if (line.hasOption("lista-misurazioni")) {
 			scn.show(new MostraMisurazioni());
 		} else if (line.hasOption("lista-operatori")) {
