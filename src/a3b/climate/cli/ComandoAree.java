@@ -1,3 +1,5 @@
+package a3b.climate.cli;
+
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
@@ -21,7 +23,7 @@ public class ComandoAree implements View
             }
             args.remove(string);
         }
-        
+
         for (String s : args) {
             long l;
             double d;
@@ -30,7 +32,7 @@ public class ComandoAree implements View
             } catch (Exception e) {
                 break;
             }
-            
+
             try {
                 d = Double.parseDouble(s);
             } catch (Exception e) {

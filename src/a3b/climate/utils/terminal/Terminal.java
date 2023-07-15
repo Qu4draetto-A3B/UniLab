@@ -14,8 +14,6 @@
  */
 package a3b.climate.utils.terminal;
 
-import a3b.climate.utils.result.Either;
-
 import java.io.Console;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -156,7 +154,7 @@ public class Terminal {
 	 * @param str Domanda per l'utente
 	 * @param args Valori per l'iterpolazione di <code>str</code>
 	 * @return Un'errore se l'utente preme CTRL+D, altrimenti la stringa dall'utente
-	 */
+	 *//*
 	public Either<? extends Throwable, String> read(Predicate<String> fn, String def, String str, Object... args) {
 		String out;
 		 do {
@@ -166,5 +164,5 @@ public class Terminal {
 			}
 		} while (fn.test(out));
 		return Either.right(out.isBlank() ? def : out);
-	}
+	}*/
 }
