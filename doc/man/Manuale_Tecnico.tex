@@ -1,40 +1,11 @@
-\documentclass[a4paper, 12pt]{report}
+\documentclass[a4paper, 12pt]{scrreprt}
 
-\usepackage[margin=3cm]{geometry}
-\usepackage{hyperref}
-%\usepackage{showkeys} % mostra i label che scegli
-\usepackage{graphicx}
-\usepackage{parskip}
-\usepackage{caption}
-\usepackage{url}
-\usepackage[T1]{fontenc}
-\usepackage[Italian]{babel}
+\usepackage{sty/preamble}
+\usepackage{sty/preamble-math}
+\usepackage{sty/preamble-code}
 
-% Mathematics
-\usepackage{amsmath}
-\usepackage{amssymb}
-
-\newcommand{\bbN}{\mathbb{N}}
-\newcommand{\bbZ}{\mathbb{Z}}
-\newcommand{\bbQ}{\mathbb{Q}}
-\newcommand{\bbR}{\mathbb{R}}
-\newcommand{\bbC}{\mathbb{C}}
-
-\newcommand{\bigO}{\mathbf{O}}
-\newcommand{\litO}{\mathbf{o}}
-\newcommand{\bigM}{\mathbf{\Omega}}
-\newcommand{\bigT}{\mathbf{\Theta}}
-
-% Additional options
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{5}
-
-\title {
-	CLIMATE MONITORING \\
-	Manuale Tecnico}
-
-% Titolo e nelle parentesi quadre abbreviazione
-
+\title {Manuale Tecnico}
+\subtitle{CLIMATE MONITORING}
 \author{
 	Iuri Antico \textit{matricola}:
 	\texttt{753144}
@@ -53,11 +24,7 @@
 
 \begin{document}
 
-	\makeatletter
-	\begin{titlepage}
-		\maketitle
-	\end{titlepage}
-	\makeatother
+	\maketitle
 
 	\tableofcontents
 	\listoffigures
@@ -73,7 +40,7 @@
 	\chapter{Struttura generale del sistema di classi}
 		\section{cli}
 			\subsection{Help}
-			\subsection{Login}
+			\subsection{Login\index{Login}}
 			\subsection{MainMenu}
 			\subsection{MostraMisurazioni}
 			\subsection{Registrazione}
@@ -297,13 +264,13 @@
 				Classe che rappresenta i nodi della lista, i metodi presenti servono per la gestione degli elementi della lista.\\
 				I metodi setter : setDato, setNext;\\
 				I metodi getter : getDato, getNext;
-			
+
 			\subsection{result}
 				All'interno del package result sono presenti una serie di classi che servono per gestire i risultati di alcuni metodi dell'applicazione.
 				\subsubsection{Panic}
 				Classe che estende Error, serve a gestire degli errori che non è possibile catturare, lanciati dalla classe Result.
-				
-				
+
+
 				\subsubsection{Result}
 				Classe che si occupa della gestione dei risultati in alcuni metodi che potrebbero lanciare errori nell'applicazione.\\
 				I metodi getter: getError(), getMessage(), getFullMessage().
@@ -312,30 +279,30 @@
 				Metodo che restituisce true se il Result è valido. Altrimenti false.
 				\item\textbf{boolen isError()}
 				Metodo che restituisce true se il Result lancia un errore. Altrimenti false.
-				
+
 				\item\textbf{void ifValid(BiConsumer\textless T, Integer \textgreater fn)}
 				Metodo che esegue la funzione data come parametro se il Result è valido.
-				
+
 				\item\textbf{void ifError(BiConsumer\textless T, Integer\textgreater fn)}
-				Metodo che esegue la funzione data come parametro se il Result genera errore. 
-				
+				Metodo che esegue la funzione data come parametro se il Result genera errore.
+
 				\item \textbf{T get()}
 				Metodo che restituisce il contenuto di Result.
-				
+
 				\item \textbf{T getOr(T other)}
 				Metodo che restituisce il contenuto di Result se questo non è nullo. Altrimenti restituisce il paramentro formale other.
-				
+
 				\item \textbf{T getOrElse(Supplier \textless T\textgreater fn)}
 				Metodo che restituisce il contenuto di Result se questo non è nullo. Altrimenti esegue la funzione fn data come parametro e restituisce il risultato di quest'ultima.
-				
+
 				\item  \textbf{T except()}
 				Metodo che restituisce il contenuto di Result senza eseguire nessun controllo.
-				
+
 				\item \textbf{void panic()}
 				Metodo che lancia un errore non catturabile.
-				
+
 				\end{itemize}
-							
+
 			\subsection{terminal}
 				\subsubsection{Screen}
 				Classe che contiene il seguente metodo:
@@ -343,7 +310,7 @@
 				\item \textbf{void show(View v)}
 				Metodo che serve a mostrare View. Pulisce il terminale prima e dopo l'esecuzione dell'applicazione.
 				\end{itemize}
-				
+
 				\subsubsection{Terminal}
 				Classe Involucro che racchiude System.in() e System.out(), aggiungendo varie funzionalità.
 				\begin{itemize}
@@ -367,12 +334,12 @@
 				I parametri formali servono a stampare all'utente una stringa (str) interpolata (args).
 				\item \textbf{String readWhile(Predicate<String> fn, String str, Object... args)}
 				Stampa una stringa e aspetta una risposta dall'utente, controllando la stringa inserita fn. I parametri formali servono a stampare all'utente una stringa (str) interpolata (args). Oltre a ciò è presente il parametro formale fn che è una funzione che restituisce un boolean.
-				
+
 				\item \textbf{boolean promptUser(boolean yes, String str, Object... args)}
 				Metodo che chiede all'utente una domanda con risposta si/no.
 				I parametri formali servono a stampare all'utente una stringa (str) interpolata (args). Oltre a ciò è presente un boolean (yes) che serve a definire la scelta di default.
-				\end{itemize}	
-				
+				\end{itemize}
+
 				\subsubsection{View}
 				Interfaccia che contiene il seguente metodo:
 				\begin{itemize}
@@ -412,7 +379,10 @@
 
 		\section{Main}
 
-	\bibliographystyle{report}
+	\nocite{IuriTex}
+	\bibliographystyle{alpha}
+	\bibliography{bib/biblio}
+	\printindex
 
 \end{document}
 
