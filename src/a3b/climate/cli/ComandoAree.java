@@ -51,6 +51,8 @@ public class ComandoAree implements View {
 			}
 		}
 
-		term.printfln("%s", dag);
+		for (AreaGeografica ag : dag) {
+			term.printfln("%s", ag);
+		}
 	}
 }
