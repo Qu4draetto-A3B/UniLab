@@ -184,6 +184,20 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		return new Filtratore(nlm);
 	}
 
+	public Filtratore filtraStrings(String... strs) {
+		List<Misurazione> nlm = new LinkedList<>();
+		for (Misurazione m : lm) {
+			for (String s : strs) {
+				if (m.toString().contains(s)) {
+					nlm.add(m);
+					break;
+				}
+			}
+		}
+
+		return new Filtratore(nlm);
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(String.format("%s <<<\n", super.toString()));
