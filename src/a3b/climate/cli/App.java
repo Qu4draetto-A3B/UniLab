@@ -11,6 +11,8 @@ public class App {
 	public static final String programName = "Climate Monitoring";
 	public static final String programExec = "unilab";
 
+
+	
 	public static void start(CommandLine line) {
 		App.line = line;
 		if (line.hasOption("avvia-registrazione")) {

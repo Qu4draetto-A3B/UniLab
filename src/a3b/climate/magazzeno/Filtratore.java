@@ -184,6 +184,15 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		return new Filtratore(nlm);
 	}
 
+	/**
+	 * Metodo che filtra una lista di misurazioni in base a una/delle
+	 * stringa/stringhe
+	 *
+	 * @param strs Stringhe di cui si vuole visualizzare le misurazioni
+	 * @return Filtratore contenente le misurazioni relative alla/alle
+	 *         stringa/stringhe fornita/e
+	 *         come argomento
+	 */
 	public Filtratore filtraStrings(String... strs) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione m : lm) {
