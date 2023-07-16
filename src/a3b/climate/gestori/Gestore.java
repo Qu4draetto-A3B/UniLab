@@ -114,9 +114,19 @@ public abstract class Gestore implements AutoCloseable {
 		start();
 	}
 
+	/**
+	 * Metodo che si occupa di costruire un oggetto tramite il parametro
+	 * @param record
+	 * @return
+	 */
 	protected abstract DataTable buildObject(CSVRecord record);
 
-	protected Result<String> getProperty(String key) {
+	/**
+	 * Metodo che si occupa di recuperare la proprietà del Result in base alla chiave data
+	 * @param key
+	 * @return
+	 */
+		protected Result<String> getProperty(String key) {
 		String val = "";
 		for (String line : metaIn.lines().toList()) {
 			String[] arr = line.split("=");
