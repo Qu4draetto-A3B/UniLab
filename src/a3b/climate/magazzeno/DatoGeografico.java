@@ -189,7 +189,7 @@ public class DatoGeografico implements DataTable {
 		}
 	}
 
-	/**
+	/**Metodo che restituisce il dato, in base al parametro tipo geografico
 	 * @param tipo Tipo del dato geografico
 	 * @return Valore del dato geografico che chiama il metodo
 	 */
@@ -230,7 +230,7 @@ public class DatoGeografico implements DataTable {
 		return dato;
 	}
 
-	/**
+	/** Restituisce la nota relativa al dato geografico fornito come parametro
 	 * @param key Dato geografico di cui mi interessa la nota
 	 * @return Nota relativa al dato geografico fornito come parametro
 	 */

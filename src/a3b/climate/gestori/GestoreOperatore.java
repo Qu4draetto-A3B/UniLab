@@ -151,8 +151,7 @@ public class GestoreOperatore extends Gestore {
 	}
 
 	/**
-	 * Metodo
-	 *
+	 * Metodo che restituisce una stringa per l'hash, tramite la stringa presa come parametro
 	 * @param pwd
 	 * @return
 	 */
