@@ -8,7 +8,8 @@ import org.apache.commons.cli.CommandLine;
 public class App {
 	public static Screen scn = new Screen();
 	public static CommandLine line;
-	public static final String programName = "unilab";
+	public static final String programName = "Climate Monitoring";
+	public static final String programExec = "unilab";
 
 	public static void start(CommandLine line) {
 		App.line = line;
