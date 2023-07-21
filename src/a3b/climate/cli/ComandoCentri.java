@@ -10,9 +10,8 @@ public class ComandoCentri implements View {
 
 	@Override
 	public void start(Terminal term) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'start'");
+		String path = App.line.getOptionValue("query");
+		if (path.isBlank())
+			path = "./CENTRO.INI";
 	}
-
-
 }

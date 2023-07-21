@@ -23,8 +23,6 @@ public class App {
 			scn.show(new MostraCentri());
 		} else if (line.hasOption("lista-misurazioni")) {
 			scn.show(new MostraMisurazioni());
-		} else if (line.hasOption("lista-operatori")) {
-			scn.show(new ComandoOperatori());
 		} else if (line.hasOption("crea-centro")) {
 			scn.show(new ComandoCentri());
 		} else if (line.hasOption("crea-misurazione")) {
