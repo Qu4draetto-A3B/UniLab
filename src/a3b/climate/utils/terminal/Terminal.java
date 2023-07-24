@@ -14,8 +14,6 @@
  */
 package a3b.climate.utils.terminal;
 
-import java.io.Console;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.function.Predicate;
