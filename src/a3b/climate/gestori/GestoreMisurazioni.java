@@ -44,7 +44,7 @@ public class GestoreMisurazioni extends Gestore {
 	 * @param mis Misurazione di cui si vuole creare un nuovo record
 	 * @return Restituisce un nuovo record relativo alla misurazione fornita come parametro
 	 */
-	public Result<Object> addMisurazione(Misurazione mis) {
+	public Result<Misurazione> addMisurazione(Misurazione mis) {
 		long newRID = Long.parseLong(getProperty("LastRID").get());
 		newRID++;
 		setProperty("LastRID", String.valueOf(newRID)).get();
@@ -64,7 +64,7 @@ public class GestoreMisurazioni extends Gestore {
 			return new Result<>(1, "Errore nella scrittura del record");
 		}
 
-		return new Result<>(new Object());
+		return new Result<>(new Misurazione(newRID, mis.getTime(), mis.getOperatore(), mis.getCentro(), mis.getArea(), mis.getDato()));
 	}
 
 	/**

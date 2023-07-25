@@ -121,17 +121,19 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 
 	}
 
-	/**
-	 * //TODO
-	 */
-
 	public Iterator<AreaGeografica> iterator() {
 		return new CollezioniIterator<AreaGeografica>(head);
 	}
 
+	public Result<AreaGeografica> getArea(long geoId) {
+		for (AreaGeografica ag : this) {
+			if (geoId == ag.getGeoID()) {
+				return new Result<AreaGeografica>(ag);
+			}
+		}
 
-
-
+		return new Result<>(1, "Area non trovata");
+	}
 
 	@Override
 

@@ -65,7 +65,7 @@ public class Operatore implements Convertable, DataTable {
 	 * @param dato Aggregato di informazioni (valori dei parametri climatici) relative al dato geografico
 	 * @param tempo Data in cui avviene l'inserimento dei dati nel database
 	 */
-	public Result<Object> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
+	public Result<Misurazione> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
 		Misurazione mis = new Misurazione(0, tempo, this, centro, area, dato);
 		return DataBase.misurazioni.addMisurazione(mis);
 	}

@@ -18,13 +18,11 @@ public class App {
 		} else if (line.hasOption("query")) {
 			scn.show(new Query());
 		} else if (line.hasOption("lista-aree")) {
-			scn.show(new ComandoAree());
+			scn.show(new MostraAree());
 		} else if (line.hasOption("lista-centri")) {
 			scn.show(new MostraCentri());
 		} else if (line.hasOption("lista-misurazioni")) {
 			scn.show(new MostraMisurazioni());
-		} else if (line.hasOption("lista-operatori")) {
-			scn.show(new ComandoOperatori());
 		} else if (line.hasOption("crea-centro")) {
 			scn.show(new ComandoCentri());
 		} else if (line.hasOption("crea-misurazione")) {

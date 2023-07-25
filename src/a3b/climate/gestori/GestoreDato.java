@@ -71,7 +71,7 @@ public class GestoreDato extends Gestore {
 	 * @param dato Dato geografico per cui si vuole creare un nuovo record
 	 * @return Restituisce un nuovo record relativo al dato geografico fornito come parametro
 	 */
-	public Result<Object> addDato(DatoGeografico dato) {
+	public Result<DatoGeografico> addDato(DatoGeografico dato) {
 		long newRID = Long.parseLong(getProperty("LastRID").get());
 		newRID++;
 		setProperty("LastRID", String.valueOf(newRID)).get();
@@ -101,8 +101,7 @@ public class GestoreDato extends Gestore {
 			return new Result<>(1, "Errore nella scrittura del record");
 		}
 
-		return new Result<>(new Object());
-
+		return new Result<>(new DatoGeografico(newRID, dato.getDati(), dato.getNote()));
 	}
 
 	@Override
