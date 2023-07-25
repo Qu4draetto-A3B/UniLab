@@ -5,6 +5,7 @@ import a3b.climate.magazzeno.CentroMonitoraggio;
 import a3b.climate.magazzeno.Indirizzo;
 import a3b.climate.magazzeno.ListaAree;
 import a3b.climate.utils.IniFile;
+import a3b.climate.utils.result.Result;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
@@ -65,11 +66,12 @@ public class ComandoCentri implements View {
 		}
 
 		CentroMonitoraggio cm = new CentroMonitoraggio(nome, ind, lag);
+		Result<CentroMonitoraggio> res = DataBase.centro.addCentro(cm);
 
-		if (DataBase.centro.addCentro(cm)) {
+		if (res.isValid()) {
 			term.printfln("Centro aggiunto");
 		} else {
-			term.printfln("Errore nell'aggiunta del centro");
+			term.printfln("Errore nell'aggiunta del centro: %s", res.getFullMessage());
 		}
 
 		term.printfln("%s", cm);
