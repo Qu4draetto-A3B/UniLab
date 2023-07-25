@@ -14,7 +14,6 @@
  */
 package a3b.climate.gestori;
 
-import java.security.MessageDigest;
 import java.util.regex.Pattern;
 
 import org.apache.commons.csv.CSVRecord;

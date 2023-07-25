@@ -29,19 +29,16 @@ public class Query implements View {
 		}
 
 		if (Objects.isNull(ini)) {
-			term.printfln("Errore nel recupero del file QUERY");
+			term.printfln("Errore nel recupero del file %", path);
 			return;
 		}
 
-		Operatore op = null;
 		Result<Operatore> rop = DataBase.operatore.login(
 				ini.getString("utente", "nome_utente", ""),
 				ini.getString("utente", "password", ""));
 
-		if (rop.isValid()) {
-			op = rop.get();
-		} else {
-			term.printfln("=== Errore ===\n%s", rop.getFullMessage());
+		if (rop.isError()) {
+			term.printfln("Non sono riuscito ad autenticarti.\n%s", rop.getFullMessage());
 			return;
 		}
 
