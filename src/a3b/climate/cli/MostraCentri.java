@@ -14,7 +14,7 @@ public class MostraCentri implements View {
 
 	@Override
 	public void start(Terminal term) {
-		List<String> args = Arrays.asList(App.line.getOptionValues("lista-centri"));
+		String[] args = App.line.getOptionValues("lista-centri");
 		Deque<CentroMonitoraggio> dcm = new LinkedList<>();
 
 		for (String str : args) {
