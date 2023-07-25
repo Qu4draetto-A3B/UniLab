@@ -14,7 +14,6 @@
  */
 package a3b.climate.gestori;
 
-import java.security.MessageDigest;
 import java.util.regex.Pattern;
 
 import org.apache.commons.csv.CSVRecord;
@@ -87,8 +86,12 @@ public class GestoreOperatore extends Gestore {
 			String dbUid = record.get("UserID");
 			String dbPwd = record.get("Password");
 
-			if (uid.equals(dbUid) && pwdHash.equals(dbPwd)) {
-				return new Result<>((Operatore) buildObject(record));
+			if (uid.equals(dbUid)) {
+				if (pwdHash.equals(dbPwd)) {
+					return new Result<>((Operatore) buildObject(record));
+				} else {
+					return new Result<>(2, "Password errata");
+				}
 			}
 		}
 

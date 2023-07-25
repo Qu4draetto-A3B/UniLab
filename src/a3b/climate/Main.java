@@ -128,7 +128,7 @@ public class Main {
 
 	public static void printHelp() {
 		new HelpFormatter().printHelp(
-				"Climate Monitoring",
+				App.programExec,
 				"Programma per il monitoraggio climatico",
 				opts,
 				"Leggi il Manuale Utente per informazioni aggiuntive",
