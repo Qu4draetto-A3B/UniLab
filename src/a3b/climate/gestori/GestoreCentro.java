@@ -55,9 +55,9 @@ public class GestoreCentro extends Gestore {
 	 * @param cm Centro di monitoraggio di cui di vuole creare un nuovo record
 	 * @return Restutuisce un nuovo record relativo al centro di monitoraggio fornito come parametro
 	 */
-	public boolean addCentro(CentroMonitoraggio cm) {
+	public Result<CentroMonitoraggio> addCentro(CentroMonitoraggio cm) {
 		if (getCentro(cm.getNome()).isValid()) {
-			return false;
+			return new Result<>(1, "Centro gia esistente");
 		}
 
 		try {
@@ -65,9 +65,9 @@ public class GestoreCentro extends Gestore {
 			p.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return new Result<>(1, "Errore nella scrittura del record");
 		}
-		return true;
+		return new Result<CentroMonitoraggio>(cm);
 	}
 
 	@Override

@@ -241,6 +241,22 @@ public class DatoGeografico implements DataTable {
 		return true;
 	}
 
+	public HashMap<TipoDatoGeografico, Byte> getDati() {
+		HashMap<TipoDatoGeografico, Byte> dato = new HashMap<>();
+		dato.put(TipoDatoGeografico.AltitudineGhiacciai, getDato(TipoDatoGeografico.AltitudineGhiacciai));
+		dato.put(TipoDatoGeografico.MassaGhiacciai, getDato(TipoDatoGeografico.MassaGhiacciai));
+		dato.put(TipoDatoGeografico.Precipitazioni, getDato(TipoDatoGeografico.Precipitazioni));
+		dato.put(TipoDatoGeografico.Pressione, getDato(TipoDatoGeografico.Pressione));
+		dato.put(TipoDatoGeografico.Temperatura, getDato(TipoDatoGeografico.Temperatura));
+		dato.put(TipoDatoGeografico.Umidita, getDato(TipoDatoGeografico.Umidita));
+		dato.put(TipoDatoGeografico.Vento, getDato(TipoDatoGeografico.Vento));
+		return dato;
+	}
+
+	public HashMap<TipoDatoGeografico, String> getNote() {
+		return note;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof DatoGeografico)) {
