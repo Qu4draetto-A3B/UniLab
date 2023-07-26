@@ -25,92 +25,91 @@
 \begin{document}
 
 	\maketitle
-
 	\tableofcontents
-	\listoffigures
-	\listoftables
 
 	\chapter{Introduzione}
 		\section{Librerie esterne utilizzate}
 			\subsection{Apache Commons CSV}
-			\`E una libreria di Apache che fornisce i metodi per la gestione dei file (*.CSV). In particolare \`e stata usata nel progetto per la lettura e scrittura dei dati da memorizzare.
+			\`E una libreria di Apache che fornisce i metodi per la gestione dei file (*.CSV). In particolare \`e stata utilizzata per la lettura e scrittura dei dati da memorizzare.
 			\subsection{Apache Commons CLI}
 			\`E una libreria di Apache che fornisce i metodi per la gestione della linea di comando all'interno del terminale.
 
 	\chapter{Struttura generale del sistema di classi}
 		\section{cli}
 			\subsection{App}
-			La classe App prende gli argomenti dell'applicazione e avvia il comando corretto all'interno di essa.
+			Classe che contiene il seguente metodo.
 			\begin{itemize}
 				\item \textbf{void start(CommandLine line)}
-				\\Metodo che prende gli argomenti dell'applicazione e avvia il comando corretto all'interno di essa.
+				\\Metodo che preleva gli parametri forniti dall'applicazione e avvia il comando corretto all'interno di essa.
 				
-				La complessit\`a del metodo è $\bigO(1)$
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 			\end{itemize}
 			
-			\subsection{MostraAree}
-			La classe ComandoAree
+			\subsection{ComandoCentri}
+			Classe che contiene il seguente metodo.
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
 				\\Metodo che implementa l'interfaccia View.
 				
-				La complessit\`a del metodo è $\bigT(n+m+k)$
+				La complessit\`a del metodo \`e $\bigT\textbf{(n)}$.
 				
 			\end{itemize}
-			\subsection{ComandoCentri}
-			La classe ComandoCentri
-			\begin{itemize}
-				\item \textbf{void start(Terminal term)}
-				\\Metodo che implemeta l'interfaccia View.
-				
-				La complessit\`a del metodo è $\bigT(n)$
-				
-			\end{itemize}
+			
 			\subsection{ComandoMisurazioni}
-			La classe ComandoMisurazioni
+			Classe che contiene il seguente metodo.
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo che implemeta l'interfaccia View.
+				\\Metodo che implementa l'interfaccia View.
 				
-				La complessit\`a del metodo è $\bigO(n)$
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
+				
+			\end{itemize}
+			
+			\subsection{MostraAree}
+			Classe che contiene il seguente metodo.
+			\begin{itemize}
+				\item \textbf{void start(Terminal term)}
+				\\Metodo che implementa l'interfaccia View.
+				
+				La complessit\`a del metodo \`e $\bigT\textbf{(n + m + k)}$.
 				
 			\end{itemize}
 			
 			\subsection{MostraCentri}
-			La classe ComandoMisurazioni
+			Classe che contiene il seguente metodo.
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo
+				\\Metodo che implementa l'interfaccia View.
 				
-				La complessit\`a del metodo è 
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 			\end{itemize}
 			
 			\subsection{MostraMisurazioni}
-			La classe ComandoMisurazioni
+			Classe che contiene il seguente metodo.
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo che implemeta l'interfaccia View.
+				\\Metodo che implementa l'interfaccia View.
 				
-				La complessit\`a del metodo è $\bigT(n + m)$
+				La complessit\`a del metodo \`e $\bigT\textbf{(n + m)}$.
 				
 			\end{itemize}
 			\subsection{Query}
-			La classe Query si occupa di 
+			Classe che contiene il seguente metodo.
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo che implemeta l'interfaccia View.
+				\\Metodo che implementa l'interfaccia View.
 				
-				La complessit\`a del metodo è $\bigO(n^2)$
+				La complessit\`a del metodo \`e $\bigO\textbf{(n\ap{2})}$.
 				
 			\end{itemize}
 			\subsection{Registrazione}
-			La classe registrazione
+			Classe che contiene il seguente metodo.
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo che implemeta l'interfaccia View.
+				\\Metodo che implementa l'interfaccia View.
 				
-				La complessit\`a del metodo è $\bigO(1)$
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 			\end{itemize}
 			
@@ -125,31 +124,32 @@
 				\item \textbf{void close()}
 				\\Metodo che si occupa di chiudere un file.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{void reload()}
-				\\Metodo che si occupa di ricaricare (chiudere e riaprire un file).
+				\\Metodo che si occupa di ricaricare (chiudere e riaprire) un file.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 
 				\item \textbf {DataTable buildObject (CSVRecord r)}
-				\\Metodo astratto che si occupa di prendere in input come parametro formale un record e creare l'oggetto associato a chi implementa il metodo.
+				\\Metodo astratto che riceve in input come parametro un record e crea l'oggetto associato all'implementatore.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 
-				\item \textbf{Result\textless String\textgreater getProperty(String key)}
-				\\Metodo che si occupa di ottenere una propriet\`a nel file (*.CSV.DAT) associato ad una tabella (*.CSV). Il parametro formale di questo metodo \`e una stringa, che \`e la chiave per ottenere la propriet\`a del file.
+				\item \textbf{Result\textless String\textgreater~getProperty(String key)}
+				\\Metodo che si occupa di ottenere una propriet\`a nel file (*.CSV.DAT) associato ad una tabella (*.CSV).
+				\\Riceve in input come parametro una stringa, che \`e la chiave per ottenere la propriet\`a del file.
 				\\Nel caso in cui l'operazione di ricerca venga eseguita correttamente il metodo restituisce un Result valido con la stringa della propriet\`a richiesta.
 				\\Nel caso in cui l'operazione non venga eseguita in maniera corretta, il metodo restituisce una stringa associata ad un codice di errore.
 				
-				La complessit\`a del metodo \`e $\bigT$\textbf{(n)}.
+				La complessit\`a del metodo \`e $\bigT\textbf{(n)}$.
 
-				\item  \textbf{Result\textless Object\textgreater setProperty(String s, String k)}
+				\item \textbf{Result\textless Object\textgreater~setProperty(String key, String val)}
 				\\Metodo che si occupa di impostare una propriet\`a nel file (*.CSV.DAT) associato ad una tabella (*.CSV).
-				\\Il metodo riceve in input due parametri formali: una stringa che indica la propriet\`a da impostare e la chiave del file.
+				\\Il metodo riceve in input due parametri: una stringa che indica la propriet\`a da impostare e la chiave del file.
 				\\Nel caso in cui l'operazione non venga eseguita correttamente, il metodo restituisce un Result di Object come errore.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigT\textbf{(n)}$.
 				
 			\end{itemize}
 
@@ -157,78 +157,84 @@
 			La classe GestoreArea estende Gestore e ne eredita tutti i metodi.
 			\\ Implementa l'interfaccia CercaAree e contiene i seguenti metodi:
 			\begin{itemize}
-				\item \textbf{Result\textless AreaGeografica\textgreater getArea(long geoID)}
-				\\Metodo che ricerca una determinata area geografica in base al suo ID. In questo metodo c'\`e un solo parametro formale, il numero di geoID.
+				\item \textbf{Result\textless AreaGeografica\textgreater~getArea(long geoID)}
+				\\Metodo che ricerca una determinata area geografica in base al suo ID.
+				\\Riceve in input come parametro l'ID dell'area geografica.
 				\\Nel caso in cui l'area esista il metodo restituisce un Result di AreaGeografica, altrimenti una stringa di errore.
 				
-				La complessit\`a del metodo \`e \textbf{O(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 			\end{itemize}
 
 			\subsection{GestoreCentro}
-			La classe GestoreCentro estende la classe Gestore, ne eredita tutti i metodi e contiene i seguenti:
+			La classe GestoreCentro estende Gestore, ne eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
-				\item \textbf{Result\textless CentroMonitoraggio\textgreater getCentro(String nome)}
-				\\Metodo che ricerca e restituisce l'oggetto CentroMonitoraggio il cui nome corrisponde alla stringa fornita come parametro formale.
+				\item \textbf{Result\textless CentroMonitoraggio\textgreater~getCentro(String nome)}
+				\\Metodo che ricerca e restituisce l'oggetto CentroMonitoraggio il cui nome corrisponde alla stringa fornita come parametro .
 				
-				La complessit\`a del metodo \`e \textbf{O(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 				\item \textbf {boolean addCentro(CentroMonitoraggio cm)}
-				\\Metodo che crea un nuovo record relativo a un determinato centro di monitoraggio fornito come parametro formale e lo memorizza nel file CentriMonitoraggio (.*CSV).
+				\\Metodo che crea un nuovo record relativo a un determinato centro di monitoraggio fornito come parametro e lo memorizza nel file CentriMonitoraggio (.*CSV).
 				\\Il metodo restituisce una variabile booleana che indica se l'operazione \`e stata eseguita correttamente.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 			\end{itemize}
 
 			\subsection{GestoreDato}
-			La classe GestoreDato estende la classe Gestore, ne eredita tutti i metodi e contiene i seguenti:
+			La classe GestoreDato estende Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
-				\item \textbf{Result \textless DatoGeografico\textgreater getDato(long rid)}
-				\\Metodo che ricerca un determinato dato geografico in base al suo ID, fornito come parametro formale.
+				\item \textbf{Result \textless DatoGeografico\textgreater~getDato(long rid)}
+				\\Metodo che ricerca un determinato dato geografico in base al suo ID, fornito come parametro.
 				\\Restituisce un Result di DatoGeografico se l'operazione viene eseguita correttamente.
-				\\Altrimenti, nel caso in cui l'operazione non venga eseguita in maniera corretta, il metodo restituisce un Result che ne indica l'errore.
+				\\In caso contrario il metodo restituisce un Result che ne indica l'errore.
 				
-				La complessit\`a del metodo \`e \textbf{O(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
-				\item \textbf {Result \textless Object\textgreater addDato(DatoGeografico dato)}
-				\\Metodo che crea un nuovo record relativo a un determinato dato geografico (fornito come parametro formale) e lo memorizza nel file \textit{ParametriClimatici.CSV}.
-				\\Il metodo restituisce un Result di Object se l'operazione non \`e stata eseguita correttamente.
+				\item \textbf {Result \textless Object\textgreater~addDato(DatoGeografico dato)}
+				\\Metodo che crea un nuovo record relativo a un determinato dato geografico (fornito come parametro) e lo memorizza nel file \textit{ParametriClimatici.CSV}.
+				\\Il metodo restituisce un Result di DatoGeografico se l'operazione viene eseguita correttamente.
+				\\In caso contrario il metodo restituisce un Result che ne indica l'errore.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 			\end{itemize}
 
 			\subsection{GestoreMisurazioni}
-			La classe GestoreMisurazioni estende la classe Gestore, eredita tutti i metodi e contiene i seguenti:
+			La classe GestoreMisurazioni estende Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
-				\item \textbf{Result\textless Object\textgreater addMisurazione(Misurazione mis)}
-				\\Metodo che inserisce una nuova misurazione.
-				\\Riceve in input un parametro formale di tipo Misurazioni e restituisce un Result di Object in caso di errore.
+				\item \textbf{Result\textless Object\textgreater~addMisurazione(Misurazione mis)}
+				\\Metodo che inserisce una nuova misurazione basandosi sul parametro fornito in input.
+				\\Il metodo restituisce un Result di Misurazione se l'operazione viene eseguita correttamente.
+				\\In caso contrario il metodo restituisce un Result che ne indica l'errore.
+				
+				La complessit\`a del metodo \`e
 
-				\item \textbf {Result \textless Filtratore\textgreater getMisurazioni()}
+				\item \textbf {Result \textless Filtratore\textgreater~getMisurazioni()}
 				\\Metodo che raccoglie e memorizza i record relativi alle misurazioni presenti nel file \textit{ParametriClimatici (*.CSV)}.
 				
-				La complessit\`a del metodo \`e $\bigT$\textbf{(n)}.
+				La complessit\`a del metodo \`e $\bigT\textbf{(n)}$.
+				
 			\end{itemize}
 
 			\subsection{GestoreOperatore}
-			La classe GestoreOperatore estende la classe Gestore, ne eredita tutti i metodi e contiene i seguenti:
+			La classe GestoreOperatore estende Gestore, eredita tutti i metodi e contiene i seguenti:
 			\begin{itemize}
-				\item \textbf{Result\textless Operatore\textgreater registrazione(Operatore op, String pwd)}
-				\\Metodo non implementato, in quanto l'operatore richiede un centro di monitoraggio che il GestoreCentro fallisce nel restituire, impedendo la corretta registrazione  dell'utente.
+				\item \textbf{Result\textless Operatore\textgreater~registrazione(Operatore op, String pwd)}
+				\\Metodo non implementato, in quanto l'operatore richiede un centro di monitoraggio che il GestoreCentro fallisce nel restituire, impedendo la corretta registrazione dell'utente.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
-				\item \textbf{Result \textless Operatore\textgreater login(String uid, String pwd)}
+				\item \textbf{Result \textless Operatore\textgreater~login(String uid, String pwd)}
 				\\Metodo che permette ad un operatore di effettuare il login.
-				\\I parametri formali forniti in input sono lo userid e la password. In caso questi ultimi corrispondano ad un operatore esistente, il metodo permette all'operatore di effettuare l'accesso.
+				\\I parametri forniti in input sono l'ID utente e la password. In caso questi ultimi corrispondano ad un operatore esistente, il metodo permette all'operatore di effettuare l'accesso.
 				\\In caso contrario restituisce una stringa relativa a un codice di errore.
 				
-				La complessit\`a del metodo \`e \textbf{O(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 			\end{itemize}
 
 
 		\section{Magazzeno}
-		All'interno del package Magazzeno si trovano una serie di classi finalizzate a memorizzare informazioni oggetto id operazioni di lettura o scrittura su file.(*CSV).
+		All'interno del package Magazzeno si trovano una serie di classi finalizzate a memorizzare informazioni oggetto di operazioni di lettura o scrittura su file.(*CSV).
 
 			\subsection{AreaGeografica}
 			La classe AreaGeografica implementa l'interfaccia DataTable, e contiene i seguenti metodi:
@@ -236,19 +242,20 @@
 				\item \textbf{getter}
 				\\getGeoID(), getLatitudine(), getLongitudine(), getStato(), getDenominazione().
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toString()}
 				\\Metodo che permette di stampare l'oggetto AreaGeografica, mostrando i campi denominazione, stato, latitudine e longitudine.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{boolean equals(Object obj)}
 				\\Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo AreaGeografica.
-				\\Prende in input come parametro formale un Object.
-				\\Restituisce \textit{true} se l'oggetto di tipo Object \`e un istanza di AreaGeografica. In caso contrario restituisce \textit{false}.
+				\\Riceve in input come parametro un Object.
+				\\Restituisce \textit{true} se l'oggetto di tipo Object \`e un istanza di AreaGeografica.
+				\\In caso contrario il metodo restituisce \textit{false}.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 			\end{itemize}
 
@@ -258,22 +265,24 @@
 				\item \textbf{getter}
 				\\getNome(), getIndirizzo(), getAree().
 				
-				La complessit\`a dei metodi è \textbf{O(1)}.
+				La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toString()}
 				\\Metodo che permette di stampare l'oggetto CentroMonitoraggio con nome, indirizzo e aree associate.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{boolean equals(Object obj)}
-				\\Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo CentroMonitoraggio. La funzione restituisce \textit{true} se l'oggetto \`e un' istanza di CentroMonitoraggio. In caso contrario restituisce \textit{false}.
+				\\Metodo che permette di confrontare un oggetto qualsiasi con un oggetto di tipo CentroMonitoraggio.
+				\\Restituisce \textit{true} se l'oggetto \`e un' istanza di CentroMonitoraggio.
+				\\In caso contrario il metodo restituisce \textit{false}.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toCSV()}
 				\\Metodo che permette di creare una stringa che rappresenta CentroMonitoraggio nel formato (*.CSV) adoperato all'interno del programma.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 			\end{itemize}
 
@@ -284,48 +293,48 @@
 				\\Metodo che imposta un dato geografico.
 				\\Riceve come parametri il tipo di dato da impostare e il suo valore.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{byte getDato(TipoDatoGeografico tipo)}
 				\\Metodo che riceve come parametro in input un oggetto TipoDatoGeografico e restituisce il tipo di dato geografico associato.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String getNota(TipoDatoGeografico key)}
-				\\Metodo che restituisce la nota del dato geografico che esegue il metodo.
-				\\Restutuisce la nota associata alla chiave fornita come parametro.
+				\\Metodo che preleva la nota del dato geografico che esegue il metodo.
+				\\Restituisce la nota associata alla chiave fornita come parametro.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{boolean setNota(TipoDatoGeografico key, String nota)}
 				\\Metodo che permette di impostare le note relative al dato geografico.
-				\\Riceve come parametri formali una chiave che stabilisce come inserire la nota all'interno del dato geografico e la nota da inserire.
+				\\Riceve come parametri una chiave che stabilisce come inserire la nota all'interno del dato geografico e la nota da inserire.
 				\\La funzione restituisce \textit{true} se l'operazione viene eseguita correttamente, \textit{false} altrimenti.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{boolean equals(Object obj)}
 				\\Metodo che riceve in input un oggetto generico.
 				\\Restituisce \textit{true} se l'oggetto che esegue il metodo \`e un'istanza di DatoGeografico, altrimenti \textit{false}.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toString()}
 				\\Metodo che restituisce una stringa che rappresenta il dato geografico.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{boolean noteEquals(DatoGeografico dato)}
 				\\Metodo che riceve in input un oggetto di tipo DatoGeografico da cui estrae la relativa nota e la confronta con quella che esegue il metodo.
 				\\Restituisce \textit{true} se le due note sono uguali, \textit{false} altrimenti.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{boolean datoEquals(DatoGeografico dato)}
-				\\Metodo che riceve in input come parametro formale un oggetto di tipo DatoGeografico.
+				\\Metodo che riceve in input come parametro un oggetto di tipo DatoGeografico.
 				\\Restituisce \textit{true} se l'uguaglianza dei valori dati \`e verificata, \textit{false} altrimenti.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 			\end{itemize}
 
@@ -337,42 +346,42 @@
 				\\Riceve come parametro una serie elementi di tipo Datatable.
 				\\Restituisce le DataTable filtrate.
 				
-				La complessit\`a del metodo è \textbf{O(n*m)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n$\cdot$m)}$.
 				
 				\item \textbf{Filtratore filtraOperatore(Operatore... ops)}
 				\\Metodo che permette di filtrare gli operatori.
-				\\Riceve come parametro formale una serie di elementi di tipo Operatore.
+				\\Riceve come parametro una serie di elementi di tipo Operatore.
 				\\Restituisce gli operatori filtrati.
 				
-				La complessit\`a del metodo è \textbf{O(n*m)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n$\cdot$m)}$.
 				
 				\item \textbf{Filtratore filtraCentro(CentroMonitoraggio... cms)}
 				\\Metodo che permette di filtrare i centri di monitoraggio.
-				\\Riceve come parametro formale una serie di elementi di tipo CentroMonitoraggio.
+				\\Riceve come parametro una serie di elementi di tipo CentroMonitoraggio.
 				\\Restituisce i centri di monitoraggio filtrati.
 				
-				La complessit\`a del metodo è \textbf{O(n*m)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n$\cdot$m)}$.
 				
 				\item \textbf{Filtratore filtraAree(AreaGeografica... ags)}
 				\\Metodo che permette di filtrare le aree geografiche.
-				\\Riceve come parametro formale una serie di elementi di tipo AreaGeografica.
+				\\Riceve come parametro una serie di elementi di tipo AreaGeografica.
 				\\Restituisce le aree geografiche filtrate.
 				
-				La complessit\`a del metodo è \textbf{O(n*m)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n$\cdot$m)}$.
 				
 				\item \textbf{Filtratore filtraNote(String... note)}
 				\\Metodo che permette di filtrare le note.
-				\\Riceve come parametro formale una serie di elementi di tipo String.
+				\\Riceve come parametro una serie di elementi di tipo String.
 				\\Restituisce le note filtrate.
 				
-				La complessit\`a del metodo è \textbf{O(n*m)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n$\cdot$m)}$.
 				
 				\item \textbf {Filtratore filtraDato(DatoGeografico... dati)}
 				\\Metodo che permette di filtrare i dati geografici.
-				\\Riceve come parametro formale una serie di elementi di tipo DatoGeografico.
+				\\Riceve come parametro una serie di elementi di tipo DatoGeografico.
 				\\Restituisce i dati geografici filtrati.
 				
-				La complessit\`a del metodo è \textbf{O(n*m)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n$\cdot$m)}$.
 				
 				\item \textbf {String toString()}
 				\\Metodo che stampa l'oggetto filtratore.
@@ -391,7 +400,7 @@
 								
 				\textbf{Metodo che restituisce un Iterator di Misurazione.	contenuto...}
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e .
 				
 			\end{itemize}
 			\subsection{Indirizzo}
@@ -401,17 +410,17 @@
 				\item \textbf{getter}
 				\\ getNomeVia(), getCivico(), getCap(), getComune(), getProvincia().
 				
-				La complessit\`a dei metodi è \textbf{O(1)}.
+				La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toString()}
 				\\Metodo che restituisce una stringa relativa all'indirizzo che lo esegue.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toCsv()}
 				\\Metodo che permette di creare una stringa che descrive l'indirizzo nel formato (*.CSV) adoperato all'interno del programma.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 			\end{itemize}
 
@@ -421,72 +430,72 @@
 				\item \textbf{boolean isEmpty()}
 				\\Metodo che restituisce \textbf{true} se la ListaAree che esegue \`e vuota, \textit{false} altrimenti.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{AreaGeografica get(int k)}
 				\\Metodo che riceve in input un intero k che indica la posizione di un AreaGeografica all'interno della ListaAree.
 				\\Restituisce l'area geografica che \`e in posizione k.
 				
-				La complessit\`a del metodo è \textbf{O(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 				\item \textbf{void add(AreaGeografica e, int k)}
 				\\Metodo che aggiunge l'AreaGeografica in posizione k.
 				\\Riceve in input un oggetto di tipo AreaGeografica e un intero k.
 				
-				La complessit\`a del metodo è \textbf{O(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 				\item \textbf{AreaGeografica getFirst()}
 				\\Metodo che restituisce il primo elemento presente nella ListaAree che esegue il metodo.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{AreaGeografica getLast()}
 				\\Metodo che restituisce l'ultimo elemento presente nella ListaAree che esegue.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{int size()}
 				\\Metodo che restituisce un intero che indica la dimensione della ListaAree che esegue.
 				
-				La complessit\`a del metodo \`e $\bigT$\textbf{(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 				\item \textbf{void addFirst(AreaGeografica e)}
 				\\Metodo che aggiunge in prima posizione della ListaAree che esegue un'area geografica, fornita in input come parametro.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{Iterator<AreaGeografica> iterator()}
 				\\Metodo che restituisce un Iterator di AreaGeografica.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{ListaAree cercaAreaGeografica(String denominazione, String stato)}
 				\\Metodo che ricerca le AreeGeografiche mediante i parametri denominazione e stato.
 				\\Restituisce il risultato della ricerca in una ListaAree.
 				
-				La complessit\`a del metodo \`e $\bigT$\textbf{(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 				\item \textbf{Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine)}
 				\\Metodo che ricerca le AreeGeografiche mediante i parametri forniti in input, latitudine e longitudine.
 				\\Restituisce un Result di AreaGeografica.
 				
-				La complessit\`a del metodo è \textbf{O(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 				\item \textbf{String toString()}
 				\\Metodo che restituisce una stringa che rappresenta l'area geografica che esegue.
 				
-				La complessit\`a del metodo \`e $\bigT$\textbf{(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 				\item \textbf{String toCsv()}
 				\\Metodo che permette di creare una stringa per descrivere l'area geografica che esegue nel formato (*.CSV) adoperato all'interno del programma.
 				
-				La complessit\`a del metodo \`e $\bigT$\textbf{(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 				
 				\item \textbf{Result<AreaGeografica> getArea(long geoId)}
 				\\Metodo recupera l'area tramite il suo geoID.
 				
-				La complessit\`a del metodo \`e $\bigO$\textbf{(n)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 				
 			\end{itemize}
 
@@ -496,12 +505,12 @@
 				\item \textbf{getter}
 				\\getRid(), getDato(), getTime(), getTimeString(), getOperatore(), getCentro(), getArea().
 				
-				La complessit\`a dei metodi è \textbf{O(1)}.
+				La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toString()}
-				Metodo che restituisce una stringa che rappresenta la misurazione che esegue.
+				\\Metodo che restituisce una stringa che rappresenta la misurazione che esegue.
 				
-				La complessit\`a dei metodi è \textbf{O(1)}.
+				La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 				
 			\end{itemize}
 
@@ -511,30 +520,30 @@
 				\item \textbf{getter}
 				\\getCf(), getCentro(), getCognome(), getNome(), getEmail(), getUid().
 				
-				La complessit\`a dei metodi è \textbf{O(1)}.
+				La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{Result<Object> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo)}
 				\\Metodo che consente di inserire i dati climatici di una determinata area nel database i cui dati vengono forniti in input come parametri.
 				\\Restituisce un Result di Object.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toString()}
 				\\Metodo che restituisce una stringa che rappresenta l'operatore che esegue.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{String toCsv()}
 				\\Metodo che crea una stringa relativa all'operatore che esegue nel formato (*.CSV) adoperato all'interno del programma.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 				\item \textbf{boolean equals(Object obj)}
 				\\Metodo che confronta un oggetto qualsiasi con un oggetto di tipo Operatore.
-				\\Riceve in input come parametro formale un Object.
+				\\Riceve in input come parametro un Object.
 				\\Restituisce \textit{true} se l'oggetto di tipo Object \`e un istanza di Operatore, \textit{false} altrimenti.
 				
-				La complessit\`a del metodo è \textbf{O(1)}.
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				
 			\end{itemize}
 
@@ -547,12 +556,12 @@
 					\item\textbf{E next()}
 					\\Metodo che restituisce l'elemento corrente e scorre a quello successivo.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 					\item\textbf{boolean hasNext()}
 					\\Metodo che restituisce \textit{true} se il nodo che esegue il metodo ha un successore, \textit{false} altrimenti.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 				\end{itemize}
 
@@ -562,12 +571,12 @@
 					\item\textbf{setter}
 					\\setDato(), setNext().
 					
-					La complessit\`a dei metodi è \textbf{O(1)}.
+					La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 					
 					\item\textbf{getter}
 					\\getDato(), getNext().
 					
-					La complessit\`a dei metodi è \textbf{O(1)}.
+					La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 					
 				\end{itemize}
 
@@ -583,52 +592,54 @@
 					\item \textbf{getter}
 					\\getError(), getMessage(), getFullMessage().
 					
-					La complessit\`a dei metodi è \textbf{O(1)}.
+					La complessit\`a dei metodi \`e $\bigO\textbf{(1)}$.
 					
 					\item\textbf{boolean isValid()}
 					\\Metodo che restituisce \textit{true} se il Result \`e valido, \textit{false} altrimenti.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 					\item\textbf{boolen isError()}
 					\\Metodo che restituisce \textit{true} se il Result lancia un errore, \textit{false} altrimenti.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 	
-					\item\textbf{void ifValid(BiConsumer\textless T, Integer \textgreater fn)}
+					\item\textbf{void ifValid(BiConsumer\textless T, Integer \textgreater~fn)}
 					\\Metodo che esegue la funzione data come parametro se il Result \`e valido.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 	
-					\item\textbf{void ifError(BiConsumer\textless T, Integer\textgreater fn)}
+					\item\textbf{void ifError(BiConsumer\textless T, Integer\textgreater~fn)}
 					\\Metodo che esegue la funzione data come parametro se il Result genera errore.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 	
 					\item \textbf{T get()}
 					\\Metodo che restituisce il contenuto di Result.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 	
 					\item \textbf{T getOr(T other)}
-					\\Metodo che restituisce il contenuto di Result se questo non \`e nullo. Altrimenti restituisce il parametro other.
+					\\Metodo che restituisce il contenuto di Result se questo non \`e nullo.
+					\\ In caso contrario restituisce il parametro other.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 	
-					\item \textbf{T getOrElse(Supplier \textless T\textgreater fn)}
-					\\Metodo che restituisce il contenuto di Result se questo non \`e nullo. In caso contrario esegue la funzione fornita come parametro e restituisce il risultato di quest'ultima.
+					\item \textbf{T getOrElse(Supplier \textless T\textgreater~fn)}
+					\\Metodo che restituisce il contenuto di Result se questo non \`e nullo.
+					\\In caso contrario esegue la funzione fornita come parametro e restituisce il risultato di quest'ultima.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 	
-					\item  \textbf{T except()}
+					\item \textbf{T except()}
 					\\Metodo che restituisce il contenuto di Result senza eseguire nessun controllo.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 	
 					\item \textbf{void panic()}
 					\\Metodo che lancia un errore non catturabile.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 				\end{itemize}
 
@@ -637,9 +648,10 @@
 				Classe che contiene il seguente metodo:
 				\begin{itemize}
 					\item \textbf{void show(View v)}
-					\\Metodo finalizzato a mostrare View. Pulisce il terminale prima e dopo l'esecuzione dell'applicazione.
+					\\Metodo finalizzato a mostrare View.
+					\\Pulisce il terminale prima e dopo l'esecuzione dell'applicazione.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 				\end{itemize}
 
@@ -649,49 +661,49 @@
 					\item \textbf{void clear()}
 					\\Metodo che pulisce la console con il codice di uscita ANSI.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 					\item \textbf{void printf(String str, Object... args)}
 					\\Metodo che formatta e stampa una stringa nel terminale.
 					\\I parametri formali servono a stampare all'utente una stringa (str) interpolata (args).
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 					\item \textbf{void printfln(String str, Object... args)}
 					\\Metodo che formatta e stampa una stringa nel terminale.
 					\\I parametri formali sono finalizzati a stampare all'utente una stringa (str) interpolata (args).
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e$\bigO\textbf{(1)}$.
 					
 					\item \textbf{String readLine()}
 					\\Metodo che permette di leggere una linea dalla console utente.
 					\\Restituisce la stringa inserita dall'utente.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 					\item \textbf{String readLine(String str, Object... args)}
 					\\Metodo che stampa una stringa e aspetta una risposta dell'utente.
 					\\I parametri formali sono finalizzati a stampare all'utente una stringa (str) interpolata (args).
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 					\item \textbf{String readLineOrDefault(String def, String str, Object... args)}
 					\\Metodo che stampa una stringa all'utente e aspetta una risposta, se quest'ultima non viene data (stringa vuota), il metodo restituisce (def).
 					\\I parametri formali sono finalizzati a stampare all'utente una stringa (str) interpolata (args).
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 					\item \textbf{String readWhile(Predicate<String> fn, String str, Object... args)}
 					\\Stampa una stringa e aspetta una risposta dall'utente, controllando la stringa fornita come parametro.
 					\\I parametri formali sono finalizzati a stampare all'utente una stringa (str) interpolata (args). In particolare fn \`e una funzione che restituisce un booleano.
 					
-					La complessit\`a del metodo è \textbf{O(n)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(n)}$.
 	
 					\item \textbf{boolean promptUser(boolean yes, String str, Object... args)}
 					\\Metodo che pone all'utente una domanda con risposta di tipo si/no.
 					\\I parametri formali sono finalizzati a stampare all'utente una stringa (str) interpolata (args). In particolare rappresenta la scelta di default.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 					
 				\end{itemize}
 
@@ -701,7 +713,7 @@
 					\item \textbf{abstract void start(Terminal term)}
 					\\Metodo astratto finalizzato a avviare una schermata dell'applicazione attraverso il terminale.
 					
-					La complessit\`a del metodo è \textbf{O(1)}.
+					La complessit\`a del metodo \`e $\bigO\textbf{(1)}$.
 				\end{itemize}
 
 			\subsection{CercaAree}
@@ -711,9 +723,10 @@
 				\\Metodo che ricerca delle aree geografiche mediante denominazione e stato di appartenenza.
 				\\Restituisce un Result di tipo AreaGeografica contenente le aree geografiche corrispondenti al risultato della ricerca.
 				
-				\item\textbf{Result\textless AreaGeografica\textgreater cercaAreeGeografiche(double latitudine, double longitudine)}
+				\item\textbf{Result\textless AreaGeografica\textgreater~cercaAreeGeografiche(double latitudine, double longitudine)}
 				\\Metodo che ricerca delle aree geografiche mediante coordinate (latitudine e longitudine fornite in input come parametro).
 				\\Restituisce un Result di tipo AreaGeografica contenente le aree geografiche corrispondenti al risultato della ricerca.
+				
 			\end{itemize}
 
 			\subsection{Convertable}
@@ -721,43 +734,49 @@
 			\begin{itemize}
 				\item \textbf{String toCsv()}
 				\\Metodo che converte l'oggetto nel formato (*.CSV).
-				\\Restituisce una stringa.
+				\\Restituisce una stringa relativa all'oggetto.
+				
 			\end{itemize}
 			\subsection{DataTable}
 			L'implementazione di questa interfaccia permette di confrontare due record.
 			\begin{itemize}
 				\item\textbf{boolean equals(Object obj)}
 				\\Metodo che confronta l'oggetto che esegue con l'oggetto fornito come parametro.
-				\\Restituisce \textit{true} se sono uguali, \textit{false} altrimenti.
+				\\Restituisce \textit{true} se i due oggetti sono uguali, \textit{false} altrimenti.
+				
 			\end{itemize}
 			\subsection{MediaAree}
 			La classe che implementa questa interfaccia permette di visualizzare le informazioni relative ad un'area geografica.
 			\begin{itemize}
 				\item\textbf {DatoGeografico visualizzaAreaGeografica (AreaGeografica area)}
 				\\Metodo che restituisce un nuovo dato geografico, che rappresenta un prospetto riassuntivo dei parametri climatici associati all'area geografica fornita in input.
+				
+				La complessit\`a del metodo \`e .
+				
 			\end{itemize}
+			
 			\subsection{IniFile}
-			La classe che si occupa di leggere ed esegue il parsing di un file ini.
+			Classe che si occupa di leggere un file \textit{.ini} ed eseguirne il parsing.
 			\begin{itemize}
 				\item \textbf{void load(String path) throws IOException}
-				\\Metodo che carica il file ini.
+				\\Metodo che carica il file \textit{.ini}.
 				
-				La complessità del metodo è $\bigT(n)$
+				La complessit\`a del metodo \`e $\bigT\textbf{(n)}$
 				
 				\item \textbf{String getString(String section, String key, String defaultvalue)}
-				\\Metodo che prende il valore identificato dalla chiave e dalla sezione date come argomenti.
+				\\Metodo che preleva un valore identificato in base a chiave e a sezione fornite in input come parametri.
 				
-				La complessità del metodo è $\bigO(1)$
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$
 				
 				\item \textbf{int getInt(String section, String key, int defaultvalue)}
-				\\Metodo che prende il valore identificato dalla chiave e dalla sezione date come argomenti e lo prova a convertire ad intero.
+				\\Metodo che preleva il valore identificato dalla chiave e dalla sezione date come parametri e lo prova a convertire ad intero.
 				
-				La complessità del metodo è $\bigO(1)$
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$
 				
 				\item \textbf{double getDouble(String section, String key, double defaultvalue)}
-				\\Metodo che prende il valore identificato dalla chiave e dalla sezione date come argomenti e lo prova a convertire a double.
+				\\Metodo che preleva il valore identificato in base a chiave e a sezione fornite in input come parametri e lo converte a \textit{double}.
 				
-				La complessità del metodo è $\bigO(1)$
+				La complessit\`a del metodo \`e $\bigO\textbf{(1)}$
 				
 				
 			\end{itemize}
@@ -766,8 +785,9 @@
 
 
 		\section{Main}
-		Entry point dell'applicazione.\\
-		La complessità è $\bigO(1)$
+		Entry point dell'applicazione.
+		
+		La complessit\`a \`e $\bigO\textbf{(1)}$
 
 	\nocite{IuriTex}
 	\bibliographystyle{alpha}
