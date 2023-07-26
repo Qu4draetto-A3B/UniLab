@@ -1,9 +1,7 @@
 package a3b.climate.cli;
 
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.CentroMonitoraggio;
@@ -14,7 +12,7 @@ public class MostraCentri implements View {
 
 	@Override
 	public void start(Terminal term) {
-		List<String> args = Arrays.asList(App.line.getOptionValues("lista-centri"));
+		String[] args = App.line.getOptionValues("lista-centri");
 		Deque<CentroMonitoraggio> dcm = new LinkedList<>();
 
 		for (String str : args) {
@@ -26,5 +24,4 @@ public class MostraCentri implements View {
 			term.printfln("%s", cm);
 		}
 	}
-
 }

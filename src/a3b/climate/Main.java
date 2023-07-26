@@ -115,6 +115,7 @@ public class Main {
 			return;
 		}
 
+		System.out.println("Trying...");
 		DefaultParser par = new DefaultParser();
 		try {
 			line = par.parse(opts, args);
@@ -122,13 +123,14 @@ public class Main {
 			System.out.println(e.getMessage());
 			return;
 		}
+		System.out.println("Continued");
 
 		App.start(line);
 	}
 
 	public static void printHelp() {
 		new HelpFormatter().printHelp(
-				App.programExec,
+				App.programName,
 				"Programma per il monitoraggio climatico",
 				opts,
 				"Leggi il Manuale Utente per informazioni aggiuntive",

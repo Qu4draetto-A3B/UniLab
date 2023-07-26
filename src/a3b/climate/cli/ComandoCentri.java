@@ -30,7 +30,19 @@ public class ComandoCentri implements View {
 
 
 		String nome = ini.getString("centro", "nome", "*");
+
+		if (nome.contains("*")) {
+			term.printfln("Non sono riuscito a recuperare il nome del centro");
+			return;
+		}
+
 		String geoids = ini.getString("centro", "aree", "*");
+
+		if (geoids.contains("*")) {
+			term.printfln("Non sono riuscito a recuperare i geoid");
+			return;
+		}
+
 		ListaAree lag = new ListaAree();
 
 		for (String str : geoids.split(",")) {
@@ -49,16 +61,6 @@ public class ComandoCentri implements View {
 			ini.getString("indirizzo", "comune", "*"),
 			ini.getString("indirizzo", "provincia", "*")
 		);
-
-		if (nome.contains("*")) {
-			term.printfln("Non sono riuscito a recuperare il nome del centro");
-			return;
-		}
-
-		if (geoids.contains("*")) {
-			term.printfln("Non sono riuscito a recuperare i geoid");
-			return;
-		}
 
 		if (ind.toString().contains("*")) {
 			term.printfln("Non sono riuscito a recuperare parti dell'indirizzo");

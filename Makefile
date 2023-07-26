@@ -1,6 +1,7 @@
 # Main Class, project name, change as preferred
 MAIN_CLASS := a3b.climate.Main
 PRJ_NAME := UniLab
+MANIFEST := ./META-INF/MANIFEST.MF
 
 # Names for generated files
 TARGET_EXEC := $(PRJ_NAME).jar
@@ -39,11 +40,11 @@ classes: $(SRCS)
 
 # Generate .jar artifact
 jar: classes
-	jar --create --file $(BUILD_DIR)/$(TARGET_EXEC) --main-class $(MAIN_CLASS) -C $(CLASS_DIR) .
+	jar --create --file $(BUILD_DIR)/$(TARGET_EXEC) --manifest $(MANIFEST) $(CLASS_DIR)
 
 # Generate .jar artifact with no main
 jarlib: classes
-	jar --create --file $(BUILD_DIR)/$(TARGET_LIB) $(CLS)
+	jar --create --file $(BUILD_DIR)/$(TARGET_LIB) $(CLS) .
 
 # Generate documentation
 docs: $(SRCS)
