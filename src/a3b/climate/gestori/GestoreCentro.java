@@ -23,7 +23,8 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Result;
 
 /**
- * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo CentroMonitoraggio
+ * Classe che gestisce le operazioni di lettura e scrittura riguardanti oggetti
+ * di tipo CentroMonitoraggio
  */
 public class GestoreCentro extends Gestore {
 	/**
@@ -37,8 +38,10 @@ public class GestoreCentro extends Gestore {
 
 	/**
 	 * Metodo che ricerca un centro di monitoraggio in base al nome
+	 *
 	 * @param nome Nome del centro di monitoraggio di interesse
-	 * @return Restituisce il centro di monitoraggio corrispondente al nome fornito come parametro
+	 * @return Record relativo al centro di monitoraggio corrispondente al nome
+	 *         fornito come parametro
 	 */
 	public Result<CentroMonitoraggio> getCentro(String nome) {
 		for (CSVRecord record : records) {
@@ -51,9 +54,11 @@ public class GestoreCentro extends Gestore {
 	}
 
 	/**
-	 * Metodo che crea un nuovo record relatico a un determinato centro di monitoraggio e lo memorizza nel file CentriMonitoraggio.CSV
-	 * @param cm Centro di monitoraggio di cui di vuole creare un nuovo record
-	 * @return Restutuisce un nuovo record relativo al centro di monitoraggio fornito come parametro
+	 * Metodo che crea un nuovo record relativo a un determinato centro di
+	 * monitoraggio e lo memorizza nel file CentriMonitoraggio.CSV
+	 *
+	 * @param cm Centro di monitoraggio di cui si vuole creare un nuovo record
+	 * @return Booleano che indica se l'operazione e' andata a buon fine
 	 */
 	public Result<CentroMonitoraggio> addCentro(CentroMonitoraggio cm) {
 		if (getCentro(cm.getNome()).isValid()) {
@@ -71,7 +76,7 @@ public class GestoreCentro extends Gestore {
 	}
 
 	@Override
-	protected DataTable buildObject(CSVRecord record){
+	protected DataTable buildObject(CSVRecord record) {
 		String nomo = record.get("Name");
 
 		String indStr = record.get("Address");

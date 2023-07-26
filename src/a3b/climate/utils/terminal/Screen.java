@@ -14,13 +14,24 @@
  */
 package a3b.climate.utils.terminal;
 
+/**
+ * Modella l'interfaccia nel terminale
+ */
 public class Screen {
-    protected Terminal term;
+	protected Terminal term;
 
+	/**
+	 * Costruttore di un'istanza di Screen
+	 */
 	public Screen() {
 		term = new Terminal();
 	}
 
+	/**
+	 * Metodo che mostra
+	 *
+	 * @param v
+	 */
 	public void show(View v) {
 		term.clear();
 		v.start(term);

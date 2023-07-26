@@ -23,13 +23,16 @@ import a3b.climate.utils.result.Result;
 
 import java.util.Iterator;
 
+/**
+ * Classe che rappresenta una lista di aree geografiche
+ */
 public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertable {
 
 	Nodo<AreaGeografica> head;
 	Nodo<AreaGeografica> tail;
 
 	/**
-	 * @return Restituisce un booleano che indica se la lista di aree geografiche
+	 * @return Booleano che indica se la lista di aree geografiche
 	 *         che esegue il metodo e' vuota
 	 */
 
@@ -38,7 +41,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * @return Restituisce l'area geografica che si trova in posizione k nella
+	 * @return Area geografica che si trova in posizione k nella
 	 *         ListaAree che esegue il metodo
 	 * @param k Intero che indica l'indice di un elemento all'interno di ListaAree
 	 */
@@ -73,7 +76,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * @return Restituisce il primo elemento nella ListaAree che esegue il metodo
+	 * @return Primo elemento nella ListaAree che esegue il metodo
 	 */
 
 	public AreaGeografica getFirst() {
@@ -83,7 +86,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * @return Restituisce l'ultimo elemento nella ListaAree che esegue il metodo
+	 * @return Ultimo elemento nella ListaAree che esegue il metodo
 	 */
 
 	public AreaGeografica getLast() {
@@ -93,7 +96,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * @return Restituisce un intero che indica la dimensione della ListaAree che
+	 * @return Intero che indica la dimensione della ListaAree che
 	 *         esegue il metodo
 	 */
 
@@ -125,6 +128,14 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 		return new CollezioniIterator<AreaGeografica>(head);
 	}
 
+	/**
+	 * Metodo che data un'area geografica mostra tutte le informazioni relative ad
+	 * essa
+	 *
+	 * @return Aggregato di informazioni relative all'area geografica
+	 *         fornita come parametro
+	 * @param area Area geografica di cui interessano le informazioni
+	 */
 	public Result<AreaGeografica> getArea(long geoId) {
 		for (AreaGeografica ag : this) {
 			if (geoId == ag.getGeoID()) {
@@ -136,7 +147,6 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	@Override
-
 	public ListaAree cercaAreaGeografica(String denominazione, String stato) {
 
 		ListaAree la = new ListaAree();
@@ -166,7 +176,6 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	@Override
-
 	public Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine) {
 
 		if ((latitudine < -90) || (latitudine > 90)) {

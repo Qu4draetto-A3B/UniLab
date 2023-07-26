@@ -32,7 +32,8 @@ import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
 /**
- * Racchiude metodi relativi la gestione dei file contenenti i dati d'interesse.
+ * Classe astratta che racchiude metodi relativi la gestione dei file contenenti
+ * i dati d'interesse
  */
 public abstract class Gestore implements AutoCloseable {
 	protected final String FILE;
@@ -51,7 +52,8 @@ public abstract class Gestore implements AutoCloseable {
 
 	/**
 	 * Costruttore di un'istanza di Gestore
-	 * @param file File su cui effettuare operazioni di lettura/scrittura
+	 *
+	 * @param file    File su cui effettuare operazioni di lettura/scrittura
 	 * @param headers Intestazione del file relativa all'oggetto
 	 */
 	protected Gestore(String file, String[] headers) {
@@ -85,7 +87,6 @@ public abstract class Gestore implements AutoCloseable {
 		}
 	}
 
-
 	/**
 	 * Metodo che si occupa di chiudere un file
 	 */
@@ -115,18 +116,24 @@ public abstract class Gestore implements AutoCloseable {
 	}
 
 	/**
-	 * Metodo che si occupa di costruire un oggetto tramite il parametro
+	 * Metodo astratto che si occupa di creare un nuovo oggetto associato
+	 * all'implementatore
+	 *
 	 * @param record
 	 * @return
 	 */
 	protected abstract DataTable buildObject(CSVRecord record);
 
 	/**
-	 * Metodo che si occupa di recuperare la proprietà del Result in base alla chiave data
-	 * @param key
-	 * @return
+	 * Metodo che si occupa di prendere una proprieta' nel file (*.CSV.DAT)
+	 * associato ad una tabella (*.CSV).
+	 *
+	 * @param key Chiave per accedere alla proprieta' del file
+	 * @return Record con la stringa della proprietà richiesta. Se l'operazione di
+	 *         ricerca non dovesse andare a buon fine, restituisce una stringa
+	 *         associata a un codice di errore.
 	 */
-		protected Result<String> getProperty(String key) {
+	protected Result<String> getProperty(String key) {
 		String val = "";
 		for (String line : metaIn.lines().toList()) {
 			String[] arr = line.split("=");
@@ -158,12 +165,13 @@ public abstract class Gestore implements AutoCloseable {
 		return new Result<>(val);
 	}
 
-
 	/**
-	 * Metodo che si occupa di impostare una proprietà nel file (*.CSV.DAT) associato a una tabella (*.CSV)
-	 * @param key
-	 * @param val
-	 * @return
+	 * Metodo che si occupa di impostare una proprieta' nel file (*.CSV.DAT)
+	 * associato a una tabella (*.CSV)
+	 *
+	 * @param key Chiave del file
+	 * @param val Proprieta' da impostare
+	 * @return Record relativo all'operazione effettuata. Se l'operazione non andasse a buon fine, restituisce un record relativo a un errore.
 	 */
 	protected Result<Object> setProperty(String key, String val) {
 		String contents = metaIn.toString();

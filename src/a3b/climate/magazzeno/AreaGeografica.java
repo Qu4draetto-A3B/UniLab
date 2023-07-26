@@ -17,7 +17,7 @@ package a3b.climate.magazzeno;
 import a3b.climate.utils.DataTable;
 
 /**
- * Rappresenta un'area geografica
+ * Classe che rappresenta un'area geografica
  */
 
 public class AreaGeografica implements DataTable {
@@ -32,7 +32,7 @@ public class AreaGeografica implements DataTable {
 	 *
 	 * @param geoID         Id dell'area geografica
 	 * @param latitudine    Latitudine relativa all'area geografica
-	 * @param longitudine    Longitudine relativa all'area geografica
+	 * @param longitudine   Longitudine relativa all'area geografica
 	 * @param stato         Stato in cui si trova l'area geografica
 	 * @param denominazione Nome dell'area geografica
 	 */
@@ -45,36 +45,36 @@ public class AreaGeografica implements DataTable {
 		this.denominazione = denominazione;
 	}
 
+	/**
+	 * @return GeoID relativo all'area geografica che chiama il metodo
+	 */
 	public long getGeoID() {
 		return geoID;
 	}
 
 	/**
-	 * @return Restituisce la latitudine relativa all'area geografica che chiama il
-	 *         metodo
+	 * @return Latitudine relativa all'area geografica che chiama il metodo
 	 */
 	public double getLatitudine() {
 		return latitudine;
 	}
 
 	/**
-	 * @return Restituisce la logitudine relativa all'area geografica che chiama il
-	 *         metodo
+	 * @return Logitudine relativa all'area geografica che chiama il metodo
 	 */
 	public double getLongitudine() {
 		return longitudine;
 	}
 
 	/**
-	 * @return Restituisce lo stato in cui si trova l'area geografica che chiama il
-	 *         metodo
+	 * @return Stato in cui si trova l'area geografica che chiama il metodo
 	 */
 	public String getStato() {
 		return stato;
 	}
 
 	/**
-	 * @return Restituisce il nome dell'area geografica che chiama il metodo
+	 * @return Nome dell'area geografica che chiama il metodo
 	 */
 	public String getDenominazione() {
 		return denominazione;

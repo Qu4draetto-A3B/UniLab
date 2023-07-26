@@ -22,10 +22,13 @@ import a3b.climate.magazzeno.Filtratore;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
+/**
+ * Classe che permette di mostrare all'utente le varie misurazioni
+ */
 public class MostraMisurazioni implements View {
-    public MostraMisurazioni() {
-        super();
-    }
+	public MostraMisurazioni() {
+		super();
+	}
 
     @Override
     public void start(Terminal term) {

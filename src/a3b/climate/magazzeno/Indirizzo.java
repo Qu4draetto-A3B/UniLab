@@ -17,7 +17,7 @@ package a3b.climate.magazzeno;
 import a3b.climate.utils.Convertable;
 
 /**
- * Rappresenta un indirizzo
+ * Classe che rappresenta un indirizzo
  */
 
 public class Indirizzo implements Convertable {
@@ -42,13 +42,13 @@ public class Indirizzo implements Convertable {
 
 	/**
 	 * Costruttore di un'istanza di Indirizzo
-	 * @param nomeVia Nome della via relativa all'indirizzo
-     * @param civico Numero civico relativo all'indirizzo
-	 * @param cap Codice di avviamento postale relativo all'indirizzo
-	 * @param comune Comune relativo all'indirizzo
+	 *
+	 * @param nomeVia   Nome della via relativa all'indirizzo
+	 * @param civico    Numero civico relativo all'indirizzo
+	 * @param cap       Codice di avviamento postale relativo all'indirizzo
+	 * @param comune    Comune relativo all'indirizzo
 	 * @param provincia Provincia relativa all'indirizzo
 	 */
-
 	public Indirizzo(String nomeVia, int civico, int cap, String comune, String provincia) {
 		if (cap >= 100000)
 			throw new IllegalArgumentException("CAP invalido");
@@ -60,36 +60,47 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * @return Restituisce il nome della via relativo all'indirizzo che chiama il metodo
+	 * @return Nome della via relativo all'indirizzo che chiama il metodo
 	 */
-
 	public String getNomeVia() {
 		return nomeVia;
 	}
 
 	/**
-	 * @return Restituisce il numero civico relativo all'indirizzo che chiama il metodo
+	 * @return Numero civico relativo all'indirizzo che chiama il metodo
 	 */
-
 	public int getCivico() {
 		return civico;
 	}
 
 	/**
-	 * @return Restituisce il codice di avviamento postale relativo all'indirizzo che chiama il metodo
+	 * Metodo che imposta il numero civico relativo all'indirizzo che chiama il
+	 * metodo
+	 *
+	 * @param civico Numero civico relativo all'indirizzo
 	 */
+	public void setCivico(int civico) {
+		this.civico = civico;
+	}
 
+	/**
+	 * @return Codice di avviamento postale relativo all'indirizzo che chiama il
+	 *         metodo
+	 */
 	public int getCap() {
 		return cap;
 	}
 
 	/**
-	 * @return Restituisce il comune relativo all'indirizzo che chiama il metodo
+	 * @return Comune relativo all'indirizzo che chiama il metodo
 	 */
 	public String getComune() {
 		return comune;
 	}
 
+	/**
+	 * @return Provincia relativa all'indirizzo che chiama il metodo
+	 */
 	public String getProvincia() {
 		return provincia;
 	}

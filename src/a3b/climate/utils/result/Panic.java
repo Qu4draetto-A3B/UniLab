@@ -14,10 +14,25 @@
  */
 package a3b.climate.utils.result;
 
+/**
+ * Classe che rappresenta un errore
+ */
 public class Panic extends Error {
+	/**
+	 * Costruttore di un'istanza di Panic
+	 *
+	 * @param msg Messaggio per l'utente che si vuole stampare a schermo
+	 */
 	public Panic(String msg) {
 		super(msg);
 	}
 
-	public Panic(Throwable t) {super(t);}
+	/**
+	 * Costruttore di un'istanza di Panic
+	 *
+	 * @param t Oggetto che può essere lanciato dalla JVM
+	 */
+	public Panic(Throwable t) {
+		super(t);
+	}
 }
