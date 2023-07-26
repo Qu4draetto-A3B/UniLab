@@ -40,51 +40,42 @@
 	\chapter{Struttura generale del sistema di classi}
 		\section{cli}
 			\subsection{App}
-			La classe App
+			La classe App prende gli argomenti dell'applicazione e avvia il comando corretto all'interno di essa.
 			\begin{itemize}
 				\item \textbf{void start(CommandLine line)}
-				\\Metodo
+				\\Metodo che prende gli argomenti dell'applicazione e avvia il comando corretto all'interno di essa.
 				
-				La complessit\`a del metodo è
-				
+				La complessit\`a del metodo è $\bigO(1)$
 			\end{itemize}
 			
-			\subsection{ComandoAree}
+			\subsection{MostraAree}
 			La classe ComandoAree
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo
+				\\Metodo che implementa l'interfaccia View.
 				
-				La complessit\`a del metodo è
+				La complessit\`a del metodo è $\bigT(n+m+k)$
 				
 			\end{itemize}
 			\subsection{ComandoCentri}
 			La classe ComandoCentri
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo
+				\\Metodo che implemeta l'interfaccia View.
 				
-				La complessit\`a del metodo è
+				La complessit\`a del metodo è $\bigT(n)$
 				
 			\end{itemize}
 			\subsection{ComandoMisurazioni}
 			La classe ComandoMisurazioni
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo
+				\\Metodo che implemeta l'interfaccia View.
 				
-				La complessit\`a del metodo è 
-				
-			\end{itemize}
-			\subsection{ComandoOperatori}
-			La classe ComandoOperatori
-			\begin{itemize}
-				\item \textbf{void start(Terminal term)}
-				\\Metodo
-				
-				La complessit\`a del metodo è 
+				La complessit\`a del metodo è $\bigO(n)$
 				
 			\end{itemize}
+			
 			\subsection{MostraCentri}
 			La classe ComandoMisurazioni
 			\begin{itemize}
@@ -99,27 +90,27 @@
 			La classe ComandoMisurazioni
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo
+				\\Metodo che implemeta l'interfaccia View.
 				
-				La complessit\`a del metodo è 
+				La complessit\`a del metodo è $\bigT(n + m)$
 				
 			\end{itemize}
 			\subsection{Query}
 			La classe Query si occupa di 
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo 
+				\\Metodo che implemeta l'interfaccia View.
 				
-				La complessit\`a del metodo è 
+				La complessit\`a del metodo è $\bigO(n^2)$
 				
 			\end{itemize}
 			\subsection{Registrazione}
 			La classe registrazione
 			\begin{itemize}
 				\item \textbf{void start(Terminal term)}
-				\\Metodo
+				\\Metodo che implemeta l'interfaccia View.
 				
-				La complessit\`a del metodo è 
+				La complessit\`a del metodo è $\bigO(1)$
 				
 			\end{itemize}
 			
@@ -491,6 +482,12 @@
 				
 				La complessit\`a del metodo \`e $\bigT$\textbf{(n)}.
 				
+				
+				\item \textbf{Result<AreaGeografica> getArea(long geoId)}
+				\\Metodo recupera l'area tramite il suo geoID.
+				
+				La complessit\`a del metodo \`e $\bigO$\textbf{(n)}.
+				
 			\end{itemize}
 
 			\subsection{Misurazioni}
@@ -739,11 +736,38 @@
 				\item\textbf {DatoGeografico visualizzaAreaGeografica (AreaGeografica area)}
 				\\Metodo che restituisce un nuovo dato geografico, che rappresenta un prospetto riassuntivo dei parametri climatici associati all'area geografica fornita in input.
 			\end{itemize}
-			\subsection{DatoGeografico}
+			\subsection{IniFile}
+			La classe che si occupa di leggere ed esegue il parsing di un file ini.
+			\begin{itemize}
+				\item \textbf{void load(String path) throws IOException}
+				\\Metodo che carica il file ini.
+				
+				La complessità del metodo è $\bigT(n)$
+				
+				\item \textbf{String getString(String section, String key, String defaultvalue)}
+				\\Metodo che prende il valore identificato dalla chiave e dalla sezione date come argomenti.
+				
+				La complessità del metodo è $\bigO(1)$
+				
+				\item \textbf{int getInt(String section, String key, int defaultvalue)}
+				\\Metodo che prende il valore identificato dalla chiave e dalla sezione date come argomenti e lo prova a convertire ad intero.
+				
+				La complessità del metodo è $\bigO(1)$
+				
+				\item \textbf{double getDouble(String section, String key, double defaultvalue)}
+				\\Metodo che prende il valore identificato dalla chiave e dalla sezione date come argomenti e lo prova a convertire a double.
+				
+				La complessità del metodo è $\bigO(1)$
+				
+				
+			\end{itemize}
+			\subsection{TipoDatoGeografico}
 			Enumerativo che rappresenta il tipo di un dato geografico.
 
 
 		\section{Main}
+		Entry point dell'applicazione.\\
+		La complessità è $\bigO(1)$
 
 	\nocite{IuriTex}
 	\bibliographystyle{alpha}
