@@ -1,9 +1,7 @@
 package a3b.climate.cli;
 
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.CentroMonitoraggio;
@@ -26,5 +24,4 @@ public class MostraCentri implements View {
 			term.printfln("%s", cm);
 		}
 	}
-
 }

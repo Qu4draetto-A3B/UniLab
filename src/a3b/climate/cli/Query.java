@@ -50,9 +50,7 @@ public class Query implements View {
 				ini.getString("query", "centri", "*"), ini.getString("query", "data_ora", "*"),
 				ini.getString("query", "dato_geografico", "*"));
 
-		for (String s : search.split(" ")) {
-			fil = fil.filtraStrings(s);
-		}
+		fil = fil.filtraStrings(search.split(" "));
 
 		term.printfln("%s", fil.toString());
 	}
