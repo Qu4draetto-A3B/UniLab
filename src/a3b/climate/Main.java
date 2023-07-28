@@ -115,7 +115,6 @@ public class Main {
 			return;
 		}
 
-		System.out.println("Trying...");
 		DefaultParser par = new DefaultParser();
 		try {
 			line = par.parse(opts, args);
@@ -123,7 +122,6 @@ public class Main {
 			System.out.println(e.getMessage());
 			return;
 		}
-		System.out.println("Continued");
 
 		App.start(line);
 	}
