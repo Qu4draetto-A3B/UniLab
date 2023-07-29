@@ -13,6 +13,11 @@ public class MostraCentri implements View {
 	@Override
 	public void start(Terminal term) {
 		String[] args = App.line.getOptionValues("lista-centri");
+
+		if (args == null) {
+			args = new String[]{""};
+		}
+
 		Deque<CentroMonitoraggio> dcm = new LinkedList<>();
 
 		for (String str : args) {
