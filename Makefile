@@ -26,6 +26,9 @@ SRCS := $(shell find $(SRC_DIR) -name '*.java' -print)
 # List of class files
 CLS := $(SRCS:$(SRC_DIR)/%.java=$(CLASS_DIR)/%.class)
 
+# List of jar libraries
+LIBS := $(shell find $(LIB_DIR) -name '*.jar' -print)
+
 # Compile and run project
 run: classes
 	java -cp $(RUN_CP) $(MAIN_CLASS)
@@ -40,11 +43,7 @@ classes: $(SRCS)
 
 # Generate .jar artifact
 jar: classes
-	jar --create --file $(BUILD_DIR)/$(TARGET_EXEC) --manifest $(MANIFEST) $(CLASS_DIR)
-
-# Generate .jar artifact with no main
-jarlib: classes
-	jar --create --file $(BUILD_DIR)/$(TARGET_LIB) $(CLS) .
+	jar --create --file $(BUILD_DIR)/$(TARGET_EXEC) --manifest $(MANIFEST) -C $(CLASS_DIR) . $(LIB_DIR)
 
 # Generate documentation
 docs: $(SRCS)
@@ -58,7 +57,7 @@ clean:
 cleandoc:
 	rm -r $(DOC_DIR)
 
-all: classes jar jarlib docs
+all: classes jar docs
 
 cleanall: clean cleandoc
 
