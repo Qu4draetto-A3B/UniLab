@@ -1,17 +1,18 @@
 # Main Class, project name, change as preferred
 MAIN_CLASS := a3b.climate.Main
 PRJ_NAME := UniLab
-MANIFEST := ./META-INF/MANIFEST.MF
+PRJ_ROOT := $(HOME)/Sources/Chichibio-Savoiardi/UniLab
 
 # Names for generated files
 TARGET_EXEC := $(PRJ_NAME).jar
 TARGET_LIB := lib$(PRJ_NAME).jar
 
 # Directories for where to find build files, libraries and sources, respectively
-BUILD_DIR := ./bin
-LIB_DIR := ./lib
-SRC_DIR := ./src
-DOC_DIR := ./doc/javadoc
+MANIFEST := $(PRJ_ROOT)/src/META-INF/MANIFEST.MF
+BUILD_DIR := $(PRJ_ROOT)/bin
+LIB_DIR := $(PRJ_ROOT)/lib
+SRC_DIR := $(PRJ_ROOT)/src
+DOC_DIR := $(PRJ_ROOT)/doc/javadoc
 
 # Classes are generated in a subdirectory
 CLASS_DIR := $(BUILD_DIR)/class
@@ -41,9 +42,16 @@ runjar: jar
 classes: $(SRCS)
 	javac -d $(CLASS_DIR) -cp $(BUILD_CP) $(SRCS)
 
+libraries: $(LIBS)
+	for lib in $(LIBS); do \
+		jar --extract --file $$lib; \
+	done
+	rm -rf $(PRJ_ROOT)/META-INF $(CLASS_DIR)/org
+	mv -f ./org $(CLASS_DIR)/
+
 # Generate .jar artifact
-jar: classes
-	jar --create --file $(BUILD_DIR)/$(TARGET_EXEC) --manifest $(MANIFEST) -C $(CLASS_DIR) . $(LIB_DIR)
+jar: classes libraries
+	jar --create --file $(BUILD_DIR)/$(TARGET_EXEC) --manifest $(MANIFEST) -C $(CLASS_DIR) .
 
 # Generate documentation
 docs: $(SRCS)
