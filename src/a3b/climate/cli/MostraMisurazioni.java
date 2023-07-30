@@ -19,24 +19,39 @@ import java.util.List;
 
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.Filtratore;
+import a3b.climate.magazzeno.Misurazione;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
 /**
- * Classe che permette di mostrare all'utente le varie misurazioni
+ * La classe {@code MostraMisurazioni} implementa l'interfaccia {@link View} per
+ * visualizzare le misurazioni in base a criteri forniti da un filtratore.
+ * <p>
+ * Legge il {@link Filtratore} dalla linea di comando e recupera le istanze di {@link Misurazione} corrispondenti dal database, le quali vengono
+ * stampate nel terminale.
  */
 public class MostraMisurazioni implements View {
 	public MostraMisurazioni() {
 		super();
 	}
 
-    @Override
-    public void start(Terminal term) {
+	/**
+	 * Recupera le misurazioni in base ai ciriteri dati nel filtratore fornito nella
+	 * linea di comando.
+	 * <p>
+	 * Richiede al database le istanze di {@link Misurazione} corrispondenti e le
+	 * stampa nel terminale.
+	 *
+	 * @param term istanza di {@link Terminal} utilizzata per stampare le
+	 *             misurazioni
+	 */
+	@Override
+	public void start(Terminal term) {
 		List<String> args = Arrays.asList(App.line.getOptionValues("lista-misurazioni"));
 		Filtratore fil = DataBase.misurazioni.getMisurazioni().get();
 		for (String str : args) {
 			fil = fil.filtraStrings(str);
 		}
 		term.printfln("%s", fil);
-    }
+	}
 }

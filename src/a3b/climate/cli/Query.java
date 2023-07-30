@@ -11,10 +11,18 @@ import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
 /**
- * Query
+ * La classe {@code Query} implementa l'interfaccia {@link View} per eseguire
+ * una query.
  */
 public class Query implements View {
 
+	/**
+	 * Legge i parametri di query da un file INI, la esegue e stampa il risultato
+	 * dell'operazione nel terminale.
+	 *
+	 * @param term istanza di {@link Terminal} utilizzata per stampare il centro di
+	 *             monitoraggio
+	 */
 	@Override
 	public void start(Terminal term) {
 		String path = App.line.getOptionValue("query");

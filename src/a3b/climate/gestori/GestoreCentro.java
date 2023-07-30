@@ -16,19 +16,26 @@ package a3b.climate.gestori;
 
 import org.apache.commons.csv.CSVRecord;
 
+import a3b.climate.magazzeno.AreaGeografica;
 import a3b.climate.magazzeno.CentroMonitoraggio;
 import a3b.climate.magazzeno.Indirizzo;
 import a3b.climate.magazzeno.ListaAree;
+import a3b.climate.utils.CercaAree;
 import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Result;
 
 /**
- * Classe che gestisce le operazioni di lettura e scrittura riguardanti oggetti
- * di tipo CentroMonitoraggio
+ * La classe {@code GestoreCentro} estende la classe {@link Gestore}.
+ * <p>
+ * Gestisce le operazioni di lettura e scrittura su file CSV di dati riguardanti
+ * istanze di {@link CentroMonitoraggio}.
  */
 public class GestoreCentro extends Gestore {
 	/**
-	 * Costruttore di un'istanza di GestoreCentro
+	 * Costruttore di un'istanza di {@code GestoreCentro} che gestisce i dati
+	 * relativi ai centri di monitoraggio.
+	 *
+	 * @see Gestore#Gestore(String, String[])
 	 */
 	public GestoreCentro() {
 		super(
@@ -37,11 +44,20 @@ public class GestoreCentro extends Gestore {
 	}
 
 	/**
-	 * Metodo che ricerca un centro di monitoraggio in base al nome
+	 * Recupera un'istanza di {@link CentroMonitoraggio} basandosi sul nome
+	 * specificato.
+	 * <p>
+	 * Ricerca un record CSV con il nome specifico nella lista di record e
+	 * costruisce il rispettivo {@link CentroMonitoraggio} usando il metodo
+	 * {@link #buildObject(CSVRecord)}.
+	 * <p>
+	 * Nel caso in cui non venga trovato nessun record corrispondente al nome
+	 * fornito,
+	 * restituisce un {@link Result} con un codice di errore.
 	 *
-	 * @param nome Nome del centro di monitoraggio di interesse
-	 * @return Record relativo al centro di monitoraggio corrispondente al nome
-	 *         fornito come parametro
+	 * @param nome nome relativo al centro di monitoraggio d'interesse
+	 * @return restituisce l'istanza di {@link CentroMonitoraggio} corrispondente al
+	 *         nome fornito come parametro
 	 */
 	public Result<CentroMonitoraggio> getCentro(String nome) {
 		for (CSVRecord record : records) {
@@ -54,11 +70,17 @@ public class GestoreCentro extends Gestore {
 	}
 
 	/**
-	 * Metodo che crea un nuovo record relativo a un determinato centro di
-	 * monitoraggio e lo memorizza nel file CentriMonitoraggio.CSV
+	 * Aggiunge un nuovo centro di monitoraggio al relativo file CSV.
+	 * <p>
+	 * Controlla se un {@link CentroMonitoraggio} con lo stesso nome &egrave
+	 * gi&agrave presente nel file utilizzando il metodo {@link #getCentro(String)}.
+	 * <p>
+	 * Nel caso in cui l'operazione non venga eseguita correttamente (il centro sia
+	 * gi&agrave esistente e/o vi sia un errore nella scrittura del record),
+	 * restituisce un {@link Result} con un codice di errore.
 	 *
-	 * @param cm Centro di monitoraggio di cui si vuole creare un nuovo record
-	 * @return Booleano che indica se l'operazione e' andata a buon fine
+	 * @param cm {@link CentroMonitoraggio} da aggiungere al file CSV
+	 * @return {@link Result} contenente il {@link CentroMonitoraggio} aggiunto
 	 */
 	public Result<CentroMonitoraggio> addCentro(CentroMonitoraggio cm) {
 		if (getCentro(cm.getNome()).isValid()) {
