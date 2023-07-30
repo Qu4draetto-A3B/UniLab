@@ -42,6 +42,7 @@ runjar: jar
 classes: $(SRCS)
 	javac -d $(CLASS_DIR) -cp $(BUILD_CP) $(SRCS)
 
+# Extract libraries to class directory
 libraries: $(LIBS)
 	for lib in $(LIBS); do \
 		jar --extract --file $$lib; \
