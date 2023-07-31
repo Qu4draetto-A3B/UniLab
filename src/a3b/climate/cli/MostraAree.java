@@ -10,27 +10,8 @@ import a3b.climate.magazzeno.AreaGeografica;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
-/**
- * La classe {@code MostraAree} implementa l'interfaccia {@link View} per
- * visualizzare aree geografiche in base alle relative coordinate o ai relativi
- * ID.
- * <p>
- * Legge le coordinate e gli ID dalla linea di comando e recupera le istanze di
- * {@link AreaGeografica} corrispondenti dal database, le quali vengono
- * stampate nel terminale.
- */
 public class MostraAree implements View {
-
-	/**
-	 * Recupera le aree geografiche in base alle coordinate o
-	 * agli ID forniti nella linea di comando.
-	 * <p>
-	 * Richiede al database le istanze di {@link AreaGeografica}
-	 * corrispondenti e le stampa nel terminale.
-	 *
-	 * @param term istanza di {@link Terminal} utilizzata per stampare le aree
-	 *             geografiche
-	 */
+	// metodi
 	public void start(Terminal term) {
 		String[] preArgs = App.line.getOptionValues("lista-aree");
 		List<String> args = Arrays.asList(preArgs == null ? new String[]{""} : preArgs);
@@ -57,7 +38,7 @@ public class MostraAree implements View {
 
 		for (long g : geoids) {
 			DataBase.area.getArea(g)
-					.ifValid((v, e) -> dag.offer(v));
+				.ifValid((v, e) -> dag.offer(v));
 		}
 
 		for (double[] c : coords) {

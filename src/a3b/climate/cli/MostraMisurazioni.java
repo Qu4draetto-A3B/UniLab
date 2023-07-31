@@ -16,17 +16,9 @@ package a3b.climate.cli;
 
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.Filtratore;
-import a3b.climate.magazzeno.Misurazione;
 import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
-/**
- * La classe {@code MostraMisurazioni} implementa l'interfaccia {@link View} per
- * visualizzare le misurazioni in base a criteri forniti da un filtratore.
- * <p>
- * Legge il {@link Filtratore} dalla linea di comando e recupera le istanze di {@link Misurazione} corrispondenti dal database, le quali vengono
- * stampate nel terminale.
- */
 public class MostraMisurazioni implements View {
 	public MostraMisurazioni() {
 		super();
