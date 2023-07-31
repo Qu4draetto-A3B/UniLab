@@ -82,7 +82,7 @@ public class AreaGeografica implements DataTable {
 
 	@Override
 	public String toString() {
-		return String.format("%s (%s) LAT:%f LON:%f", this.denominazione, this.stato, this.latitudine,
+		return String.format("[%d] %s (%s) LAT:%f LON:%f", this.geoID, this.denominazione, this.stato, this.latitudine,
 				this.longitudine);
 	}
 

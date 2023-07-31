@@ -61,7 +61,7 @@ public class GestoreCentro extends Gestore {
 	 */
 	public Result<CentroMonitoraggio> getCentro(String nome) {
 		for (CSVRecord record : records) {
-			if (record.get("Name").equalsIgnoreCase(nome)) {
+			if (record.get("Name").contains(nome)) {
 				return new Result<>((CentroMonitoraggio) buildObject(record));
 			}
 		}

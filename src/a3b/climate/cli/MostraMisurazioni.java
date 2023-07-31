@@ -14,9 +14,6 @@
  */
 package a3b.climate.cli;
 
-import java.util.Arrays;
-import java.util.List;
-
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.Filtratore;
 import a3b.climate.magazzeno.Misurazione;
@@ -47,11 +44,12 @@ public class MostraMisurazioni implements View {
 	 */
 	@Override
 	public void start(Terminal term) {
-		List<String> args = Arrays.asList(App.line.getOptionValues("lista-misurazioni"));
-		Filtratore fil = DataBase.misurazioni.getMisurazioni().get();
-		for (String str : args) {
-			fil = fil.filtraStrings(str);
+		String[] args = App.line.getOptionValues("lista-misurazioni");
+		if (args == null) {
+			args = new String[]{""};
 		}
+		Filtratore fil = DataBase.misurazioni.getMisurazioni().get();
+		fil = fil.filtraStrings(args);
 		term.printfln("%s", fil);
 	}
 }

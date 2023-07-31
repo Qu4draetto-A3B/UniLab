@@ -32,9 +32,11 @@ public class MostraAree implements View {
 	 *             geografiche
 	 */
 	public void start(Terminal term) {
-		List<String> args = Arrays.asList(App.line.getOptionValues("lista-aree"));
+		String[] preArgs = App.line.getOptionValues("lista-aree");
+		List<String> args = Arrays.asList(preArgs == null ? new String[]{""} : preArgs);
 		Deque<double[]> coords = new LinkedList<double[]>();
 		Deque<Long> geoids = new LinkedList<Long>();
+		Deque<String> terms = new LinkedList<>();
 
 		for (String str : args) {
 			if (str.contains(":")) {
@@ -46,21 +48,27 @@ public class MostraAree implements View {
 				try {
 					geoids.offer(Long.parseLong(str));
 				} catch (Exception e) {
-					// pass;
+					terms.offer(str);
 				}
 			}
 		}
 
 		Deque<AreaGeografica> dag = new LinkedList<>();
 
-		for (int i = 0; i < Math.max(coords.size(), geoids.size()); i++) {
-			double[] c = coords.poll();
-			long g = geoids.poll();
-			DataBase.area.cercaAreeGeografiche(c[0], c[1])
-					.ifValid((v, e) -> dag.offer(v));
-
+		for (long g : geoids) {
 			DataBase.area.getArea(g)
 					.ifValid((v, e) -> dag.offer(v));
+		}
+
+		for (double[] c : coords) {
+			DataBase.area.cercaAreeGeografiche(c[0], c[1])
+				.ifValid((v, e) -> dag.offer(v));
+		}
+
+		for (String t : terms) {
+			for (AreaGeografica ag : DataBase.area.cercaAreaGeografica(t, "")) {
+				dag.offer(ag);
+			}
 		}
 
 		for (AreaGeografica ag : dag) {
