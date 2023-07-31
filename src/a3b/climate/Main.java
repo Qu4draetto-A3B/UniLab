@@ -36,7 +36,7 @@ public class Main {
 		opts.addOption(Option.builder("u")
 				.argName("utente")
 				.longOpt("utente")
-				.desc("Nome utente e password, separati da virgola")
+				.desc("Nome utente e password, separati da virgola. Mostra le generalita' dell'utente")
 				.valueSeparator(',')
 				.numberOfArgs(2)
 				.optionalArg(false)
@@ -86,15 +86,6 @@ public class Main {
 				.build());
 
 		opts.addOption(Option.builder()
-				.argName("parole")
-				.longOpt("lista-operatori")
-				.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
-				.hasArgs()
-				.valueSeparator(',')
-				.optionalArg(true)
-				.build());
-
-		opts.addOption(Option.builder()
 				.argName("avvia")
 				.longOpt("crea-centro")
 				.desc("Avvia la creazione di un centro")
@@ -119,7 +110,7 @@ public class Main {
 		try {
 			line = par.parse(opts, args);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			System.out.printf("%s\n", e.getMessage());
 			return;
 		}
 

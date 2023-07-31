@@ -15,14 +15,14 @@ public class MostraCentri implements View {
 		String[] args = App.line.getOptionValues("lista-centri");
 
 		if (args == null) {
-			args = new String[]{""};
+			args = new String[] { "" };
 		}
 
 		Deque<CentroMonitoraggio> dcm = new LinkedList<>();
 
 		for (String str : args) {
 			DataBase.centro.getCentro(str)
-				.ifValid((v, e) -> dcm.push(v));
+					.ifValid((v, e) -> dcm.push(v));
 		}
 
 		for (CentroMonitoraggio cm : dcm) {

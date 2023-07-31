@@ -32,14 +32,19 @@ public class ComandoMisurazioni implements View {
 
 		if (Files.notExists(misIni)) {
 			Files.copy(resIni, misIni, StandardCopyOption.REPLACE_EXISTING);
+			term.printfln(
+					"File '%s' creato, riempilo con le informazioni necessarie e riavvia l'applicazione con lo stesso comando",
+					misIni.toString());
+			return;
 		}
 
 		IniFile ini = new IniFile(misIni.toString());
 
 		// check e get operatore
-		Result<Operatore> rop = DataBase.operatore.login(
-				ini.getString("utente", "nome_utente", "*"),
-				ini.getString("utente", "password", "*"));
+		String userid = ini.getString("utente", "nome_utente", "*").strip();
+		String passwd = ini.getString("utente", "password", "*").strip();
+
+		Result<Operatore> rop = DataBase.operatore.login(userid, passwd);
 
 		Operatore op = null;
 		switch (rop.getError()) {
@@ -47,24 +52,18 @@ public class ComandoMisurazioni implements View {
 				op = rop.get();
 				break;
 
-			case 1:
-				term.printfln("Utente non trovato");
-				return;
-
-			case 2:
-				term.printfln("Password sbagliata");
-				return;
-
 			default:
-				term.printfln("Errore sconosciuto");
+				term.printfln("%s", rop.getMessage());
 				return;
 		}
 
 		// check e get centro
-		Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(ini.getString("misurazione", "centro", "*"));
+		String centro = ini.getString("misurazione", "centro", "*").strip();
+		Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(centro);
 
 		if (rcm.isError()) {
-			term.printfln("centro non trovato");
+			term.printfln("'%s': %s", centro, rcm.getMessage());
+			return;
 		}
 
 		CentroMonitoraggio cm = rcm.get();
@@ -72,7 +71,7 @@ public class ComandoMisurazioni implements View {
 		// check e get area
 		long geoid = 0;
 		try {
-			geoid = ini.getInt("misurazione", "area", 0);
+			geoid = ini.getInt("misurazione", "geoid_area", 0);
 		} catch (NumberFormatException e) {
 			term.printfln("Non mi hai dato un geoid");
 			return;
@@ -81,7 +80,7 @@ public class ComandoMisurazioni implements View {
 		Result<AreaGeografica> rag = cm.getListaAree().getArea(geoid);
 
 		if (rag.isError()) {
-			term.printfln("Area non trovata");
+			term.printfln("[%d]: %s", geoid, rag.getMessage());
 			return;
 		}
 
@@ -104,14 +103,15 @@ public class ComandoMisurazioni implements View {
 					(byte) 0,
 					(byte) ini.getInt("dato_geografico", "altitudine_ghiacciai", 0),
 					(byte) ini.getInt("dato_geografico", "massa_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "precipitazioni_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "pressione_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "temperatura_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "umidita_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "vento_ghiacciai", 0),
+					(byte) ini.getInt("dato_geografico", "precipitazioni", 0),
+					(byte) ini.getInt("dato_geografico", "pressione", 0),
+					(byte) ini.getInt("dato_geografico", "temperatura", 0),
+					(byte) ini.getInt("dato_geografico", "umidita", 0),
+					(byte) ini.getInt("dato_geografico", "vento", 0),
 					note);
 		} catch (NumberFormatException e) {
 			term.printfln("Non hai inserito dei numeri tra 0 e 5 nella sezione [dato_geografico]");
+			return;
 		}
 
 		// inserimento nel database

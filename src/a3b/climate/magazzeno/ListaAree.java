@@ -132,7 +132,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 			}
 		}
 
-		return new Result<>(1, "Area non trovata");
+		return new Result<>(1, "Area non trovata nella lista");
 	}
 
 	@Override

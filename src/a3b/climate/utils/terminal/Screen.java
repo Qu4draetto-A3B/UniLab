@@ -14,8 +14,10 @@
  */
 package a3b.climate.utils.terminal;
 
+import java.io.IOException;
+
 public class Screen {
-    protected Terminal term;
+	protected Terminal term;
 
 	public Screen() {
 		term = new Terminal();
@@ -23,6 +25,10 @@ public class Screen {
 
 	public void show(View v) {
 		term.clear();
-		v.start(term);
+		try {
+			v.start(term);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
