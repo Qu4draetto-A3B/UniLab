@@ -34,81 +34,81 @@ public class Main {
 	public static void main(String[] args) {
 		opts = new Options();
 		opts.addOption(Option.builder("u")
-			.argName("utente")
-			.longOpt("utente")
-			.desc("Nome utente e password, separati da virgola")
-			.valueSeparator(',')
-			.numberOfArgs(2)
-			.optionalArg(false)
-			.build());
+				.argName("utente")
+				.longOpt("utente")
+				.desc("Nome utente e password, separati da virgola")
+				.valueSeparator(',')
+				.numberOfArgs(2)
+				.optionalArg(false)
+				.build());
 
 		opts.addOption(Option.builder()
-			.argName("avvia")
-			.longOpt("avvia-registrazione")
-			.desc("Avvia il processo di registrazione")
-			.hasArg()
-			.optionalArg(true)
-			.build());
+				.argName("avvia")
+				.longOpt("avvia-registrazione")
+				.desc("Avvia il processo di registrazione")
+				.hasArg()
+				.optionalArg(true)
+				.build());
 
 		opts.addOption(Option.builder("q")
-			.argName("path")
-			.longOpt("query")
-			.desc("Avvia un'operazione di ricerca dati")
-			.hasArg()
-			.optionalArg(true)
-			.build());
+				.argName("path")
+				.longOpt("query")
+				.desc("Avvia un'operazione di ricerca dati")
+				.hasArg()
+				.optionalArg(true)
+				.build());
 
 		opts.addOption(Option.builder()
-			.argName("parole")
-			.longOpt("lista-aree")
-			.desc("Avvia un'operazione di ricerca sulle aree geografiche")
-			.hasArgs()
-			.valueSeparator(',')
-			.optionalArg(true)
-			.build());
+				.argName("parole")
+				.longOpt("lista-aree")
+				.desc("Avvia un'operazione di ricerca sulle aree geografiche")
+				.hasArgs()
+				.valueSeparator(',')
+				.optionalArg(true)
+				.build());
 
 		opts.addOption(Option.builder()
-			.argName("parole")
-			.longOpt("lista-centri")
-			.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
-			.hasArgs()
-			.valueSeparator(',')
-			.optionalArg(true)
-			.build());
+				.argName("parole")
+				.longOpt("lista-centri")
+				.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
+				.hasArgs()
+				.valueSeparator(',')
+				.optionalArg(true)
+				.build());
 
 		opts.addOption(Option.builder()
-			.argName("parole")
-			.longOpt("lista-misurazioni")
-			.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
-			.hasArgs()
-			.valueSeparator(',')
-			.optionalArg(true)
-			.build());
+				.argName("parole")
+				.longOpt("lista-misurazioni")
+				.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
+				.hasArgs()
+				.valueSeparator(',')
+				.optionalArg(true)
+				.build());
 
 		opts.addOption(Option.builder()
-			.argName("parole")
-			.longOpt("lista-operatori")
-			.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
-			.hasArgs()
-			.valueSeparator(',')
-			.optionalArg(true)
-			.build());
+				.argName("parole")
+				.longOpt("lista-operatori")
+				.desc("Avvia un'operazione di ricerca sui centri di monitoraggio")
+				.hasArgs()
+				.valueSeparator(',')
+				.optionalArg(true)
+				.build());
 
 		opts.addOption(Option.builder()
-			.argName("avvia")
-			.longOpt("crea-centro")
-			.desc("Avvia la creazione di un centro")
-			.hasArg()
-			.optionalArg(true)
-			.build());
+				.argName("avvia")
+				.longOpt("crea-centro")
+				.desc("Avvia la creazione di un centro")
+				.hasArg()
+				.optionalArg(true)
+				.build());
 
 		opts.addOption(Option.builder()
-			.argName("avvia")
-			.longOpt("crea-misurazione")
-			.desc("Avvia la creazione di una misurazione")
-			.hasArg()
-			.optionalArg(true)
-			.build());
+				.argName("avvia")
+				.longOpt("crea-misurazione")
+				.desc("Avvia la creazione di una misurazione")
+				.hasArg()
+				.optionalArg(true)
+				.build());
 
 		if (args.length < 1) {
 			printHelp();
@@ -119,7 +119,7 @@ public class Main {
 		try {
 			line = par.parse(opts, args);
 		} catch (ParseException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return;
 		}
 

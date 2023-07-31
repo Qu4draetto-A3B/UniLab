@@ -35,7 +35,7 @@ public class GestoreMisurazioni extends Gestore {
 	 */
 	public GestoreMisurazioni() {
 		super(
-				"./data/Misurazioni.CSV",
+				"./data/db/Misurazioni.CSV",
 				new String[] { "RID", "DateTime", "Operatore", "Centro", "Area", "Dato" });
 	}
 

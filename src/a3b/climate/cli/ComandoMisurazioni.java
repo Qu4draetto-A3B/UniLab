@@ -1,6 +1,10 @@
 package a3b.climate.cli;
 
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
@@ -22,23 +26,20 @@ import a3b.climate.utils.terminal.View;
 public class ComandoMisurazioni implements View {
 
 	@Override
-	public void start(Terminal term) {
-		String path = App.line.getOptionValue("crea-misurazione");
-		if (path.isBlank())
-			path = "./MISURAZIONE.INI";
+	public void start(Terminal term) throws IOException {
+		Path misIni = Paths.get("./MISURAZIONE.INI");
+		Path resIni = Paths.get("./data/resources/MISURAZIONE.INI");
 
-		IniFile ini = null;
-		try {
-			ini = new IniFile(path);
-		} catch (Exception e) {
-			term.printfln("Impossibile leggere il file '%s'", path);
-			return;
+		if (Files.notExists(misIni)) {
+			Files.copy(resIni, misIni, StandardCopyOption.REPLACE_EXISTING);
 		}
+
+		IniFile ini = new IniFile(misIni.toString());
 
 		// check e get operatore
 		Result<Operatore> rop = DataBase.operatore.login(
-			ini.getString("utente", "nome_utente", "*"),
-			ini.getString("utente", "password", "*"));
+				ini.getString("utente", "nome_utente", "*"),
+				ini.getString("utente", "password", "*"));
 
 		Operatore op = null;
 		switch (rop.getError()) {
@@ -100,15 +101,15 @@ public class ComandoMisurazioni implements View {
 
 		try {
 			dg = new DatoGeografico(
-				(byte) 0,
-				(byte) ini.getInt("dato_geografico", "altitudine_ghiacciai", 0),
-				(byte) ini.getInt("dato_geografico", "massa_ghiacciai", 0),
-				(byte) ini.getInt("dato_geografico", "precipitazioni_ghiacciai", 0),
-				(byte) ini.getInt("dato_geografico", "pressione_ghiacciai", 0),
-				(byte) ini.getInt("dato_geografico", "temperatura_ghiacciai", 0),
-				(byte) ini.getInt("dato_geografico", "umidita_ghiacciai", 0),
-				(byte) ini.getInt("dato_geografico", "vento_ghiacciai", 0),
-				note);
+					(byte) 0,
+					(byte) ini.getInt("dato_geografico", "altitudine_ghiacciai", 0),
+					(byte) ini.getInt("dato_geografico", "massa_ghiacciai", 0),
+					(byte) ini.getInt("dato_geografico", "precipitazioni_ghiacciai", 0),
+					(byte) ini.getInt("dato_geografico", "pressione_ghiacciai", 0),
+					(byte) ini.getInt("dato_geografico", "temperatura_ghiacciai", 0),
+					(byte) ini.getInt("dato_geografico", "umidita_ghiacciai", 0),
+					(byte) ini.getInt("dato_geografico", "vento_ghiacciai", 0),
+					note);
 		} catch (NumberFormatException e) {
 			term.printfln("Non hai inserito dei numeri tra 0 e 5 nella sezione [dato_geografico]");
 		}

@@ -31,7 +31,7 @@ public class GestoreArea extends Gestore implements CercaAree {
 	 */
 	public GestoreArea() {
 		super(
-				"./data/CoordinateMonitoraggio.CSV",
+				"./data/db/CoordinateMonitoraggio.CSV",
 				new String[] { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat", "Lon" });
 	}
 	/**

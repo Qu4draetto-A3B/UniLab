@@ -34,7 +34,7 @@ public class GestoreDato extends Gestore {
 	 */
 	public GestoreDato() {
 		super(
-				"./data/ParametriClimatici.CSV",
+				"./data/db/ParametriClimatici.CSV",
 				new String[] {
 						"RID", "AltitudineGhiacciai", "MassaGhiacciai", "Precipitazioni", "Pressione",
 						"Temperatura", "Umidita", "Vento",

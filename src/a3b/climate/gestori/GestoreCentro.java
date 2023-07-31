@@ -31,7 +31,7 @@ public class GestoreCentro extends Gestore {
 	 */
 	public GestoreCentro() {
 		super(
-				"./data/CentriMonitoraggio.CSV",
+				"./data/db/CentriMonitoraggio.CSV",
 				new String[] { "Name", "Address", "Areas" });
 	}
 

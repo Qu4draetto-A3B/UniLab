@@ -32,7 +32,7 @@ public class GestoreOperatore extends Gestore {
 	 */
 	public GestoreOperatore() {
 		super(
-				"./data/OperatoriRegistrati.CSV",
+				"./data/db/OperatoriRegistrati.CSV",
 				new String[] { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" });
 	}
 

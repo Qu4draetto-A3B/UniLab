@@ -4,5 +4,5 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
     ],
-	"latex-workshop.latex.outDir": "out/"
+	"java.autobuild.enabled": false
 }
