@@ -18,7 +18,7 @@ import java.util.NoSuchElementException;
 
 import a3b.climate.utils.CercaAree;
 import a3b.climate.utils.Convertable;
-import a3b.climate.utils.ListaCustom.*;
+import a3b.climate.utils.listaCustom.*;
 import a3b.climate.utils.result.Result;
 
 import java.util.Iterator;

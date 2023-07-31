@@ -12,7 +12,7 @@
  * Some rights reserved.
  * See LICENSE file for additional information.
  */
-package a3b.climate.utils.ListaCustom;
+package a3b.climate.utils.listaCustom;
 
 /**
  * Classe che rappresenta un nodo contenente un elemento E
