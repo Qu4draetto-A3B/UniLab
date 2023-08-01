@@ -15,8 +15,8 @@ public class App {
 		App.line = line;
 		if (line.hasOption("avvia-registrazione")) {
 			scn.show(new Registrazione());
-		} else if (line.hasOption("query")) {
-			scn.show(new Query());
+		} else if (line.hasOption("utente")) {
+			scn.show(new MostraUtente());
 		} else if (line.hasOption("lista-aree")) {
 			scn.show(new MostraAree());
 		} else if (line.hasOption("lista-centri")) {

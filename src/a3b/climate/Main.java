@@ -36,8 +36,8 @@ public class Main {
 		opts.addOption(Option.builder("u")
 				.argName("utente")
 				.longOpt("utente")
-				.desc("Nome utente e password, separati da virgola. Mostra le generalita' dell'utente")
-				.valueSeparator(',')
+				.desc("Nome utente e password, separati da spazio. Mostra le generalita' dell'utente")
+				.hasArg()
 				.numberOfArgs(2)
 				.optionalArg(false)
 				.build());
@@ -46,16 +46,6 @@ public class Main {
 				.argName("avvia")
 				.longOpt("avvia-registrazione")
 				.desc("Avvia il processo di registrazione")
-				.hasArg()
-				.optionalArg(true)
-				.build());
-
-		opts.addOption(Option.builder("q")
-				.argName("path")
-				.longOpt("query")
-				.desc("Avvia un'operazione di ricerca dati")
-				.hasArg()
-				.optionalArg(true)
 				.build());
 
 		opts.addOption(Option.builder()
@@ -89,16 +79,12 @@ public class Main {
 				.argName("avvia")
 				.longOpt("crea-centro")
 				.desc("Avvia la creazione di un centro")
-				.hasArg()
-				.optionalArg(true)
 				.build());
 
 		opts.addOption(Option.builder()
 				.argName("avvia")
 				.longOpt("crea-misurazione")
 				.desc("Avvia la creazione di una misurazione")
-				.hasArg()
-				.optionalArg(true)
 				.build());
 
 		if (args.length < 1) {
