@@ -1,5 +1,11 @@
 package a3b.climate.cli;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 import a3b.climate.gestori.DataBase;
 import a3b.climate.magazzeno.CentroMonitoraggio;
 import a3b.climate.magazzeno.Indirizzo;
@@ -15,28 +21,28 @@ import a3b.climate.utils.terminal.View;
 public class ComandoCentri implements View {
 
 	@Override
-	public void start(Terminal term) {
-		String path = App.line.getOptionValue("crea-centro");
-		if (path.isBlank())
-			path = "./CENTRO.INI";
+	public void start(Terminal term) throws IOException {
+		Path misIni = Paths.get("./CENTRO.INI");
+		Path resIni = Paths.get("./data/resources/CENTRO.INI");
 
-		IniFile ini = null;
-		try {
-			ini = new IniFile(path);
-		} catch (Exception e) {
-			term.printfln("Impossibile leggere il file '%s'", path);
+		if (Files.notExists(misIni)) {
+			Files.copy(resIni, misIni, StandardCopyOption.REPLACE_EXISTING);
+			term.printfln(
+					"File '%s' creato, riempilo con le informazioni necessarie e riavvia l'applicazione con lo stesso comando",
+					misIni.toString());
 			return;
 		}
 
+		IniFile ini = new IniFile(misIni.toString());
 
-		String nome = ini.getString("centro", "nome", "*");
+		String nome = ini.getString("centro_monitoraggio", "nome", "*");
 
 		if (nome.contains("*")) {
 			term.printfln("Non sono riuscito a recuperare il nome del centro");
 			return;
 		}
 
-		String geoids = ini.getString("centro", "aree", "*");
+		String geoids = ini.getString("centro_monitoraggio", "aree", "*");
 
 		if (geoids.contains("*")) {
 			term.printfln("Non sono riuscito a recuperare i geoid");
@@ -45,7 +51,7 @@ public class ComandoCentri implements View {
 
 		ListaAree lag = new ListaAree();
 
-		for (String str : geoids.split(",")) {
+		for (String str : geoids.split(" ")) {
 			try {
 				long id = Long.parseLong(str);
 				DataBase.area.getArea(id).ifValid((v, e) -> lag.addFirst(v));
@@ -55,12 +61,11 @@ public class ComandoCentri implements View {
 		}
 
 		Indirizzo ind = new Indirizzo(
-			ini.getString("indirizzo", "via", "*"),
-			ini.getInt("indirizzo", "civico", 0),
-			ini.getInt("indirizzo", "cap", 0),
-			ini.getString("indirizzo", "comune", "*"),
-			ini.getString("indirizzo", "provincia", "*")
-		);
+				ini.getString("indirizzo", "via", "*"),
+				ini.getInt("indirizzo", "civico", 0),
+				ini.getInt("indirizzo", "cap", 0),
+				ini.getString("indirizzo", "comune", "*"),
+				ini.getString("indirizzo", "provincia", "*"));
 
 		if (ind.toString().contains("*")) {
 			term.printfln("Non sono riuscito a recuperare parti dell'indirizzo");

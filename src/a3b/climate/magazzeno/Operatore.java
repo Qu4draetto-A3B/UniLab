@@ -13,6 +13,7 @@
  * See LICENSE file for additional information.
  */
 package a3b.climate.magazzeno;
+
 import java.time.LocalDateTime;
 
 import a3b.climate.gestori.DataBase;
@@ -30,12 +31,13 @@ public class Operatore implements Convertable, DataTable {
 
 	/**
 	 * Costruttore di un'istanza di Operatore
-	 * @param cf Codice fiscale dell'operatore
-     * @param uid User ID relativo all'operatore
-	 * @param nome Nome dell'operatore
+	 *
+	 * @param cf      Codice fiscale dell'operatore
+	 * @param uid     User ID relativo all'operatore
+	 * @param nome    Nome dell'operatore
 	 * @param cognome Cognome dell'operatore
-	 * @param email E-mail dell'operatore
-	 * @param centro Centro di monitoraggio a cui l'operatore e' associato
+	 * @param email   E-mail dell'operatore
+	 * @param centro  Centro di monitoraggio a cui l'operatore e' associato
 	 */
 
 	public Operatore(String cf, String uid, String nome, String cognome, String email, CentroMonitoraggio centro) {
@@ -60,9 +62,12 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-     * Metodo che consente di inserire i dati climatici di una determinata area nel database
-	 * @param area Area geografica relativa ai dati
-	 * @param dato Aggregato di informazioni (valori dei parametri climatici) relative al dato geografico
+	 * Metodo che consente di inserire i dati climatici di una determinata area nel
+	 * database
+	 *
+	 * @param area  Area geografica relativa ai dati
+	 * @param dato  Aggregato di informazioni (valori dei parametri climatici)
+	 *              relative al dato geografico
 	 * @param tempo Data in cui avviene l'inserimento dei dati nel database
 	 */
 	public Result<Misurazione> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
@@ -79,7 +84,8 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce il centro di monitoraggio al quale l'operatore che esegue il metodo e' associato
+	 * @return Restituisce il centro di monitoraggio al quale l'operatore che esegue
+	 *         il metodo e' associato
 	 */
 
 	public CentroMonitoraggio getCentro() {
@@ -121,17 +127,18 @@ public class Operatore implements Convertable, DataTable {
 	@Override
 	public String toString() {
 		String str = String.format(
-			"%s: (\n\tCF: %s\n\tUserID: %s\n\tNome: %s\n\tCognome: %s\n\tEmail: %s\n\tCentro: %s\n)",
-			super.toString(), cf, uid, nome, cognome, email, centro.getNome());
+				"%s: (\n\tCF: %s\n\tUserID: %s\n\tNome: %s\n\tCognome: %s\n\tEmail: %s\n\tCentro: %s\n)\n",
+				super.toString(), cf, uid, nome, cognome, email, centro.getNome());
+
+		str += centro.toString();
 
 		return str;
 	}
 
 	public String toStringPretty() {
 		return String.format(
-			"C.F.\t: %s\nUser ID\t: %s\nNome\t: %s %s\nEmail\t: %s\nCentro\t: %s",
-			cf, uid, nome, cognome, email, centro.getNome()
-		);
+				"C.F.\t: %s\nUser ID\t: %s\nNome\t: %s %s\nEmail\t: %s\nCentro\t: %s",
+				cf, uid, nome, cognome, email, centro.getNome());
 	}
 
 	@Override
@@ -154,7 +161,7 @@ public class Operatore implements Convertable, DataTable {
 
 		Operatore op = (Operatore) obj;
 
-		if(cf.equals(op.getCf()))
+		if (cf.equals(op.getCf()))
 			return true;
 
 		return false;

@@ -28,9 +28,10 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 
 	/**
 	 * Costruttore di un'istanza di CentroMonitoraggio
-	 * @param nome Nome del centro di monitoraggio
-     * @param indirizzo Indirizzo del centro di monitoraggio
-	 * @param lag Lista di aree geografiche relative al centro di monitoraggio
+	 *
+	 * @param nome      Nome del centro di monitoraggio
+	 * @param indirizzo Indirizzo del centro di monitoraggio
+	 * @param lag       Lista di aree geografiche relative al centro di monitoraggio
 	 */
 
 	public CentroMonitoraggio(String nome, Indirizzo indirizzo, ListaAree lag) {
@@ -58,7 +59,8 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce la lista delle aree relative al centro di monitoraggio che chiama il metodo
+	 * @return Restituisce la lista delle aree relative al centro di monitoraggio
+	 *         che chiama il metodo
 	 */
 
 	public ListaAree getListaAree() {
@@ -66,18 +68,18 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce l'indirizzo del centro di monitoraggio che chiama il metodo
+	 * @return Restituisce l'indirizzo del centro di monitoraggio che chiama il
+	 *         metodo
 	 */
 
 	public Indirizzo getIndirizzo() {
 		return indirizzo;
 	}
 
-
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(String.format(
-				"%s: (\n\tNome: %s\n\tIndirizzo: %s, %d, %d, %s (%s)",
+				"%s: (\n\tNome: %s\n\tIndirizzo: %s, %d, %d, %s (%s)\n\tAree:",
 				super.toString(), nome,
 				indirizzo.getNomeVia(), indirizzo.getCivico(),
 				indirizzo.getCap(), indirizzo.getComune(), indirizzo.getProvincia()));
@@ -89,7 +91,6 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 
 		return sb.toString();
 	}
-
 
 	@Override
 	public String toCsv() {
