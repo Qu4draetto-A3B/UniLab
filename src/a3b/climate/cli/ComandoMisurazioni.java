@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
@@ -31,7 +30,7 @@ public class ComandoMisurazioni implements View {
 		Path resIni = Paths.get("./data/resources/MISURAZIONE.INI");
 
 		if (Files.notExists(misIni)) {
-			Files.copy(resIni, misIni, StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(resIni, misIni);
 			term.printfln(
 					"File '%s' creato, riempilo con le informazioni necessarie e riavvia l'applicazione con lo stesso comando",
 					misIni.toString());

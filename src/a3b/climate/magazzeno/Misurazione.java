@@ -15,7 +15,9 @@
 package a3b.climate.magazzeno;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import a3b.climate.utils.Convertable;
 import a3b.climate.utils.DataTable;
@@ -30,7 +32,8 @@ public class Misurazione implements Convertable, DataTable {
 	private Operatore operatore;
 	private CentroMonitoraggio centro;
 	private AreaGeografica area;
-	public static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ISO_INSTANT;
+	public static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ISO_LOCAL_DATE_TIME
+			.withLocale(Locale.getDefault()).withZone(ZoneId.systemDefault());
 
 	/**
 	 * Costruttore di un'istanza di Misurazione
@@ -54,8 +57,8 @@ public class Misurazione implements Convertable, DataTable {
 		this.dato = dato;
 		this.operatore = operatore;
 		this.area = area;
-		time = LocalDateTime.now();
-		centro = operatore.getCentro();
+		this.time = dateTime;
+		this.centro = centro;
 	}
 
 	public long getRid() {
@@ -79,7 +82,7 @@ public class Misurazione implements Convertable, DataTable {
 	}
 
 	public String getTimeString() {
-		return time.format(DATE_TIME_FORMAT);
+		return DATE_TIME_FORMAT.format(time);
 	}
 
 	/**
@@ -109,8 +112,8 @@ public class Misurazione implements Convertable, DataTable {
 	@Override
 	public String toString() {
 		String str = String.format(
-				"%s: (\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n) %s",
-				super.toString(), getTimeString(),
+				"%s: (\n- RID: %d\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n) %s",
+				super.toString(), rid, getTimeString(),
 				area, operatore, centro, dato, super.toString());
 		return str;
 	}

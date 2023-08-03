@@ -15,10 +15,14 @@
 package a3b.climate.gestori;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.HashMap;
+import java.util.Random;
 
 import org.apache.commons.csv.CSVRecord;
 
+import a3b.climate.cli.App;
 import a3b.climate.magazzeno.DatoGeografico;
 import a3b.climate.utils.DataTable;
 import a3b.climate.utils.TipoDatoGeografico;
@@ -78,9 +82,10 @@ public class GestoreDato extends Gestore {
 	 *         parametro
 	 */
 	public Result<DatoGeografico> addDato(DatoGeografico dato) {
-		long newRID = Long.parseLong(getProperty("LastRID").get());
-		newRID++;
-		setProperty("LastRID", String.valueOf(newRID)).get();
+		long newRID = App.rng.nextLong(0, 1000000);// Long.parseLong(getProperty("LastRID").get());
+		// long newRID = Long.parseLong(getProperty("LastRID").get());
+		// newRID++;
+		// setProperty("LastRID", String.valueOf(newRID)).get();
 
 		try {
 			// haha

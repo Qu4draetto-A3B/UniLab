@@ -28,7 +28,7 @@ public class MostraMisurazioni implements View {
 	public void start(Terminal term) {
 		String[] args = App.line.getOptionValues("lista-misurazioni");
 		if (args == null) {
-			args = new String[]{""};
+			args = new String[] { "" };
 		}
 		Filtratore fil = DataBase.misurazioni.getMisurazioni().get();
 		fil = fil.filtraStrings(args);

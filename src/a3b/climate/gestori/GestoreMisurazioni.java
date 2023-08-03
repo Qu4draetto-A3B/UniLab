@@ -16,18 +16,22 @@ package a3b.climate.gestori;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.commons.csv.CSVRecord;
 
+import a3b.climate.cli.App;
 import a3b.climate.magazzeno.Filtratore;
 import a3b.climate.magazzeno.Misurazione;
 import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 /**
- * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo Misurazione
+ * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo
+ * Misurazione
  */
 public class GestoreMisurazioni extends Gestore {
 	/**
@@ -40,14 +44,16 @@ public class GestoreMisurazioni extends Gestore {
 	}
 
 	/**
-	 *  Metodo che crea un nuovo record relativo a una determinata misurazione
+	 * Metodo che crea un nuovo record relativo a una determinata misurazione
+	 *
 	 * @param mis Misurazione di cui si vuole creare un nuovo record
-	 * @return Restituisce un nuovo record relativo alla misurazione fornita come parametro
+	 * @return Restituisce un nuovo record relativo alla misurazione fornita come
+	 *         parametro
 	 */
 	public Result<Misurazione> addMisurazione(Misurazione mis) {
-		long newRID = Long.parseLong(getProperty("LastRID").get());
-		newRID++;
-		setProperty("LastRID", String.valueOf(newRID)).get();
+		long newRID = App.rng.nextLong(0, 1000000);// Long.parseLong(getProperty("LastRID").get());
+		// newRID++;
+		// setProperty("LastRID", String.valueOf(newRID)).get();
 
 		try {
 			p.printRecord(
@@ -64,11 +70,15 @@ public class GestoreMisurazioni extends Gestore {
 			return new Result<>(1, "Errore nella scrittura del record");
 		}
 
-		return new Result<>(new Misurazione(newRID, mis.getTime(), mis.getOperatore(), mis.getCentro(), mis.getArea(), mis.getDato()));
+		return new Result<>(new Misurazione(newRID, mis.getTime(), mis.getOperatore(), mis.getCentro(), mis.getArea(),
+				mis.getDato()));
 	}
 
 	/**
-	 * Metodo che memorizza i record relativi alle misurazioni presenti nel file ParametriClimatici.CSV in una lista, la quale inizializza un nuovo oggetto di tipo FIltratore
+	 * Metodo che memorizza i record relativi alle misurazioni presenti nel file
+	 * ParametriClimatici.CSV in una lista, la quale inizializza un nuovo oggetto di
+	 * tipo FIltratore
+	 *
 	 * @return Restituisce un record
 	 */
 	public Result<Filtratore> getMisurazioni() {
@@ -87,7 +97,7 @@ public class GestoreMisurazioni extends Gestore {
 				DataBase.operatore.getOperatoreByCf(record.get("Operatore")).get(),
 				DataBase.centro.getCentro(record.get("Centro")).get(),
 				DataBase.area.getArea(Long.parseLong(record.get("Area"))).get(),
-				DataBase.dato.getDato(0).get());
+				DataBase.dato.getDato(Long.parseLong(record.get("Dato"))).get());
 
 		return mis;
 	}
