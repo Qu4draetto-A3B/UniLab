@@ -15,7 +15,8 @@
 			"name": "Main",
 			"request": "launch",
 			"mainClass": "a3b.climate.Main",
-			"projectName": "UniLab_3e5d08c2"
+			"projectName": "UniLab_3e5d08c2",
+			"args": "--lista-misurazioni 567888"
 		},
 		{
 			"type": "java",

@@ -112,7 +112,7 @@ public class Misurazione implements Convertable, DataTable {
 	@Override
 	public String toString() {
 		String str = String.format(
-				"%s: (\n- RID: %d\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n) %s",
+				"%s: (\n- RID: %d\n- DateTime: %s\n- AreaGeografica: %s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n) %s",
 				super.toString(), rid, getTimeString(),
 				area, operatore, centro, dato, super.toString());
 		return str;

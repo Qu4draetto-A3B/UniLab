@@ -27,10 +27,11 @@ public class MostraMisurazioni implements View {
 	@Override
 	public void start(Terminal term) {
 		String[] args = App.line.getOptionValues("lista-misurazioni");
-		if (args == null) {
-			args = new String[] { "" };
-		}
 		Filtratore fil = DataBase.misurazioni.getMisurazioni().get();
+		if (args == null) {
+			term.printfln("%s", fil);
+			return;
+		}
 		fil = fil.filtraStrings(args);
 		term.printfln("%s", fil);
 	}

@@ -18,10 +18,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Predicate;
 
 import a3b.climate.utils.CercaAree;
-import a3b.climate.utils.DataTable;
 import a3b.climate.utils.MediaAree;
 import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
@@ -29,7 +27,6 @@ import a3b.climate.utils.result.Result;
 /**
  * Rappresenta un filtratore
  */
-
 
 public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	private List<Misurazione> lm;
@@ -40,39 +37,6 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 
 	public List<Misurazione> getList() {
 		return lm;
-	}
-
-	/**
-	 * Metodo molto versatile che esegue il filtro corretto smistando autonomamente le classi
-	 * @param dts Piu' oggetti che implementano DataTable
-	 * @return Un nuovo filtratore con solo i dati rilevanti
-	 */
-	public Filtratore filtra(DataTable... dts) {
-		List<Misurazione> nlm = new LinkedList<>();
-		Predicate<DataTable> p = null;
-
-		for (Misurazione mis : lm) {
-			for (DataTable dt : dts) {
-				if (dt instanceof Operatore) {
-					p = (pv) -> mis.getOperatore().equals(pv);
-				} else if (dt instanceof CentroMonitoraggio) {
-					p = (pv) -> mis.getCentro().equals(pv);
-				} else if (dt instanceof AreaGeografica) {
-					p = (pv) -> mis.getArea().equals(pv);
-				} else if (dt instanceof DatoGeografico) {
-					p = (pv) -> mis.getDato().equals(pv);
-				} else {
-					p = (pv) -> false;
-				}
-
-				if (p.test(dt)) {
-					nlm.add(mis);
-					break;
-				}
-			}
-		}
-
-		return new Filtratore(nlm);
 	}
 
 	public Filtratore filtraOperatore(Operatore... ops) {
@@ -147,7 +111,6 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 					break;
 				}
 			}
-
 		}
 		return new Filtratore(nlm);
 	}
@@ -156,7 +119,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione m : lm) {
 			for (String s : strs) {
-				if (m.toString().contains(s)) {
+				if (m.toString().matches(".*" + s + ".*")) {
 					nlm.add(m);
 					break;
 				}
@@ -171,7 +134,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		StringBuilder sb = new StringBuilder(String.format("%s <<<\n", super.toString()));
 
 		for (int i = 0; i < lm.size(); i++) {
-			sb.append(String.format("[%d]\n%s\n", i, lm.get(i).toString()));
+			sb.append(String.format("[%d] %s\n", i, lm.get(i).toString()));
 		}
 
 		return sb.append(">>> ").append(super.toString()).toString();
