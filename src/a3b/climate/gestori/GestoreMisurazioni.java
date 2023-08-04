@@ -16,10 +16,8 @@ package a3b.climate.gestori;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.commons.csv.CSVRecord;
 
@@ -91,8 +89,10 @@ public class GestoreMisurazioni extends Gestore {
 
 	@Override
 	protected DataTable buildObject(CSVRecord record) {
+		String s = record.get("RID");
+		long l = Long.parseLong(s);
 		Misurazione mis = new Misurazione(
-				Long.parseLong(record.get("RID")),
+				l,
 				LocalDateTime.parse(record.get("DateTime"), Misurazione.DATE_TIME_FORMAT),
 				DataBase.operatore.getOperatoreByCf(record.get("Operatore")).get(),
 				DataBase.centro.getCentro(record.get("Centro")).get(),

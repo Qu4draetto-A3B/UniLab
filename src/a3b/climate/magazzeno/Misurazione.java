@@ -45,6 +45,7 @@ public class Misurazione implements Convertable, DataTable {
 	 *                  misurazione
 	 */
 	public Misurazione(long rid, DatoGeografico dato, Operatore operatore, AreaGeografica area) {
+		this.rid = rid;
 		this.dato = dato;
 		this.operatore = operatore;
 		this.area = area;
@@ -54,6 +55,7 @@ public class Misurazione implements Convertable, DataTable {
 
 	public Misurazione(long rid, LocalDateTime dateTime, Operatore operatore, CentroMonitoraggio centro,
 			AreaGeografica area, DatoGeografico dato) {
+		this.rid = rid;
 		this.dato = dato;
 		this.operatore = operatore;
 		this.area = area;

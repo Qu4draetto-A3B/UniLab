@@ -119,7 +119,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione m : lm) {
 			for (String s : strs) {
-				if (m.toString().matches(".*" + s + ".*")) {
+				if (m.toString().contains(s)) {
 					nlm.add(m);
 					break;
 				}
