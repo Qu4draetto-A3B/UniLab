@@ -18,20 +18,23 @@ import a3b.climate.utils.Convertable;
 import a3b.climate.utils.DataTable;
 
 /**
- * Classe che rappresenta un centro di monitoraggio
+ * La classe {@code CentroMonitoraggio} rappresenta un centro di monitoraggio
+ * identificato da nome, indirizzo e aree associate.
+ * <p>
+ * Questa classe implementa le interfacce {@link Convertable} e
+ * {@link DataTable} per consentire la gestione dei dati.
  */
-
 public class CentroMonitoraggio implements Convertable, DataTable {
 	private String nome;
 	private Indirizzo indirizzo;
 	private ListaAree aree;
 
 	/**
-	 * Costruttore di un'istanza di CentroMonitoraggio
+	 * Costruttore di un'istanza di {@code CentroMonitoraggio}.
 	 *
-	 * @param nome      Nome del centro di monitoraggio
-	 * @param indirizzo Indirizzo del centro di monitoraggio
-	 * @param lag       Lista di aree geografiche relative al centro di monitoraggio
+	 * @param nome      nome del centro di monitoraggio
+	 * @param inidrizzo indirizzo relativo al centro di monitoaggio
+	 * @param lag       lista delle aree associate al centro di monitoraggio
 	 */
 
 	public CentroMonitoraggio(String nome, Indirizzo indirizzo, ListaAree lag) {
@@ -41,7 +44,11 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * Costruttore vuoto di un'istanza di CentroMonitoraggio
+	 * Costruttore di un'istanza di {@code CentroMonitoraggio} con valori predefiniti.
+	 * <p>
+	 * Il {@link #nome} del centro viene impostato su "<i>Torre Civile</i>", mentre l'{@link #indirizzo} e la
+	 * lista delle {@link #aree} vengono inizializzati rispettivamente con un nuovo oggetto
+	 * di tipo {@link Indirizzo} e una nuova {@link ListaAree} vuota.
 	 */
 
 	public CentroMonitoraggio() {
@@ -51,7 +58,9 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Nome del centro di monitoraggio che chiama il metodo
+	 * Restituisce il nome del centro di monitoraggio.
+	 *
+	 * @return {@link #nome} relativo al centro di monitoraggio
 	 */
 
 	public String getNome() {
@@ -59,8 +68,9 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Lista delle aree relative al centro di monitoraggio che chiama il
-	 *         metodo
+	 * Restituisce la lista di aree associate al centro di monitoraggio.
+	 *
+	 * @return {@link #aree} associate al {@code CentroMonitoraggio}
 	 */
 
 	public ListaAree getListaAree() {
@@ -68,7 +78,9 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Indirizzo del centro di monitoraggio che chiama il metodo
+	 * Restituisce l'indirizzo relativo al centro di monitoraggio.
+	 *
+	 * @return {@link #indirizzo} relativo al {@code CentroMonitoraggio}
 	 */
 
 	public Indirizzo getIndirizzo() {

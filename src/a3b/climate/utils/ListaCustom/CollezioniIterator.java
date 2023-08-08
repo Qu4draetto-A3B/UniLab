@@ -15,32 +15,44 @@
 package a3b.climate.utils.ListaCustom;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
+ * La classe {@code CollezioniIterator<E>} rappresenta un iteratore per una
+ * collezione di nodi contenenti elementi.
  *
+ * @param <E> tipo degli elementi nei nodi
  */
 public class CollezioniIterator<E> implements Iterator<E> {
 	Nodo<E> current;
 
 	/**
-	 * Costruttore di un'istanza di CollezioniIterator
+	 * Costruttore di un'istanza di {@code Collezioni Iterator}.
+	 * <p>
+	 * L'istanza viene creata a partire dal nodo di partenza (<i>head</i>).
 	 *
-	 * @param head Riferimento alla nodo in testa alla lista
+	 * @param head riferimento al nodo di inizio della collezione.
 	 */
 	public CollezioniIterator(Nodo<E> head) {
 		current = head;
 	}
 
 	/**
-	 * @return Booleano che indica se un nodo della lista che chiama il metodo ha un
-	 *         succesivo
+	 * Controlla se esiste un nodo successivo nella collezione.
+	 *
+	 * @return {@code boolean} che indica l'esistenza di un nodo succesivo.
 	 */
 	public boolean hasNext() {
 		return current != null;
 	}
 
 	/**
-	 * @return Riferimento al nodo successivo nella lista che chiama il metodo
+	 * Recupera il dato contenuto nel nodo corrente e sposta l'iteratore al nodo
+	 * successivo.
+	 *
+	 * @return dato contenuto nel nodo corrente
+	 * @throws NoSuchElementException se non sono presenti ulteriori elementi da
+	 *                                iterare
 	 */
 	public E next() {
 		E e = current.getDato();

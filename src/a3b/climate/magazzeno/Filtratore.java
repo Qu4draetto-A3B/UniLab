@@ -27,60 +27,43 @@ import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
 
 /**
- * Classe che rappresenta un filtratore
+ * La classe {@code Filtratore} rappresenta uno strumento per filtra una lista
+ * di istanze di {@link Misurazione}.
+ * <p>
+ * Fornisce vari metodi per filtrare la lista in base a diversi criteri.
+ * <p>
+ * Implementa l'interfaccia {@link Iterable} per consentire l'iterazione delle
+ * istanze di {@link Misurazione}, mentre le interfacce
+ * {@link CercaAree} e {@link MediaAree} per consentire le operazioni che
+ * coinvolgono istanze di {@link AreaGeografica}.
  */
+
 public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	private List<Misurazione> lm;
 
+	/**
+	 * Costruttore di un'istanza di {@code Filtratore}.
+	 *
+	 * @param lm {@link List} di istanze di {@link Misurazione} da filtrare
+	 */
 	public Filtratore(List<Misurazione> lm) {
 		this.lm = lm;
 	}
 
+	/**
+	 * Recupera la lista di misurazioni dal filtratore.
+	 *
+	 * @return {@link List} di istanze di {@link Misurazione} dal filtratore
+	 */
 	public List<Misurazione> getList() {
 		return lm;
 	}
 
 	/**
-	 * Metodo molto versatile che esegue il filtro corretto smistando autonomamente
-	 * le classi
+	 * Filtra le misurazioni in base gli operatori.
 	 *
-	 * @param dts Piu' oggetti che implementano DataTable
-	 * @return Nuovo filtratore con solo i dati rilevanti
-	 */
-	public Filtratore filtra(DataTable... dts) {
-		List<Misurazione> nlm = new LinkedList<>();
-		Predicate<DataTable> p = null;
-
-		for (Misurazione mis : lm) {
-			for (DataTable dt : dts) {
-				if (dt instanceof Operatore) {
-					p = (pv) -> mis.getOperatore().equals(pv);
-				} else if (dt instanceof CentroMonitoraggio) {
-					p = (pv) -> mis.getCentro().equals(pv);
-				} else if (dt instanceof AreaGeografica) {
-					p = (pv) -> mis.getArea().equals(pv);
-				} else if (dt instanceof DatoGeografico) {
-					p = (pv) -> mis.getDato().equals(pv);
-				} else {
-					p = (pv) -> false;
-				}
-
-				if (p.test(dt)) {
-					nlm.add(mis);
-					break;
-				}
-			}
-		}
-
-		return new Filtratore(nlm);
-	}
-
-	/**
-	 * Metodo che filtra una lista di misurazioni in base a uno o piu' operatori
-	 *
-	 * @param ops Operatori di cui si vuole visualizzare le misurazioni
-	 * @return Filtratore contenente le misurazioni effettuate dal/dagli operatore/i
-	 *         fornito/i come argomento
+	 * @param ops array di istanze di {@link Operatore} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
 	public Filtratore filtraOperatore(Operatore... ops) {
 		List<Misurazione> nlm = new LinkedList<>();
@@ -97,13 +80,12 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	}
 
 	/**
-	 * Metodo che filtra una lista di misurazioni in base a uno o piu' centri di
-	 * monitoraggio
+	 * Filtra le misurazioni in base ai centri di monitoraggio.
 	 *
-	 * @param cms Centri di monitoraggio di cui si vuole visualizzare le misurazioni
-	 * @return Filtratore contenente le misurazioni effettuate nel/nei centro/i di
-	 *         monitoraggio fornito/i come argomento
+	 * @param ops array di istanze di {@link CentroMonitoaggio} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
+
 	public Filtratore filtraCentro(CentroMonitoraggio... cms) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -119,13 +101,12 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	}
 
 	/**
-	 * Metodo che filtra una lista di misurazioni in base a una o piu' aree
-	 * geografiche
+	 * Filtra le misurazioni in base alle aree geografiche.
 	 *
-	 * @param ags Aree geografiche di cui si vuole visualizzare le misurazioni
-	 * @return Filtratore contenente le misurazioni effettuate nella/e area/e
-	 *         geografica/e fornita/e come argomento
+	 * @param ops array di istanze di {@link AreaGeografica} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
+
 	public Filtratore filtraAree(AreaGeografica... ags) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -141,11 +122,10 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	}
 
 	/**
-	 * Metodo che filtra una lista di misurazioni in base alle note
+	 * Filtra le misurazioni in base alle note.
 	 *
-	 * @param note Note delle quali si vuole visualizzare le misurazioni
-	 * @return Filtratore contenente le misurazioni relative alle note fornite come
-	 *         argomento
+	 * @param ops array di note usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
 	public Filtratore filtraNote(String... note) {
 		List<Misurazione> nlm = new LinkedList<>();
@@ -164,11 +144,10 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	}
 
 	/**
-	 * Metodo che filtra una lista di misurazioni in base a un/dei dato/i
+	 * Filtra le misurazioni in base ai dati geografici.
 	 *
-	 * @param dati Dati di cui si vuole visualizzare le misurazioni
-	 * @return Filtratore contenente le misurazioni relative al/ai dato/i fornito/i
-	 *         come argomento
+	 * @param ops array di istanze di {@link Datogeografico} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
 	public Filtratore filtraDato(DatoGeografico... dati) {
 		List<Misurazione> nlm = new LinkedList<>();
@@ -185,13 +164,10 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	}
 
 	/**
-	 * Metodo che filtra una lista di misurazioni in base a una/delle
-	 * stringa/stringhe
+	 * Filtra le misurazioni in base a delle stringhe (di ricerca).
 	 *
-	 * @param strs Stringhe di cui si vuole visualizzare le misurazioni
-	 * @return Filtratore contenente le misurazioni relative alla/alle
-	 *         stringa/stringhe fornita/e
-	 *         come argomento
+	 * @param ops array di stringhe usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
 	public Filtratore filtraStrings(String... strs) {
 		List<Misurazione> nlm = new LinkedList<>();

@@ -14,6 +14,14 @@
  */
 package a3b.climate.utils.terminal;
 
+/**
+ * L'interfaccia {@code View} permette di inizializzare il terminale e visualizzarne i contenuti iniziali.
+ */
 public interface View {
+	/**
+	 * Inizializza il contenuto della visualizzazione nel terminale fornito.
+     *
+     * @param term terminale utilizzato per la visualizzazione
+     */
     void start(Terminal term);
 }
