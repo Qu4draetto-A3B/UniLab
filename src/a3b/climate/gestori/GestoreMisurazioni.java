@@ -21,53 +21,37 @@ import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
 
-import a3b.climate.magazzeno.DatoGeografico;
+import a3b.climate.cli.App;
 import a3b.climate.magazzeno.Filtratore;
 import a3b.climate.magazzeno.Misurazione;
 import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 /**
- * La classe {@code GestoreMisurazioni} estende la classe {@link Gestore}.
- * <p>
- * Gestisce le operazioni di lettura e scrittura su file CSV di dati riguardanti
- * istanze di {@link Misurazione}.
+ * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo
+ * Misurazione
  */
 public class GestoreMisurazioni extends Gestore {
 	/**
-	 * Costruttore di un'istanza di {@code GestoreMisurazioni} che gestisce i dati
-	 * relativi alle misurazioni.
-	 *
-	 * @see Gestore#Gestore(String, String[])
+	 * Costruzione di un'istanza di GestoreMisurazioni
 	 */
 	public GestoreMisurazioni() {
 		super(
-				"./data/Misurazioni.CSV",
+				"./data/db/Misurazioni.CSV",
 				new String[] { "RID", "DateTime", "Operatore", "Centro", "Area", "Dato" });
 	}
 
 	/**
-	 * Aggiunge una nuova misurazione al file CSV associato.
-	 * <p>
-	 * Recupera la propret&agrave <i>LastRID</i> (ultimo record ID) dal file di
-	 * metadati usando il metodo {@link #getProperty(String)} e la incrementa di 1
-	 * per creare un nuovo record.
-	 * La propriet&agrave aggiornata viene reimpostata nel file di metadati usando il
-	 * metodo {@link #setProperty(String, String)}.
-	 * <p>
-	 * Il record con i dati relativi alla {@link Misurazione} viene aggiunto nel file CSV.
-	 * <p>
-	 * Nel caso in cui vi sia un errore nella scrittura del record, restituisce un
-	 * {@link Result} con un codice di errore.
+	 * Metodo che crea un nuovo record relativo a una determinata misurazione
 	 *
-	 * @param mis {@link Misurazione} da aggiungere al file CSV
-	 * @return {@link Result} contenente la nuova istanza di {@link Misurazione}
-	 *         aggiunta con il record ID aggiornato
+	 * @param mis Misurazione di cui si vuole creare un nuovo record
+	 * @return Restituisce un nuovo record relativo alla misurazione fornita come
+	 *         parametro
 	 */
 	public Result<Misurazione> addMisurazione(Misurazione mis) {
-		long newRID = Long.parseLong(getProperty("LastRID").get());
-		newRID++;
-		setProperty("LastRID", String.valueOf(newRID)).get();
+		long newRID = App.rng.nextLong(0, 1000000);// Long.parseLong(getProperty("LastRID").get());
+		// newRID++;
+		// setProperty("LastRID", String.valueOf(newRID)).get();
 
 		try {
 			p.printRecord(
@@ -89,16 +73,12 @@ public class GestoreMisurazioni extends Gestore {
 	}
 
 	/**
-	 * Inizializza un nuovo filtratore contenente una lista di misurazioni.
-	 * <p>
-	 * Scorre una lista di record CSV e crea una lista di istanze di
-	 * {@link Misurazione} usando il metodo {@link #buildObject(CSVRecord)}, la
-	 * quale viene utilizzata per inizializzare un nuovo {@link Filtratore}.
+	 * Metodo che memorizza i record relativi alle misurazioni presenti nel file
+	 * ParametriClimatici.CSV in una lista, la quale inizializza un nuovo oggetto di
+	 * tipo FIltratore
 	 *
-	 * @return {@link Result} contenente il filtratore creato con la lista
-	 *         di istanze di {@link Misurazione}.
+	 * @return Restituisce un record
 	 */
-
 	public Result<Filtratore> getMisurazioni() {
 		List<Misurazione> lm = new LinkedList<>();
 		for (CSVRecord record : records) {
@@ -109,13 +89,15 @@ public class GestoreMisurazioni extends Gestore {
 
 	@Override
 	protected DataTable buildObject(CSVRecord record) {
+		String s = record.get("RID");
+		long l = Long.parseLong(s);
 		Misurazione mis = new Misurazione(
-				Long.parseLong(record.get("RID")),
+				l,
 				LocalDateTime.parse(record.get("DateTime"), Misurazione.DATE_TIME_FORMAT),
 				DataBase.operatore.getOperatoreByCf(record.get("Operatore")).get(),
 				DataBase.centro.getCentro(record.get("Centro")).get(),
 				DataBase.area.getArea(Long.parseLong(record.get("Area"))).get(),
-				DataBase.dato.getDato(0).get());
+				DataBase.dato.getDato(Long.parseLong(record.get("Dato"))).get());
 
 		return mis;
 	}

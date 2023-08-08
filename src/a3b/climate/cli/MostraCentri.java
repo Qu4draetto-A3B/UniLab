@@ -33,7 +33,7 @@ public class MostraCentri implements View {
 		String[] args = App.line.getOptionValues("lista-centri");
 
 		if (args == null) {
-			args = new String[]{""};
+			args = new String[] { "" };
 		}
 
 		Deque<CentroMonitoraggio> dcm = new LinkedList<>();

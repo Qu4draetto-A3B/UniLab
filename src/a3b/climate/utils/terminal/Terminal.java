@@ -40,7 +40,7 @@ public class Terminal {
 			}
 		} catch (Exception e) {
 			out.printf("Errore nella modifica del registro 'VirtualTerminalLevel'\n");
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 

@@ -22,7 +22,7 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Result;
 
 /**
- * Classe che rappresenta un operatore
+ * Rappresenta un operatore
  */
 
 public class Operatore implements Convertable, DataTable {
@@ -39,6 +39,7 @@ public class Operatore implements Convertable, DataTable {
 	 * @param email   E-mail dell'operatore
 	 * @param centro  Centro di monitoraggio a cui l'operatore e' associato
 	 */
+
 	public Operatore(String cf, String uid, String nome, String cognome, String email, CentroMonitoraggio centro) {
 		this.cf = cf;
 		this.uid = uid;
@@ -75,44 +76,50 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Codice fiscale dell'operatore che esegue il metodo
+	 * @return Restituisce il codice fiscale dell'operatore che esegue il metodo
 	 */
+
 	public String getCf() {
 		return cf;
 	}
 
 	/**
-	 * @return Centro di monitoraggio al quale l'operatore che esegue il metodo e'
-	 *         associato
+	 * @return Restituisce il centro di monitoraggio al quale l'operatore che esegue
+	 *         il metodo e' associato
 	 */
+
 	public CentroMonitoraggio getCentro() {
 		return centro;
 	}
 
 	/**
-	 * @return Cognome dell'operatore che esegue il metodo
+	 * @return Restituisce il cognome dell'operatore che esegue il metodo
 	 */
+
 	public String getCognome() {
 		return cognome;
 	}
 
 	/**
-	 * @return E-mail dell'operatore che esegue il metodo
+	 * @return Restituisce la e-mail dell'operatore che esegue il metodo
 	 */
+
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * @return Nome dell'operatore che esegue il metodo
+	 * @return Restituisce il nome dell'operatore che esegue il metodo
 	 */
+
 	public String getNome() {
 		return nome;
 	}
 
 	/**
-	 * @return User ID relativo all'operatore che esegue il metodo
+	 * @return Restituisce lo user ID relativo all'operatore che esegue il metodo
 	 */
+
 	public String getUid() {
 		return uid;
 	}
@@ -120,17 +127,18 @@ public class Operatore implements Convertable, DataTable {
 	@Override
 	public String toString() {
 		String str = String.format(
-				"%s: (\n\tCF: %s\n\tUserID: %s\n\tNome: %s\n\tCognome: %s\n\tEmail: %s\n\tCentro: %s\n)",
+				"%s: (\n\tCF: %s\n\tUserID: %s\n\tNome: %s\n\tCognome: %s\n\tEmail: %s\n\tCentro: %s\n)\n",
 				super.toString(), cf, uid, nome, cognome, email, centro.getNome());
+
+		str += centro.toString();
 
 		return str;
 	}
 
 	public String toStringPretty() {
 		return String.format(
-			"C.F.\t: %s\nUser ID\t: %s\nNome\t: %s %s\nEmail\t: %s\nCentro\t: %s",
-			cf, uid, nome, cognome, email, centro.getNome()
-		);
+				"C.F.\t: %s\nUser ID\t: %s\nNome\t: %s %s\nEmail\t: %s\nCentro\t: %s",
+				cf, uid, nome, cognome, email, centro.getNome());
 	}
 
 	@Override

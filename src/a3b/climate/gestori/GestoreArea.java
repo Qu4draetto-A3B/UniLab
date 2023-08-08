@@ -23,40 +23,26 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 /**
- * La classe {@code GestoreArea} estende la classe {@link Gestore} e implementa
- * l'interfaccia {@link CercaAree}.
- * <p>
- * Gestisce le operazioni di lettura e scrittura su file CSV di dati riguardanti
- * istanze di {@link AreaGeografica}.
+ * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo
+ * AreaGeografica
  */
 public class GestoreArea extends Gestore implements CercaAree {
 	/**
-	 * Costruttore di un'istanza di {@code GestoreArea} che gestisce i dati relativi
-	 * alle aree geografiche.
-	 *
-	 * @see Gestore#Gestore(String, String[])
+	 * Costruttore di un'istanza di GestoreArea
 	 */
 	public GestoreArea() {
 		super(
-				"./data/CoordinateMonitoraggio.CSV",
+				"./data/db/CoordinateMonitoraggio.CSV",
 				new String[] { "GeonameID", "Name", "ASCIIName", "CountryCode", "CountryName", "Lat", "Lon" });
 	}
 
 	/**
-	 * Recupera un'istanza di {@link AreaGeografica} basandosi sull'ID specificato.
-	 * <p>
-	 * Ricerca un record CSV con il GeonameID specifico nella lista di record e
-	 * costruisce la rispettiva {@link AreaGeografica}
-	 * usando il metodo {@link #buildObject(CSVRecord)}.
-	 * <p>
-	 * Se non viene trovato nessun record corrispondente all'ID fornito, restituisce
-	 * un {@link Result} con un codice di errore.
-	 *
-	 * @param geoId ID relativo all'area geografica d'interesse
-	 * @return istanza di {@link AreaGeografica} corrispondente all'ID fornito come
+	 * Metodo che ricerca una determinata area geografica in base al suo ID
+	 * 
+	 * @param geoId ID relativo all'area geografica d'ineteresse
+	 * @return Restituisce l'area geografica corrispondente all'ID fornito come
 	 *         parametro
 	 */
-
 	public Result<AreaGeografica> getArea(long geoId) {
 		for (CSVRecord record : records) {
 			long dbGeoId = Long.parseLong(record.get("GeonameID"));
@@ -65,7 +51,7 @@ public class GestoreArea extends Gestore implements CercaAree {
 			}
 		}
 
-		return new Result<>(1, "Area non trovata");
+		return new Result<>(1, "Area non trovata nel database");
 	}
 
 	@Override

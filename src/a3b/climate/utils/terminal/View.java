@@ -14,6 +14,8 @@
  */
 package a3b.climate.utils.terminal;
 
+import java.io.IOException;
+
 public interface View {
-    void start(Terminal term);
+	void start(Terminal term) throws IOException;
 }

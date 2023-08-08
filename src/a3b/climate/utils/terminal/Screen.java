@@ -14,26 +14,21 @@
  */
 package a3b.climate.utils.terminal;
 
-/**
- * Modella l'interfaccia nel terminale
- */
+import java.io.IOException;
+
 public class Screen {
 	protected Terminal term;
 
-	/**
-	 * Costruttore di un'istanza di Screen
-	 */
 	public Screen() {
 		term = new Terminal();
 	}
 
-	/**
-	 * Metodo che mostra
-	 *
-	 * @param v
-	 */
 	public void show(View v) {
 		term.clear();
-		v.start(term);
+		try {
+			v.start(term);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

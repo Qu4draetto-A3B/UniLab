@@ -15,13 +15,15 @@
 package a3b.climate.magazzeno;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import a3b.climate.utils.Convertable;
 import a3b.climate.utils.DataTable;
 
 /**
- * Classe che rappresenta una misurazione
+ * Rappresenta una misurazione
  */
 public class Misurazione implements Convertable, DataTable {
 	private long rid;
@@ -30,7 +32,8 @@ public class Misurazione implements Convertable, DataTable {
 	private Operatore operatore;
 	private CentroMonitoraggio centro;
 	private AreaGeografica area;
-	public static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ISO_INSTANT;
+	public static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ISO_LOCAL_DATE_TIME
+			.withLocale(Locale.getDefault()).withZone(ZoneId.systemDefault());
 
 	/**
 	 * Costruttore di un'istanza di Misurazione
@@ -42,6 +45,7 @@ public class Misurazione implements Convertable, DataTable {
 	 *                  misurazione
 	 */
 	public Misurazione(long rid, DatoGeografico dato, Operatore operatore, AreaGeografica area) {
+		this.rid = rid;
 		this.dato = dato;
 		this.operatore = operatore;
 		this.area = area;
@@ -49,69 +53,59 @@ public class Misurazione implements Convertable, DataTable {
 		centro = operatore.getCentro();
 	}
 
-	/**
-	 * Costruttore di un'istanza di misurazione
-	 *
-	 * @param rid       ID relativo alla misurazione
-	 * @param dateTime  Giorno e ora in cui viene inserita la misurazione
-	 * @param operatore Operatore che inserisce l'operazione
-	 * @param centro    Centro di monitograggio per cui si inserisce la misurazione
-	 * @param area      Area geografica per cui si inserisce la misurazione
-	 * @param dato      Dato relativo alla misurazione
-	 */
 	public Misurazione(long rid, LocalDateTime dateTime, Operatore operatore, CentroMonitoraggio centro,
 			AreaGeografica area, DatoGeografico dato) {
+		this.rid = rid;
 		this.dato = dato;
 		this.operatore = operatore;
 		this.area = area;
-		time = LocalDateTime.now();
-		centro = operatore.getCentro();
+		this.time = dateTime;
+		this.centro = centro;
 	}
 
-	/**
-	 * @return ID relativo alla misurazione che esegue il metodo
-	 */
 	public long getRid() {
 		return rid;
 	}
 
 	/**
-	 * @return Aggregato di informazioni relative al dato della misurazione che
-	 *         chiama il metodo
+	 * @return Restituisce il l'aggregato di informazioni relative al dato della
+	 *         misurazione che chiama il metodo
 	 */
 	public DatoGeografico getDato() {
 		return this.dato;
 	}
 
 	/**
-	 * @return Data in cui è stata effettuata la misurazione che chiama il metodo
+	 * @return Restituisce la data in cui è stata effettuata la misurazione che
+	 *         chiama il metodo
 	 */
 	public LocalDateTime getTime() {
 		return this.time;
 	}
 
 	public String getTimeString() {
-		return time.format(DATE_TIME_FORMAT);
+		return DATE_TIME_FORMAT.format(time);
 	}
 
 	/**
-	 * @return Operatore che ha effettuato misurazione che chiama il metodo
+	 * @return Restituisce l'operatore che ha effettuato misurazione che chiama il
+	 *         metodo
 	 */
 	public Operatore getOperatore() {
 		return this.operatore;
 	}
 
 	/**
-	 * @return Centro di monitoraggio per il qule e' stata effettuata la misurazione
-	 *         che chiama il metodo
+	 * @return Restituisce il centro di monitoraggio per il qule e' stata effettuata
+	 *         la misurazione che chiama il metodo
 	 */
 	public CentroMonitoraggio getCentro() {
 		return this.centro;
 	}
 
 	/**
-	 * @return Area geografica nella quale e' stata effettuata la misurazione che
-	 *         chiama il metodo
+	 * @return Restituisce l'area geografica nella quale e' stata effettuata la
+	 *         misurazione che chiama il metodo
 	 */
 	public AreaGeografica getArea() {
 		return this.area;
@@ -120,8 +114,8 @@ public class Misurazione implements Convertable, DataTable {
 	@Override
 	public String toString() {
 		String str = String.format(
-				"%s <<<\n- DateTime: \n%s\n- AreaGeografica: \n%s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n>>> %s",
-				super.toString(), getTimeString(),
+				"%s: (\n- RID: %d\n- DateTime: %s\n- AreaGeografica: %s\n- Operatore: \n%s\n- Centro: \n%s\n- Dato: \n%s\n) %s",
+				super.toString(), rid, getTimeString(),
 				area, operatore, centro, dato, super.toString());
 		return str;
 	}

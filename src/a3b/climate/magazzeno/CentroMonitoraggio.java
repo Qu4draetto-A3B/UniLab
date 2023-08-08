@@ -18,7 +18,7 @@ import a3b.climate.utils.Convertable;
 import a3b.climate.utils.DataTable;
 
 /**
- * Classe che rappresenta un centro di monitoraggio
+ * Rappresenta un centro di monitoraggio
  */
 
 public class CentroMonitoraggio implements Convertable, DataTable {
@@ -51,7 +51,7 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Nome del centro di monitoraggio che chiama il metodo
+	 * @return Restituisce il nome del centro di monitoraggio che chiama il metodo
 	 */
 
 	public String getNome() {
@@ -59,8 +59,8 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Lista delle aree relative al centro di monitoraggio che chiama il
-	 *         metodo
+	 * @return Restituisce la lista delle aree relative al centro di monitoraggio
+	 *         che chiama il metodo
 	 */
 
 	public ListaAree getListaAree() {
@@ -68,7 +68,8 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Indirizzo del centro di monitoraggio che chiama il metodo
+	 * @return Restituisce l'indirizzo del centro di monitoraggio che chiama il
+	 *         metodo
 	 */
 
 	public Indirizzo getIndirizzo() {
@@ -78,7 +79,7 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(String.format(
-				"%s: (\n\tNome: %s\n\tIndirizzo: %s, %d, %d, %s (%s)",
+				"%s: (\n\tNome: %s\n\tIndirizzo: %s, %d, %d, %s (%s)\n\tAree:",
 				super.toString(), nome,
 				indirizzo.getNomeVia(), indirizzo.getCivico(),
 				indirizzo.getCap(), indirizzo.getComune(), indirizzo.getProvincia()));
