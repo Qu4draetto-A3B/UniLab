@@ -18,13 +18,23 @@ import java.util.NoSuchElementException;
 
 import a3b.climate.utils.CercaAree;
 import a3b.climate.utils.Convertable;
-import a3b.climate.utils.listaCustom.*;
+import a3b.climate.utils.ListaCustom.*;
+import a3b.climate.utils.listacustom.CollezioniIterator;
+import a3b.climate.utils.listacustom.Nodo;
 import a3b.climate.utils.result.Result;
 
 import java.util.Iterator;
 
 /**
- * Classe che rappresenta una lista di aree geografiche
+ * La classe {@code ListaAree} rappresenta una lista di istanze di
+ * {@link AreaGeografica}.
+ * <p>
+ * Fornisce metodi per gestire e accedere agli elementi della lista.
+ * <p>
+ * Implementa l'interfaccia {@link Iterable} per consentire l'iterazione delle
+ * aree geografiche nella lista, mentre le interfacce {@link CercaAree} e
+ * {@link Convertable} forniscono metodi per effettuare
+ * operazioni di ricerca e convertire le istanze.
  */
 public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertable {
 
@@ -32,20 +42,22 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	Nodo<AreaGeografica> tail;
 
 	/**
-	 * @return Booleano che indica se la lista di aree geografiche
-	 *         che esegue il metodo e' vuota
+	 * Controlla se la lista di aree georgafiche &egrave vuota.
+	 *
+	 * @return {@code boolean} che indica se la lista &egrave vuota
 	 */
-
 	public boolean isEmpty() {
 		return head == null;
 	}
 
 	/**
-	 * @return Area geografica che si trova in posizione k nella
-	 *         ListaAree che esegue il metodo
-	 * @param k Intero che indica l'indice di un elemento all'interno di ListaAree
+	 * Recupera l'area geografica presente nella posizione fornita della lista.
+	 *
+	 * @throws IndexOutOfBoundsException se l'indice fornito non &egrave valido
+	 * @param k indice della posizione dell'area geografica
+	 * @return {@link AreaGeografica} presente all'indice fornito
+	 *
 	 */
-
 	public AreaGeografica get(int k) {
 		if (0 > k || k >= this.size())
 			throw new IndexOutOfBoundsException("ERRORE : valore dell'indice non valido");
@@ -58,12 +70,12 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * Metodo che aggiunge un'area geografica alla ListaAree nell'indice k
+	 * Aggiunge un'area geografica nella posizione fornita della lista.
 	 *
-	 * @param e Area geografica da aggiungere alla ListaAree che esegue il metodo
-	 * @param k Intero che indica l'indice in cui inserire l'area geografica
+	 * @throws IndexOutOfBoundsException se l'indice fornito non &egrave valido
+	 * @param e {@link Areageografica} da aggiungere alla lista
+	 * @param k indice della posizione dell'area geografica
 	 */
-
 	public void add(AreaGeografica e, int k) {
 		if ((0 > k) || (k >= this.size()))
 			throw new IndexOutOfBoundsException("ERRORE: valore dell'indice non valido");
@@ -76,19 +88,23 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * @return Primo elemento nella ListaAree che esegue il metodo
+	 * Restituisce l'area geografica presente nella prima posizione della lista.
+	 *
+	 * @return {@link AreaGeografica} presente in prima posizione nella lista
+	 * @throws NoSuchElementException se la lista &egrave vuota
 	 */
-
 	public AreaGeografica getFirst() {
 		if (head == null)
-			throw new NoSuchElementException("La listra e' vuota");
+			throw new NoSuchElementException("La lista e' vuota");
 		return head.getDato();
 	}
 
 	/**
-	 * @return Ultimo elemento nella ListaAree che esegue il metodo
+	 * Restituisce l'area geografica presente nell'ultima posizione della lista.
+	 *
+	 * @return {@link AreaGeografica} presente in ultima posizione nella lista
+	 * @throws NoSuchElementException se la lista &egrave vuota
 	 */
-
 	public AreaGeografica getLast() {
 		if (head == null)
 			throw new NoSuchElementException("La lista e' vuota");
@@ -96,10 +112,10 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * @return Intero che indica la dimensione della ListaAree che
-	 *         esegue il metodo
+	 * Indica il numero di elementi presenti nella lista.
+	 *
+	 * @return numero di istanze di {@link Areageografica} presenti nella lista
 	 */
-
 	public int size() {
 		int i = 0;
 		Nodo<AreaGeografica> current = head;
@@ -111,11 +127,10 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	}
 
 	/**
-	 * Metodo che aggiunge un'area geografica alla ListaAree in prima posizione
+	 * Aggiunge un'area geografica in prima posizione nella lista.
 	 *
-	 * @param e Area geografica da aggiungere alla ListaAree che esegue il metodo
+	 * @param e {@link Areageografica} da aggiungere alla lista
 	 */
-
 	public void addFirst(AreaGeografica e) {
 		Nodo<AreaGeografica> x = new Nodo<AreaGeografica>(e, head);
 		head = x;
@@ -124,17 +139,23 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 
 	}
 
+	/**
+	 * Crea un iteratore con le aree presenti nella lista.
+	 *
+	 * @return {@link Iterator} per iterare le istanze di {@link AreaGeografica}
+	 */
 	public Iterator<AreaGeografica> iterator() {
 		return new CollezioniIterator<AreaGeografica>(head);
 	}
 
 	/**
-	 * Metodo che data un'area geografica mostra tutte le informazioni relative ad
-	 * essa
+	 * Ricerca un'area geografica nella lista basandosi sul suo ID.
+	 * <p>
+	 * Nel caso in cui l'{@link AreaGeografica} non venga trovata, restituisce un
+	 * {@link Result} con un codice di errore.
 	 *
-	 * @return Aggregato di informazioni relative all'area geografica
-	 *         fornita come parametro
-	 * @param area Area geografica di cui interessano le informazioni
+	 * @param geoId ID dell'{@link AreaGeografica} da cercare
+	 * @return {@link Result} contenente il risultato della ricerca
 	 */
 	public Result<AreaGeografica> getArea(long geoId) {
 		for (AreaGeografica ag : this) {
@@ -143,7 +164,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 			}
 		}
 
-		return new Result<>(1, "Area non trovata nella lista");
+		return new Result<>(1, "Area non trovata");
 	}
 
 	@Override

@@ -18,27 +18,53 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import a3b.climate.utils.CercaAree;
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.MediaAree;
 import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
 
 /**
- * Rappresenta un filtratore
+ * La classe {@code Filtratore} rappresenta uno strumento per filtra una lista
+ * di istanze di {@link Misurazione}.
+ * <p>
+ * Fornisce vari metodi per filtrare la lista in base a diversi criteri.
+ * <p>
+ * Implementa l'interfaccia {@link Iterable} per consentire l'iterazione delle
+ * istanze di {@link Misurazione}, mentre le interfacce
+ * {@link CercaAree} e {@link MediaAree} per consentire le operazioni che
+ * coinvolgono istanze di {@link AreaGeografica}.
  */
 
 public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	private List<Misurazione> lm;
 
+	/**
+	 * Costruttore di un'istanza di {@code Filtratore}.
+	 *
+	 * @param lm {@link List} di istanze di {@link Misurazione} da filtrare
+	 */
 	public Filtratore(List<Misurazione> lm) {
 		this.lm = lm;
 	}
 
+	/**
+	 * Recupera la lista di misurazioni dal filtratore.
+	 *
+	 * @return {@link List} di istanze di {@link Misurazione} dal filtratore
+	 */
 	public List<Misurazione> getList() {
 		return lm;
 	}
 
+	/**
+	 * Filtra le misurazioni in base gli operatori.
+	 *
+	 * @param ops array di istanze di {@link Operatore} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
 	public Filtratore filtraOperatore(Operatore... ops) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -54,10 +80,12 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	}
 
 	/**
+	 * Filtra le misurazioni in base ai centri di monitoraggio.
 	 *
-	 * @param cms
-	 * @return
+	 * @param ops array di istanze di {@link CentroMonitoaggio} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
+
 	public Filtratore filtraCentro(CentroMonitoraggio... cms) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -71,6 +99,13 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		}
 		return new Filtratore(nlm);
 	}
+
+	/**
+	 * Filtra le misurazioni in base alle aree geografiche.
+	 *
+	 * @param ops array di istanze di {@link AreaGeografica} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
 
 	public Filtratore filtraAree(AreaGeografica... ags) {
 		List<Misurazione> nlm = new LinkedList<>();
@@ -86,6 +121,12 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		return new Filtratore(nlm);
 	}
 
+	/**
+	 * Filtra le misurazioni in base alle note.
+	 *
+	 * @param ops array di note usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
 	public Filtratore filtraNote(String... note) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -102,6 +143,12 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		return new Filtratore(nlm);
 	}
 
+	/**
+	 * Filtra le misurazioni in base ai dati geografici.
+	 *
+	 * @param ops array di istanze di {@link Datogeografico} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
 	public Filtratore filtraDato(DatoGeografico... dati) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -111,10 +158,17 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 					break;
 				}
 			}
+
 		}
 		return new Filtratore(nlm);
 	}
 
+	/**
+	 * Filtra le misurazioni in base a delle stringhe (di ricerca).
+	 *
+	 * @param ops array di stringhe usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
 	public Filtratore filtraStrings(String... strs) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione m : lm) {
@@ -134,7 +188,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		StringBuilder sb = new StringBuilder(String.format("%s <<<\n", super.toString()));
 
 		for (int i = 0; i < lm.size(); i++) {
-			sb.append(String.format("[%d] %s\n", i, lm.get(i).toString()));
+			sb.append(String.format("[%d]\n%s\n", i, lm.get(i).toString()));
 		}
 
 		return sb.append(">>> ").append(super.toString()).toString();
