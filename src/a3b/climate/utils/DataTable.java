@@ -15,8 +15,10 @@
 package a3b.climate.utils;
 
 /**
- * Interfaccia che modella record nel Database
+ * L'interfaccia {@link Datatable} che modella record nel database.
  */
 public interface DataTable {
+
+	@Override
 	public boolean equals(Object obj);
 }

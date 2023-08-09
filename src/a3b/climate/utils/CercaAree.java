@@ -19,28 +19,26 @@ import a3b.climate.magazzeno.ListaAree;
 import a3b.climate.utils.result.Result;
 
 /**
- * Interfaccia che modella la ricerca di aree geografiche
+ * L'interfaccia {@code CercaAree} modella la ricerca di aree geografiche.
  */
 public interface CercaAree {
 
 	/**
-	 * Metodo che ricerca un'area geografica a partire dalla sua denominazione e dal
-	 * suo stato di appartenenza
+	 * Ricerca un'area geografica in base a denominazione e stato di appartenenza forniti.
 	 *
-	 * @return Restituisce le aree nel cui nome compare la stringa di caratteri
-	 * @param denominazione Nome relativo a un'area geografica
-	 * @param stato         Stato di appartenenza di un'area geografica
+	 * @return aree nel cui nome &egrave presente la stringa di caratteri fornita
+	 * @param denominazione nome relativo a un'{@link AreaGeografica}
+	 * @param stato         stato di appartenenza di un'{@link AreaGeografica}
 	 */
 	public ListaAree cercaAreaGeografica(String denominazione, String stato);
 
 	/**
-	 * Metodo che ricerca delle aree geografiche a partire da coordinate geografiche
+	 * Ricerca delle aree geografiche in base alle coordinate geografiche fornite.
 	 *
-	 * @return Restituisce il nome dell'area corrispondente alle cordinate
-	 *         geografiche corrispondenti o delle aree geografiche corrispondenti
+	 * @return nome dell'{@link AreaGeografica} corrispondente alle coordinate geografiche corrispondenti o delle aree geografiche corrispondenti
 	 *         con coordinate più vicine
-	 * @param latitudine  Latitudine di una coordinata geografica
-	 * @param longitudine Longitudine di una coordinata geografica
+	 * @param latitudine  latitudine di una coordinata geografica
+	 * @param longitudine longitudine di una coordinata geografica
 	 */
 
 	public Result<AreaGeografica> cercaAreeGeografiche(double latitudine, double longitudine);

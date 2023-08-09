@@ -18,15 +18,9 @@ import a3b.climate.magazzeno.AreaGeografica;
 import a3b.climate.magazzeno.DatoGeografico;
 
 /**
- * Interfaccia che si occupa di calcolare la media dei dati
+ * L'interfaccia {@link MediaAree} si occupa di calcolare la media dei dati di una {@link AreaGeografica}.
  */
 public interface MediaAree {
 
-	/**
-	 * Esegue la moda dei dati acquisiti in una certa area geografica
-	 *
-	 * @param area Area di interesse
-	 * @return Moda delle misurazioni
-	 */
 	public DatoGeografico visualizzaAreaGeografica(AreaGeografica area);
 }

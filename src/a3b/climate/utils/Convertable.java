@@ -15,18 +15,18 @@
 package a3b.climate.utils;
 
 /**
- * Interfaccia che si occupa di convertire il formato degli oggetti
+ * L'interfaccia {@link Convertable} si occupa di convertire il formato degli oggetti.
  */
 public interface Convertable {
 
 	/**
-	 * Rappresentazione in formato CSV dell'oggetto
+	 * Rappresenta l'oggetto in formato CSV.
 	 */
 
 	public String toCsv();
 
 	/**
-	 * Rappresentazione in formato Json dell'oggetto
+	 * Rappresenta l'oggetto in formato JSON.
 	 */
 
 	public String toJson();
