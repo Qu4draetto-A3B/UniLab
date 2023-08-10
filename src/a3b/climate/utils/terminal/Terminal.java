@@ -142,7 +142,7 @@ public class Terminal {
 	/**
 	 * Chiede all'utente una domanda con risposta Si/No.
 	 *
-	 * @param yes  risposta (di default &egrave Si)
+	 * @param yes  risposta (di default &egrave; Si)
 	 * @param str  stringa da stampare
 	 * @param args valori per l'interpolazione della stringa
 	 * @return {@code risposta} che rappresenta la risposta

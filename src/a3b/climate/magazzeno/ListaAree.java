@@ -41,9 +41,9 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	Nodo<AreaGeografica> tail;
 
 	/**
-	 * Controlla se la lista di aree georgafiche &egrave vuota.
+	 * Controlla se la lista di aree georgafiche &egrave; vuota.
 	 *
-	 * @return {@code boolean} che indica se la lista &egrave vuota
+	 * @return {@code boolean} che indica se la lista &egrave; vuota
 	 */
 	public boolean isEmpty() {
 		return head == null;
@@ -52,7 +52,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	/**
 	 * Recupera l'area geografica presente nella posizione fornita della lista.
 	 *
-	 * @throws IndexOutOfBoundsException se l'indice fornito non &egrave valido
+	 * @throws IndexOutOfBoundsException se l'indice fornito non &egrave; valido
 	 * @param k indice della posizione dell'area geografica
 	 * @return {@link AreaGeografica} presente all'indice fornito
 	 *
@@ -71,7 +71,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	/**
 	 * Aggiunge un'area geografica nella posizione fornita della lista.
 	 *
-	 * @throws IndexOutOfBoundsException se l'indice fornito non &egrave valido
+	 * @throws IndexOutOfBoundsException se l'indice fornito non &egrave; valido
 	 * @param e {@link Areageografica} da aggiungere alla lista
 	 * @param k indice della posizione dell'area geografica
 	 */
@@ -90,7 +90,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	 * Restituisce l'area geografica presente nella prima posizione della lista.
 	 *
 	 * @return {@link AreaGeografica} presente in prima posizione nella lista
-	 * @throws NoSuchElementException se la lista &egrave vuota
+	 * @throws NoSuchElementException se la lista &egrave; vuota
 	 */
 	public AreaGeografica getFirst() {
 		if (head == null)
@@ -102,7 +102,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	 * Restituisce l'area geografica presente nell'ultima posizione della lista.
 	 *
 	 * @return {@link AreaGeografica} presente in ultima posizione nella lista
-	 * @throws NoSuchElementException se la lista &egrave vuota
+	 * @throws NoSuchElementException se la lista &egrave; vuota
 	 */
 	public AreaGeografica getLast() {
 		if (head == null)

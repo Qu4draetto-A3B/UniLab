@@ -72,7 +72,7 @@ public class Result<T> {
 	/**
 	 * Controlla che il {@code Result} sia valido.
 	 * <p>
-	 * Un {@code Result} risulta valido se l'operazione che contiene &egrave stata
+	 * Un {@code Result} risulta valido se l'operazione che contiene &egrave; stata
 	 * eseguita correttamente.
 	 *
 	 * @return {@code boolean} che indica la validità del {@code Result}
@@ -148,10 +148,10 @@ public class Result<T> {
 	/**
 	 * Restituisce il contenuto del {@code Result}.
 	 * <p>
-	 * Lancia un'eccezione {@link Panic} se il contenuto &egrave {@code null}.
+	 * Lancia un'eccezione {@link Panic} se il contenuto &egrave; {@code null}.
 	 *
 	 * @return contenuto del {@code Result}
-	 * @throws Panic se il contenuto &egrave {@code null}
+	 * @throws Panic se il contenuto &egrave; {@code null}
 	 */
 	public T get() {
 		if (content == null) {
@@ -162,7 +162,7 @@ public class Result<T> {
 
 	/**
 	 * Restituisce il contenuto del {@code Result} o il valore di default fornito se
-	 * il contenuto &egrave {@code null}.
+	 * il contenuto &egrave; {@code null}.
 	 *
 	 * @param other valore di default
 	 * @return contenuto del {@code Result} o valore di default
@@ -173,11 +173,11 @@ public class Result<T> {
 
 	/**
 	 * Rstituisce il contenuto del {@code Result} o il valore prodotto dalla
-	 * funzione fornita se il contenuto &egrave {@code null}.
+	 * funzione fornita se il contenuto &egrave; {@code null}.
 	 *
 	 *
 	 * @param fn funzione che produce il valore che viene restituito se il contenuto
-	 *           del {@code Result} &egrave {@code null}
+	 *           del {@code Result} &egrave; {@code null}
 	 * @return contenuto del {@code Result} o il valore prodotto dalla funzione
 	 *         fornita
 	 */

@@ -43,7 +43,7 @@ public class Operatore implements Convertable, DataTable {
 	 * @param nome    nome dell'operatore
 	 * @param cognome cognome dell'operatore
 	 * @param email   e-mail dell'operatore
-	 * @param centro  centro di monitoraggio a cui l'operatore &egrave associato
+	 * @param centro  centro di monitoraggio a cui l'operatore &egrave; associato
 	 */
 	public Operatore(String cf, String uid, String nome, String cognome, String email, CentroMonitoraggio centro) {
 		this.cf = cf;
@@ -96,7 +96,7 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * Restituisce il centro di monitoraggio a cui &egrave associato l'operatore.
+	 * Restituisce il centro di monitoraggio a cui &egrave; associato l'operatore.
 	 *
 	 * @return {@link #centro} relativo all'{@code Operatore}
 	 */

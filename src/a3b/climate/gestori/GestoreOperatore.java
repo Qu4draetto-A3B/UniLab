@@ -46,7 +46,7 @@ public class GestoreOperatore extends Gestore {
 	 * Registra un nuovo operatore e la password associata nel relativo file
 	 * CSV.
 	 * <p>
-	 * Controlla se &egrave gi&agrave presente un {@link Operatore} con lo stesso
+	 * Controlla se &egrave; gi&agrave presente un {@link Operatore} con lo stesso
 	 * UID (user ID) o CF (codice fiscale) usando rispettivamente i metodi
 	 * {@link #getOperatoreByUid(String)} e {@link #getOperatoreByCf(String)}.
 	 * <p>

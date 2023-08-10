@@ -26,7 +26,7 @@ public interface CercaAree {
 	/**
 	 * Ricerca un'area geografica in base a denominazione e stato di appartenenza forniti.
 	 *
-	 * @return aree nel cui nome &egrave presente la stringa di caratteri fornita
+	 * @return aree nel cui nome &egrave; presente la stringa di caratteri fornita
 	 * @param denominazione nome relativo a un'{@link AreaGeografica}
 	 * @param stato         stato di appartenenza di un'{@link AreaGeografica}
 	 */

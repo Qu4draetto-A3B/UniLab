@@ -164,7 +164,7 @@ public class DatoGeografico implements DataTable {
 	 * <p>
 	 * Controlla che il valore fornito sia valido e lo assegna al relativo tipo.
 	 *
-	 * @throws IllegalArgumentException se il valore del dato non &egrave compreso
+	 * @throws IllegalArgumentException se il valore del dato non &egrave; compreso
 	 *                                  tra 0 e 5
 	 * @param tipo {@link TipoDatoGeografico}
 	 * @param dato valore del dato geografico
@@ -267,7 +267,7 @@ public class DatoGeografico implements DataTable {
 	 *
 	 * @param key  {@link TipoDatoGeografico} (chiave per inserire la nota)
 	 * @param nota nota relative al dato geografico
-	 * @return {@code boolean} che indica se la nota &egrave stata impostata
+	 * @return {@code boolean} che indica se la nota &egrave; stata impostata
 	 *         correttamente
 	 */
 

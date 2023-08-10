@@ -70,7 +70,7 @@ public class GestoreCentro extends Gestore {
 	/**
 	 * Aggiunge un nuovo centro di monitoraggio al relativo file CSV.
 	 * <p>
-	 * Controlla se un {@link CentroMonitoraggio} con lo stesso nome &egrave
+	 * Controlla se un {@link CentroMonitoraggio} con lo stesso nome &egrave;
 	 * gi&agrave presente nel file utilizzando il metodo {@link #getCentro(String)}.
 	 * <p>
 	 * Nel caso in cui l'operazione non venga eseguita correttamente (il centro sia
