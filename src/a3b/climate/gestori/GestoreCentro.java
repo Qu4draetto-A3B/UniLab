@@ -16,11 +16,9 @@ package a3b.climate.gestori;
 
 import org.apache.commons.csv.CSVRecord;
 
-import a3b.climate.magazzeno.AreaGeografica;
 import a3b.climate.magazzeno.CentroMonitoraggio;
 import a3b.climate.magazzeno.Indirizzo;
 import a3b.climate.magazzeno.ListaAree;
-import a3b.climate.utils.CercaAree;
 import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Result;
 
