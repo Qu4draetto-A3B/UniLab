@@ -13,8 +13,10 @@
  * See LICENSE file for additional information.
  */
 package a3b.climate.gestori;
+
 /**
- * Si occupa di creare (per ogni classe "Gestore") un oggetto in grado di richiamare le funzione associate.
+ * La classe {@code DataBase} si occupa di creare per ogni classe <i>Gestore</i>
+ * un'istanza in grado di gestire i vari tipi di dati.
  */
 public class DataBase {
 	public static GestoreMisurazioni misurazioni = new GestoreMisurazioni();

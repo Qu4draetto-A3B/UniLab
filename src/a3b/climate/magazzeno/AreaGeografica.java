@@ -17,9 +17,12 @@ package a3b.climate.magazzeno;
 import a3b.climate.utils.DataTable;
 
 /**
- * Rappresenta un'area geografica
+ * La classe {@code AreaGeografica} rappresenta un'area geografica identificata
+ * da: GeoID, latitudine, longitudine, stato e denominazione.
+ * <p>
+ * Questa classe implementa l'interfaccia {@link DataTable} per consentire la
+ * gestione dei dati.
  */
-
 public class AreaGeografica implements DataTable {
 	private long geoID;
 	private double latitudine;
@@ -28,15 +31,14 @@ public class AreaGeografica implements DataTable {
 	private String denominazione;
 
 	/**
-	 * Costruttore di un'istanza di AreaGeografica
+	 * Costruttore di un'istanza di {@code AreaGeografica}.
 	 *
-	 * @param geoID         Id dell'area geografica
-	 * @param latitudine    Latitudine relativa all'area geografica
-	 * @param longitudine    Longitudine relativa all'area geografica
-	 * @param stato         Stato in cui si trova l'area geografica
-	 * @param denominazione Nome dell'area geografica
+	 * @param geoID         ID dell'area geografica
+	 * @param latitudine    latitudine relativa all'area geografica
+	 * @param longitudine   longitudine relativa all'area geografica
+	 * @param stato         stato in cui si trova l'area geografica
+	 * @param denominazione nome dell'area geografica
 	 */
-
 	public AreaGeografica(long geoID, double latitudine, double longitudine, String stato, String denominazione) {
 		this.geoID = geoID;
 		this.latitudine = latitudine;
@@ -45,36 +47,46 @@ public class AreaGeografica implements DataTable {
 		this.denominazione = denominazione;
 	}
 
+	/**
+	 * Restituisce l'ID dell'area geografica.
+	 *
+	 * @return {@link #geoID} relativo all'{@code AreaGeografica}
+	 */
 	public long getGeoID() {
 		return geoID;
 	}
 
 	/**
-	 * @return Restituisce la latitudine relativa all'area geografica che chiama il
-	 *         metodo
+	 * Restituisce la latitudine dell'area geografica.
+	 *
+	 * @return {@link #latitudine} relativa all'{@code AreaGeografica}
 	 */
 	public double getLatitudine() {
 		return latitudine;
 	}
 
 	/**
-	 * @return Restituisce la logitudine relativa all'area geografica che chiama il
-	 *         metodo
+	 * Restituisce la longitudine dell'area geografica.
+	 *
+	 * @return {@link #longitudine} relativa all'{@code AreaGeografica}
 	 */
 	public double getLongitudine() {
 		return longitudine;
 	}
 
 	/**
-	 * @return Restituisce lo stato in cui si trova l'area geografica che chiama il
-	 *         metodo
+	 * Restituisce lo stato in cui si trova dell'area geografica.
+	 *
+	 * @return {@link #stato} relativo all'{@code AreaGeografica}
 	 */
 	public String getStato() {
 		return stato;
 	}
 
 	/**
-	 * @return Restituisce il nome dell'area geografica che chiama il metodo
+	 * Restituisce il nome dell'area geografica.
+	 *
+	 * @return {@link #denominazione} relativa all'{@code AreaGeografica}
 	 */
 	public String getDenominazione() {
 		return denominazione;

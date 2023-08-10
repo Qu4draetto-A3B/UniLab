@@ -22,7 +22,13 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.Result;
 
 /**
- * Rappresenta un operatore
+ * La classe {@code Operatore} rappresenta un operatore identificato
+ * da: nome, cognome, e-mail, codice fiscale, user ID e centro di monitoraggio
+ * associato.
+ * <p>
+ * Questa classe implementa le interfacce {@link Convertable} e
+ * {@link DataTable} per consentire la
+ * gestione dei dati.
  */
 
 public class Operatore implements Convertable, DataTable {
@@ -30,16 +36,15 @@ public class Operatore implements Convertable, DataTable {
 	private CentroMonitoraggio centro;
 
 	/**
-	 * Costruttore di un'istanza di Operatore
+	 * Costruttore di un'istanza di {@code Operatore}
 	 *
-	 * @param cf      Codice fiscale dell'operatore
-	 * @param uid     User ID relativo all'operatore
-	 * @param nome    Nome dell'operatore
-	 * @param cognome Cognome dell'operatore
-	 * @param email   E-mail dell'operatore
-	 * @param centro  Centro di monitoraggio a cui l'operatore e' associato
+	 * @param cf      codice fiscale dell'operatore
+	 * @param uid     user ID relativo all'operatore
+	 * @param nome    nome dell'operatore
+	 * @param cognome cognome dell'operatore
+	 * @param email   e-mail dell'operatore
+	 * @param centro  centro di monitoraggio a cui l'operatore &egrave associato
 	 */
-
 	public Operatore(String cf, String uid, String nome, String cognome, String email, CentroMonitoraggio centro) {
 		this.cf = cf;
 		this.uid = uid;
@@ -50,7 +55,14 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * Costruttore vuoto di un'istanza di Operatore
+	 * Costruttore di un'istanza di {@code Operatore} con valori predefiniti.
+	 * <p>
+	 * Il {@link #cf} viene impostato su "<i>CIVILE</i>", lo {@link #uid} su
+	 * "<i>civile</i>",
+	 * il {@link #nome} su "<i>Civile</i>", il {@link #cognome} su"<i>Civile</i>" e
+	 * la {@link #email} su "<i>civile@example.com</i>".
+	 * Il {@link #centro} viene inizializzato con un nuovo
+	 * {@link CentroMonitoraggio} predefinito.
 	 */
 	public Operatore() {
 		cf = "CIVILE";
@@ -62,13 +74,12 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * Metodo che consente di inserire i dati climatici di una determinata area nel
-	 * database
+	 * Imposta i dati climatici di una determinata area nel database.
 	 *
-	 * @param area  Area geografica relativa ai dati
-	 * @param dato  Aggregato di informazioni (valori dei parametri climatici)
-	 *              relative al dato geografico
-	 * @param tempo Data in cui avviene l'inserimento dei dati nel database
+	 * @param area  {@link AreaGeografica} relativa ai dati
+	 * @param dato  {@link DatoGeografico} contenente i valori dei parametri
+	 *              climatici
+	 * @param tempo data e ora in cui avviene l'inserimento dei dati nel database
 	 */
 	public Result<Misurazione> inserisciParametri(AreaGeografica area, DatoGeografico dato, LocalDateTime tempo) {
 		Misurazione mis = new Misurazione(0, tempo, this, centro, area, dato);
@@ -76,50 +87,55 @@ public class Operatore implements Convertable, DataTable {
 	}
 
 	/**
-	 * @return Restituisce il codice fiscale dell'operatore che esegue il metodo
+	 * Restituisce il codice fiscale dell'operatore.
+	 *
+	 * @return {@link #cf} relativo all'{@code Operatore}
 	 */
-
 	public String getCf() {
 		return cf;
 	}
 
 	/**
-	 * @return Restituisce il centro di monitoraggio al quale l'operatore che esegue
-	 *         il metodo e' associato
+	 * Restituisce il centro di monitoraggio a cui &egrave associato l'operatore.
+	 *
+	 * @return {@link #centro} relativo all'{@code Operatore}
 	 */
-
 	public CentroMonitoraggio getCentro() {
 		return centro;
 	}
 
 	/**
-	 * @return Restituisce il cognome dell'operatore che esegue il metodo
+	 * Restituisce il cognome dell'operatore.
+	 *
+	 * @return {@link #cognome} relativo all'{@code Operatore}
 	 */
-
 	public String getCognome() {
 		return cognome;
 	}
 
 	/**
-	 * @return Restituisce la e-mail dell'operatore che esegue il metodo
+	 * Restituisce la e-mail dell'operatore.
+	 *
+	 * @return {@link #email} relativo all'{@code Operatore}
 	 */
-
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * @return Restituisce il nome dell'operatore che esegue il metodo
+	 * Restituisce il nome dell'operatore.
+	 *
+	 * @return {@link #nome} relativo all'{@code Operatore}
 	 */
-
 	public String getNome() {
 		return nome;
 	}
 
 	/**
-	 * @return Restituisce lo user ID relativo all'operatore che esegue il metodo
+	 * Restituisce lo user ID dell'operatore.
+	 *
+	 * @return {@link #uid} relativo all'{@code Operatore}
 	 */
-
 	public String getUid() {
 		return uid;
 	}

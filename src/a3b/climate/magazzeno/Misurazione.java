@@ -23,7 +23,13 @@ import a3b.climate.utils.Convertable;
 import a3b.climate.utils.DataTable;
 
 /**
- * Rappresenta una misurazione
+ * La classe {@code Misurazione} rappresenta una misurazione identificata
+ * da: ID, dato geografico, data e ora, operatore, centro di monitoraggio e area
+ * geografica.
+ * <p>
+ * Questa classe implementa le interfacce {@link Convertable} e
+ * {@link DataTable} per consentire la
+ * gestione dei dati.
  */
 public class Misurazione implements Convertable, DataTable {
 	private long rid;
@@ -36,13 +42,12 @@ public class Misurazione implements Convertable, DataTable {
 			.withLocale(Locale.getDefault()).withZone(ZoneId.systemDefault());
 
 	/**
-	 * Costruttore di un'istanza di Misurazione
+	 * Costruttore di un'istanza di {@code Misurazione}.
 	 *
-	 * @param rid       Id della misurazione
-	 * @param dato      Aggregato di informazioni relative al dato geografico
-	 * @param operatore Operatore che effettua la misurazione
-	 * @param area      Area geografica nella quale e' stata effettuata la
-	 *                  misurazione
+	 * @param rid       ID del record della misurazione
+	 * @param dato      dato geografico relativo alla misurazione
+	 * @param operatore operatore relativo alla misurazione
+	 * @param area      area geografica relativa alla misurazione
 	 */
 	public Misurazione(long rid, DatoGeografico dato, Operatore operatore, AreaGeografica area) {
 		this.rid = rid;
@@ -53,6 +58,16 @@ public class Misurazione implements Convertable, DataTable {
 		centro = operatore.getCentro();
 	}
 
+	/**
+	 * Costruttore di un'istanza di {@code Misurazione}
+	 *
+	 * @param rid       ID relativo al record della misurazione
+	 * @param dateTime  data e ora relativa all'inserimento della misurazione
+	 * @param operatore operatore relativo alla misurazione
+	 * @param centro    centro di monitoraggio relativo alla misurazione
+	 * @param area      area geografica relativa alla misurazione
+	 * @param dato      dato geografico relativo alla misurazione
+	 */
 	public Misurazione(long rid, LocalDateTime dateTime, Operatore operatore, CentroMonitoraggio centro,
 			AreaGeografica area, DatoGeografico dato) {
 		this.rid = rid;
@@ -63,49 +78,64 @@ public class Misurazione implements Convertable, DataTable {
 		this.centro = centro;
 	}
 
+	/**
+	 * Restituisce l'ID della misurazione.
+	 *
+	 * @return {@link #rid} relativo alla {@code Misurazione}
+	 */
 	public long getRid() {
 		return rid;
 	}
 
 	/**
-	 * @return Restituisce il l'aggregato di informazioni relative al dato della
-	 *         misurazione che chiama il metodo
+	 * Restituisce il dato della misurazione.
+	 *
+	 * @return {@link #dato} relativo alla {@code Misurazione}
 	 */
 	public DatoGeografico getDato() {
 		return this.dato;
 	}
 
 	/**
-	 * @return Restituisce la data in cui è stata effettuata la misurazione che
-	 *         chiama il metodo
+	 * Restituisce data e ora della misurazione.
+	 *
+	 * @return {@link #time} relativo alla {@code Misurazione}
 	 */
 	public LocalDateTime getTime() {
 		return this.time;
 	}
 
+	/**
+	 * Restituisce la stringa relativa a data e ora della misurazione.
+	 *
+	 * @return stringa formattata relativa a data e ora della {@code Misurazione}
+	 */
 	public String getTimeString() {
 		return DATE_TIME_FORMAT.format(time);
 	}
 
 	/**
-	 * @return Restituisce l'operatore che ha effettuato misurazione che chiama il
-	 *         metodo
+	 * Restituisce l'operatore della misurazione.
+	 *
+	 * @return {@link #operatore} relativo alla {@code Misurazione}
 	 */
 	public Operatore getOperatore() {
 		return this.operatore;
 	}
 
 	/**
-	 * @return Restituisce il centro di monitoraggio per il qule e' stata effettuata
-	 *         la misurazione che chiama il metodo
+	 * Restituisce il centro di monitoraggio della misurazione.
+	 *
+	 * @return {@link #centro} relativo alla {@code Misurazione}
 	 */
 	public CentroMonitoraggio getCentro() {
 		return this.centro;
 	}
 
 	/**
-	 * @return Restituisce l'area geografica nella quale e' stata effettuata la
-	 *         misurazione che chiama il metodo
+	 * Restituisce l'area geografica della misurazione.
+	 *
+	 * @return {@link #area} relativo alla {@code Misurazione}
 	 */
 	public AreaGeografica getArea() {
 		return this.area;

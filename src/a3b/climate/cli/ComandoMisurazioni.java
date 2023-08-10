@@ -20,10 +20,24 @@ import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
 /**
- * ComandoMisurazioni
+ * La classe {@code ComandoMisurazioni} implementa l'interfaccia {@link View}
+ * per gestire il comando che crea una nuova misurazione.
+ * <p>
+ * Legge la configurazione necessaria da un file INI per creare una nuova
+ * istanza di {@link Misurazione} e la aggiunge al database.
  */
 public class ComandoMisurazioni implements View {
 
+	/**
+	 * Legge da un file INI la configurazione necessaria per creare una nuova
+	 * misurazione.
+	 * <p>
+	 * La nuova {@link Misurazione} viene aggiunta al database e il
+	 * risultato dell'operazione viene stampato nel terminale.
+	 *
+	 * @param term istanza di {@link Terminal} utilizzata per stampare la nuova
+	 *             misurazione
+	 */
 	@Override
 	public void start(Terminal term) throws IOException {
 		Path misIni = Paths.get("./MISURAZIONE.INI");

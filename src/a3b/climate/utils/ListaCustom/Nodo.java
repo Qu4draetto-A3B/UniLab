@@ -14,20 +14,62 @@
  */
 package a3b.climate.utils.ListaCustom;
 
-public class Nodo<E>{
-    //CAMPI
-    private E dato;
-    private Nodo<E> next;
+/**
+ * La classe {@code Nodo<E>} rappresenta un elemento di una lista.
+ *
+ * @param <E> tipo dell'elemento contenuto nel nodo
+ */
+public class Nodo<E> {
+	private E dato;
+	private Nodo<E> next;
 
-    //COSTRUTTORI
-    public Nodo(E dato, Nodo<E> next){
-        this.next = next;
-        this.dato = dato;
-    }
+	/**
+	 * Costruttore di un'istanza di {@code Nodo}.
+	 * <p>
+	 * L'istanza viene creata a partire dal dato specificato e il riferimento al
+	 * nodo successivo.
+	 *
+	 * @param dato elemento da inserire nel nodo
+	 * @param next riferimento al nodo successivo nella lista
+	 */
+	public Nodo(E dato, Nodo<E> next) {
+		this.next = next;
+		this.dato = dato;
+	}
 
-    //METODI
-    public void setNext(Nodo<E> next){this.next = next;}
-    public void setDato(E dato){this.dato = dato;}
-    public Nodo<E> getNext(){return next;}
-    public E getDato(){return dato;}
+	/**
+	 * Imposta il dato successivo nella lista.
+	 *
+	 * @param next riferimento al nodo da inserire come successivo
+	 */
+	public void setNext(Nodo<E> next) {
+		this.next = next;
+	}
+
+	/**
+	 * Imposta il dato del nodo.
+	 *
+	 * @param dato dato da inserire nel nodo
+	 */
+	public void setDato(E dato) {
+		this.dato = dato;
+	}
+
+	/**
+	 * Restituisce il riferimento al nodo successivo nella lista.
+	 *
+	 * @return rifeirmento al nodo successivo
+	 */
+	public Nodo<E> getNext() {
+		return next;
+	}
+
+	/**
+	 * Restituisce il dato contenuto nel nodo.
+	 *
+	 * @return dato contenuto nel nodo
+	 */
+	public E getDato() {
+		return dato;
+	}
 }

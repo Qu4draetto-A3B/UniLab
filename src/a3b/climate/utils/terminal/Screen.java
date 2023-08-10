@@ -19,10 +19,19 @@ import java.io.IOException;
 public class Screen {
 	protected Terminal term;
 
+	/**
+	 * Constructs an instance of the `Screen` class.
+	 * Initializes the terminal used for display.
+	 */
 	public Screen() {
 		term = new Terminal();
 	}
 
+	/**
+	 * Displays the provided `View` on the screen.
+	 *
+	 * @param v The `View` to be displayed on the screen.
+	 */
 	public void show(View v) {
 		term.clear();
 		try {

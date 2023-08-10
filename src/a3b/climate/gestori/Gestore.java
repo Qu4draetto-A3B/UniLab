@@ -32,7 +32,10 @@ import a3b.climate.utils.result.Panic;
 import a3b.climate.utils.result.Result;
 
 /**
- * Racchiude metodi relativi la gestione dei file contenenti i dati d'interesse.
+ * La classe astratta {@code Gestore} si occupa della gestione di dati contenuti
+ * nei file CSV.
+ * <p>
+ * Fornisce metodi per la lettura e scrittura dei dati d'interesse.
  */
 public abstract class Gestore implements AutoCloseable {
 	protected final String FILE;
@@ -50,9 +53,11 @@ public abstract class Gestore implements AutoCloseable {
 	protected CSVPrinter p;
 
 	/**
-	 * Costruttore di un'istanza di Gestore
-	 * @param file File su cui effettuare operazioni di lettura/scrittura
-	 * @param headers Intestazione del file relativa all'oggetto
+	 * Costruttore di un'istanza di {@code Gestore} che si occupa di gestire i dati
+	 * contenuti in file CSV.
+	 *
+	 * @param file    file su cui effettuare operazioni di lettura/scrittura
+	 * @param headers intestazione nel file relativa all'oggetto
 	 */
 	protected Gestore(String file, String[] headers) {
 		FILE = file;
@@ -62,7 +67,16 @@ public abstract class Gestore implements AutoCloseable {
 	}
 
 	/**
-	 * Metodo che si occupa di aprire un file
+	 * Inizializza e apre il file.
+	 *
+	 * @throws Panic se l'operazione non viene eseguita correttamente
+	 * @see CSVFormat
+	 * @see CSVPrinter
+	 * @see CSVRecord
+	 * @see FileReader
+	 * @see FileWriter
+	 * @see BufferedReader
+	 * @see BufferedWriter
 	 */
 	private void start() {
 		format = CSVFormat.DEFAULT.builder()
@@ -85,10 +99,17 @@ public abstract class Gestore implements AutoCloseable {
 		}
 	}
 
-
 	/**
-	 * Metodo che si occupa di chiudere un file
+	 * Chiude un file.
+	 *
+	 * @see CSVPrinter#close(boolean)
+	 * @see List#clear()
+	 * @see FileWriter#close()
+	 * @see FileReader#close()
+	 * @see BufferedWriter#close()
+	 * @see BufferedReader#close()
 	 */
+
 	@Override
 	public void close() {
 		try {
@@ -107,15 +128,32 @@ public abstract class Gestore implements AutoCloseable {
 	}
 
 	/**
-	 * Metodo che si occupa di ricaricare (chiudere e riaprire) un file
+	 * Ricarica (chiude e riapre) un file.
+	 *
+	 * @see #close()
+	 * @see #start()
 	 */
+
 	protected void reload() {
 		close();
 		start();
 	}
 
+	/**
+	 * Costruisce un'istanza di {@link DataTable} con i dati forniti da un file CSV.
+	 *
+	 * @param record record CSV che rappresenta una riga nel file CSV
+	 * @return istanza di {@link DataTable} contenente i dati forniti
+	 */
 	protected abstract DataTable buildObject(CSVRecord record);
 
+	/**
+	 * Recupera una propriet&agrave nel file di metadati associato ad una tabella
+	 * CSV in base alla chiave data.
+	 *
+	 * @param key chiave per accedere alla propriet&agrave del file
+	 * @return {@link Result} contenente la stringa relativa alla proprietà richiesta
+	 */
 	protected Result<String> getProperty(String key) {
 		String val = "";
 		for (String line : metaIn.lines().toList()) {
@@ -148,12 +186,16 @@ public abstract class Gestore implements AutoCloseable {
 		return new Result<>(val);
 	}
 
-
 	/**
-	 * Metodo che si occupa di impostare una proprietà nel file (*.CSV.DAT) associato a una tabella (*.CSV)
-	 * @param key
-	 * @param val
-	 * @return
+	 * Imposta una propriet&agrave nel file di metadati associato ad una tabella CSV
+	 * in base alla chiave data.
+	 * <p>
+	 * Nel caso in fosse impossibile scrivere sul file di metadati, restituisce un
+	 * {@link Result} con un codice di errore.
+	 *
+	 * @param key chiave per accedere al file
+	 * @param val propriet&agrave da impostare
+	 * @return {@link Result} relativo all'operazione effettuata
 	 */
 	protected Result<Object> setProperty(String key, String val) {
 		String contents = metaIn.toString();

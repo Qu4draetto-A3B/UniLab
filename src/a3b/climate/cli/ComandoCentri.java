@@ -16,10 +16,24 @@ import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
 /**
- * ComandoCentri
+ * La classe {@code ComandoCentri} implementa l'interfaccia {@link View} per
+ * gestire il comando che crea un nuovo centro di monitoraggio.
+ * <p>
+ * Legge la configurazione necessaria da un file INI per creare una nuova
+ * istanza di {@link CentroMonitoraggio} e la aggiunge al database.
  */
 public class ComandoCentri implements View {
 
+	/**
+	 * Legge da un file INI la configurazione necessaria per creare un nuovo centro
+	 * di monitoraggio.
+	 * <p>
+	 * Il nuovo {@link CentroMonitoraggio} viene aggiunto al database e il risultato
+	 * dell'operazione viene stampato nel terminale.
+	 *
+	 * @param term istanza di {@link Terminal} utilizzata per stampare il nuovo
+	 *             centro di monitoraggio
+	 */
 	@Override
 	public void start(Terminal term) throws IOException {
 		Path misIni = Paths.get("./CENTRO.INI");

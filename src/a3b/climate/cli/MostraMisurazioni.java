@@ -24,6 +24,16 @@ public class MostraMisurazioni implements View {
 		super();
 	}
 
+	/**
+	 * Recupera le misurazioni in base ai ciriteri dati nel filtratore fornito nella
+	 * linea di comando.
+	 * <p>
+	 * Richiede al database le istanze di {@link Misurazione} corrispondenti e le
+	 * stampa nel terminale.
+	 *
+	 * @param term istanza di {@link Terminal} utilizzata per stampare le
+	 *             misurazioni
+	 */
 	@Override
 	public void start(Terminal term) {
 		String[] args = App.line.getOptionValues("lista-misurazioni");
