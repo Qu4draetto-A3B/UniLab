@@ -1,17 +1,23 @@
 # Main Class, project name, change as preferred
 MAIN_CLASS := a3b.climate.Main
 PRJ_NAME := UniLab
+EXE_NAME := unilab
 
 # Directories for where to find build files, libraries and sources, respectively
 MANIFEST := ./src/META-INF/MANIFEST.MF
 BUILD_DIR := ./bin
 LIB_DIR := ./lib
 SRC_DIR := ./src
-DOC_DIR := ./doc/javadoc
+DOC_DIR := ./doc
+JAVADOC_DIR := $(DOC_DIR)/javadoc
 
 # Names for generated files
-TARGET_JAR := $(BUILD_DIR)/$(PRJ_NAME).jar
-TARGET_EXE := $(BUILD_DIR)/$(PRJ_NAME)
+TARGET_JAR := $(BUILD_DIR)/$(EXE_NAME).jar
+TARGET_EXE := $(BUILD_DIR)/$(EXE_NAME)
+TARGET_WIN := $(BUILD_DIR)/$(EXE_NAME).exe
+TARGET_DIR := $(BUILD_DIR)/$(PRJ_NAME)
+MAN_USER := $(DOC_DIR)/man/out/Manuale_Utente.pdf
+MAN_TECH := $(DOC_DIR)/man/out/Manuale_Tecnico.pdf
 
 # Classes are generated in a subdirectory
 CLASS_DIR := $(BUILD_DIR)/class
@@ -60,14 +66,30 @@ jar: classes libraries
 	jar --create --file $(TARGET_JAR) --manifest $(MANIFEST) -C $(CLASS_DIR) .
 
 # Package jar into an executable
-executable: jar
+exe_linux: jar
 	echo '#!/usr/bin/java -jar' > $(TARGET_EXE)
 	cat $(TARGET_JAR) >> $(TARGET_EXE)
 	chmod +x $(TARGET_EXE)
 
+exe_win: jar
+	java -Djava.awt.headless=true -jar ./launch4j/launch4j.jar jar2exe.xml
+
+package: exe_linux exe_win docs
+	mkdir $(TARGET_DIR)
+	cp -f $(TARGET_JAR) $(TARGET_DIR)
+	cp -f $(TARGET_EXE) $(TARGET_DIR)
+	cp -f $(TARGET_WIN) $(TARGET_DIR)
+	cp -f ./LICENSE $(TARGET_DIR)
+	cp -rf ./data $(TARGET_DIR)
+	cp -f $(MAN_USER) $(TARGET_DIR)
+	cp -f $(MAN_TECH) $(TARGET_DIR)
+	cp -rf $(JAVADOC_DIR) $(TARGET_DIR)
+	zip -rf $(TARGET_DIR).zip $(TARGET_DIR)
+	rm -rf $(TARGET_DIR)
+
 # Generate documentation
 docs: $(SRCS)
-	javadoc -d $(DOC_DIR) -cp $(BUILD_CP) $(SRCS)
+	javadoc -d $(JAVADOC_DIR) -cp $(BUILD_CP) $(SRCS)
 
 # Clean BUILD_DIR by deleting it
 clean:
@@ -75,7 +97,7 @@ clean:
 
 # Delete documentation
 cleandoc:
-	rm -r $(DOC_DIR)
+	rm -r $(JAVADOC_DIR)
 
 all: classes libraries jar docs
 
