@@ -74,7 +74,7 @@ exe_linux: jar
 exe_win: jar
 	java -Djava.awt.headless=true -jar ./launch4j/launch4j.jar jar2exe.xml
 
-package: exe_linux exe_win docs
+package: exe_linux exe_win
 	mkdir $(TARGET_DIR)
 	cp -f $(TARGET_JAR) $(TARGET_DIR)
 	cp -f $(TARGET_EXE) $(TARGET_DIR)
@@ -84,7 +84,7 @@ package: exe_linux exe_win docs
 	cp -f $(MAN_USER) $(TARGET_DIR)
 	cp -f $(MAN_TECH) $(TARGET_DIR)
 	cp -rf $(JAVADOC_DIR) $(TARGET_DIR)
-	zip -rf $(TARGET_DIR).zip $(TARGET_DIR)
+	zip -r $(TARGET_DIR).zip $(TARGET_DIR)
 	rm -rf $(TARGET_DIR)
 
 # Generate documentation
