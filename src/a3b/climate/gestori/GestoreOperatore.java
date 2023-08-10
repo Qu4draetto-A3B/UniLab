@@ -24,44 +24,25 @@ import a3b.climate.utils.DataTable;
 import a3b.climate.utils.result.*;
 
 /**
- * La classe {@code GestoreOperatore} estende la classe {@link Gestore}.
- * <p>
- * Gestisce le operazioni di lettura e scrittura su file CSV di dati riguardanti
- * istanze di {@link Operatore}.
+ * Gestisce le operazioni di lettura e scrittura riguardanti oggetti di tipo
+ * Operatore
  */
 public class GestoreOperatore extends Gestore {
 	/**
-	 * Costruttore di un'istanza di {@code Gestoreoperatore} che gestisce i dati
-	 * relativi agli operatori.
-	 *
-	 * @see Gestore#Gestore(String, String[])
+	 * Costruttore di un'istanza di tipo GestoreOperatore
 	 */
 	public GestoreOperatore() {
 		super(
-				"./data/OperatoriRegistrati.CSV",
+				"./data/db/OperatoriRegistrati.CSV",
 				new String[] { "CodFis", "UserID", "Nome", "Cognome", "Email", "Centro", "Password" });
 	}
 
 	/**
-	 * Registra un nuovo operatore e la password associata nel relativo file
-	 * CSV.
-	 * <p>
-	 * Controlla se &egrave gi&agrave presente un {@link Operatore} con lo stesso
-	 * UID (user ID) o CF (codice fiscale) usando rispettivamente i metodi
-	 * {@link #getOperatoreByUid(String)} e {@link #getOperatoreByCf(String)}.
-	 * <p>
-	 * Controlla che il codice fiscale fornito sia valido con il metodo
-	 * {@link #cfIsValid(String)}.
-	 * <p>
-	 * Nel caso in cui l'operazione non venga eseguita correttamente (l'operatore
-	 * sia già registrato, il codice fiscale risulti irregolare e/o vi sia un errore
-	 * nella scrittura del record), restituisce un {@link Result} con un codice di
-	 * errore.
+	 * Metodo che permette registrare un operatore all'applicazione
 	 *
-	 * @param op  {@link Operatore} da registrare
-	 * @param pwd password associata all'operatore
-	 * @return {@link Result} contentente l'istanza di {@link Operatore} registrata
-	 * @see #hashPwd(String)
+	 * @param op  Operatore da registrare
+	 * @param pwd Password da impostare
+	 * @return Restituisce un record relativo all'operatore registrato
 	 */
 	public Result<Operatore> registrazione(Operatore op, String pwd) {
 		String cf = op.getCf().toUpperCase();
@@ -71,9 +52,11 @@ public class GestoreOperatore extends Gestore {
 			return new Result<>(1, "Operatore gia registrato");
 		}
 
-		if (!cfIsValid(cf) && false) {
-			return new Result<>(2, "Codice fiscale irregolare");
-		}
+		/*
+		 * if (!cfIsValid(cf)) {
+		 * return new Result<>(2, "Codice fiscale irregolare");
+		 * }
+		 */
 
 		try {
 			p.printRecord(cf, op.getUid(), op.getNome(), op.getCognome(), op.getEmail(),
@@ -88,31 +71,22 @@ public class GestoreOperatore extends Gestore {
 	}
 
 	/**
-	 * Esegue l'accesso di un operatore verificando le credenziali fornite.
-	 * <p>
-	 * Scorre i record CSV per trovare il record corrispondente
-	 * all'{@link Operatore} di cui eseguire l'accesso, per poi verificare la
-	 * congurenza della password fornita.
-	 * <p>
-	 * Nel caso in cui l'operazione non venga eseguita correttemente (la password
-	 * risulti errata e/o il record non venga trovato), restituisce un
-	 * {@link Result} con un codice di errore.
+	 * Metodo che permette a un utente di effettuare il login
 	 *
-	 * @param uid user ID associato all'operatore
-	 * @param pwd password associata all'operatore
-	 * @return {@link Record} contenente l'istanza di {@link Operatore} di cui viene
-	 *         eseguito l'accesso
-	 * @see #hashPwd(String)
+	 * @param uid UserID relativo all'utente da registrare
+	 * @param pwd Password relativa all'utente registrato
+	 * @return Restituisce un record relativo all'operatore che ha effettuato il
+	 *         login
 	 */
 	public Result<Operatore> login(String uid, String pwd) {
-		String pwdHash = hashPwd(pwd);
+		// String pwdHash = hashPwd(pwd);
 
 		for (CSVRecord record : records) {
 			String dbUid = record.get("UserID");
 			String dbPwd = record.get("Password");
 
 			if (uid.equals(dbUid)) {
-				if (pwdHash.equals(dbPwd)) {
+				if (pwd.equals(dbPwd)) {
 					return new Result<>((Operatore) buildObject(record));
 				} else {
 					return new Result<>(2, "Password errata");
@@ -124,19 +98,11 @@ public class GestoreOperatore extends Gestore {
 	}
 
 	/**
-	 * Recupera un'istanza di {@link Operatore} basandosi sul CF (codice fiscale)
-	 * fornito.
-	 * <p>
-	 * Ricerca un record CSV con il codice fiscale specifico nella lista di record e
-	 * costruisce il rispettivo {@link Operatore} usando il metodo
-	 * {@link #buildObject(CSVRecord)}.
-	 * <p>
-	 * Nel caso in cui non venga trovato nessun record corrispondente al CF fornito,
-	 * restituisce un {@link Result} con un codice di errore.
+	 * Metodo che ricerca un operatore in base al suo codice fiscale
 	 *
-	 * @param cf codice fiscale relativo al centro di monitoraggio d'interesse
-	 * @return restituisce l'istanza di {@link Operatore} corrispondente al
-	 *         codice fiscale fornito come parametro
+	 * @param cf Codice fiscale relativo all'operatore d'interesse
+	 * @return Restituisce il record relativo all'operatore con il codice fiscale
+	 *         fornito come parametro
 	 */
 	Result<Operatore> getOperatoreByCf(String cf) {
 		for (CSVRecord record : records) {
@@ -152,18 +118,11 @@ public class GestoreOperatore extends Gestore {
 	}
 
 	/**
-	 * Recupera un'istanza di {@link Operatore} basandosi sul UID (user ID) fornito.
-	 * <p>
-	 * Ricerca un record CSV con lo user ID specifico nella lista di record e
-	 * costruisce il rispettivo {@link Operatore} usando il metodo
-	 * {@link #buildObject(CSVRecord)}.
-	 * <p>
-	 * Nel caso in cui non venga trovato nessun record corrispondente al UID
-	 * fornito, restituisce un {@link Result} con un codice di errore.
+	 * Metodo che ricerca un operatore in base al suo UserID
 	 *
-	 * @param uid user ID relativo al centro di monitoraggio d'interesse
-	 * @return restituisce l'istanza di {@link Operatore} corrispondente al
-	 *         user ID fornito come parametro
+	 * @param uid UserID relativo all'operatore d'interesse
+	 * @return Restituisce il record relativo all'operatore con lo UserID fornito
+	 *         come parametro
 	 */
 	Result<Operatore> getOperatoreByUid(String uid) {
 		for (CSVRecord record : records) {
@@ -179,13 +138,11 @@ public class GestoreOperatore extends Gestore {
 	}
 
 	/**
-	 * Controlla la validità di un CF (codice fiscale).
-	 * <p>
-	 * Crea un {@link Pattern} per eseguire una verifica tramite <i>regex</i>.
+	 * Metodo che controlla che un codice fiscale sia valido
 	 *
-	 * @param cf codice fiscale da controllare
-	 * @return {@code boolean} che rappresenta la validità del codice fiscale
-	 *         fornito
+	 * @param cf Codice fiscale da controllare
+	 * @return Restituisce un booleano che rappresenta la validità del codice
+	 *         fiscale fornito come parametro
 	 */
 	public boolean cfIsValid(String cf) {
 		Pattern cfPattern = Pattern.compile(
@@ -195,12 +152,10 @@ public class GestoreOperatore extends Gestore {
 	}
 
 	/**
-	 * <b><i>Metodo non implementato</i></b>
-	 * <p>
-	 * Cifra la password fornita utilizzando l'algoritmo di hash SHA-256.
+	 * Metodo
 	 *
-	 * @param pwd password da cifrare
-	 * @return password cifrata (hash)
+	 * @param pwd
+	 * @return
 	 */
 	private String hashPwd(String pwd) {
 

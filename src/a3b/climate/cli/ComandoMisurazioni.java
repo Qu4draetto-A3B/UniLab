@@ -1,5 +1,9 @@
 package a3b.climate.cli;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
@@ -16,42 +20,30 @@ import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
 /**
- * La classe {@code ComandoMisurazioni} implementa l'interfaccia {@link View}
- * per gestire il comando che crea una nuova misurazione.
- * <p>
- * Legge la configurazione necessaria da un file INI per creare una nuova
- * istanza di {@link Misurazione} e la aggiunge al database.
+ * ComandoMisurazioni
  */
 public class ComandoMisurazioni implements View {
 
-	/**
-	 * Legge da un file INI la configurazione necessaria per creare una nuova
-	 * misurazione.
-	 * <p>
-	 * La nuova {@link Misurazione} viene aggiunta al database e il
-	 * risultato dell'operazione viene stampato nel terminale.
-	 *
-	 * @param term istanza di {@link Terminal} utilizzata per stampare la nuova
-	 *             misurazione
-	 */
 	@Override
-	public void start(Terminal term) {
-		String path = App.line.getOptionValue("crea-misurazione");
-		if (path.isBlank())
-			path = "./MISURAZIONE.INI";
+	public void start(Terminal term) throws IOException {
+		Path misIni = Paths.get("./MISURAZIONE.INI");
+		Path resIni = Paths.get("./data/resources/MISURAZIONE.INI");
 
-		IniFile ini = null;
-		try {
-			ini = new IniFile(path);
-		} catch (Exception e) {
-			term.printfln("Impossibile leggere il file '%s'", path);
+		if (Files.notExists(misIni)) {
+			Files.copy(resIni, misIni);
+			term.printfln(
+					"File '%s' creato, riempilo con le informazioni necessarie e riavvia l'applicazione con lo stesso comando",
+					misIni.toString());
 			return;
 		}
 
+		IniFile ini = new IniFile(misIni.toString());
+
 		// check e get operatore
-		Result<Operatore> rop = DataBase.operatore.login(
-				ini.getString("utente", "nome_utente", "*"),
-				ini.getString("utente", "password", "*"));
+		String userid = ini.getString("utente", "nome_utente", "*").strip();
+		String passwd = ini.getString("utente", "password", "*").strip();
+
+		Result<Operatore> rop = DataBase.operatore.login(userid, passwd);
 
 		Operatore op = null;
 		switch (rop.getError()) {
@@ -59,24 +51,18 @@ public class ComandoMisurazioni implements View {
 				op = rop.get();
 				break;
 
-			case 1:
-				term.printfln("Utente non trovato");
-				return;
-
-			case 2:
-				term.printfln("Password sbagliata");
-				return;
-
 			default:
-				term.printfln("Errore sconosciuto");
+				term.printfln("%s", rop.getMessage());
 				return;
 		}
 
 		// check e get centro
-		Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(ini.getString("misurazione", "centro", "*"));
+		String centro = ini.getString("misurazione", "centro", "*").strip();
+		Result<CentroMonitoraggio> rcm = DataBase.centro.getCentro(centro);
 
 		if (rcm.isError()) {
-			term.printfln("centro non trovato");
+			term.printfln("'%s': %s", centro, rcm.getMessage());
+			return;
 		}
 
 		CentroMonitoraggio cm = rcm.get();
@@ -84,7 +70,7 @@ public class ComandoMisurazioni implements View {
 		// check e get area
 		long geoid = 0;
 		try {
-			geoid = ini.getInt("misurazione", "area", 0);
+			geoid = ini.getInt("misurazione", "geoid_area", 0);
 		} catch (NumberFormatException e) {
 			term.printfln("Non mi hai dato un geoid");
 			return;
@@ -93,7 +79,7 @@ public class ComandoMisurazioni implements View {
 		Result<AreaGeografica> rag = cm.getListaAree().getArea(geoid);
 
 		if (rag.isError()) {
-			term.printfln("Area non trovata");
+			term.printfln("[%d]: %s", geoid, rag.getMessage());
 			return;
 		}
 
@@ -116,14 +102,15 @@ public class ComandoMisurazioni implements View {
 					(byte) 0,
 					(byte) ini.getInt("dato_geografico", "altitudine_ghiacciai", 0),
 					(byte) ini.getInt("dato_geografico", "massa_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "precipitazioni_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "pressione_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "temperatura_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "umidita_ghiacciai", 0),
-					(byte) ini.getInt("dato_geografico", "vento_ghiacciai", 0),
+					(byte) ini.getInt("dato_geografico", "precipitazioni", 0),
+					(byte) ini.getInt("dato_geografico", "pressione", 0),
+					(byte) ini.getInt("dato_geografico", "temperatura", 0),
+					(byte) ini.getInt("dato_geografico", "umidita", 0),
+					(byte) ini.getInt("dato_geografico", "vento", 0),
 					note);
 		} catch (NumberFormatException e) {
 			term.printfln("Non hai inserito dei numeri tra 0 e 5 nella sezione [dato_geografico]");
+			return;
 		}
 
 		// inserimento nel database

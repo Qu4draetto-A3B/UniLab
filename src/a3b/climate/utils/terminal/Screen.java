@@ -14,6 +14,8 @@
  */
 package a3b.climate.utils.terminal;
 
+import java.io.IOException;
+
 /**
  * The `Screen` class represents a screen for displaying views using a terminal.
  * It provides methods to manage the display of views on the terminal screen.
@@ -36,6 +38,11 @@ public class Screen {
      */
 	public void show(View v) {
 		term.clear();
-		v.start(term);
+		try {
+			v.start(term);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 }

@@ -4,5 +4,13 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
     ],
-	"latex-workshop.latex.outDir": "out/"
+    "java.autobuild.enabled": false,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:UniLab}/data/climate_data.sqlite",
+            "name": "Climate Data"
+        }
+    ]
 }

@@ -14,6 +14,8 @@
  */
 package a3b.climate.utils.terminal;
 
+import java.io.IOException;
+
 /**
  * L'interfaccia {@code View} permette di inizializzare il terminale e visualizzarne i contenuti iniziali.
  */
@@ -23,5 +25,5 @@ public interface View {
      *
      * @param term terminale utilizzato per la visualizzazione
      */
-    void start(Terminal term);
+    void start(Terminal term) throws IOException;
 }

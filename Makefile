@@ -1,18 +1,17 @@
 # Main Class, project name, change as preferred
 MAIN_CLASS := a3b.climate.Main
 PRJ_NAME := UniLab
-PRJ_ROOT := $(HOME)/Sources/Chichibio-Savoiardi/UniLab
-
-# Names for generated files
-TARGET_EXEC := $(PRJ_NAME).jar
-TARGET_LIB := lib$(PRJ_NAME).jar
 
 # Directories for where to find build files, libraries and sources, respectively
-MANIFEST := $(PRJ_ROOT)/src/META-INF/MANIFEST.MF
-BUILD_DIR := $(PRJ_ROOT)/bin
-LIB_DIR := $(PRJ_ROOT)/lib
-SRC_DIR := $(PRJ_ROOT)/src
-DOC_DIR := $(PRJ_ROOT)/doc/javadoc
+MANIFEST := ./src/META-INF/MANIFEST.MF
+BUILD_DIR := ./bin
+LIB_DIR := ./lib
+SRC_DIR := ./src
+DOC_DIR := ./doc/javadoc
+
+# Names for generated files
+TARGET_JAR := $(BUILD_DIR)/$(PRJ_NAME).jar
+TARGET_EXE := $(BUILD_DIR)/$(PRJ_NAME)
 
 # Classes are generated in a subdirectory
 CLASS_DIR := $(BUILD_DIR)/class
@@ -26,6 +25,7 @@ SRCS := $(shell find $(SRC_DIR) -name '*.java' -print)
 
 # List of class files
 CLS := $(SRCS:$(SRC_DIR)/%.java=$(CLASS_DIR)/%.class)
+CLS_LIST :=
 
 # List of jar libraries
 LIBS := $(shell find $(LIB_DIR) -name '*.jar' -print)
@@ -36,23 +36,34 @@ run: classes
 
 # Compile and run jar file
 runjar: jar
-	java -jar $(BUILD_DIR)/$(TARGET_EXEC)
+	java -jar $(TARGET_JAR)
 
 # Compile sources to classes
-classes: $(SRCS)
-	javac -d $(CLASS_DIR) -cp $(BUILD_CP) $(SRCS)
+classes: $(CLS)
+	if [ ! -z "$(CLS_LIST)" ]; then \
+		javac -d $(CLASS_DIR) -cp $(BUILD_CP) $(CLS_LIST); \
+	fi
+
+$(CLS): $(CLASS_DIR)/%.class: $(SRC_DIR)/%.java
+	   $(eval CLS_LIST+=$$<)
 
 # Extract libraries to class directory
 libraries: $(LIBS)
 	for lib in $(LIBS); do \
 		jar --extract --file $$lib; \
 	done
-	rm -rf $(PRJ_ROOT)/META-INF $(CLASS_DIR)/org
+	rm -rf ./META-INF $(CLASS_DIR)/org
 	mv -f ./org $(CLASS_DIR)/
 
 # Generate .jar artifact
 jar: classes libraries
-	jar --create --file $(BUILD_DIR)/$(TARGET_EXEC) --manifest $(MANIFEST) -C $(CLASS_DIR) .
+	jar --create --file $(TARGET_JAR) --manifest $(MANIFEST) -C $(CLASS_DIR) .
+
+# Package jar into an executable
+executable: jar
+	echo '#!/usr/bin/java -jar' > $(TARGET_EXE)
+	cat $(TARGET_JAR) >> $(TARGET_EXE)
+	chmod +x $(TARGET_EXE)
 
 # Generate documentation
 docs: $(SRCS)
@@ -66,8 +77,8 @@ clean:
 cleandoc:
 	rm -r $(DOC_DIR)
 
-all: classes jar docs
+all: classes libraries jar docs
 
 cleanall: clean cleandoc
 
-.PHONY: classes run jar clean docs cleandoc
+.PHONY: classes run jar clean docs cleandoc libraries executable

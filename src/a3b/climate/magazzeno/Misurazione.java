@@ -30,7 +30,7 @@ import a3b.climate.utils.DataTable;
  * gestione dei dati.
  */
 
-class Misurazione implements Convertable, DataTable {
+public class Misurazione implements Convertable, DataTable {
 	private long rid;
 	private DatoGeografico dato;
 	private LocalDateTime time;
