@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="UniLab">
+    <output-path>$PROJECT_DIR$/out/artifacts/UniLab</output-path>
+    <root id="archive" name="UniLab.jar">
+      <element id="module-output" name="UniLab" />
+      <element id="module-source" name="UniLab" />
+      <element id="library" level="project" name="lib" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

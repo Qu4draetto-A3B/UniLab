@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Created-By: GNU Make
+Main-Class: a3b.climate.Main

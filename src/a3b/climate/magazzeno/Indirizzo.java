@@ -15,9 +15,15 @@
 package a3b.climate.magazzeno;
 
 import a3b.climate.utils.Convertable;
+import a3b.climate.utils.DataTable;
+import a3b.climate.utils.TipoDatoGeografico;
 
 /**
- * Rappresenta un indirizzo
+ * La classe {@code Indirizzo} rappresenta un indirizzo identificato
+ * da: nome della via, numero civico, CAP, comune di appartenenza e provincia.
+ * <p>
+ * Questa classe implementa l'interfaccia {@link Convertable} per consentire la
+ * gestione dei dati.
  */
 
 public class Indirizzo implements Convertable {
@@ -29,7 +35,10 @@ public class Indirizzo implements Convertable {
 	private String provincia;
 
 	/**
-	 * Costruttore vuoto di un'istanza di Indirizzo
+	 * Costruttore di un'istanza di {@code Indirizzo} con valori predefiniti.
+	 * <p>
+	 * Il {@link #nome} della via viene impostato su "<i>Via Durin I</i>", il {@link #civico} su "<i>42</i>",
+	 * il {@link #cap} su "<i>12345</i>", il {@link #comune} su "<i>Westfalia</i>" e la {@link #provincia} su "<i>Norrenia</i>".
 	 */
 
 	public Indirizzo() {
@@ -41,14 +50,14 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * Costruttore di un'istanza di Indirizzo
-	 * @param nomeVia Nome della via relativa all'indirizzo
-     * @param civico Numero civico relativo all'indirizzo
-	 * @param cap Codice di avviamento postale relativo all'indirizzo
-	 * @param comune Comune relativo all'indirizzo
-	 * @param provincia Provincia relativa all'indirizzo
+	 * Costruttore di un'istanza di {@link Indirizzo}.
+	 *
+	 * @param nomeVia   nome della via relativa all'indirizzo
+	 * @param civico    numero civico relativo all'indirizzo
+	 * @param cap       CAP relativo all'indirizzo
+	 * @param comune    comune relativo all'indirizzo
+	 * @param provincia provincia relativa all'indirizzo
 	 */
-
 	public Indirizzo(String nomeVia, int civico, int cap, String comune, String provincia) {
 		if (cap >= 100000)
 			throw new IllegalArgumentException("CAP invalido");
@@ -60,36 +69,55 @@ public class Indirizzo implements Convertable {
 	}
 
 	/**
-	 * @return Restituisce il nome della via relativo all'indirizzo che chiama il metodo
+	 * Restituisce il nome della via.
+	 *
+	 * @return {@link #nomeVia} relativo all'{@code Indirizzo}
 	 */
-
 	public String getNomeVia() {
 		return nomeVia;
 	}
 
 	/**
-	 * @return Restituisce il numero civico relativo all'indirizzo che chiama il metodo
+	 * Restituisce il numero civico.
+	 *
+	 * @return {@link #civico} relativo all'{@code Indirizzo}
 	 */
-
 	public int getCivico() {
 		return civico;
 	}
 
 	/**
-	 * @return Restituisce il codice di avviamento postale relativo all'indirizzo che chiama il metodo
+	 * Imposta il numero civico di un indirizzo.
+	 *
+	 * @param civico numero civico da impostare nell'{@link Indirizzo}
 	 */
+	public void setCivico(int civico) {
+		this.civico = civico;
+	}
 
+	/**
+	 * Restituisce il CAP.
+	 *
+	 * @return {@link #cap} relativo all'{@code Indirizzo}
+	 */
 	public int getCap() {
 		return cap;
 	}
 
 	/**
-	 * @return Restituisce il comune relativo all'indirizzo che chiama il metodo
+	 * Restituisce il comune di appartenenza.
+	 *
+	 * @return {@link #comune} relativo all'{@code Indirizzo}
 	 */
 	public String getComune() {
 		return comune;
 	}
 
+	/**
+	 * Restituisce la provincia.
+	 *
+	 * @return {@link #provincia} relativa all'{@code Indirizzo}
+	 */
 	public String getProvincia() {
 		return provincia;
 	}

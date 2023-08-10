@@ -14,10 +14,33 @@
  */
 package a3b.climate.utils.result;
 
+/**
+ * La classe {@code Panic} rappresenta un'eccezione non controllata ed estende
+ * {@link Error}.
+ * <p>
+ * Viene utilizzata quando si presenta un errore inaspettato o una situazione
+ * critica che impediscono la continuazione del programma.
+ */
 public class Panic extends Error {
+	/**
+	 * Costruttore di un'istanza di {@code Panic}.
+	 * <p>
+	 * L'istanza viene creata a partire dal messaggio da mostrare all'utente.
+	 *
+	 * @param msg The error message to display to the user.
+	 */
 	public Panic(String msg) {
 		super(msg);
 	}
 
-	public Panic(Throwable t) {super(t);}
+	/**
+	 * Costruttore di un'istanza di {@code Panic}.
+	 * <p>
+	 * L'istanza viene creata a partire dall'oggetto <i> {@link Throwable} </i> specificato.
+	 *
+	 * @param t oggetto che ha causato l'errore
+	 */
+	public Panic(Throwable t) {
+		super(t);
+	}
 }

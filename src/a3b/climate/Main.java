@@ -15,10 +15,7 @@
 package a3b.climate;
 
 import a3b.climate.cli.App;
-import a3b.climate.utils.terminal.Screen;
 import org.apache.commons.cli.*;
-
-import javax.swing.text.html.parser.Parser;
 
 /**
  * Interdisciplinary Workshop A <br>
@@ -32,9 +29,10 @@ import javax.swing.text.html.parser.Parser;
  */
 public class Main {
 	public static CommandLine line;
+	private static Options opts;
 
 	public static void main(String[] args) {
-		Options opts = new Options();
+		opts = new Options();
 		opts.addOption(Option.builder("u")
 			.argName("utente")
 			.longOpt("utente")
@@ -53,7 +51,7 @@ public class Main {
 			.build());
 
 		opts.addOption(Option.builder("q")
-			.argName("avvia")
+			.argName("path")
 			.longOpt("query")
 			.desc("Avvia un'operazione di ricerca dati")
 			.hasArg()
@@ -113,12 +111,7 @@ public class Main {
 			.build());
 
 		if (args.length < 1) {
-			new HelpFormatter().printHelp(
-				"Climate Monitoring",
-				"Programma per il monitoraggio climatico",
-				opts,
-				"Leggi il Manuale Utente per informazioni aggiuntive",
-				false);
+			printHelp();
 			return;
 		}
 
@@ -131,5 +124,15 @@ public class Main {
 		}
 
 		App.start(line);
+	}
+
+	public static void printHelp() {
+		new HelpFormatter().printHelp(
+				App.programName,
+				"Programma per il monitoraggio climatico",
+				opts,
+				"Leggi il Manuale Utente per informazioni aggiuntive",
+				false);
+
 	}
 }

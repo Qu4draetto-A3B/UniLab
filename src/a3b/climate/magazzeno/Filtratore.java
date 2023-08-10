@@ -27,54 +27,44 @@ import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
 
 /**
- * Rappresenta un filtratore
+ * La classe {@code Filtratore} rappresenta uno strumento per filtra una lista
+ * di istanze di {@link Misurazione}.
+ * <p>
+ * Fornisce vari metodi per filtrare la lista in base a diversi criteri.
+ * <p>
+ * Implementa l'interfaccia {@link Iterable} per consentire l'iterazione delle
+ * istanze di {@link Misurazione}, mentre le interfacce
+ * {@link CercaAree} e {@link MediaAree} per consentire le operazioni che
+ * coinvolgono istanze di {@link AreaGeografica}.
  */
-
 
 public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	private List<Misurazione> lm;
 
+	/**
+	 * Costruttore di un'istanza di {@code Filtratore}.
+	 *
+	 * @param lm {@link List} di istanze di {@link Misurazione} da filtrare
+	 */
 	public Filtratore(List<Misurazione> lm) {
 		this.lm = lm;
 	}
 
+	/**
+	 * Recupera la lista di misurazioni dal filtratore.
+	 *
+	 * @return {@link List} di istanze di {@link Misurazione} dal filtratore
+	 */
 	public List<Misurazione> getList() {
 		return lm;
 	}
 
 	/**
-	 * Metodo molto versatile che esegue il filtro corretto smistando autonomamente le classi
-	 * @param dts Piu' oggetti che implementano DataTable
-	 * @return Un nuovo filtratore con solo i dati rilevanti
+	 * Filtra le misurazioni in base gli operatori.
+	 *
+	 * @param ops array di istanze di {@link Operatore} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
-	public Filtratore filtra(DataTable... dts) {
-		List<Misurazione> nlm = new LinkedList<>();
-		Predicate<DataTable> p = null;
-
-		for (Misurazione mis : lm) {
-			for (DataTable dt : dts) {
-				if (dt instanceof Operatore) {
-					p = (pv) -> mis.getOperatore().equals(pv);
-				} else if (dt instanceof CentroMonitoraggio) {
-					p = (pv) -> mis.getCentro().equals(pv);
-				} else if (dt instanceof AreaGeografica) {
-					p = (pv) -> mis.getArea().equals(pv);
-				} else if (dt instanceof DatoGeografico) {
-					p = (pv) -> mis.getDato().equals(pv);
-				} else {
-					p = (pv) -> false;
-				}
-
-				if (p.test(dt)) {
-					nlm.add(mis);
-					break;
-				}
-			}
-		}
-
-		return new Filtratore(nlm);
-	}
-
 	public Filtratore filtraOperatore(Operatore... ops) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -90,10 +80,12 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	}
 
 	/**
+	 * Filtra le misurazioni in base ai centri di monitoraggio.
 	 *
-	 * @param cms
-	 * @return
+	 * @param ops array di istanze di {@link CentroMonitoaggio} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
+
 	public Filtratore filtraCentro(CentroMonitoraggio... cms) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -107,6 +99,13 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		}
 		return new Filtratore(nlm);
 	}
+
+	/**
+	 * Filtra le misurazioni in base alle aree geografiche.
+	 *
+	 * @param ops array di istanze di {@link AreaGeografica} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
 
 	public Filtratore filtraAree(AreaGeografica... ags) {
 		List<Misurazione> nlm = new LinkedList<>();
@@ -122,6 +121,12 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		return new Filtratore(nlm);
 	}
 
+	/**
+	 * Filtra le misurazioni in base alle note.
+	 *
+	 * @param ops array di note usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
 	public Filtratore filtraNote(String... note) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -138,6 +143,12 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		return new Filtratore(nlm);
 	}
 
+	/**
+	 * Filtra le misurazioni in base ai dati geografici.
+	 *
+	 * @param ops array di istanze di {@link Datogeografico} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
 	public Filtratore filtraDato(DatoGeografico... dati) {
 		List<Misurazione> nlm = new LinkedList<>();
 		for (Misurazione mis : lm) {
@@ -149,6 +160,26 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 			}
 
 		}
+		return new Filtratore(nlm);
+	}
+
+	/**
+	 * Filtra le misurazioni in base a delle stringhe (di ricerca).
+	 *
+	 * @param ops array di stringhe usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 */
+	public Filtratore filtraStrings(String... strs) {
+		List<Misurazione> nlm = new LinkedList<>();
+		for (Misurazione m : lm) {
+			for (String s : strs) {
+				if (m.toString().contains(s)) {
+					nlm.add(m);
+					break;
+				}
+			}
+		}
+
 		return new Filtratore(nlm);
 	}
 

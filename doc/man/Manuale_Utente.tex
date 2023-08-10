@@ -1,21 +1,9 @@
-\documentclass[a4paper, 12pt]{report}
+\documentclass[12pt]{scrreprt}
 
-\usepackage[margin=3cm]{geometry}
-\usepackage{hyperref}
-%\usepackage{showkeys} mostra i label che scegli
-\usepackage{graphicx}
-\usepackage{parskip}
-\usepackage{caption}
-\usepackage{url}
+\usepackage{sty/preamble}
 
-% Additional options
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{5}
-
-\title {
-	CLIMATE MONITORING \\
-	Manuale Utente}
-
+\title{Manuale Utente}
+\subtitle{CLIMATE MONITORING}
 \author{
 	Iuri Antico \textit{matricola}:
 	\texttt{753144}
@@ -29,16 +17,11 @@
 	Beatrice Balzarini \textit{matricola}:
 	\texttt{752257}
 }
-
-\date{Giugno 2023}
+\date{\today}
 
 \begin{document}
 
-	\makeatletter
-	\begin{titlepage}
-		\maketitle
-	\end{titlepage}
-	\makeatother
+	\maketitle
 
 	\tableofcontents
 	\listoffigures
@@ -74,7 +57,7 @@
 
 	\section{Avviare l'applicazione}
 
-		\subsection{Requisiti minimi}
+		\subsection{Requisiti minimi\index{Requisiti minimi}}
 
 		\subsection{Avviare l'applicazione}
 
@@ -93,9 +76,11 @@
 
 	\chapter{Limiti della soluzione sviluppata}
 	\chapter{Risoluzione problemi comuni}
-	\chapter{Sitografia / Bibliografia}
 
-	\bibliographystyle{report}
+	\nocite{IuriTex}
+	\bibliographystyle{alpha}
+	\bibliography{bib/biblio}
+	\printindex
 
 \end{document}
 

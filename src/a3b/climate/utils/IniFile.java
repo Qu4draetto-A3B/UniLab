@@ -9,15 +9,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class IniFile {
-
+	/**
+	 * Classe che si occupa di
+	 */
 	private final Pattern _section = Pattern.compile("\\s*\\[([^]]*)\\]\\s*");
 	private final Pattern _keyValue = Pattern.compile("\\s*([^=]*)=(.*)");
 	private Map<String, Map<String, String>> _entries = new HashMap<>();
 
+	/**
+	 * Costruttore della classe IniFile
+	 * @param path
+	 * @throws IOException
+	 */
 	public IniFile(String path) throws IOException {
 		load(path);
 	}
 
+
+	/**
+	 *
+	 * @param path
+	 * @throws IOException
+	 */
 	public void load(String path) throws IOException {
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			String line;
@@ -42,6 +55,14 @@ public class IniFile {
 		}
 	}
 
+
+	/**
+	 *
+	 * @param section
+	 * @param key
+	 * @param defaultvalue
+	 * @return
+	 */
 	public String getString(String section, String key, String defaultvalue) {
 		Map<String, String> kv = _entries.get(section);
 		if (kv == null) {
@@ -50,6 +71,14 @@ public class IniFile {
 		return kv.get(key);
 	}
 
+
+	/**
+	 *
+	 * @param section
+	 * @param key
+	 * @param defaultvalue
+	 * @return
+	 */
 	public int getInt(String section, String key, int defaultvalue) {
 		Map<String, String> kv = _entries.get(section);
 		if (kv == null) {
@@ -57,7 +86,13 @@ public class IniFile {
 		}
 		return Integer.parseInt(kv.get(key));
 	}
-
+	/**
+	 *
+	 * @param section
+	 * @param key
+	 * @param defaultvalue
+	 * @return
+	 */
 	public double getDouble(String section, String key, double defaultvalue) {
 		Map<String, String> kv = _entries.get(section);
 		if (kv == null) {
