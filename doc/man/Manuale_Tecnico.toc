@@ -1,0 +1,53 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduzione}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Librerie esterne utilizzate}{4}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Apache Commons CSV}{4}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Apache Commons CLI}{4}{subsection.1.1.2}%
+\contentsline {chapter}{\numberline {2}Struttura generale del sistema di classi}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}cli}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}App}{5}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}ComandoCentri}{5}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}ComandoMisurazioni}{5}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}MostraAree}{6}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}MostraCentri}{6}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}MostraMisurazioni}{6}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}Query}{7}{subsection.2.1.7}%
+\contentsline {subsection}{\numberline {2.1.8}Registrazione}{7}{subsection.2.1.8}%
+\contentsline {section}{\numberline {2.2}gestori}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}DataBase}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Gestore}{8}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}GestoreArea}{9}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}GestoreCentro}{9}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}GestoreDato}{10}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}GestoreMisurazioni}{10}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}GestoreOperatore}{11}{subsection.2.2.7}%
+\contentsline {section}{\numberline {2.3}Magazzeno}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}AreaGeografica}{12}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}CentroMonitoraggio}{12}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}DatoGeografico}{13}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Filtratore}{15}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Indirizzo}{16}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}ListaAree}{17}{subsection.2.3.6}%
+\contentsline {subsection}{\numberline {2.3.7}Misurazioni}{19}{subsection.2.3.7}%
+\contentsline {subsection}{\numberline {2.3.8}Operatore}{19}{subsection.2.3.8}%
+\contentsline {section}{\numberline {2.4}Utils}{20}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}listacustom}{20}{subsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.1.1}CollezioniIterator}{21}{subsubsection.2.4.1.1}%
+\contentsline {subsubsection}{\numberline {2.4.1.2}Nodo}{21}{subsubsection.2.4.1.2}%
+\contentsline {subsection}{\numberline {2.4.2}result}{21}{subsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.2.1}Panic}{22}{subsubsection.2.4.2.1}%
+\contentsline {subsubsection}{\numberline {2.4.2.2}Result}{22}{subsubsection.2.4.2.2}%
+\contentsline {subsection}{\numberline {2.4.3}terminal}{23}{subsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.3.1}Screen}{23}{subsubsection.2.4.3.1}%
+\contentsline {subsubsection}{\numberline {2.4.3.2}Terminal}{24}{subsubsection.2.4.3.2}%
+\contentsline {subsubsection}{\numberline {2.4.3.3}View}{25}{subsubsection.2.4.3.3}%
+\contentsline {subsection}{\numberline {2.4.4}CercaAree}{25}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Convertable}{26}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}DataTable}{26}{subsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.4.7}MediaAree}{27}{subsection.2.4.7}%
+\contentsline {subsection}{\numberline {2.4.8}IniFile}{27}{subsection.2.4.8}%
+\contentsline {subsection}{\numberline {2.4.9}TipoDatoGeografico}{28}{subsection.2.4.9}%
+\contentsline {section}{\numberline {2.5}Main}{28}{section.2.5}%
+\contentsline {chapter}{\nonumberline Bibliografia}{29}{chapter*.2}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
