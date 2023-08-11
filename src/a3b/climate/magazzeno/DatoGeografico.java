@@ -23,7 +23,7 @@ import a3b.climate.utils.TipoDatoGeografico;
 /**
  * La classe {@code DatGeografico} rappresenta un dato geografico
  * identificato da ID, massa dei ghiacciai, altitudine dei ghiacciai,
- * precipitazioni, temperatura, pressione, umidit&agrave e vento.
+ * precipitazioni, temperatura, pressione, umidit&agrave; e vento.
  * <p>
  * Questa classe implementa l'interfaccia {@link DataTable} per consentire la
  * gestione dei dati.
@@ -46,7 +46,7 @@ public class DatoGeografico implements DataTable {
 	 * @param rid  ID relativo al record del dato
 	 * @param tipo {@link TipoDatoGeografico} (tipo del dato geografico)
 	 * @param dato valore da 0 (valore nullo, di default) a 5 che rappresenta il
-	 *             livello di criticit&agrave del dato geografico
+	 *             livello di criticit&agrave; del dato geografico
 	 * @param nota note relative al dato geografico
 	 */
 
@@ -331,7 +331,7 @@ public class DatoGeografico implements DataTable {
 	 * Recupera le note del dato geografico e le confronta con quelle del dato
 	 * geografico fornito.
 	 *
-	 * @param dato {@link DatoGeografico} con cui confrontare le note
+	 * @param dato {@link a3b.climate.magazzeno.DatoGeografico} con cui confrontare le note
 	 * @return {@code boolean} che indica se le note dei dati geografici sono
 	 *         uaguali
 	 */
@@ -351,7 +351,7 @@ public class DatoGeografico implements DataTable {
 	 * dato
 	 * geografico fornito.
 	 *
-	 * @param dato {@link DatoGeografico} con cui confrontare i valori dei dati
+	 * @param dato {@link a3b.climate.magazzeno.DatoGeografico} con cui confrontare i valori dei dati
 	 * @return {@code boolean} che indica se i valori dei dati dei dati geografici
 	 *         sono uguali
 	 */

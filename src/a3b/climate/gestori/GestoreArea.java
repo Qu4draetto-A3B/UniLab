@@ -27,7 +27,7 @@ import a3b.climate.utils.result.*;
  * l'interfaccia {@link CercaAree}.
  * <p>
  * Gestisce le operazioni di lettura e scrittura su file CSV di dati riguardanti
- * istanze di {@link AreaGeografica}.
+ * istanze di {@link a3b.climate.magazzeno.AreaGeografica}.
  */
 public class GestoreArea extends Gestore implements CercaAree {
 	/**
@@ -43,17 +43,17 @@ public class GestoreArea extends Gestore implements CercaAree {
 	}
 
 	/**
-	 * Recupera un'istanza di {@link AreaGeografica} basandosi sull'ID specificato.
+	 * Recupera un'istanza di {@link a3b.climate.magazzeno.AreaGeografica} basandosi sull'ID specificato.
 	 * <p>
 	 * Ricerca un record CSV con il GeonameID specifico nella lista di record e
-	 * costruisce la rispettiva {@link AreaGeografica}
+	 * costruisce la rispettiva {@link a3b.climate.magazzeno.AreaGeografica}
 	 * usando il metodo {@link #buildObject(CSVRecord)}.
 	 * <p>
 	 * Se non viene trovato nessun record corrispondente all'ID fornito, restituisce
 	 * un {@link Result} con un codice di errore.
 	 *
 	 * @param geoId ID relativo all'area geografica d'interesse
-	 * @return istanza di {@link AreaGeografica} corrispondente all'ID fornito come
+	 * @return istanza di {@link a3b.climate.magazzeno.AreaGeografica} corrispondente all'ID fornito come
 	 *         parametro
 	 */
 

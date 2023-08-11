@@ -26,7 +26,7 @@ import a3b.climate.utils.result.Result;
  * La classe {@code GestoreCentro} estende la classe {@link Gestore}.
  * <p>
  * Gestisce le operazioni di lettura e scrittura su file CSV di dati riguardanti
- * istanze di {@link CentroMonitoraggio}.
+ * istanze di {@link a3b.climate.magazzeno.CentroMonitoraggio}.
  */
 public class GestoreCentro extends Gestore {
 	/**
@@ -42,11 +42,11 @@ public class GestoreCentro extends Gestore {
 	}
 
 	/**
-	 * Recupera un'istanza di {@link CentroMonitoraggio} basandosi sul nome
+	 * Recupera un'istanza di {@link a3b.climate.magazzeno.CentroMonitoraggio} basandosi sul nome
 	 * specificato.
 	 * <p>
 	 * Ricerca un record CSV con il nome specifico nella lista di record e
-	 * costruisce il rispettivo {@link CentroMonitoraggio} usando il metodo
+	 * costruisce il rispettivo {@link a3b.climate.magazzeno.CentroMonitoraggio} usando il metodo
 	 * {@link #buildObject(CSVRecord)}.
 	 * <p>
 	 * Nel caso in cui non venga trovato nessun record corrispondente al nome
@@ -54,7 +54,7 @@ public class GestoreCentro extends Gestore {
 	 * restituisce un {@link Result} con un codice di errore.
 	 *
 	 * @param nome nome relativo al centro di monitoraggio d'interesse
-	 * @return restituisce l'istanza di {@link CentroMonitoraggio} corrispondente al
+	 * @return restituisce l'istanza di {@link a3b.climate.magazzeno.CentroMonitoraggio} corrispondente al
 	 *         nome fornito come parametro
 	 */
 	public Result<CentroMonitoraggio> getCentro(String nome) {
@@ -70,15 +70,15 @@ public class GestoreCentro extends Gestore {
 	/**
 	 * Aggiunge un nuovo centro di monitoraggio al relativo file CSV.
 	 * <p>
-	 * Controlla se un {@link CentroMonitoraggio} con lo stesso nome &egrave;
-	 * gi&agrave presente nel file utilizzando il metodo {@link #getCentro(String)}.
+	 * Controlla se un {@link a3b.climate.magazzeno.CentroMonitoraggio} con lo stesso nome &egrave;
+	 * gi&agrave; presente nel file utilizzando il metodo {@link #getCentro(String)}.
 	 * <p>
 	 * Nel caso in cui l'operazione non venga eseguita correttamente (il centro sia
-	 * gi&agrave esistente e/o vi sia un errore nella scrittura del record),
+	 * gi&agrave; esistente e/o vi sia un errore nella scrittura del record),
 	 * restituisce un {@link Result} con un codice di errore.
 	 *
-	 * @param cm {@link CentroMonitoraggio} da aggiungere al file CSV
-	 * @return {@link Result} contenente il {@link CentroMonitoraggio} aggiunto
+	 * @param cm {@link a3b.climate.magazzeno.CentroMonitoraggio} da aggiungere al file CSV
+	 * @return {@link Result} contenente il {@link a3b.climate.magazzeno.CentroMonitoraggio} aggiunto
 	 */
 	public Result<CentroMonitoraggio> addCentro(CentroMonitoraggio cm) {
 		if (getCentro(cm.getNome()).isValid()) {

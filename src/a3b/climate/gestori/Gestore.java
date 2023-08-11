@@ -148,10 +148,10 @@ public abstract class Gestore implements AutoCloseable {
 	protected abstract DataTable buildObject(CSVRecord record);
 
 	/**
-	 * Recupera una propriet&agrave nel file di metadati associato ad una tabella
+	 * Recupera una propriet&agrave; nel file di metadati associato ad una tabella
 	 * CSV in base alla chiave data.
 	 *
-	 * @param key chiave per accedere alla propriet&agrave del file
+	 * @param key chiave per accedere alla propriet&agrave; del file
 	 * @return {@link Result} contenente la stringa relativa alla proprietà richiesta
 	 */
 	protected Result<String> getProperty(String key) {
@@ -187,14 +187,14 @@ public abstract class Gestore implements AutoCloseable {
 	}
 
 	/**
-	 * Imposta una propriet&agrave nel file di metadati associato ad una tabella CSV
+	 * Imposta una propriet&agrave; nel file di metadati associato ad una tabella CSV
 	 * in base alla chiave data.
 	 * <p>
 	 * Nel caso in fosse impossibile scrivere sul file di metadati, restituisce un
 	 * {@link Result} con un codice di errore.
 	 *
 	 * @param key chiave per accedere al file
-	 * @param val propriet&agrave da impostare
+	 * @param val propriet&agrave; da impostare
 	 * @return {@link Result} relativo all'operazione effettuata
 	 */
 	protected Result<Object> setProperty(String key, String val) {

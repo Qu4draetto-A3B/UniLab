@@ -27,15 +27,15 @@ public interface CercaAree {
 	 * Ricerca un'area geografica in base a denominazione e stato di appartenenza forniti.
 	 *
 	 * @return aree nel cui nome &egrave; presente la stringa di caratteri fornita
-	 * @param denominazione nome relativo a un'{@link AreaGeografica}
-	 * @param stato         stato di appartenenza di un'{@link AreaGeografica}
+	 * @param denominazione nome relativo a un'{@link a3b.climate.magazzeno.AreaGeografica}
+	 * @param stato         stato di appartenenza di un'{@link a3b.climate.magazzeno.AreaGeografica}
 	 */
 	public ListaAree cercaAreaGeografica(String denominazione, String stato);
 
 	/**
 	 * Ricerca delle aree geografiche in base alle coordinate geografiche fornite.
 	 *
-	 * @return nome dell'{@link AreaGeografica} corrispondente alle coordinate geografiche corrispondenti o delle aree geografiche corrispondenti
+	 * @return nome dell'{@link a3b.climate.magazzeno.AreaGeografica} corrispondente alle coordinate geografiche corrispondenti o delle aree geografiche corrispondenti
 	 *         con coordinate più vicine
 	 * @param latitudine  latitudine di una coordinata geografica
 	 * @param longitudine longitudine di una coordinata geografica

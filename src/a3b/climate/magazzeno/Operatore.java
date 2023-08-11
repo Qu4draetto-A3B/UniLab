@@ -62,7 +62,7 @@ public class Operatore implements Convertable, DataTable {
 	 * il {@link #nome} su "<i>Civile</i>", il {@link #cognome} su"<i>Civile</i>" e
 	 * la {@link #email} su "<i>civile@example.com</i>".
 	 * Il {@link #centro} viene inizializzato con un nuovo
-	 * {@link CentroMonitoraggio} predefinito.
+	 * {@link a3b.climate.magazzeno.CentroMonitoraggio} predefinito.
 	 */
 	public Operatore() {
 		cf = "CIVILE";
@@ -76,8 +76,8 @@ public class Operatore implements Convertable, DataTable {
 	/**
 	 * Imposta i dati climatici di una determinata area nel database.
 	 *
-	 * @param area  {@link AreaGeografica} relativa ai dati
-	 * @param dato  {@link DatoGeografico} contenente i valori dei parametri
+	 * @param area  {@link a3b.climate.magazzeno.AreaGeografica} relativa ai dati
+	 * @param dato  {@link a3b.climate.magazzeno.DatoGeografico} contenente i valori dei parametri
 	 *              climatici
 	 * @param tempo data e ora in cui avviene l'inserimento dei dati nel database
 	 */

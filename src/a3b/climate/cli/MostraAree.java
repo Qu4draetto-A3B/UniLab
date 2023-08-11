@@ -16,7 +16,7 @@ import a3b.climate.utils.terminal.View;
  * ID.
  * <p>
  * Legge le coordinate e gli ID dalla linea di comando e recupera le istanze di
- * {@link AreaGeografica} corrispondenti dal database, le quali vengono
+ * {@link a3b.climate.magazzeno.AreaGeografica} corrispondenti dal database, le quali vengono
  * stampate nel terminale.
  */
 public class MostraAree implements View {
@@ -24,7 +24,7 @@ public class MostraAree implements View {
 	 * Recupera le aree geografiche in base alle coordinate o
 	 * agli ID forniti nella linea di comando.
 	 * <p>
-	 * Richiede al database le istanze di {@link AreaGeografica}
+	 * Richiede al database le istanze di {@link a3b.climate.magazzeno.AreaGeografica}
 	 * corrispondenti e le stampa nel terminale.
 	 *
 	 * @param term istanza di {@link Terminal} utilizzata per stampare le aree

@@ -24,7 +24,7 @@ import a3b.climate.utils.terminal.View;
  * per gestire il comando che crea una nuova misurazione.
  * <p>
  * Legge la configurazione necessaria da un file INI per creare una nuova
- * istanza di {@link Misurazione} e la aggiunge al database.
+ * istanza di {@link a3b.climate.magazzeno.Misurazione} e la aggiunge al database.
  */
 public class ComandoMisurazioni implements View {
 
@@ -32,7 +32,7 @@ public class ComandoMisurazioni implements View {
 	 * Legge da un file INI la configurazione necessaria per creare una nuova
 	 * misurazione.
 	 * <p>
-	 * La nuova {@link Misurazione} viene aggiunta al database e il
+	 * La nuova {@link a3b.climate.magazzeno.Misurazione} viene aggiunta al database e il
 	 * risultato dell'operazione viene stampato nel terminale.
 	 *
 	 * @param term istanza di {@link Terminal} utilizzata per stampare la nuova

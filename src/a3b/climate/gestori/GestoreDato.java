@@ -29,7 +29,7 @@ import a3b.climate.utils.result.Result;
  * La classe {@code GestoreDato} estende la classe {@link Gestore}.
  * <p>
  * Gestisce le operazioni di lettura e scrittura su file CSV di dati riguardanti
- * istanze di {@link DatoGeografico}.
+ * istanze di {@link a3b.climate.magazzeno.DatoGeografico}.
  */
 public class GestoreDato extends Gestore {
 
@@ -50,11 +50,11 @@ public class GestoreDato extends Gestore {
 	}
 
 	/**
-	 * Recupera un'istanza di {@link DatoGeografico} basandosi sull'ID
+	 * Recupera un'istanza di {@link a3b.climate.magazzeno.DatoGeografico} basandosi sull'ID
 	 * specificato.
 	 * <p>
 	 * Ricerca un record CSV con l'ID specifico nella lista di record e
-	 * costruisce il rispettivo {@link DatoGeografico} usando il metodo
+	 * costruisce il rispettivo {@link a3b.climate.magazzeno.DatoGeografico} usando il metodo
 	 * {@link #buildObject(CSVRecord)}.
 	 * <p>
 	 * Nel caso in cui non venga trovato nessun record corrispondente all'ID
@@ -62,7 +62,7 @@ public class GestoreDato extends Gestore {
 	 * restituisce un {@link Result} con un codice di errore.
 	 *
 	 * @param rid ID relativo al dato geografico d'interesse
-	 * @return restituisce l'istanza di {@link DatoGeografico} corrispondente all'ID
+	 * @return restituisce l'istanza di {@link a3b.climate.magazzeno.DatoGeografico} corrispondente all'ID
 	 *         fornito come parametro
 	 */
 	public Result<DatoGeografico> getDato(long rid) {
@@ -87,21 +87,21 @@ public class GestoreDato extends Gestore {
 	/**
 	 * Aggiunge un nuovo dato geografico al file CSV associato.
 	 * <p>
-	 * Recupera la propret&agrave <i>LastRID</i> (ultimo record ID) dal file di
+	 * Recupera la propret&agrave; <i>LastRID</i> (ultimo record ID) dal file di
 	 * metadati usando il metodo {@link #getProperty(String)} e la incrementa di uno
 	 * per creare un nuovo record.
-	 * La propriet&agrave aggiornata viene reimpostata nel file di metadati usando
+	 * La propriet&agrave; aggiornata viene reimpostata nel file di metadati usando
 	 * il
 	 * metodo {@link #setProperty(String, String)}.
 	 * <p>
-	 * Il record con i dati relativi al {@link DatoGeografico} viene aggiunto al
+	 * Il record con i dati relativi al {@link a3b.climate.magazzeno.DatoGeografico} viene aggiunto al
 	 * file CSV.
 	 * <p>
 	 * Nel caso in cui vi sia un errore nella scrittura del record, restituisce un
 	 * {@link Result} con un codice di errore.
 	 *
-	 * @param dato {@link Datogeografico} da aggiungere al file CSV
-	 * @return {@link Result} contenente la nuova istanza di {@link DatoGeografico}
+	 * @param dato {@link a3b.climate.magazzeno.DatoGeografico} da aggiungere al file CSV
+	 * @return {@link Result} contenente la nuova istanza di {@link a3b.climate.magazzeno.DatoGeografico}
 	 *         aggiunta e il record ID aggiornato
 	 */
 	public Result<DatoGeografico> addDato(DatoGeografico dato) {

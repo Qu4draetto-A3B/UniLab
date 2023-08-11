@@ -18,7 +18,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 /**
- * La classe {@class Result<T>} rappresenta il risultato di un'operazione che
+ * La classe {@code Result<T>} rappresenta il risultato di un'operazione che
  * può essere stata eseguita correttamente o contenere un errore.
  *
  * @param <T> tipo del contenuto del {@code Result}
@@ -186,7 +186,8 @@ public class Result<T> {
 	}
 
 	/**
-	 * Restituisce il contenuto del {@code Result} senza verificare che non sia {@code null}.
+	 * Restituisce il contenuto del {@code Result} senza verificare che non sia
+	 * {@code null}.
 	 *
 	 * @return contenuto del {@code Result}
 	 */

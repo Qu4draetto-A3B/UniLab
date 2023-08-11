@@ -28,7 +28,7 @@ public class MostraMisurazioni implements View {
 	 * Recupera le misurazioni in base ai ciriteri dati nel filtratore fornito nella
 	 * linea di comando.
 	 * <p>
-	 * Richiede al database le istanze di {@link Misurazione} corrispondenti e le
+	 * Richiede al database le istanze di {@link a3b.climate.magazzeno.Misurazione} corrispondenti e le
 	 * stampa nel terminale.
 	 *
 	 * @param term istanza di {@link Terminal} utilizzata per stampare le

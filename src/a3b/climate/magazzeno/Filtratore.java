@@ -26,14 +26,14 @@ import a3b.climate.utils.result.Result;
 
 /**
  * La classe {@code Filtratore} rappresenta uno strumento per filtra una lista
- * di istanze di {@link Misurazione}.
+ * di istanze di {@link a3b.climate.magazzeno.Misurazione}.
  * <p>
  * Fornisce vari metodi per filtrare la lista in base a diversi criteri.
  * <p>
  * Implementa l'interfaccia {@link Iterable} per consentire l'iterazione delle
- * istanze di {@link Misurazione}, mentre le interfacce
+ * istanze di {@link a3b.climate.magazzeno.Misurazione}, mentre le interfacce
  * {@link CercaAree} e {@link MediaAree} per consentire le operazioni che
- * coinvolgono istanze di {@link AreaGeografica}.
+ * coinvolgono istanze di {@link a3b.climate.magazzeno.AreaGeografica}.
  */
 
 public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
@@ -42,7 +42,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Costruttore di un'istanza di {@code Filtratore}.
 	 *
-	 * @param lm {@link List} di istanze di {@link Misurazione} da filtrare
+	 * @param lm {@link List} di istanze di {@link a3b.climate.magazzeno.Misurazione} da filtrare
 	 */
 	public Filtratore(List<Misurazione> lm) {
 		this.lm = lm;
@@ -51,7 +51,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Recupera la lista di misurazioni dal filtratore.
 	 *
-	 * @return {@link List} di istanze di {@link Misurazione} dal filtratore
+	 * @return {@link List} di istanze di {@link a3b.climate.magazzeno.Misurazione} dal filtratore
 	 */
 	public List<Misurazione> getList() {
 		return lm;
@@ -101,7 +101,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Filtra le misurazioni in base alle aree geografiche.
 	 *
-	 * @param ops array di istanze di {@link AreaGeografica} usate per filtrare
+	 * @param ops array di istanze di {@link a3b.climate.magazzeno.AreaGeografica} usate per filtrare
 	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
 
@@ -144,7 +144,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Filtra le misurazioni in base ai dati geografici.
 	 *
-	 * @param ops array di istanze di {@link Datogeografico} usate per filtrare
+	 * @param ops array di istanze di {@link a3b.climate.magazzeno.DatoGeografico} usate per filtrare
 	 * @return nuovo {@code Filtratore} contenente la lista filtrata
 	 */
 	public Filtratore filtraDato(DatoGeografico... dati) {

@@ -26,7 +26,7 @@ import java.util.Iterator;
 
 /**
  * La classe {@code ListaAree} rappresenta una lista di istanze di
- * {@link AreaGeografica}.
+ * {@link a3b.climate.magazzeno.AreaGeografica}.
  * <p>
  * Fornisce metodi per gestire e accedere agli elementi della lista.
  * <p>
@@ -54,7 +54,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	 *
 	 * @throws IndexOutOfBoundsException se l'indice fornito non &egrave; valido
 	 * @param k indice della posizione dell'area geografica
-	 * @return {@link AreaGeografica} presente all'indice fornito
+	 * @return {@link a3b.climate.magazzeno.AreaGeografica} presente all'indice fornito
 	 *
 	 */
 	public AreaGeografica get(int k) {
@@ -89,7 +89,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	/**
 	 * Restituisce l'area geografica presente nella prima posizione della lista.
 	 *
-	 * @return {@link AreaGeografica} presente in prima posizione nella lista
+	 * @return {@link a3b.climate.magazzeno.AreaGeografica} presente in prima posizione nella lista
 	 * @throws NoSuchElementException se la lista &egrave; vuota
 	 */
 	public AreaGeografica getFirst() {
@@ -101,7 +101,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	/**
 	 * Restituisce l'area geografica presente nell'ultima posizione della lista.
 	 *
-	 * @return {@link AreaGeografica} presente in ultima posizione nella lista
+	 * @return {@link a3b.climate.magazzeno.AreaGeografica} presente in ultima posizione nella lista
 	 * @throws NoSuchElementException se la lista &egrave; vuota
 	 */
 	public AreaGeografica getLast() {
@@ -141,7 +141,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	/**
 	 * Crea un iteratore con le aree presenti nella lista.
 	 *
-	 * @return {@link Iterator} per iterare le istanze di {@link AreaGeografica}
+	 * @return {@link Iterator} per iterare le istanze di {@link a3b.climate.magazzeno.AreaGeografica}
 	 */
 	public Iterator<AreaGeografica> iterator() {
 		return new CollezioniIterator<AreaGeografica>(head);
@@ -150,10 +150,10 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	/**
 	 * Ricerca un'area geografica nella lista basandosi sul suo ID.
 	 * <p>
-	 * Nel caso in cui l'{@link AreaGeografica} non venga trovata, restituisce un
+	 * Nel caso in cui l'{@link a3b.climate.magazzeno.AreaGeografica} non venga trovata, restituisce un
 	 * {@link Result} con un codice di errore.
 	 *
-	 * @param geoId ID dell'{@link AreaGeografica} da cercare
+	 * @param geoId ID dell'{@link a3b.climate.magazzeno.AreaGeografica} da cercare
 	 * @return {@link Result} contenente il risultato della ricerca
 	 */
 	public Result<AreaGeografica> getArea(long geoId) {
