@@ -66,25 +66,25 @@ public class DatoGeografico implements DataTable {
 	/**
 	 * Costruttore di un'istanza di {@code DatoGeografico}.
 	 *
-	 * @param rid                  ID relativo al record del dato
-	 * @param massaGhiacciai       valore da 0 (valore nullo, di default) a 5
-	 *                             relativo alla criticita' della massa dei
-	 *                             ghiacciai
-	 * @param altituidineGhiacciai valore da 0 (valore nullo, di default) a 5
-	 *                             relativo alla criticita' dell'altitudine dei
-	 *                             ghiacciai
-	 * @param precipitazioni       valore da 0 (valore nullo, di default) a 5
-	 *                             relativo alla criticita' delle precipitazioni
-	 * @param temperatura          valore da 0 (valore nullo, di default) a 5
-	 *                             relativo alla criticita' della temperatura
-	 * @param pressione            valore da 0 (valore nullo, di default) a 5
-	 *                             relativo alla criticita' della pressione
-	 * @param umidita              valore da 0 (valore nullo, di default) a 5
-	 *                             relativo alla criticita' dell'umidita'
-	 * @param vento                valore da 0 (valore nullo, di default) a 5
-	 *                             relativo alla criticita' dei venti
-	 * @param note                 {@link HashMap} contenente le note relative al
-	 *                             dato geografico
+	 * @param rid                 ID relativo al record del dato
+	 * @param massaGhiacciai      valore da 0 (valore nullo, di default) a 5
+	 *                            relativo alla criticita' della massa dei
+	 *                            ghiacciai
+	 * @param altitudineGhiacciai valore da 0 (valore nullo, di default) a 5
+	 *                            relativo alla criticita' dell'altitudine dei
+	 *                            ghiacciai
+	 * @param precipitazioni      valore da 0 (valore nullo, di default) a 5
+	 *                            relativo alla criticita' delle precipitazioni
+	 * @param temperatura         valore da 0 (valore nullo, di default) a 5
+	 *                            relativo alla criticita' della temperatura
+	 * @param pressione           valore da 0 (valore nullo, di default) a 5
+	 *                            relativo alla criticita' della pressione
+	 * @param umidita             valore da 0 (valore nullo, di default) a 5
+	 *                            relativo alla criticita' dell'umidita'
+	 * @param vento               valore da 0 (valore nullo, di default) a 5
+	 *                            relativo alla criticita' dei venti
+	 * @param note                {@link HashMap} contenente le note relative al
+	 *                            dato geografico
 	 */
 
 	public DatoGeografico(long rid, byte massaGhiacciai, byte altitudineGhiacciai, byte precipitazioni,
@@ -331,7 +331,8 @@ public class DatoGeografico implements DataTable {
 	 * Recupera le note del dato geografico e le confronta con quelle del dato
 	 * geografico fornito.
 	 *
-	 * @param dato {@link a3b.climate.magazzeno.DatoGeografico} con cui confrontare le note
+	 * @param dato {@link a3b.climate.magazzeno.DatoGeografico} con cui confrontare
+	 *             le note
 	 * @return {@code boolean} che indica se le note dei dati geografici sono
 	 *         uaguali
 	 */
@@ -351,7 +352,8 @@ public class DatoGeografico implements DataTable {
 	 * dato
 	 * geografico fornito.
 	 *
-	 * @param dato {@link a3b.climate.magazzeno.DatoGeografico} con cui confrontare i valori dei dati
+	 * @param dato {@link a3b.climate.magazzeno.DatoGeografico} con cui confrontare
+	 *             i valori dei dati
 	 * @return {@code boolean} che indica se i valori dei dati dei dati geografici
 	 *         sono uguali
 	 */

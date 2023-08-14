@@ -25,7 +25,8 @@ import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
 
 /**
- * La classe {@code Filtratore} rappresenta uno strumento per filtra una lista
+ * La classe {@code Filtratore} rappresenta uno strumento
+ * per filtra una lista
  * di istanze di {@link a3b.climate.magazzeno.Misurazione}.
  * <p>
  * Fornisce vari metodi per filtrare la lista in base a diversi criteri.
@@ -42,7 +43,8 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Costruttore di un'istanza di {@code Filtratore}.
 	 *
-	 * @param lm {@link List} di istanze di {@link a3b.climate.magazzeno.Misurazione} da filtrare
+	 * @param lm {@link java.util.List} di istanze di
+	 *           {@link a3b.climate.magazzeno.Misurazione} da filtrare
 	 */
 	public Filtratore(List<Misurazione> lm) {
 		this.lm = lm;
@@ -51,7 +53,8 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Recupera la lista di misurazioni dal filtratore.
 	 *
-	 * @return {@link List} di istanze di {@link a3b.climate.magazzeno.Misurazione} dal filtratore
+	 * @return {@link java.util.List} di istanze di
+	 *         {@link a3b.climate.magazzeno.Misurazione} dal filtratore
 	 */
 	public List<Misurazione> getList() {
 		return lm;
@@ -60,8 +63,10 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Filtra le misurazioni in base gli operatori.
 	 *
-	 * @param ops array di istanze di {@link Operatore} usate per filtrare
-	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 * @param ops array di istanze di {@link a3b.climate.magazzeno.Operatore} usate
+	 *            per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista
+	 *         filtrata
 	 */
 	public Filtratore filtraOperatore(Operatore... ops) {
 		List<Misurazione> nlm = new LinkedList<>();
@@ -80,8 +85,9 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Filtra le misurazioni in base ai centri di monitoraggio.
 	 *
-	 * @param ops array di istanze di {@link CentroMonitoaggio} usate per filtrare
-	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 * @param cms array di istanze di {@link CentroMonitoraggio} usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista
+	 *         filtrata
 	 */
 
 	public Filtratore filtraCentro(CentroMonitoraggio... cms) {
@@ -101,8 +107,10 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Filtra le misurazioni in base alle aree geografiche.
 	 *
-	 * @param ops array di istanze di {@link a3b.climate.magazzeno.AreaGeografica} usate per filtrare
-	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 * @param ags array di istanze di {@link a3b.climate.magazzeno.AreaGeografica}
+	 *            usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista
+	 *         filtrata
 	 */
 
 	public Filtratore filtraAree(AreaGeografica... ags) {
@@ -122,8 +130,9 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Filtra le misurazioni in base alle note.
 	 *
-	 * @param ops array di note usate per filtrare
-	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 * @param note array di note usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista
+	 *         filtrata
 	 */
 	public Filtratore filtraNote(String... note) {
 		List<Misurazione> nlm = new LinkedList<>();
@@ -144,8 +153,10 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Filtra le misurazioni in base ai dati geografici.
 	 *
-	 * @param ops array di istanze di {@link a3b.climate.magazzeno.DatoGeografico} usate per filtrare
-	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 * @param dati array di istanze di {@link a3b.climate.magazzeno.DatoGeografico}
+	 *             usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista
+	 *         filtrata
 	 */
 	public Filtratore filtraDato(DatoGeografico... dati) {
 		List<Misurazione> nlm = new LinkedList<>();
@@ -163,8 +174,9 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 	/**
 	 * Filtra le misurazioni in base a delle stringhe (di ricerca).
 	 *
-	 * @param ops array di stringhe usate per filtrare
-	 * @return nuovo {@code Filtratore} contenente la lista filtrata
+	 * @param strs array di stringhe usate per filtrare
+	 * @return nuovo {@code Filtratore} contenente la lista
+	 *         filtrata
 	 */
 	public Filtratore filtraStrings(String... strs) {
 		List<Misurazione> nlm = new LinkedList<>();

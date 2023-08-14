@@ -33,7 +33,7 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	 * Costruttore di un'istanza di {@code CentroMonitoraggio}.
 	 *
 	 * @param nome      nome del centro di monitoraggio
-	 * @param inidrizzo indirizzo relativo al centro di monitoaggio
+	 * @param indirizzo indirizzo relativo al centro di monitoaggio
 	 * @param lag       lista delle aree associate al centro di monitoraggio
 	 */
 

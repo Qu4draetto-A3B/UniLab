@@ -15,8 +15,6 @@
 package a3b.climate.magazzeno;
 
 import a3b.climate.utils.Convertable;
-import a3b.climate.utils.DataTable;
-import a3b.climate.utils.TipoDatoGeografico;
 
 /**
  * La classe {@code Indirizzo} rappresenta un indirizzo identificato
@@ -37,8 +35,10 @@ public class Indirizzo implements Convertable {
 	/**
 	 * Costruttore di un'istanza di {@code Indirizzo} con valori predefiniti.
 	 * <p>
-	 * Il {@link #nome} della via viene impostato su "<i>Via Durin I</i>", il {@link #civico} su "<i>42</i>",
-	 * il {@link #cap} su "<i>12345</i>", il {@link #comune} su "<i>Westfalia</i>" e la {@link #provincia} su "<i>Norrenia</i>".
+	 * Il {@link #nomeVia} della via viene impostato su "<i>Via Durin I</i>", il
+	 * {@link #civico} su "<i>42</i>",
+	 * il {@link #cap} su "<i>12345</i>", il {@link #comune} su "<i>Westfalia</i>" e
+	 * la {@link #provincia} su "<i>Norrenia</i>".
 	 */
 
 	public Indirizzo() {

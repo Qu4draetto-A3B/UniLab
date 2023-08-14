@@ -27,7 +27,7 @@ import a3b.climate.utils.result.*;
  * La classe {@code GestoreOperatore} estende la classe {@link Gestore}.
  * <p>
  * Gestisce le operazioni di lettura e scrittura su file CSV di dati riguardanti
- * istanze di {@link Operatore}.
+ * istanze di {@link a3b.climate.magazzeno.Operatore}.
  */
 public class GestoreOperatore extends Gestore {
 	/**
@@ -46,7 +46,7 @@ public class GestoreOperatore extends Gestore {
 	 * Registra un nuovo operatore e la password associata nel relativo file
 	 * CSV.
 	 * <p>
-	 * Controlla se &egrave; gi&agrave; presente un {@link Operatore} con lo stesso
+	 * Controlla se &egrave; gi&agrave; presente un {@link a3b.climate.magazzeno.Operatore} con lo stesso
 	 * UID (user ID) o CF (codice fiscale) usando rispettivamente i metodi
 	 * {@link #getOperatoreByUid(String)} e {@link #getOperatoreByCf(String)}.
 	 * <p>
@@ -58,9 +58,9 @@ public class GestoreOperatore extends Gestore {
 	 * nella scrittura del record), restituisce un {@link Result} con un codice di
 	 * errore.
 	 *
-	 * @param op  {@link Operatore} da registrare
+	 * @param op  {@link a3b.climate.magazzeno.Operatore} da registrare
 	 * @param pwd password associata all'operatore
-	 * @return {@link Result} contentente l'istanza di {@link Operatore} registrata
+	 * @return {@link Result} contentente l'istanza di {@link a3b.climate.magazzeno.Operatore} registrata
 	 * @see #hashPwd(String)
 	 */
 	public Result<Operatore> registrazione(Operatore op, String pwd) {
@@ -93,7 +93,7 @@ public class GestoreOperatore extends Gestore {
 	 * Esegue l'accesso di un operatore verificando le credenziali fornite.
 	 * <p>
 	 * Scorre i record CSV per trovare il record corrispondente
-	 * all'{@link Operatore} di cui eseguire l'accesso, per poi verificare la
+	 * all'{@link a3b.climate.magazzeno.Operatore} di cui eseguire l'accesso, per poi verificare la
 	 * congurenza della password fornita.
 	 * <p>
 	 * Nel caso in cui l'operazione non venga eseguita correttemente (la password
@@ -102,7 +102,7 @@ public class GestoreOperatore extends Gestore {
 	 *
 	 * @param uid user ID associato all'operatore
 	 * @param pwd password associata all'operatore
-	 * @return {@link Record} contenente l'istanza di {@link Operatore} di cui viene
+	 * @return {@link Record} contenente l'istanza di {@link a3b.climate.magazzeno.Operatore} di cui viene
 	 *         eseguito l'accesso
 	 * @see #hashPwd(String)
 	 */
@@ -126,18 +126,18 @@ public class GestoreOperatore extends Gestore {
 	}
 
 	/**
-	 * Recupera un'istanza di {@link Operatore} basandosi sul CF (codice fiscale)
+	 * Recupera un'istanza di {@link a3b.climate.magazzeno.Operatore} basandosi sul CF (codice fiscale)
 	 * fornito.
 	 * <p>
 	 * Ricerca un record CSV con il codice fiscale specifico nella lista di record e
-	 * costruisce il rispettivo {@link Operatore} usando il metodo
+	 * costruisce il rispettivo {@link a3b.climate.magazzeno.Operatore} usando il metodo
 	 * {@link #buildObject(CSVRecord)}.
 	 * <p>
 	 * Nel caso in cui non venga trovato nessun record corrispondente al CF fornito,
 	 * restituisce un {@link Result} con un codice di errore.
 	 *
 	 * @param cf codice fiscale relativo al centro di monitoraggio d'interesse
-	 * @return restituisce l'istanza di {@link Operatore} corrispondente al
+	 * @return restituisce l'istanza di {@link a3b.climate.magazzeno.Operatore} corrispondente al
 	 *         codice fiscale fornito come parametro
 	 */
 	Result<Operatore> getOperatoreByCf(String cf) {
@@ -154,17 +154,17 @@ public class GestoreOperatore extends Gestore {
 	}
 
 	/**
-	 * Recupera un'istanza di {@link Operatore} basandosi sul UID (user ID) fornito.
+	 * Recupera un'istanza di {@link a3b.climate.magazzeno.Operatore} basandosi sul UID (user ID) fornito.
 	 * <p>
 	 * Ricerca un record CSV con lo user ID specifico nella lista di record e
-	 * costruisce il rispettivo {@link Operatore} usando il metodo
+	 * costruisce il rispettivo {@link a3b.climate.magazzeno.Operatore} usando il metodo
 	 * {@link #buildObject(CSVRecord)}.
 	 * <p>
 	 * Nel caso in cui non venga trovato nessun record corrispondente al UID
 	 * fornito, restituisce un {@link Result} con un codice di errore.
 	 *
 	 * @param uid user ID relativo al centro di monitoraggio d'interesse
-	 * @return restituisce l'istanza di {@link Operatore} corrispondente al
+	 * @return restituisce l'istanza di {@link a3b.climate.magazzeno.Operatore} corrispondente al
 	 *         user ID fornito come parametro
 	 */
 	Result<Operatore> getOperatoreByUid(String uid) {

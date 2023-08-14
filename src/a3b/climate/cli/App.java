@@ -13,7 +13,7 @@ import org.apache.commons.cli.CommandLine;
  * La classe {@code App} &egrave; la classe principale dell'applicazione <i>
  * Climate Monitoring</i>.
  * <p>
- * &Egrave il punto di partenza dell'applicazione e contiene un metodo che
+ * &egrave; il punto di partenza dell'applicazione e contiene un metodo che
  * permette di avviare diversi comandi in base ai parametri forniti.
  */
 public class App {

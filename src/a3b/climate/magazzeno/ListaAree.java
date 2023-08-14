@@ -72,7 +72,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	 * Aggiunge un'area geografica nella posizione fornita della lista.
 	 *
 	 * @throws IndexOutOfBoundsException se l'indice fornito non &egrave; valido
-	 * @param e {@link Areageografica} da aggiungere alla lista
+	 * @param e {@link a3b.climate.magazzeno.AreaGeografica} da aggiungere alla lista
 	 * @param k indice della posizione dell'area geografica
 	 */
 	public void add(AreaGeografica e, int k) {
@@ -113,7 +113,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	/**
 	 * Indica il numero di elementi presenti nella lista.
 	 *
-	 * @return numero di istanze di {@link Areageografica} presenti nella lista
+	 * @return numero di istanze di {@link a3b.climate.magazzeno.AreaGeografica} presenti nella lista
 	 */
 	public int size() {
 		int i = 0;
@@ -128,7 +128,7 @@ public class ListaAree implements Iterable<AreaGeografica>, CercaAree, Convertab
 	/**
 	 * Aggiunge un'area geografica in prima posizione nella lista.
 	 *
-	 * @param e {@link Areageografica} da aggiungere alla lista
+	 * @param e {@link a3b.climate.magazzeno.AreaGeografica} da aggiungere alla lista
 	 */
 	public void addFirst(AreaGeografica e) {
 		Nodo<AreaGeografica> x = new Nodo<AreaGeografica>(e, head);

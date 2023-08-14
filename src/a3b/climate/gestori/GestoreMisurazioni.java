@@ -95,7 +95,7 @@ public class GestoreMisurazioni extends Gestore {
 	 * <p>
 	 * Scorre una lista di record CSV e crea una lista di istanze di
 	 * {@link a3b.climate.magazzeno.Misurazione} usando il metodo {@link #buildObject(CSVRecord)}, la
-	 * quale viene utilizzata per inizializzare un nuovo {@link Filtratore}.
+	 * quale viene utilizzata per inizializzare un nuovo {@link a3b.climate.magazzeno.Filtratore}.
 	 *
 	 * @return {@link Result} contenente il filtratore creato con la lista
 	 *         di istanze di {@link a3b.climate.magazzeno.Misurazione}.

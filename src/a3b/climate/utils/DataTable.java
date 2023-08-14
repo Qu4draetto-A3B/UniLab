@@ -15,7 +15,7 @@
 package a3b.climate.utils;
 
 /**
- * L'interfaccia {@link Datatable} che modella record nel database.
+ * L'interfaccia {@link DataTable} che modella record nel database.
  */
 public interface DataTable {
 

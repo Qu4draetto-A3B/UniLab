@@ -74,7 +74,7 @@ exe_linux: jar
 exe_win: jar
 	java -Djava.awt.headless=true -jar ./launch4j/launch4j.jar jar2exe.xml
 
-package: exe_linux exe_win
+package: exe_linux exe_win docs
 	mkdir $(TARGET_DIR)
 	cp -f $(TARGET_JAR) $(TARGET_DIR)
 	cp -f $(TARGET_EXE) $(TARGET_DIR)
