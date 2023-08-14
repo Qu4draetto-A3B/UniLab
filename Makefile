@@ -10,14 +10,17 @@ LIB_DIR := ./lib
 SRC_DIR := ./src
 DOC_DIR := ./doc
 JAVADOC_DIR := $(DOC_DIR)/javadoc
+MAN_DIR := $(DOC_DIR)/man
+MAN_USER := Manuale_Utente.pdf
+MAN_TECH := Manuale_Tecnico.pdf
+MAN_USER_OUT := $(MAN_DIR)/out/$(MAN_USER)
+MAN_TECH_OUT := $(MAN_DIR)/out/$(MAN_TECH)
 
 # Names for generated files
 TARGET_JAR := $(BUILD_DIR)/$(EXE_NAME).jar
 TARGET_EXE := $(BUILD_DIR)/$(EXE_NAME)
 TARGET_WIN := $(BUILD_DIR)/$(EXE_NAME).exe
 TARGET_DIR := $(BUILD_DIR)/$(PRJ_NAME)
-MAN_USER := $(DOC_DIR)/man/out/Manuale_Utente.pdf
-MAN_TECH := $(DOC_DIR)/man/out/Manuale_Tecnico.pdf
 
 # Classes are generated in a subdirectory
 CLASS_DIR := $(BUILD_DIR)/class
@@ -81,8 +84,8 @@ package: exe_linux exe_win docs
 	cp -f $(TARGET_WIN) $(TARGET_DIR)
 	cp -f ./LICENSE $(TARGET_DIR)
 	cp -rf ./data $(TARGET_DIR)
-	cp -f $(MAN_USER) $(TARGET_DIR)
-	cp -f $(MAN_TECH) $(TARGET_DIR)
+	cp -f $(MAN_USER_OUT) $(TARGET_DIR)
+	cp -f $(MAN_TECH_OUT) $(TARGET_DIR)
 	cp -rf $(JAVADOC_DIR) $(TARGET_DIR)
 	zip -r $(TARGET_DIR).zip $(TARGET_DIR)
 	rm -rf $(TARGET_DIR)
@@ -90,6 +93,7 @@ package: exe_linux exe_win docs
 # Generate documentation
 docs: $(SRCS)
 	javadoc -d $(JAVADOC_DIR) -cp $(BUILD_CP) $(SRCS)
+	$(MAKE) --directory $(MAN_DIR) $(MAN_USER) $(MAN_TECH)
 
 # Clean BUILD_DIR by deleting it
 clean:
@@ -98,6 +102,7 @@ clean:
 # Delete documentation
 cleandoc:
 	rm -r $(JAVADOC_DIR)
+	$(MAKE) --directory $(MAN_DIR) clean
 
 all: classes libraries jar docs
 
