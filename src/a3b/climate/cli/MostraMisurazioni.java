@@ -25,7 +25,7 @@ public class MostraMisurazioni implements View {
 	}
 
 	/**
-	 * Recupera le misurazioni in base ai ciriteri dati nel filtratore fornito nella
+	 * Recupera le misurazioni in base ai criteri dati nel filtratore fornito nella
 	 * linea di comando.
 	 * <p>
 	 * Richiede al database le istanze di {@link a3b.climate.magazzeno.Misurazione} corrispondenti e le

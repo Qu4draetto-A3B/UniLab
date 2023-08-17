@@ -93,7 +93,7 @@ public class CentroMonitoraggio implements Convertable, DataTable {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(String.format(
-				"%s: (\n\tNome: %s\n\tIndirizzo: %s, %d, %d, %s (%s)\n\tAree:",
+				"%s: (\n\tNome: %s\n\tIndirizzo: %s, %d, %d, %s (%s)",
 				super.toString(), nome,
 				indirizzo.getNomeVia(), indirizzo.getCivico(),
 				indirizzo.getCap(), indirizzo.getComune(), indirizzo.getProvincia()));

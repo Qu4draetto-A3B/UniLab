@@ -18,8 +18,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import a3b.climate.utils.CercaAree;
+import a3b.climate.utils.DataTable;
 import a3b.climate.utils.MediaAree;
 import a3b.climate.utils.TipoDatoGeografico;
 import a3b.climate.utils.result.Result;
@@ -167,6 +169,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 					break;
 				}
 			}
+
 		}
 		return new Filtratore(nlm);
 	}
@@ -197,7 +200,7 @@ public class Filtratore implements Iterable<Misurazione>, CercaAree, MediaAree {
 		StringBuilder sb = new StringBuilder(String.format("%s <<<\n", super.toString()));
 
 		for (int i = 0; i < lm.size(); i++) {
-			sb.append(String.format("[%d] %s\n", i, lm.get(i).toString()));
+			sb.append(String.format("[%d]\n%s\n", i, lm.get(i).toString()));
 		}
 
 		return sb.append(">>> ").append(super.toString()).toString();
