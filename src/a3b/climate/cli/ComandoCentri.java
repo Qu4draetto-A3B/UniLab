@@ -16,9 +16,18 @@ import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
 /**
- * ComandoCentri
+ * La classe {@code ComandoCentri} implementa l'interfaccia {@link View} per
+ * inizializzare il comando finalizzato alla creazione di un nuovo
+ * {@link CentroMonitoraggio}.
  */
-public class ComandoCentri implements View {
+class ComandoCentri implements View {
+
+	/**
+	 * Legge i dati relativi al nuovo {@link CentroMonitoraggio} dal file
+	 * <i>centro.ini</i> e li utilizza per creare una nuova istanza.
+	 *
+	 * @param term istanza di {@link Terminal} utilizzata per stampare i centri di monitoraggio
+	 */
 
 	@Override
 	public void start(Terminal term) throws IOException {

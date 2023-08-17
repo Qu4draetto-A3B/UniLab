@@ -4,15 +4,14 @@ import a3b.climate.utils.terminal.Terminal;
 import a3b.climate.utils.terminal.View;
 
 /**
- * <b><i>Classe non implementata</i></b>
- * <p>
  * La classe {@code Registrazione} implementa l'interfaccia {@link View} per
- * eseguire la registrazione.
+ * eseguire la registrazione di un {@link Operatore} al sistema..
  */
 public class Registrazione implements View {
 
 	/**
-	 * <i><b>Metodo non implementato</b></i>
+	 * Permette a un {@link Operatore} di effetturare la registrazione al
+	 * sistema tramite terminale.
 	 */
 	@Override
 	public void start(Terminal term) {
