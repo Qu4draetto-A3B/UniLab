@@ -33,8 +33,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		opts = new Options();
-		opts.addOption(Option.builder("u")
-				.argName("utente")
+		opts.addOption(Option.builder()
+				.argName("username password")
 				.longOpt("utente")
 				.desc("Nome utente e password, separati da spazio. Mostra le generalita' dell'utente")
 				.hasArg()
@@ -43,7 +43,6 @@ public class Main {
 				.build());
 
 		opts.addOption(Option.builder()
-				.argName("avvia")
 				.longOpt("avvia-registrazione")
 				.desc("Avvia il processo di registrazione")
 				.build());
@@ -76,13 +75,11 @@ public class Main {
 				.build());
 
 		opts.addOption(Option.builder()
-				.argName("avvia")
 				.longOpt("crea-centro")
 				.desc("Avvia la creazione di un centro")
 				.build());
 
 		opts.addOption(Option.builder()
-				.argName("avvia")
 				.longOpt("crea-misurazione")
 				.desc("Avvia la creazione di una misurazione")
 				.build());

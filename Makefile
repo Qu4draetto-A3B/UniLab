@@ -10,6 +10,8 @@ LIB_DIR := ./lib
 SRC_DIR := ./src
 DOC_DIR := ./doc
 JAVADOC_DIR := $(DOC_DIR)/javadoc
+
+# Manual files
 MAN_DIR := $(DOC_DIR)/man
 MAN_USER := Manuale_Utente.pdf
 MAN_TECH := Manuale_Tecnico.pdf
@@ -20,7 +22,7 @@ MAN_TECH_OUT := $(MAN_DIR)/out/$(MAN_TECH)
 TARGET_JAR := $(BUILD_DIR)/$(EXE_NAME).jar
 TARGET_EXE := $(BUILD_DIR)/$(EXE_NAME)
 TARGET_WIN := $(BUILD_DIR)/$(EXE_NAME).exe
-TARGET_DIR := $(BUILD_DIR)/$(PRJ_NAME)
+TARGET_DIR := $(PRJ_NAME)
 
 # Classes are generated in a subdirectory
 CLASS_DIR := $(BUILD_DIR)/class
@@ -87,7 +89,8 @@ package: exe_linux exe_win docs
 	cp -f $(MAN_USER_OUT) $(TARGET_DIR)
 	cp -f $(MAN_TECH_OUT) $(TARGET_DIR)
 	cp -rf $(JAVADOC_DIR) $(TARGET_DIR)
-	zip -r $(TARGET_DIR).zip $(TARGET_DIR)
+	rm -f $(BUILD_DIR)/$(TARGET_DIR).zip
+	zip -r $(BUILD_DIR)/$(TARGET_DIR).zip $(TARGET_DIR)
 	rm -rf $(TARGET_DIR)
 
 # Generate documentation
