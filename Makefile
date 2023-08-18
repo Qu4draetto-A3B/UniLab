@@ -23,6 +23,7 @@ TARGET_JAR := $(BUILD_DIR)/$(EXE_NAME).jar
 TARGET_EXE := $(BUILD_DIR)/$(EXE_NAME)
 TARGET_WIN := $(BUILD_DIR)/$(EXE_NAME).exe
 TARGET_DIR := $(PRJ_NAME)
+TARGET_ZIP := $(BUILD_DIR)/$(TARGET_DIR).zip
 
 # Classes are generated in a subdirectory
 CLASS_DIR := $(BUILD_DIR)/class
@@ -89,8 +90,8 @@ package: exe_linux exe_win docs
 	cp -f $(MAN_USER_OUT) $(TARGET_DIR)
 	cp -f $(MAN_TECH_OUT) $(TARGET_DIR)
 	cp -rf $(JAVADOC_DIR) $(TARGET_DIR)
-	rm -f $(BUILD_DIR)/$(TARGET_DIR).zip
-	zip -r $(BUILD_DIR)/$(TARGET_DIR).zip $(TARGET_DIR)
+	rm -f $(TARGET_ZIP)
+	zip -r $(TARGET_ZIP) $(TARGET_DIR)
 	rm -rf $(TARGET_DIR)
 
 # Generate documentation
@@ -107,8 +108,8 @@ cleandoc:
 	rm -r $(JAVADOC_DIR)
 	$(MAKE) --directory $(MAN_DIR) clean
 
-all: classes libraries jar docs
+all: classes libraries jar docs exe_linux exe_win package
 
 cleanall: clean cleandoc
 
-.PHONY: classes run jar clean docs cleandoc libraries executable
+.PHONY: classes run jar clean docs cleandoc libraries package

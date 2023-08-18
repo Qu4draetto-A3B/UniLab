@@ -54,9 +54,9 @@
 		\item \textsl{Massa dei ghiacciai}, misurata in kg.
 		\end{itemize}
 		L'intensit\`a di ogni fenomeno climatico viene misurata su una scala che va da \textbf{1} (\textsl{critico}) a \textbf{5} (\textsl{ottimale}).
-		
+
 		Possono inoltre essere presenti delle note testuali (di massimo 256 caratteri) per descrivere con più precisione i dati geografici.
-		
+
 		L'applicazione permette:
 		\begin{itemize}
 		\item ai \textbf{\textsl{comuni cittadini}}, di visualizzare i parametri climatici di proprio interesse relativi a ciascuna area geografica;
@@ -74,7 +74,7 @@
 			\item un terminale.
 		\end{itemize}
 
-	
+
 	\section{Troubleshooting}
 		\subsection{Problemi durante l'avvio}
 		Se l'applicazione non si dovesse avviare correttamente:
@@ -87,14 +87,14 @@
 				\item assicurarsi che il comando di avvio coincida con quello mostrato e che venga eseguito nell'indirizzo corretto.
 			\end{itemize}
 		\end{itemize}
-		
+
 		Nel caso l'applicazione non dovesse avviarsi per qualsiasi altro motivo sono disponibili i file sorgente che possono essere visualizzati modificati tramite qualsiasi IDE.
-		
+
 		\subsection{Inserimento di nomi propri nei comandi}
 		Quando si inseriscono nei comandi nomi propri (ad esempio di citt\`a) \`e necessario prestare attenzione alla lettera maiuscola iniziale, in quanto alcune funzioni sono \textsl{case sensitive} e potrebbero non funzionare correttamente.
-	
+
 	\section{Avviare l'applicazione}
-	
+
 	Per avviare l'applicazione \`e necessario:
 	\begin{enumerate}
 		\item cliccare con il tasto destro la cartella \textsl{UniLab} e selezionare "\textsl{Apri nel Terminale}" (o "\textsl{Open in Terminal}"):
@@ -113,22 +113,22 @@
 			\label{fig:avviocom}
 		\end{figure}
 	\end{enumerate}
-	
+
 	\section{Schermata principale}
 
-	
+
 	All'avvio dell'applicazione compare la seguente schermata, dove \`e possibile visualizzare il menu principale del programma.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{Screen/schermataprincipale}
 		\caption{Schermata principale}
 		\label{fig:schermataprincipale}
-	\end{figure}	
-		
+	\end{figure}
+
 	\section{Menù principale}
-	
+
 		\subsection{-$ $-avvia-registrazione}
-	
+
 		Per avviare questo comando \`e necessario digitare nel terminale\\
 		\verb!    .\UniLab.exe --avvia-registrazione!\\
 		\begin{figure}[H]
@@ -137,14 +137,14 @@
 			\caption{Registrazione}
 			\label{fig:registrazione (non implementata)}
 		\end{figure}
-			Questa funzione non \`e stata implementata, per ulteriori informazioni consultare il \textsl{Manuale Tecnico}. 
-		
+			Questa funzione non \`e stata implementata, per ulteriori informazioni consultare il \textsl{Manuale Tecnico}.
+
 		\subsection{-$ $-crea-centro}
 		Questa funzione permette di creare un centro di monitoraggio e salvarlo nel database.
-		
+
 		Se \`e la prima volta che viene inserito un centro di monitoraggio nel database \`e necessario seguire le istruzioni seguenti:
 		\begin{enumerate}
-			
+
 		\item verificare che non esista un file chiamato "\textsl{centro.ini}" nella cartella \textsl{UniLab}: qualora esista \`e necessario seguire le istruzioni illustrate nel prossimo paragrafo, in quanto \`e gi\`a stato inserito almeno un centro di monitoraggio nel database;
 		\item avviare il comando digitando sul terminale
 		\\\verb!    .\UniLab.exe --crea-centro!\\ e premere il tasto invio.
@@ -168,7 +168,7 @@
 			\item tornare sulla schermata del terminale e rieseguire il comando
 			\\\verb!    .\UniLab.exe --crea-centro!\\
 		\end{enumerate}
-		
+
 		Se un centro di monitoraggio \`e gi\`a stato precedentemente creato e si vuole aggiungerne un altro, \`e necessario:
 		\begin{enumerate}
 			\item aprire il file \textsl{centro.ini};
@@ -179,9 +179,9 @@
 		A questo punto, se tutte le istruzioni sono state eseguite correttamente, i dati relativi al nuovo centro di monitoraggio saranno stati acquisiti correttamente dall'applicazione.
 		\pagebreak
 		\subsection{-$ $-crea-misurazione}
-		
+
 		Questa funzione permette di creare una misurazione e salvarla nel database.
-		
+
 		Se \`e la prima volta che viene inserita una misurazione nel database \`e necessario seguire le istruzioni seguenti:
 		\begin{enumerate}
 			\item verificare che non esista un file chiamato "\textsl{misurazione.ini}" nella cartella \textsl{UniLab}: qualora esista \`e necessario seguire le istruzioni illustrate nel prossimo paragrafo, in quanto \`e gi\`a stata inserita almeno una misurazione nel database;
@@ -193,7 +193,7 @@
 				\caption{Risultato del comando -$ $-crea-misurazione}
 				\label{fig:creamisurazionecom}
 			\end{figure}
-			
+
 			\item aprire (tramite un visualizzatore di file di testo) il file \textsl{misurazione.ini}.
 			\pagebreak
 			\item inserire nel file i seguenti dati:
@@ -219,11 +219,11 @@
 		A questo punto, se tutte le istruzioni sono state eseguite correttamente, i dati relativi alla nuova misurazione saranno stati acquisiti correttamente dall'applicazione.
 		\pagebreak
 		\subsection{-$ $-lista-aree <parole>}
-		
+
 		Questa funzione permette di visualizzare le aree geografiche presenti nel database il cui nome contiene la/e parola/e fornita/e nel comando.
-		
+
 		Se si vogliono visualizzare tutte le aree geografiche presenti nel database \`e necessario eseguire il comando \\\verb!    .\UniLab.exe --lista-aree!
-		
+
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.8\linewidth]{Screen/listaaree}
@@ -232,7 +232,7 @@
 		\end{figure}
 		Se si vuole visualizzare delle determinate aree geografiche \`e necessario eseguire il comando \\\verb!    .\UniLab.exe --lista-aree <parole>!\\
 		Al posto di \verb!<parole>! \`e necessario inserire il nome delle aree geografiche di interesse.
-			
+
 		Di seguito viene mostrato un esempio nel quale vengono visualizzate tutte le aree geografiche il cui nome contiene "\textsl{mil}", nonché il risultato del comando \\\verb!.\UniLab.exe --lista-aree mil!
 		\begin{figure}[H]
 			\centering
@@ -240,31 +240,31 @@
 			\caption{Risultato della ricerca di aree geografiche con "mil"}
 			\label{fig:listaareemil}
 		\end{figure}
-		 
+
 		\pagebreak
 		\subsection{-$ $-lista-centri <parole>}
 		Questa funzione permette di visualizzare i centri di monitoraggio presenti nel database il cui nome contiene la/e parola/e fornita/e nel comando.
-		
+
 		Se si vogliono visualizzare tutti i centri di monitoraggio presenti nel database \`e necessario eseguire il comando \\\verb!    .\UniLab.exe --lista-centri!
-		
+
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.9\linewidth]{Screen/listacentri}
 			\caption{Alcuni dei centri di monitoraggio presenti nel database}
 			\label{fig:listacentri}
 		\end{figure}
-		
+
 		Se si vuole visualizzare dei determinati centri di monitoraggio \`e necessario eseguire il comando \\\verb!    .\UniLab.exe --lista-centri <parole>!
-		
+
 		Al posto di \verb!<parole>! \`e necessario inserire il nome dei centri di monitoraggio di interesse.
-		
+
 		Questo comando funziona in maniera analoga al precedente, per tanto se si necessita un esempio del funzionamento si consiglia di consultare la documentazione della funzione \verb!.\UniLab.exe --lista-aree <parole>!.
 		\pagebreak
 		\subsection{-$ $-lista-misurazioni <parole>}
 		Questa funzione permette di visualizzare le misurazioni presenti nel database che contengono la/e parola/e fornita/e nel comando.
-		
+
 		Se si vogliono visualizzare tutte le misurazioni presenti nel database \`e necessario eseguire il comando \\\verb!    .\UniLab.exe --lista-misurazioni!
-		
+
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.9\linewidth]{Screen/listamisurazioni}
@@ -273,14 +273,14 @@
 		\end{figure}
 		\pagebreak
 		Se si vuole visualizzare delle determinate misurazioni \`e necessario eseguire il comando \\\verb!    .\UniLab.exe --lista-misurazioni <parole>!
-		
+
 		Al posto di \verb!<parole>! \`e necessario inserire le misurazioni di interesse.
-		
+
 		Questo comando funziona in maniera analoga al precedente, per tanto se si necessita un esempio del funzionamento si consiglia di consultare la documentazione della funzione \verb!.\UniLab.exe --lista-aree <parole>!.
 		\pagebreak
 		\subsection{-$ $-utente <utente>}
 		Questo comando permette di visualizzare il profilo dell'operatore.
-		
+
 		Per avviare questa funzione \`e necessario digitare il seguente comando
 		\\\verb!    .\UniLab.exe --utente!\\
 		Accanto a \verb!--utente! \`e necessario inserire nome utente e password (che devono essere \verb!Civile! e \verb!civile00!) separati da uno spazio, come riportato nel seguente esempio:
@@ -290,16 +290,16 @@
 			\caption{Comando -$ $-utente}
 			\label{fig:utentecom}
 		\end{figure}
-		
+
 		Di seguito viene mostrato il risultato del comando.
-		
+
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.9\linewidth]{Screen/utente}
 			\caption{Risultato dei comandi -u e -$ $-utente}
 			\label{fig:utente}
 		\end{figure}
-		
+
 	\pagebreak
 	\subsection{Esci}
 	Per uscire dall’applicazione \`e sufficiente chiudere il terminale, cliccando sull’icona a croce ("\textsl{Chiudi}" o "\textsl{Close}") in alto a destra:
@@ -314,17 +314,13 @@
 	Nello sviluppo dell'applicazione sono state riscontrate delle difficolt\`a nella implementazione di alcune funzioni:
 	\begin{itemize}
 		\item \textbf{Registrazione non implementata}:\\Il programma fornisce dei parametri di default per la registrazione in quanto non \`e stato possibile implementare una funzione per registrare un nuovo operatore con credenziali a scelta dall'utente.\\Ulteriori informazioni nel \textsl{Manuale Tecnico}.
-		
+
 		\item \textbf{Verifica della correttezza degli indirizzi assente}:\\Non potendo accedere direttamente al database contenente le aree geografiche, non \`e possibile verificare che la provincia relativa ai centri di monitoraggio sia corretta dal punto di vista geografico.
 	\end{itemize}
-
-	
-	
 
 	\nocite{IuriTex}
 	\bibliographystyle{alpha}
 	\bibliography{bib/biblio}
-	\printindex
 
 \end{document}
 
