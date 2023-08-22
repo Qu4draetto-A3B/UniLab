@@ -1,0 +1,5 @@
+Nome Cognome,Matricola,Ruolo
+Iuri Antico,753144,Architetto di Sistema
+Beatrice Balzarini,752257,Programmatore
+Michael Bernasconi,752259,Gerente
+Gabriele Borgia,753262,Programmatore
